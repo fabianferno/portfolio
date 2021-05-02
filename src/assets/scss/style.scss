@@ -12,14 +12,16 @@ $theme-colors: (
 @import "~bootstrap/scss/bootstrap";
 @import "/src/assets/fonts/fonts.css";
 
-
-
-body {
-  background-color: map.get($theme-colors, "dark");;
+html,body {
+  cursor: none;
+  background-color: map.get($theme-colors, "dark");
   font-family: Comfortaa;
 }
 
+
+
 a{
+  
   font-weight: bold;
 }
 
@@ -32,6 +34,19 @@ a:hover {
   font-family: Signatria;
 }
 
+
+.hover-box  {
+  padding-bottom: 15px;
+  background-image: linear-gradient(to right, transparent calc(0% - 5px), #60FF9F 0%, #272727 100%);
+  background-size: 0%;
+  background-repeat: no-repeat;
+  display: inline;
+  transition: 0.5s ease;
+}
+
+.hover-box:hover {
+  background-size: 100%;
+}
 
 h1 {
   color: map.get($theme-colors, "primary");
