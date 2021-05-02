@@ -26,7 +26,7 @@ export default function MenuBar(props) {
         Home
       </Link>
 
-      <Link className=" menu-item  py-3" to="/about">
+      <Link className=" menu-item   py-3" to="/about">
         About
       </Link>
 
@@ -41,10 +41,10 @@ export default function MenuBar(props) {
       <Link className=" menu-item  py-3" to="/contact">
         Contact
       </Link>
-      <motion.div>
+      <motion.div className="d-flex justify-content-center">
         <img
           className="dark-shadow"
-          style={{ height: 150, marginTop: "80px" }}
+          style={{ height: 100, marginTop: "80px" }}
           src={Logo}
           alt="fabianferno-logo"
         />

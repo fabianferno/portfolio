@@ -2,10 +2,10 @@ import Layout from "../layouts/Layout";
 
 export default function Services() {
   return (
-    <Layout>
-      <div className="d-flex align-items-center justify-content-center">
-        <h1 className="">Services</h1>
-      </div>
+    <Layout contained>
+      <h1 className="hero mt-5 pb-3 text-center">
+        My <span className="text-white ">Services</span>
+      </h1>
     </Layout>
   );
 }

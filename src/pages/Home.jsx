@@ -17,15 +17,10 @@ export default function Home() {
   };
 
   return (
-    <Layout>
+    <Layout contained>
       <div className="row mt-3 align-items-center justify-content-center">
-        <div className="pr-md-5 pr-0 col-md-4 col-12">
-          <img
-            src={Bitmoji}
-            className="img-fluid"
-            alt="fabianferno bitmoji"
-            srcset=""
-          />
+        <div className="pr-md-5 pr-0 col-md-4  col-12">
+          <img src={Bitmoji} alt="fabianferno bitmoji" srcset="" />
         </div>
         <div className="col-md-8 col-12">
           <h1 className="hero mt-5 pb-3 " style={{ lineHeight: "115px" }}>

@@ -2,10 +2,10 @@ import Layout from "../layouts/Layout";
 
 export default function Contact() {
   return (
-    <Layout>
-      <div className="d-flex align-items-center justify-content-center">
-        <h1 className="">Contact</h1>
-      </div>
+    <Layout contained>
+      <h1 className="hero mt-5 pb-3 text-center">
+        Contact<span className="text-white "> Me</span>
+      </h1>
     </Layout>
   );
 }

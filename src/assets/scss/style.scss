@@ -1,18 +1,18 @@
 @use "sass:map";
 /* make the customizations */
-$theme-colors: (
-    "info": #FFBC44,
-    "primary": #60FF9F,
-    "dark": #1f1f1f,
-    "secondary" :#E6E6E6,
-    "black": #0f0f0f,
+$theme-colors: ("info": #ffbc44,
+  "primary": #60ff9f,
+  "dark": rgb(31, 31, 31),
+  "secondary" :#E6E6E6,
+  "black": #0f0f0f,
 );
 
 /* import bootstrap to set changes */
 @import "~bootstrap/scss/bootstrap";
 @import "/src/assets/fonts/fonts.css";
 
-html,body {
+html,
+body {
   cursor: none;
   background-color: map.get($theme-colors, "dark");
   font-family: Comfortaa;
@@ -20,8 +20,10 @@ html,body {
 
 
 
-a{
-  
+
+
+a {
+
   font-weight: bold;
 }
 
@@ -32,10 +34,16 @@ a:hover {
 .hero {
   font-size: 9em;
   font-family: Signatria;
+  line-height: "115px";
 }
 
 
-.hover-box  {
+.blur {
+  filter: blur(5px);
+}
+
+
+.hover-box {
   padding-bottom: 15px;
   background-image: linear-gradient(to right, transparent calc(0% - 5px), #60FF9F 0%, #272727 100%);
   background-size: 0%;
@@ -52,6 +60,6 @@ h1 {
   color: map.get($theme-colors, "primary");
 }
 
-img.dark-shadow{
+img.dark-shadow {
   filter: drop-shadow(0px 3px 3px rgba(0, 0, 0, 1));
 }
