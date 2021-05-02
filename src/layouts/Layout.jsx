@@ -5,7 +5,7 @@ import Logo from "../assets/img/logo-circle-black-teal.svg";
 
 export default function Layout(props) {
   return (
-    <div className="bg-dark" id="outer-container" style={{ height: "100vh" }}>
+    <div id="outer-container" style={{ height: "100vh" }}>
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -38,7 +38,7 @@ export default function Layout(props) {
           initial={{ scale: 0.9, opacity: 0, y: -10 }}
           animate={{ scale: 1.05, opacity: 1, y: 20 }}
           transition={{ duration: 1 }}
-          className="container pt-5"
+          className="container py-5"
         >
           <div style={{ paddingLeft: "50px" }}>{props.children}</div>
         </motion.div>
