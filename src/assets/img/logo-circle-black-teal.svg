@@ -2,7 +2,7 @@
     <defs>
         <style>
             .cls-1 {
-                fill: #60ff9f;
+                fill: #454545;
             }
 
             .cls-2 {
@@ -13,7 +13,7 @@
     </defs>
     <g id="Layer_2" data-name="Layer 2">
         <g id="Layer_1-2" data-name="Layer 1">
-            <circle class="cls-1" cx="19.44" cy="15.92" r="15.92" /><text class="cls-2" fill="white"
+            <circle class="cls-1" cx="19.44" cy="15.92" r="15.92" /><text class="cls-2" fill="#60ff9f"
                 transform="translate(0 24.07)">F</text></g>
     </g>
 </svg>
