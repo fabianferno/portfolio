@@ -5,7 +5,7 @@ import Services from "./pages/Services";
 import Projects from "./pages/Projects";
 import Contact from "./pages/Contact";
 
-import "./assets/css/style.scss";
+import "./assets/scss/style.scss";
 
 export default function App() {
   return (
