@@ -1,57 +1,29 @@
 @use "sass:map";
-
-
 /* make the customizations */
 $theme-colors: (
     "info": #FFBC44,
     "primary": #60FF9F,
-    "dark": #1a1a1a,
+    "dark": #1f1f1f,
     "secondary" :#E6E6E6
 );
+
+/* import bootstrap to set changes */
+@import "~bootstrap/scss/bootstrap";
+@import "/src/assets/fonts/fonts.css";
+
+a{
+  font-weight: bold;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+.hero {
+  font-size: 10em;
+  font-family: Signatria;
+}
 
 h1 {
   color: map.get($theme-colors, "primary");
 }
-
-
-
-/* Masonry grid Cards */
-/* Responsive cards /
-  @media (min-width: 34em) {
-    .card-columns {
-      -webkit-column-count: 2;
-      -moz-column-count: 2;
-      column-count: 2;
-    }
-  }
-  
-  @media (min-width: 48em) {
-    .card-columns {
-      -webkit-column-count: 2;
-      -moz-column-count: 2;
-      column-count: 2;
-    }
-  }
-  
-  @media (min-width: 62em) {
-    .card-columns {
-      -webkit-column-count: 2;
-      -moz-column-count: 2;
-      column-count: 2;
-    }
-  }
-  
-  @media (min-width: 75em) {
-    .card-columns {
-      -webkit-column-count: 3;
-      -moz-column-count: 3;
-      column-count: 3;
-    }
-  }
-  / Responsive cards end */
-
-
-
-
-/* import bootstrap to set changes */
-@import "~bootstrap/scss/bootstrap";
