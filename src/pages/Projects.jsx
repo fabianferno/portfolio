@@ -3,7 +3,9 @@ import Layout from "../layouts/Layout";
 export default function Projects() {
   return (
     <Layout>
-      <h1>Projects</h1>
+      <div className="d-flex align-items-center justify-content-center">
+        <h1 className="">Projects</h1>
+      </div>
     </Layout>
   );
 }
