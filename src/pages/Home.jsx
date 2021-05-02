@@ -15,7 +15,7 @@ export default function Home() {
           whileTap={{ scale: 0.9 }}
         >
           Web Developer
-        </motion.button>{" "}
+        </motion.button>
         |
         <motion.button
           className="btn btn-black"
@@ -23,7 +23,7 @@ export default function Home() {
           whileTap={{ scale: 0.9 }}
         >
           Freelancer
-        </motion.button>{" "}
+        </motion.button>
         |
         <motion.button
           className="btn btn-black"
