@@ -1,12 +1,18 @@
-/* The following block can be included in a custom.scss */
+@use "sass:map";
+
 
 /* make the customizations */
 $theme-colors: (
     "info": #FFBC44,
     "primary": #60FF9F,
-    "dark": #4D4D4D,
+    "dark": #1a1a1a,
     "secondary" :#E6E6E6
 );
+
+h1 {
+  color: map.get($theme-colors, "primary");
+}
+
 
 
 /* Masonry grid Cards */
