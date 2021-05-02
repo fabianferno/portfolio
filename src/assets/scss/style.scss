@@ -11,6 +11,11 @@ $theme-colors: (
 @import "~bootstrap/scss/bootstrap";
 @import "/src/assets/fonts/fonts.css";
 
+
+body {
+  font-family: Comfortaa;
+}
+
 a{
   font-weight: bold;
 }
@@ -20,7 +25,7 @@ a:hover {
 }
 
 .hero {
-  font-size: 10em;
+  font-size: 15em;
   font-family: Signatria;
 }
 

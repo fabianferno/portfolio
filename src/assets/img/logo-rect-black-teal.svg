@@ -1,1 +1,20 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 39.9 40.28"><defs><style>.cls-1{fill:#60ff9f;}.cls-2{font-size:20.02px;font-family:Lovely-Home, Lovely Home;}</style></defs><g id="Layer_2" data-name="Layer 2"><g id="Layer_1-2" data-name="Layer 1"><rect class="cls-1" x="9.98" y="2.84" width="21.35" height="34.6" transform="translate(-8.09 17.77) rotate(-39.55)"/><text class="cls-2" transform="translate(0 27.41)">F</text></g></g></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 39.9 40.28">
+    <defs>
+        <style>
+            .cls-1 {
+                fill: #60ff9f;
+            }
+
+            .cls-2 {
+                font-size: 20.02px;
+                font-family: Lovely-Home, Lovely Home;
+            }
+        </style>
+    </defs>
+    <g id="Layer_2" data-name="Layer 2">
+        <g id="Layer_1-2" data-name="Layer 1">
+            <rect class="cls-1" x="9.98" y="2.84" width="21.35" height="34.6"
+                transform="translate(-8.09 17.77) rotate(-39.55)" /><text class="cls-2" transform="translate(0 27.41)"
+                fill="white">F</text></g>
+    </g>
+</svg>
