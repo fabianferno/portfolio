@@ -7,7 +7,10 @@ export default function About() {
         About<span className="text-white "> Me</span>
       </h1>
       {/* ======= Resume Section ======= */}
-      <section id="resume" className="resume pt-5 text-secondary">
+      <section
+        id="resume"
+        className="resume  text-secondary inner-shadow card-rounded bg-black pt-5 pl-2 pl-md-5 pb-5"
+      >
         <div className="container">
           <div className="row">
             <div className="col-lg-6">
@@ -94,32 +97,29 @@ export default function About() {
             <div className="col-lg-6">
               <h3 className="resume-title">Experience</h3>
               <div className="resume-item">
-                <h4>Project Manager</h4>
+                <h4>Pattarai</h4>
+                <h5>2020 - Present</h5>
+                <p>President and Co-Founder</p>
+              </div>
+              <div className="resume-item">
+                <h4>SÍMERA DESIGNS, Chennai</h4>
                 <h5>2020 - Present</h5>
                 <p>
-                  <em>Pattarai, LICET </em>
+                  Media Production Company <br />
+                  Illustrations <br />
+                  Commercial Designs <br />
+                  Website Designing <br />
                 </p>
               </div>
               <div className="resume-item">
-                <h4>Joint Secretary</h4>
-                <h5>2020 - Present</h5>
-                <p>
-                  <em>Rotaract Club of LICET, LICET </em>
-                </p>
+                <h4>INNOWELL GROUP, Dubai </h4>
+                <h5>2019 – 2020 (9 months)</h5>
+                <p>Media Production</p>
               </div>
               <div className="resume-item">
-                <h4>Human Resource Executive</h4>
-                <h5>2020</h5>
-                <p>
-                  <em>Pattarai, LICET</em>
-                </p>
-              </div>
-              <div className="resume-item">
-                <h4>School Captain</h4>
-                <h5>2015-2018</h5>
-                <p>
-                  <em>Good Shepherd Matriculation Hr.Sec School</em>
-                </p>
+                <h4>Kathir Kreations</h4>
+                <h5>2021-PRESENT</h5>
+                <p>IT Admin and Web Developer</p>
               </div>
               <h3 className="resume-title">Activities</h3>
               <div className="resume-item">
@@ -130,18 +130,6 @@ export default function About() {
               <div className="resume-item">
                 <p>
                   <em>Working as a Content Writer</em>
-                </p>
-              </div>
-              <div className="resume-item">
-                <p>
-                  <em>
-                    Done a podcast and a part of a Podcast team TeaKadaiTalks
-                  </em>
-                </p>
-              </div>
-              <div className="resume-item">
-                <p>
-                  <em>Organized Standup Comdedy event</em>
                 </p>
               </div>
             </div>

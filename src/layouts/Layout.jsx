@@ -43,10 +43,10 @@ export default function Layout(props) {
             </Link>
           </motion.button>
 
-          <div className="p text-primary text-center text-md-left my-5 ml-md-5 ml-0 px-md-0 px-5">
+          {/* <div className="p text-primary text-center text-md-left my-5 ml-md-5 ml-0 px-md-0 px-5">
             “There’s a lot of beauty in ordinary things. Isn’t that kind of the
             point?” – <strong> Pam Beesly</strong>
-          </div>
+          </div> */}
         </div>
 
         {/* Page Content Goes Here */}
@@ -58,7 +58,7 @@ export default function Layout(props) {
           style={{ paddingTop: "20px", paddingBottom: "20px" }}
           className={props.contained ? "container" : ""}
         >
-          <div className="p-5">{props.children}</div>
+          <div className="p-0 p-md-5">{props.children}</div>
         </motion.div>
       </motion.div>
     </div>

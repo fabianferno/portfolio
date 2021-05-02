@@ -44,7 +44,7 @@ function TechPills(props) {
 export default function Projects() {
   return (
     <Layout contained>
-      <h1 className="hero mt-5 pb-3 text-center">
+      <h1 className=" mt-5 pb-4 text-center">
         My<span className="text-white "> Projects</span>
       </h1>
       <div className="inner-shadow bg-black">

@@ -21,7 +21,7 @@ export default function Home() {
   return (
     <Layout contained>
       <div className="row mt-3 align-items-center justify-content-center">
-        <div className="pr-md-5 pr-0 col-md-4  col-12">
+        <div className="d-none d-md-block pr-md-5 pr-0 col-md-4  col-12">
           <img
             src={Cube1}
             style={{ opacity: "30%" }}
@@ -29,7 +29,7 @@ export default function Home() {
             srcset=""
           />
         </div>
-        <div className="col-md-8 col-12">
+        <div className="col-md-8 col-12 ml-0 pl-5 pl-md-3">
           <h1 className="hero mt-5 pb-3 " style={{ lineHeight: "115px" }}>
             Fabian Ferno
           </h1>
