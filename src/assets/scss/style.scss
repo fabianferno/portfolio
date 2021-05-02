@@ -15,6 +15,7 @@ $theme-colors: (
 
 
 body {
+  background-color: map.get($theme-colors, "dark");;
   font-family: Comfortaa;
 }
 
