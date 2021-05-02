@@ -1,6 +1,8 @@
 import Layout from "../layouts/Layout";
 import { motion } from "framer-motion";
 import Bitmoji from "../assets/img/bitmoji.png";
+import Cube1 from "../assets/img/cube1.gif";
+import Cube2 from "../assets/img/cube2.gif";
 
 export default function Home() {
   const RoleBadges = (props) => {
@@ -20,7 +22,12 @@ export default function Home() {
     <Layout contained>
       <div className="row mt-3 align-items-center justify-content-center">
         <div className="pr-md-5 pr-0 col-md-4  col-12">
-          <img src={Bitmoji} alt="fabianferno bitmoji" srcset="" />
+          <img
+            src={Cube1}
+            style={{ opacity: "30%" }}
+            alt="fabianferno bitmoji"
+            srcset=""
+          />
         </div>
         <div className="col-md-8 col-12">
           <h1 className="hero mt-5 pb-3 " style={{ lineHeight: "115px" }}>

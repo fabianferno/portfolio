@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import MenuBar from "../components/MenuBar";
 import Logo from "../assets/img/logo-circle-black-teal.svg";
+
 import AnimatedCursor from "react-animated-cursor";
 
 export default function Layout(props) {
@@ -24,11 +25,11 @@ export default function Layout(props) {
         <MenuBar />
         <div
           id="page-wrap"
-          style={{ height: "100px" }}
-          className="d-flex bg-black text-uppercase align-items-center"
+          style={{ height: "90px" }}
+          className="d-flex bg-black align-items-center"
         >
           <motion.button
-            className="btn"
+            className="btn col-md-1 col-12"
             whileHover={{ scale: 1.025 }}
             whileTap={{ scale: 0.9 }}
           >
@@ -41,6 +42,11 @@ export default function Layout(props) {
               />
             </Link>
           </motion.button>
+
+          <div className="p text-primary text-center text-md-left my-5 ml-md-5 ml-0 px-md-0 px-5">
+            “There’s a lot of beauty in ordinary things. Isn’t that kind of the
+            point?” – <strong> Pam Beesly</strong>
+          </div>
         </div>
 
         {/* Page Content Goes Here */}
