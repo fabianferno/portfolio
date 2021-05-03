@@ -23,7 +23,7 @@ export default function Layout(props) {
         <div
           id="page-wrap"
           style={{}}
-          className="d-flex container bg-black align-items-center py-5 pl-4"
+          className="d-flex container bg-black align-items-center py-5 pl-md-5 pl-4"
         >
           <Link to="/">
             <div style={{}} className="text-primary h3 text-left">
@@ -38,7 +38,7 @@ export default function Layout(props) {
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 20 }}
           transition={{ duration: 2 }}
-          style={{ paddingTop: "20px", paddingBottom: "20px" }}
+          style={{}}
           className={props.contained ? "container" : ""}
         >
           <div className="p-2 p-md-5">{props.children}</div>

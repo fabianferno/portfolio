@@ -11,6 +11,7 @@ $theme-colors: ("info": #ffbc44,
 @import "~bootstrap/scss/bootstrap";
 @import "selection.scss";
 @import "resume.scss";
+@import "scrollbar.scss";
 
 
 // @import "/src/assets/fonts/fonts.css";
@@ -42,7 +43,7 @@ a:hover {
 }
 
 .blur {
-  filter: blur(4px);
+  filter: blur(5px);
 }
 
 .hover-box {
@@ -70,7 +71,7 @@ img.dark-shadow {
 }
 
 .inner-shadow {
-  box-shadow: inset 0 0 10px #000000;
+  box-shadow: inset 0 0 20px #000000;
 }
 
 .social-pill {

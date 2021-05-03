@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { slide as Menu } from "react-burger-menu";
+import { elastic as Menu } from "react-burger-menu";
 import "../assets/scss/menubar.scss";
 import { motion } from "framer-motion";
 import Bitmoji from "../assets/img/bitmoji.png";
@@ -53,15 +53,17 @@ export default function MenuBar(props) {
         Contact
       </Link>
 
-      <motion.div className="d-flex justify-content-start mb-4">
+      <motion.div className="">
         <img
           className="dark-shadow"
           style={{ height: 200, marginTop: "80px" }}
           src={Bitmoji}
           alt="fabianferno-logo"
         />
+        <h5 className="text-left text-white mt-3">
+          Hello There! <br />
+        </h5>
       </motion.div>
-      <h5 className="text-left text-white">Hello There!</h5>
     </Menu>
   );
 }

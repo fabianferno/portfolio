@@ -7,7 +7,7 @@ function ProjectHighlights(props) {
   return (
     <motion.div
       whileHover={{ scale: 1.1, rotate: -5 }}
-      className="card bg-dark text-primary m-5 d-flex align-items-center"
+      className="card bg-black text-primary m-5 d-flex align-items-center"
       style={{
         width: "14em",
 
@@ -34,7 +34,7 @@ function ProjectsCard(props) {
   return (
     <motion.div
       whileHover={{ scale: 1.1 }}
-      className="card bg-dark text-primary m-5 d-flex align-items-center"
+      className="card bg-dark text-primary m-4 m-md-5 d-flex align-items-center"
       style={{
         width: "14em",
         boxShadow:
@@ -59,7 +59,17 @@ function ProjectsCard(props) {
 }
 function TechPills(props) {
   return (
-    <span className="badge badge-pill badge-primary mr-1">{props.text}</span>
+    <span className="badge badge-pill font-weight-bold badge-primary mr-1">
+      {props.text}
+    </span>
+  );
+}
+
+function HighlightPills(props) {
+  return (
+    <span className="badge badge-pill font-weight-bold badge-primary  mr-1">
+      {props.text}
+    </span>
   );
 }
 
@@ -74,7 +84,7 @@ export default function Projects() {
         <p className="text-primary text-left mt-5 pb-4">
           Project<span className="text-white "> Highlights</span>
         </p>
-        <div className="inner-shadow bg-black">
+        <div className="inner-shadow bg-secondary">
           <Marquee
             direction="right"
             speed={30}
@@ -86,62 +96,62 @@ export default function Projects() {
               title="Elevate | Pattarai "
               text="Global Conference CfP - Built with React"
             >
-              <TechPills text="React" />
-              <TechPills text="Bootstrap" />
-              <TechPills text="Framer-Motion" />
+              <HighlightPills text="React" />
+              <HighlightPills text="Bootstrap" />
+              <HighlightPills text="Framer-Motion" />
             </ProjectHighlights>
 
             <ProjectHighlights
               title="Best Money Gold"
               text="Website for the Gold Company with Gold Prices and Branch locators"
             >
-              <TechPills text="Wordpress" />
-              <TechPills text="Elementor" />
-              <TechPills text="CMS" />
+              <HighlightPills text="Wordpress" />
+              <HighlightPills text="Elementor" />
+              <HighlightPills text="CMS" />
             </ProjectHighlights>
 
             <ProjectHighlights
               title="Kathir Kreations"
               text="Contact Website with smooth Fluid Animations"
             >
-              <TechPills text="React" />
-              <TechPills text="Bootstrap" />
-              <TechPills text="Framer-Motion" />
+              <HighlightPills text="React" />
+              <HighlightPills text="Bootstrap" />
+              <HighlightPills text="Framer-Motion" />
             </ProjectHighlights>
 
             <ProjectHighlights
               title="Chettiar Chamber of Commerce"
               text="ASP.NET - Business Directory Listing and Membership Platform"
             >
-              <TechPills text=".NET" />
-              <TechPills text="Bootstrap" />
-              <TechPills text="JQuery" />
+              <HighlightPills text=".NET" />
+              <HighlightPills text="Bootstrap" />
+              <HighlightPills text="JQuery" />
             </ProjectHighlights>
 
             <ProjectHighlights
               title="xStack - Smart Thermometer"
               text="Temperature Monitoring Platform for the xStack Platform with device Firmware and software portal"
             >
-              <TechPills text="NodeMCU" />
-              <TechPills text="PHP" />
-              <TechPills text="Bootstrap" />
+              <HighlightPills text="NodeMCU" />
+              <HighlightPills text="PHP" />
+              <HighlightPills text="Bootstrap" />
             </ProjectHighlights>
 
             <ProjectHighlights
               title="Stretch Inc"
               text="Backend Development for the booking system with booking slot suggestions"
             >
-              <TechPills text="PHP" />
-              <TechPills text="firebase" />
-              <TechPills text="Flask" />
-              <TechPills text="PixelUI" />
+              <HighlightPills text="PHP" />
+              <HighlightPills text="firebase" />
+              <HighlightPills text="Flask" />
+              <HighlightPills text="PixelUI" />
             </ProjectHighlights>
           </Marquee>
         </div>
       </div>
 
       <div id="more-projects" className="mt-5 container">
-        <p className="text-primary text-center pt-5">
+        <p className="text-primary text-left pt-5">
           More<span className="text-white "> Projects</span>
         </p>
 

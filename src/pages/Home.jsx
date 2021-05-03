@@ -18,7 +18,7 @@ export default function Home() {
 
   return (
     <Layout contained>
-      <div className="row mt-3 ml-md-3 ml-0 pb-5 align-items-center justify-content-center">
+      <div className="row ml-md-3 ml-0 align-items-center justify-content-center">
         <div className="d-none d-md-block pr-md-5 pr-0 col-md-4  col-12">
           <img src={Cube1} style={{ opacity: "20%" }} alt="fabianferno Cube1" />
         </div>
