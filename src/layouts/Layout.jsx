@@ -28,7 +28,7 @@ export default function Layout(props) {
             paddingTop: "30px",
             paddingBottom: "30px",
           }}
-          className="d-flex container bg-black align-items-center pl-md-5 pl-4"
+          className="d-flex container  bg-black align-items-center pl-md-5 pl-4"
         >
           <Link to="/">
             <div style={{}} className="text-primary h3 text-left">

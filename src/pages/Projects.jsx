@@ -5,56 +5,60 @@ import { motion } from "framer-motion";
 
 function ProjectHighlights(props) {
   return (
-    <motion.div
-      whileHover={{ scale: 1.1, rotate: -5 }}
-      className="card bg-black text-primary m-5 d-flex align-items-center"
-      style={{
-        width: "14em",
+    <a href={props.src} target="_blank" rel="noreferrer">
+      <motion.div
+        whileHover={{ scale: 1.1, rotate: -5 }}
+        className="card bg-black text-primary m-5 d-flex align-items-center"
+        style={{
+          width: "14em",
 
-        boxShadow:
-          "0 8px 16px 0 rgba(0, 0, 0, 0.15), 0 6px 20px 0 rgba(0, 0, 0, 0.16)",
-      }}
-    >
-      <div className="card-body d-flex align-content-between  flex-wrap">
-        <h5 className="card-title col-12 p-0 font-weight-bold ">
-          {props.title ? props.title : "Super Skywalker"}
-        </h5>
-        <p className="card-text col-12 p-0">
-          {props.text
-            ? props.text
-            : "Some quick example text to build on the card title and make up the bulk of the card's content."}
-        </p>
-        <div className="col-12 p-0">{props.children}</div>
-      </div>
-    </motion.div>
+          boxShadow:
+            "0 8px 16px 0 rgba(0, 0, 0, 0.15), 0 6px 20px 0 rgba(0, 0, 0, 0.16)",
+        }}
+      >
+        <div className="card-body d-flex align-content-between  flex-wrap">
+          <h5 className="card-title col-12 p-0 font-weight-bold ">
+            {props.title ? props.title : "Super Skywalker"}
+          </h5>
+          <p className="card-text col-12 p-0">
+            {props.text
+              ? props.text
+              : "Some quick example text to build on the card title and make up the bulk of the card's content."}
+          </p>
+          <div className="col-12 p-0">{props.children}</div>
+        </div>
+      </motion.div>
+    </a>
   );
 }
 
 function ProjectsCard(props) {
   return (
-    <motion.div
-      whileHover={{ scale: 1.1 }}
-      className="card bg-black text-primary m-5 m-md-5 d-flex align-items-center"
-      style={{
-        width: "14em",
-        boxShadow:
-          "0 8px 16px 0 rgba(0, 0, 0, 0.15), 0 6px 20px 0 rgba(0, 0, 0, 0.16)",
-      }}
-    >
-      <div className="card-body d-flex align-content-between  flex-wrap">
-        <h5 className="card-title col-12 p-0 font-weight-bold ">
-          {props.title ? props.title : "Super Skywalker"}
-        </h5>
-        <p className="card-text col-12 p-0">
-          {props.text
-            ? props.text
-            : "Some quick example text to build on the card title and make up the bulk of the card's content."}
-        </p>
-        <div col-12 p-0>
-          {props.children}
+    <a href={props.src} target="_blank" rel="noreferrer">
+      <motion.div
+        whileHover={{ scale: 1.1 }}
+        className="card bg-black text-primary m-5 m-md-5 d-flex align-items-center"
+        style={{
+          width: "14em",
+          boxShadow:
+            "0 8px 16px 0 rgba(0, 0, 0, 0.15), 0 6px 20px 0 rgba(0, 0, 0, 0.16)",
+        }}
+      >
+        <div className="card-body d-flex align-content-between  flex-wrap">
+          <h5 className="card-title col-12 p-0 font-weight-bold ">
+            {props.title ? props.title : "Super Skywalker"}
+          </h5>
+          <p className="card-text col-12 p-0">
+            {props.text
+              ? props.text
+              : "Some quick example text to build on the card title and make up the bulk of the card's content."}
+          </p>
+          <div col-12 p-0>
+            {props.children}
+          </div>
         </div>
-      </div>
-    </motion.div>
+      </motion.div>
+    </a>
   );
 }
 function TechPills(props) {
@@ -94,6 +98,7 @@ export default function Projects() {
           >
             <ProjectHighlights
               title="Elevate | Pattarai "
+              src="https://elevate.pattarai.in/"
               text="Global Conference CfP - Built with React"
             >
               <HighlightPills text="React" />
@@ -102,6 +107,7 @@ export default function Projects() {
             </ProjectHighlights>
 
             <ProjectHighlights
+              src="https://bestmoneygold.in/"
               title="Best Money Gold"
               text="Website for the Gold Company with Gold Prices and Branch locators"
             >
@@ -111,6 +117,7 @@ export default function Projects() {
             </ProjectHighlights>
 
             <ProjectHighlights
+              src="https://kathirkreation.com/"
               title="Kathir Kreations"
               text="Contact Website with smooth Fluid Animations"
             >
@@ -129,6 +136,7 @@ export default function Projects() {
             </ProjectHighlights>
 
             <ProjectHighlights
+              src="https://github.com/pattarai/project-caliditas-firmware"
               title="xStack - Smart Thermometer"
               text="Temperature Monitoring Platform for the xStack Platform with device Firmware and software portal"
             >
@@ -138,6 +146,7 @@ export default function Projects() {
             </ProjectHighlights>
 
             <ProjectHighlights
+              src="https://stretch-fe-master.herokuapp.com/"
               title="Stretch Inc"
               text="Backend Development for the booking system with booking slot suggestions"
             >
@@ -162,6 +171,7 @@ export default function Projects() {
           >
             <Masonry>
               <ProjectsCard
+                src="https://github.com/fabianferno/mr.robot"
                 title="Mr. Robot"
                 text="A feature packed discord meme bot with audio playbacks on demand"
               >
@@ -171,6 +181,7 @@ export default function Projects() {
               </ProjectsCard>
 
               <ProjectsCard
+                src="https://github.com/fabianferno/reactor-pad"
                 title="Reactor Pad"
                 text="React Note Making App with Firebase OAuth"
               >
@@ -180,6 +191,7 @@ export default function Projects() {
               </ProjectsCard>
 
               <ProjectsCard
+                src="https://github.com/airdesignengineers/website"
                 title="Air Design Engineered Solutions Pvt Ltd"
                 text="Fully responsive contact website, Search Engine Optimised"
               >
@@ -189,6 +201,7 @@ export default function Projects() {
               </ProjectsCard>
 
               <ProjectsCard
+                src="https://github.com/fabianferno/personal-blog-app"
                 title="Skywalker's Scripts"
                 text="Personal Blog App - Built with Flutter"
               >
@@ -199,6 +212,7 @@ export default function Projects() {
               </ProjectsCard>
 
               <ProjectsCard
+                src="https://simeradesigns.github.io/quadrantcross/"
                 title="Quadrant Cross"
                 text="Fully responsive website made with Bootstrap and React Animations"
               >
@@ -208,6 +222,7 @@ export default function Projects() {
               </ProjectsCard>
 
               <ProjectsCard
+                src="https://github.com/fabianferno/max-nav-v1"
                 title="MaxNav - Prototype"
                 text="Indoor Navigation App - For Smart India Hackathon"
               >
@@ -217,6 +232,7 @@ export default function Projects() {
               </ProjectsCard>
 
               <ProjectsCard
+                src="https://midaastouch.in/wordpress/"
                 title="Midaas Touch Events"
                 text="Wordpress Website for an Event Management Company"
               >
