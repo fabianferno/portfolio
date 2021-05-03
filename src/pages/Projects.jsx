@@ -85,8 +85,8 @@ function TechPills(props) {
 export default function Projects() {
   return (
     <Layout contained>
-      <div id="web-dev">
-        <h1 className=" mt-5 pb-4 text-center">
+      <div id="project-highlights">
+        <h1 className="pt-5 mt-5 pb-4 text-center">
           My<span className="text-white "> Projects</span>
         </h1>
         <p className="text-primary text-center mt-5 pb-4">
@@ -137,15 +137,6 @@ export default function Projects() {
             </ProjectHighlights>
 
             <ProjectHighlights
-              title="Reactor Pad"
-              text="React Note Naking App with Firebase OAuth"
-            >
-              <TechPills text="React" />
-              <TechPills text="MaterialUI" />
-              <TechPills text="Firebase" />
-            </ProjectHighlights>
-
-            <ProjectHighlights
               title="xStack - Smart Thermometer"
               text="Temperature Monitoring Platform for the xStack Platform with device Firmware and software portal"
             >
@@ -167,7 +158,7 @@ export default function Projects() {
         </div>
       </div>
 
-      <div id="engineer" className="mt-5">
+      <div id="more-projects" className="mt-5 container">
         <p className="text-primary text-center pt-5">
           More<span className="text-white "> Projects</span>
         </p>
@@ -178,6 +169,24 @@ export default function Projects() {
             className="mt-0 mt-md-5 container"
           >
             <Masonry>
+              <ProjectsCard
+                title="Mr. Robot"
+                text="A feature packed discord meme bot with audio playbacks on demand"
+              >
+                <TechPills text="discord.py" />
+                <TechPills text="FFMPeG" />
+                <TechPills text="Wiki API" />
+              </ProjectsCard>
+
+              <ProjectsCard
+                title="Reactor Pad"
+                text="React Note Naking App with Firebase OAuth"
+              >
+                <TechPills text="React" />
+                <TechPills text="MaterialUI" />
+                <TechPills text="Firebase" />
+              </ProjectsCard>
+
               <ProjectsCard
                 title="Air Design Engineered Solutions Pvt Ltd"
                 text="Fully responsive contact website, Search Engine Optimised"
@@ -221,15 +230,6 @@ export default function Projects() {
                 <TechPills text="Java" />
                 <TechPills text="AndroidStudio" />
                 <TechPills text="AR-Core" />
-              </ProjectsCard>
-
-              <ProjectsCard
-                title="Mr. Robot"
-                text="A feature packed discord meme bot with audio playbacks on demand"
-              >
-                <TechPills text="discord.py" />
-                <TechPills text="FFMPeG" />
-                <TechPills text="Wiki API" />
               </ProjectsCard>
             </Masonry>
           </ResponsiveMasonry>

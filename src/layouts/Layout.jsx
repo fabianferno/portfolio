@@ -26,7 +26,7 @@ export default function Layout(props) {
         <MenuBar />
         <div
           id="page-wrap"
-          style={{ height: "90px" }}
+          style={{ height: "100px" }}
           className="d-flex bg-black align-items-center"
         >
           <motion.button
