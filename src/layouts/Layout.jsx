@@ -23,31 +23,25 @@ export default function Layout(props) {
         <div
           id="page-wrap"
           style={{}}
-          className="d-flex container bg-black align-items-center py-5"
+          className="d-flex container bg-black align-items-center py-5 pl-4"
         >
-          <div
-            className=" col-md-1 col-12"
-            whileHover={{ scale: 1.025 }}
-            whileTap={{ scale: 0.9 }}
-          >
-            <Link to="/">
-              <div style={{}} className="text-primary h3 text-left">
-                Super Skywalker
-              </div>
-            </Link>
-          </div>
+          <Link to="/">
+            <div style={{}} className="text-primary h3 text-left">
+              Super Skywalker
+            </div>
+          </Link>
         </div>
 
         {/* Page Content Goes Here */}
         <motion.div
           id="page-content"
-          initial={{ scale: 0.9, opacity: 0, y: -10 }}
-          animate={{ scale: 1.05, opacity: 1, y: 20 }}
-          transition={{ duration: 1 }}
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 20 }}
+          transition={{ duration: 2 }}
           style={{ paddingTop: "20px", paddingBottom: "20px" }}
           className={props.contained ? "container" : ""}
         >
-          <div className="p-0 p-md-5">{props.children}</div>
+          <div className="p-2 p-md-5">{props.children}</div>
         </motion.div>
       </motion.div>
     </div>

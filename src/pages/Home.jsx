@@ -18,18 +18,9 @@ export default function Home() {
 
   return (
     <Layout contained>
-      <p className="text-primary pl-2 pl-md-0 d-md-none d-block">
-        &#47;&#47; fabianferno
-      </p>
-
       <div className="row mt-3 ml-md-3 ml-0 pb-5 align-items-center justify-content-center">
         <div className="d-none d-md-block pr-md-5 pr-0 col-md-4  col-12">
-          <img
-            src={Cube1}
-            style={{ opacity: "20%" }}
-            alt="fabianferno Cube1"
-            srcset=""
-          />
+          <img src={Cube1} style={{ opacity: "20%" }} alt="fabianferno Cube1" />
         </div>
         <div className="d-block d-md-none pr-md-5 pr-0 col-md-4  col-12">
           <img
@@ -37,10 +28,8 @@ export default function Home() {
             src={Cube1}
             style={{ opacity: "40%", marginLeft: "-40px" }}
             alt="fabianferno Cube2"
-            srcset=""
           />
         </div>
-
         <div className="col-md-8 col-12 ml-0 pl-5 pl-md-3">
           <h1
             className="hero mt-3 mt-md-5 pb-3 "
@@ -59,10 +48,18 @@ export default function Home() {
           </span>
         </div>
       </div>
+      <div
+        style={{ lineHeight: "45px" }}
+        className="container p-5 d-md-block d-none h3 text-secondary text-justify text-md-center"
+      >
+        “There’s a lot of beauty in ordinary things. <br /> Isn’t that kind of
+        the point?” –{" "}
+        <span className="text-white font-weight-bold"> Pam Beesly</span>
+      </div>
 
       <div
         style={{ lineHeight: "45px" }}
-        className="container px-4 py-5 h3 text-secondary text-justify text-md-center"
+        className="container p-5 d-md-none d-block h5 text-secondary text-justify text-md-center"
       >
         “There’s a lot of beauty in ordinary things. <br /> Isn’t that kind of
         the point?” –{" "}

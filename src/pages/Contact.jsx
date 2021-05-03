@@ -29,7 +29,9 @@ export default function Contact() {
             <div className="col-md-9 col-12 ">
               <p className="lead text-secondary">
                 Looking to work with me?
-                <br /> Write to me and I will get back to you at the earliest!
+                <br /> Write to me and I will get back to you at the earliest!{" "}
+                <br />
+                <br />
                 <a
                   href="mailto:hello@fabianferno.tech"
                   className="text-primary h5 pt-5"
