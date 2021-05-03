@@ -162,7 +162,7 @@ export default function Projects() {
 
               <ProjectsCard
                 title="Reactor Pad"
-                text="React Note Naking App with Firebase OAuth"
+                text="React Note Making App with Firebase OAuth"
               >
                 <TechPills text="React" />
                 <TechPills text="MaterialUI" />
@@ -198,20 +198,20 @@ export default function Projects() {
               </ProjectsCard>
 
               <ProjectsCard
-                title="Midaas Touch Events"
-                text="Wordpress Website for an Event Management Company"
-              >
-                <TechPills text="Wordpress" />
-                <TechPills text="Elementor" />
-              </ProjectsCard>
-
-              <ProjectsCard
                 title="MaxNav - Prototype"
                 text="Indoor Navigation App - For Smart India Hackathon"
               >
                 <TechPills text="Java" />
                 <TechPills text="AndroidStudio" />
                 <TechPills text="AR-Core" />
+              </ProjectsCard>
+
+              <ProjectsCard
+                title="Midaas Touch Events"
+                text="Wordpress Website for an Event Management Company"
+              >
+                <TechPills text="Wordpress" />
+                <TechPills text="Elementor" />
               </ProjectsCard>
             </Masonry>
           </ResponsiveMasonry>

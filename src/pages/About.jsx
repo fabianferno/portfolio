@@ -114,8 +114,8 @@ export default function About() {
                     </em>
                   </p>
                   <p>
-                    Determined to achieve a greater insight of my career through
-                    LICET.
+                    Member of the Fablab Committee <br />
+                    Part of Media Relations <br />
                   </p>
                 </div>
 
