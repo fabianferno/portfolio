@@ -88,7 +88,7 @@ export default function Projects() {
       <p className="text-primary pl-3 pl-md-0">// fabianferno</p>
 
       <div id="project-highlights">
-        <h1 className="pt-5 mt-5 pb-4 text-center">
+        <h1 className="pt-5 mt-5 pb-4 text-justify pl-3 pl-md-0">
           My<span className="text-white "> Projects</span>
         </h1>
         <p className="text-primary text-center mt-5 pb-4">

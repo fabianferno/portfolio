@@ -12,18 +12,18 @@ export default function About() {
     <Layout contained>
       <p className="text-primary pl-3 pl-md-0">// fabianferno</p>
       <div className="pt-5 mt-5 container">
-        <h1 className="text-left my-5 pb-3 text-center">
+        <h1 className="text-left my-5 pb-3 text-justify  text-md-left ">
           About<span className="text-white "> Me</span>
         </h1>
 
-        <p className="text-secondary text-center pb-3">
+        <p className="text-secondary text-justify pb-3  text-md-left ">
           I am a software engineer with 2.5 years of professional experience in
           designing and developing. I’m currently pursuing my Bachelor of
           Technology in IT - Engineering at Loyola - ICAM College of Engineering
           and Technology.
         </p>
 
-        <div className="text-secondary text-center p mb-5 pb-5">
+        <div className="text-secondary text-justify text-md-left p mb-5 pb-5">
           <div id="languages" className="pt-5">
             <p className="text-primary">Languages</p>
             <TechPills text="HTML" />
