@@ -42,7 +42,7 @@ export default function Layout(props) {
           id="page-content"
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 20 }}
-          transition={{ duration: 2 }}
+          transition={{ duration: 2.5 }}
           style={{}}
           className={props.contained ? "container" : ""}
         >

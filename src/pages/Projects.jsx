@@ -247,6 +247,16 @@ export default function Projects() {
                 <TechPills text="Bootstrap" />
                 <TechPills text="HTML" />
               </ProjectsCard>
+
+              <ProjectsCard
+                src="https://github.com/fabianferno"
+                title="Fablab - Interior Design"
+                text="Designed the complete concept model of the licet fablab. Furniture designing, Realistic Rendering"
+              >
+                <TechPills text="Sketchup 3D" />
+                <TechPills text="Interior Designing" />
+                <TechPills text="TheaRender" />
+              </ProjectsCard>
             </Masonry>
           </ResponsiveMasonry>
         </div>
