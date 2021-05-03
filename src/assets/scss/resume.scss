@@ -18,12 +18,13 @@
 }
 
 .resume .resume-item h4 {
+    padding-top: 50px;
     line-height: 18px;
     font-size: 18px;
     font-weight: 600;
     text-transform: uppercase;
-    font-family: "Poppins", sans-serif;
-    color: #18d26e;
+    font-family: "Montserrat", sans-serif;
+    color: map.get($theme-colors, "primary");
     margin-bottom: 10px;
 }
 
@@ -50,13 +51,15 @@
 }
 
 .resume .resume-item::before {
+    margin-top: 20px;
+    padding-top: 30px;
     content: "";
     position: absolute;
     width: 16px;
     height: 16px;
-    border-radius: 50px;
+    border-radius: 5px;
     left: -9px;
     top: 0;
-    background: #18d26e;
-    border: 2px solid #18d26e;
+    background: map.get($theme-colors, "primary");
+    border: 2px solid map.get($theme-colors, "primary");
 }

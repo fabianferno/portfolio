@@ -10,8 +10,8 @@ function TechPills(props) {
 export default function About() {
   return (
     <Layout contained>
-      <p className="text-primary pl-3">&#47;&#47; fabianferno</p>
       <div className="pt-5 mt-5 container">
+        <p className="text-primary ">&#47;&#47; fabianferno</p>
         <h1 className="text-left my-5 pb-3 text-justify  text-md-left ">
           About<span className="text-white "> Me</span>
         </h1>
