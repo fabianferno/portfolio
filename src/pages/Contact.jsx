@@ -24,6 +24,7 @@ export default function Contact() {
             Looking to work with me?
             <br /> Write to me and I will get back to you at the earliest!
             <h5 className="text-primary pt-5">hello@fabianferno.tech</h5>
+            <p className="text-white ">@fabianferno</p>
           </p>
 
           <Marquee

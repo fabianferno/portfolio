@@ -18,6 +18,10 @@ export default function Home() {
 
   return (
     <Layout contained>
+      <p className="text-primary pl-2 pl-md-0 d-md-none d-block">
+        // fabianferno
+      </p>
+
       <div className="row mt-3 pb-5 align-items-center justify-content-center">
         <div className="d-none d-md-block pr-md-5 pr-0 col-md-4  col-12">
           <img
@@ -54,6 +58,14 @@ export default function Home() {
             <RoleBadges role="Graphic Designer" />
           </span>
         </div>
+      </div>
+      <div
+        style={{ lineHeight: "45px" }}
+        className="container px-4 py-5 h3 text-secondary text-justify text-md-center"
+      >
+        “There’s a lot of beauty in ordinary things. <br /> Isn’t that kind of
+        the point?” –{" "}
+        <span className="text-white font-weight-bold"> Pam Beesly</span>
       </div>
     </Layout>
   );

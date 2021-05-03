@@ -1,4 +1,5 @@
 import Layout from "../layouts/Layout";
+import Kathir from "../assets/img/project-screenshots/kathirkreations.gif";
 
 function TechPills(props) {
   return (
@@ -9,6 +10,7 @@ function TechPills(props) {
 export default function About() {
   return (
     <Layout contained>
+      <p className="text-primary pl-3 pl-md-0">// fabianferno</p>
       <div className="pt-5 mt-5 container">
         <h1 className="text-left my-5 pb-3 text-center">
           About<span className="text-white "> Me</span>
@@ -150,40 +152,6 @@ export default function About() {
                     Cultural Media Team
                   </p>
                 </div>
-              </div>
-              <div className="col-lg-6">
-                <h3 className="resume-title pt-5">Experience</h3>
-                <div className="resume-item">
-                  <h4>Pattarai</h4>
-                  <h5>2020 - Present</h5>
-                  <p>President and Co-Founder</p>
-                  <p>
-                    I run Pattarai, LICET's flagship project club. We aim to
-                    give engineers, the engineering experience. Helped organise
-                    8 events and lead more than 3 projects personally.
-                  </p>
-                </div>
-                <div className="resume-item">
-                  <h4>SÍMERA DESIGNS, Chennai</h4>
-                  <h5>2019 - 2020</h5>
-                  <p>Co-Founder and Designer</p>
-                  <p>
-                    A design company. <br /> Web Developers, Graphic Designers,
-                    Videography, Photography, Mockups, Video Editing, etc.
-                  </p>
-                </div>
-                <div className="resume-item">
-                  <h4>INNOWELL GROUP, Dubai </h4>
-                  <h5>2019 – 2020 (9 months)</h5>
-                  <p>Freelance Graphic Designer</p>
-                </div>
-                <div className="resume-item">
-                  <h4>Kathir Kreations</h4>
-                  <h5>NOV 2020 - MAY 2021</h5>
-                  <p>
-                    Web Developer and Graphic Designer <br />- Part time{" "}
-                  </p>
-                </div>
 
                 <h3 className="resume-title pt-5">Certifications</h3>
 
@@ -202,9 +170,63 @@ export default function About() {
                   <p>Power User - Operating System</p>
                 </div>
               </div>
+              <div className="col-lg-6">
+                <h3 className="resume-title pt-5">Experience</h3>
+                <div className="resume-item">
+                  <h4>Pattarai</h4>
+                  <h5>2020 - Present</h5>
+                  <p>President and Co-Founder</p>
+                  <p>
+                    I run Pattarai, LICET's flagship project club. We aim to
+                    give engineers, the engineering experience. Helped organise
+                    8 events and lead more than 3 projects personally.
+                  </p>
+                </div>
+
+                <div className="resume-item card bg-black d-flex">
+                  <iframe
+                    style={{ marginLeft: "-20px" }}
+                    className="card-body"
+                    height={315}
+                    src="https://www.youtube.com/embed/gQRX1UlQ0Rs"
+                    title="Pattarai"
+                    frameBorder={0}
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                  />
+                </div>
+                <div className="resume-item">
+                  <h4>SÍMERA DESIGNS, Chennai</h4>
+                  <h5>2019 - 2020</h5>
+                  <p>Co-Founder and Designer</p>
+                  <p>
+                    A design company. <br /> Web Developers, Graphic Designers,
+                    Videography, Photography, Mockups, Video Editing, etc.
+                  </p>
+                </div>
+                <div className="resume-item">
+                  <h4>INNOWELL GROUP, Dubai </h4>
+                  <h5>2019 – 2020 (9 months)</h5>
+                  <p>Freelance Graphic Designer</p>
+                </div>
+                <div className="resume-item ">
+                  <h4>Kathir Kreations</h4>
+                  <h5>NOV 2020 - MAY 2021</h5>
+                  <p>
+                    Web Developer and Graphic Designer <br />- Part time{" "}
+                  </p>
+                  <img
+                    src={Kathir}
+                    className="img-fluid pr-4"
+                    alt=""
+                    srcset=""
+                  />
+                </div>
+              </div>
             </div>
           </div>
         </section>
+
         {/* End Resume Section */}
       </div>
     </Layout>
