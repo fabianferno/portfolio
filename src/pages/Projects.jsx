@@ -89,7 +89,7 @@ export default function Projects() {
         <h1 className=" mt-5 pb-4 text-center">
           My<span className="text-white "> Projects</span>
         </h1>
-        <p className="text-primary text-center pt-5">
+        <p className="text-primary text-center mt-5 pb-4">
           Project<span className="text-white "> Highlights</span>
         </p>
         <div className="inner-shadow bg-black">
@@ -146,6 +146,15 @@ export default function Projects() {
             </ProjectHighlights>
 
             <ProjectHighlights
+              title="xStack - Smart Thermometer"
+              text="Temperature Monitoring Platform for the xStack Platform with device Firmware and software portal"
+            >
+              <TechPills text="NodeMCU" />
+              <TechPills text="PHP" />
+              <TechPills text="Bootstrap" />
+            </ProjectHighlights>
+
+            <ProjectHighlights
               title="Stretch Inc"
               text="Backend Development for the booking system with booking slot suggestions"
             >
@@ -158,7 +167,7 @@ export default function Projects() {
         </div>
       </div>
 
-      <div id="engineer">
+      <div id="engineer" className="mt-5">
         <p className="text-primary text-center pt-5">
           More<span className="text-white "> Projects</span>
         </p>
@@ -212,15 +221,6 @@ export default function Projects() {
                 <TechPills text="Java" />
                 <TechPills text="AndroidStudio" />
                 <TechPills text="AR-Core" />
-              </ProjectsCard>
-
-              <ProjectsCard
-                title="xStack - Smart Thermometer"
-                text="Temperature Monitoring Platform for the xStack Platform with device Firmware and software portal"
-              >
-                <TechPills text="NodeMCU" />
-                <TechPills text="PHP" />
-                <TechPills text="Bootstrap" />
               </ProjectsCard>
 
               <ProjectsCard
