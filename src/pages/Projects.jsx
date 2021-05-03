@@ -7,7 +7,7 @@ function ProjectHighlights(props) {
   return (
     <a href={props.src} target="_blank" rel="noreferrer">
       <motion.div
-        whileHover={{ scale: 1.1, rotate: -5 }}
+        whileHover={{ scale: 1.08, rotate: -2 }}
         className="card bg-black text-primary m-5 d-flex align-items-center"
         style={{
           width: "14em",
@@ -173,62 +173,36 @@ export default function Projects() {
               <ProjectsCard
                 src="https://github.com/fabianferno/mr.robot"
                 title="Mr. Robot"
-                text="A feature packed discord meme bot with audio playbacks on demand"
+                text="Built a feature packed DISCORD bot with meme audio playbacks on demand. Used Wiki APIs to fetch data on query. Has text-to-speech playback features. Deployed and in use by 6 active servers."
               >
                 <TechPills text="discord.py" />
                 <TechPills text="FFMPeG" />
+                <TechPills text="Python" />
                 <TechPills text="Wiki API" />
               </ProjectsCard>
 
               <ProjectsCard
                 src="https://github.com/fabianferno/reactor-pad"
                 title="Reactor Pad"
-                text="React Note Making App with Firebase OAuth"
+                text="Built a Note Taking App with the React Library. Used Firebase to implement Google Sign-In. Used Firestore to store and retrieve the notes."
               >
                 <TechPills text="React" />
                 <TechPills text="MaterialUI" />
+                <TechPills text="Bootstrap" />
                 <TechPills text="Firebase" />
+                <TechPills text="Firestore" />
+                <TechPills text="Framer Motion" />
               </ProjectsCard>
 
               <ProjectsCard
-                src="https://github.com/airdesignengineers/website"
+                src="https://ades.in"
                 title="Air Design Engineered Solutions Pvt Ltd"
-                text="Fully responsive contact website, Search Engine Optimised"
+                text="Built a fully responsive contact website. Applied Search Engine Optimisations"
               >
                 <TechPills text="CSS" />
                 <TechPills text="Bootstrap" />
                 <TechPills text="HTML" />
-              </ProjectsCard>
-
-              <ProjectsCard
-                src="https://github.com/fabianferno/personal-blog-app"
-                title="Skywalker's Scripts"
-                text="Personal Blog App - Built with Flutter"
-              >
-                <TechPills text="Flutter" />
-                <TechPills text="Dart" />
-                <TechPills text="Java" />
-                <TechPills text="Koitlin" />
-              </ProjectsCard>
-
-              <ProjectsCard
-                src="https://simeradesigns.github.io/quadrantcross/"
-                title="Quadrant Cross"
-                text="Fully responsive website made with Bootstrap and React Animations"
-              >
-                <TechPills text="React" />
-                <TechPills text="Bootstrap" />
-                <TechPills text="HTML" />
-              </ProjectsCard>
-
-              <ProjectsCard
-                src="https://github.com/fabianferno/max-nav-v1"
-                title="MaxNav - Prototype"
-                text="Indoor Navigation App - For Smart India Hackathon"
-              >
-                <TechPills text="Java" />
-                <TechPills text="AndroidStudio" />
-                <TechPills text="AR-Core" />
+                <TechPills text="SEO" />
               </ProjectsCard>
 
               <ProjectsCard
@@ -238,6 +212,39 @@ export default function Projects() {
               >
                 <TechPills text="Wordpress" />
                 <TechPills text="Elementor" />
+              </ProjectsCard>
+
+              <ProjectsCard
+                src="https://github.com/fabianferno/personal-blog-app"
+                title="Skywalker's Scripts"
+                text="Build a multi page cross-platform blog app in Flutter | Used various views and Pub.Dev libraries to create animated components"
+              >
+                <TechPills text="Flutter" />
+                <TechPills text="Dart" />
+                <TechPills text="Java" />
+                <TechPills text="Android" />
+                <TechPills text="Cross Platform" />
+              </ProjectsCard>
+
+              <ProjectsCard
+                src="https://github.com/fabianferno/max-nav-v1"
+                title="MaxNav - Prototype"
+                text="Built a Native Android app to measure steps, use compass and started working on mapping an indoor. Aim to build an indoor navigation system. "
+              >
+                <TechPills text="Java" />
+                <TechPills text="Native" />
+                <TechPills text="Android Studio" />
+                <TechPills text="AR-Core" />
+              </ProjectsCard>
+
+              <ProjectsCard
+                src="https://simeradesigns.github.io/quadrantcross/"
+                title="Quadrant Cross"
+                text="Built a single-page website with Bootstrap. Added React Animations and CSS animations."
+              >
+                <TechPills text="React" />
+                <TechPills text="Bootstrap" />
+                <TechPills text="HTML" />
               </ProjectsCard>
             </Masonry>
           </ResponsiveMasonry>
