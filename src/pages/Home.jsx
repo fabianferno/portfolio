@@ -26,7 +26,7 @@ export default function Home() {
         <div className="d-none d-md-block pr-md-5 pr-0 col-md-4  col-12">
           <img
             src={Cube1}
-            style={{ opacity: "40%" }}
+            style={{ opacity: "20%" }}
             alt="fabianferno Cube1"
             srcset=""
           />

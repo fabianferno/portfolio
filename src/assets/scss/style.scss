@@ -11,7 +11,12 @@ $theme-colors: ("info": #ffbc44,
 @import "~bootstrap/scss/bootstrap";
 @import "selection.scss";
 @import "resume.scss";
-@import "/src/assets/fonts/fonts.css";
+
+
+// @import "/src/assets/fonts/fonts.css";
+@import url('https://fonts.googleapis.com/css2?family=Bilbo+Swash+Caps&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&display=swap');
+
 
 
 
@@ -19,7 +24,7 @@ html,
 body {
   cursor: none;
   background-color: map.get($theme-colors, "dark");
-  font-family: Comfortaa;
+  font-family: 'Comfortaa', cursive;
 }
 
 a {
@@ -31,8 +36,8 @@ a:hover {
 }
 
 .hero {
-  font-size: 9em;
-  font-family: Signatria;
+  font-size: 8em;
+  font-family: 'Bilbo Swash Caps', cursive;
   line-height: "115px";
 }
 
