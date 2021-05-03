@@ -34,7 +34,7 @@ function ProjectsCard(props) {
   return (
     <motion.div
       whileHover={{ scale: 1.1 }}
-      className="card bg-dark text-primary m-4 m-md-5 d-flex align-items-center"
+      className="card bg-black text-primary m-5 m-md-5 d-flex align-items-center"
       style={{
         width: "14em",
         boxShadow:
@@ -155,7 +155,7 @@ export default function Projects() {
           More<span className="text-white "> Projects</span>
         </p>
 
-        <div className="inner-shadow bg-black">
+        <div className="inner-shadow bg-secondary">
           <ResponsiveMasonry
             columnsCount={3}
             className="mt-0 mt-md-5 container"

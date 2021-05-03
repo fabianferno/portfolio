@@ -22,8 +22,13 @@ export default function Layout(props) {
         <MenuBar />
         <div
           id="page-wrap"
-          style={{}}
-          className="d-flex container bg-black align-items-center py-5 pl-md-5 pl-4"
+          style={{
+            borderEndEndRadius: "30px",
+            borderEndStartRadius: "40px",
+            paddingTop: "30px",
+            paddingBottom: "30px",
+          }}
+          className="d-flex container bg-black align-items-center pl-md-5 pl-4"
         >
           <Link to="/">
             <div style={{}} className="text-primary h3 text-left">
