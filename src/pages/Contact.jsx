@@ -30,7 +30,12 @@ export default function Contact() {
               <p className="lead text-secondary">
                 Looking to work with me?
                 <br /> Write to me and I will get back to you at the earliest!
-                <h5 className="text-primary pt-5">hello@fabianferno.tech</h5>
+                <a
+                  href="mailto:hello@fabianferno.tech"
+                  className="text-primary h5 pt-5"
+                >
+                  hello@fabianferno.tech
+                </a>
                 <p className="text-white "> &#47;&#47; fabianferno</p>
               </p>
             </div>
