@@ -23,14 +23,28 @@ export default function Home() {
           <img
             src={Cube1}
             style={{ opacity: "30%" }}
-            alt="fabianferno bitmoji"
+            alt="fabianferno Cube1"
             srcset=""
           />
         </div>
+        <div className="d-block d-md-none pr-md-5 pr-0 col-md-4  col-12">
+          <img
+            width="100%"
+            src={Cube1}
+            style={{ opacity: "40%", marginLeft: "-40px" }}
+            alt="fabianferno Cube2"
+            srcset=""
+          />
+        </div>
+
         <div className="col-md-8 col-12 ml-0 pl-5 pl-md-3">
-          <h1 className="hero mt-5 pb-3 " style={{ lineHeight: "115px" }}>
+          <h1
+            className="hero mt-3 mt-md-5 pb-3 "
+            style={{ lineHeight: "115px" }}
+          >
             Fabian Ferno
           </h1>
+
           <span
             style={{ letterSpacing: "7px" }}
             className="text-secondary text-uppercase hover-box"

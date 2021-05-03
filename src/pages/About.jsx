@@ -1,5 +1,11 @@
 import Layout from "../layouts/Layout";
 
+function TechPills(props) {
+  return (
+    <span class="badge badge-pill badge-black p-2 mr-1">{props.text}</span>
+  );
+}
+
 export default function About() {
   return (
     <Layout contained>
@@ -7,25 +13,77 @@ export default function About() {
         About<span className="text-white "> Me</span>
       </h1>
 
-      <p className="text-secondary text-center pb-5">
+      <p className="text-secondary text-center pb-3">
         I am a software engineer with 2.5 years of professional experience in
         designing and developing. I’m currently pursuing my Bachelor of
         Technology in IT - Engineering at Loyola - ICAM College of Engineering
         and Technology.
       </p>
 
-      <div className="text-secondary text-center p pb-5">
-        IT Development and Designing, DevOps, Multimedia Production, 3D
-        Visualisations, Cross-Cultural Communication, Community Management,
-        Teamplayer, Ideator/Innovator. Web Dev- LAMP stack. General Programming
-        React JS Developer Adobe Suite Flutter Dev Front End: HTML, CSS -
-        Bootstrap, Tailwind, SaSS, JS Frameworks - React, Gatsby. Adobe Suite,
-        Android Studio, Google Sketchup 3D, Unreal Engine, VRay, Cinema4D Back
-        End: Python, C, Java, PHP, NodeJS DB: MySql, MariaDB, FireStore,
-        MongoDB. Others: Postman, RESTful APIs, AJAX, JSX, Git, Github, npm,
-        Cloudflare, Vercel, Linux - Ubuntu/Debian, Kali Linux. OOPs,
-        Wireframing, Responsive Design, Agile Development, Wordpress developer.
+      <div className="text-secondary text-center p mb-5 pb-5">
+        <div id="languages" className="pt-5">
+          <p className="text-primary">Languages</p>
+          <TechPills text="HTML" />
+          <TechPills text="Dart" />
+          <TechPills text="Java" />
+          <TechPills text="php" />
+          <TechPills text="Python" />
+          <TechPills text="Embedded C" />
+          <TechPills text="JavaScript - ES6" />
+          <TechPills text="CSS3/SASS" />
+        </div>
+        <div id="databases" className="pt-5">
+          <p className="text-primary ">Databases</p>
+          <TechPills text="Micrsoft SQL " />
+          <TechPills text="MariaDB" />
+          <TechPills text="MySQL" />
+          <TechPills text="PostgreSQL" />
+          <TechPills text="MongoDB" />
+          <TechPills text="SQLite" />
+          <TechPills text="Firestore" />
+        </div>
+        <div id="frameworks" className="pt-5">
+          <p className="text-primary ">Frameworks and Libraries</p>
+          <TechPills text="ReactJS" />
+          <TechPills text="Wordpress" />
+          <TechPills text="Bootstrap" />
+          <TechPills text="jQuery" />
+          <TechPills text="styled-components" />
+          <TechPills text="Material UI" />
+          <TechPills text="Tailwind UI" />
+          <TechPills text="Flask" />
+          <TechPills text="Framer Motion" />
+        </div>
+        <div id="tools" className="pt-5">
+          <p className="text-primary ">Tools</p>
+          <TechPills text="Git" />
+          <TechPills text="Cloudflare" />
+          <TechPills text="jQuery" />
+          <TechPills text="npm" />
+          <TechPills text="GitHub" />
+          <TechPills text="Netlify" />
+          <TechPills text="Heroku" />
+          <TechPills text="Vercel" />
+          <TechPills text="Github Actions" />
+          <TechPills text="KaliOS" />
+          <TechPills text="UbuntuOS" />
+          <TechPills text="Supabase" />
+          <TechPills text="Selenium" />
+        </div>
+        <div id="design" className="pt-5">
+          <p className="text-primary ">Creative Design</p>
+          <TechPills text="Wireframing" />
+          <TechPills text="Photoshop" />
+          <TechPills text="Illustrator" />
+          <TechPills text="InDesign" />
+          <TechPills text="Premiere Pro" />
+          <TechPills text="After Effects" />
+          <TechPills text="Cinema4D" />
+          <TechPills text="Sketchup3D" />
+          <TechPills text="VRAY | TheaRender" />
+        </div>
       </div>
+
       {/* ======= Resume Section ======= */}
       <section
         id="resume"
