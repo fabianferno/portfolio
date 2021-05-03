@@ -85,7 +85,7 @@ function TechPills(props) {
 export default function Projects() {
   return (
     <Layout contained>
-      <p className="text-primary pl-3 pl-md-0">// fabianferno</p>
+      <p className="text-primary pl-3 pl-md-0">&#47;&#47; fabianferno</p>
 
       <div id="project-highlights">
         <h1 className="pt-5 mt-5 pb-4 text-justify pl-3 pl-md-0">

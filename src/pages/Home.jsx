@@ -19,7 +19,7 @@ export default function Home() {
   return (
     <Layout contained>
       <p className="text-primary pl-2 pl-md-0 d-md-none d-block">
-        // fabianferno
+        &#47;&#47; fabianferno
       </p>
 
       <div className="row mt-3 pb-5 align-items-center justify-content-center">
