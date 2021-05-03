@@ -20,7 +20,7 @@ function ProjectHighlights(props) {
           <h5 className="card-title col-12 p-0 font-weight-bold ">
             {props.title ? props.title : "Super Skywalker"}
           </h5>
-          <p className="card-text col-12 p-0">
+          <p className="card-text text-secondary font-weight-normal col-12 p-0">
             {props.text
               ? props.text
               : "Some quick example text to build on the card title and make up the bulk of the card's content."}
@@ -48,7 +48,7 @@ function ProjectsCard(props) {
           <h5 className="card-title col-12 p-0 font-weight-bold ">
             {props.title ? props.title : "Super Skywalker"}
           </h5>
-          <p className="card-text col-12 p-0">
+          <p className="card-text text-secondary font-weight-normal col-12 p-0">
             {props.text
               ? props.text
               : "Some quick example text to build on the card title and make up the bulk of the card's content."}
@@ -97,9 +97,19 @@ export default function Projects() {
             gradientColor={[31, 31, 31]}
           >
             <ProjectHighlights
+              src="https://github.com/fabianferno/mr.robot"
+              title="Mr. Robot"
+              text="Built a feature packed DISCORD bot with meme audio playbacks on demand. Used Wiki APIs to fetch data on query. Has text-to-speech playback features. Deployed and in use by 6 active servers."
+            >
+              <TechPills text="discord.py" />
+              <TechPills text="FFMPeG" />
+              <TechPills text="Python" />
+              <TechPills text="Wiki API" />
+            </ProjectHighlights>
+            <ProjectHighlights
               title="Elevate | Pattarai "
               src="https://elevate.pattarai.in/"
-              text="Global Conference CfP - Built with React"
+              text="Global Conference CfP - Fully responsive event website built with React."
             >
               <HighlightPills text="React" />
               <HighlightPills text="Bootstrap" />
@@ -119,7 +129,7 @@ export default function Projects() {
             <ProjectHighlights
               src="https://kathirkreation.com/"
               title="Kathir Kreations"
-              text="Contact Website with smooth Fluid Animations"
+              text="Built a contact website with React. Used Fluid animations for hero. User Framer motion for animated components."
             >
               <HighlightPills text="React" />
               <HighlightPills text="Bootstrap" />
@@ -128,7 +138,7 @@ export default function Projects() {
 
             <ProjectHighlights
               title="Chettiar Chamber of Commerce"
-              text="ASP.NET - Business Directory Listing and Membership Platform"
+              text="ASP.NET - Working on a Business Directory Listing and Membership Platform"
             >
               <HighlightPills text=".NET" />
               <HighlightPills text="Bootstrap" />
@@ -142,17 +152,19 @@ export default function Projects() {
             >
               <HighlightPills text="NodeMCU" />
               <HighlightPills text="PHP" />
-              <HighlightPills text="Bootstrap" />
+              <HighlightPills text="Embedded C" />
+              <HighlightPills text="xStack" />
             </ProjectHighlights>
 
             <ProjectHighlights
               src="https://stretch-fe-master.herokuapp.com/"
-              title="Stretch Inc"
-              text="Backend Development for the booking system with booking slot suggestions"
+              title="Stretch Inc UK"
+              text="Built the backend for the booking system. Used Flask Python. Written Stripe Payment webhooks and APIs for company."
             >
               <HighlightPills text="PHP" />
-              <HighlightPills text="firebase" />
-              <HighlightPills text="Flask" />
+              <HighlightPills text="Firebase" />
+              <HighlightPills text="Flask | Python" />
+              <HighlightPills text="Stripe" />
               <HighlightPills text="PixelUI" />
             </ProjectHighlights>
           </Marquee>
@@ -171,17 +183,6 @@ export default function Projects() {
           >
             <Masonry>
               <ProjectsCard
-                src="https://github.com/fabianferno/mr.robot"
-                title="Mr. Robot"
-                text="Built a feature packed DISCORD bot with meme audio playbacks on demand. Used Wiki APIs to fetch data on query. Has text-to-speech playback features. Deployed and in use by 6 active servers."
-              >
-                <TechPills text="discord.py" />
-                <TechPills text="FFMPeG" />
-                <TechPills text="Python" />
-                <TechPills text="Wiki API" />
-              </ProjectsCard>
-
-              <ProjectsCard
                 src="https://github.com/fabianferno/reactor-pad"
                 title="Reactor Pad"
                 text="Built a Note Taking App with the React Library. Used Firebase to implement Google Sign-In. Used Firestore to store and retrieve the notes."
@@ -197,7 +198,7 @@ export default function Projects() {
               <ProjectsCard
                 src="https://ades.in"
                 title="Air Design Engineered Solutions Pvt Ltd"
-                text="Built a fully responsive contact website. Applied Search Engine Optimisations"
+                text="Built a fully responsive Simple Static contact website. Applied Search Engine Optimisations"
               >
                 <TechPills text="CSS" />
                 <TechPills text="Bootstrap" />
@@ -240,7 +241,7 @@ export default function Projects() {
               <ProjectsCard
                 src="https://simeradesigns.github.io/quadrantcross/"
                 title="Quadrant Cross"
-                text="Built a single-page website with Bootstrap. Added React Animations and CSS animations."
+                text="Built a Simple Static single-page website with Bootstrap. Added React Animations and CSS animations."
               >
                 <TechPills text="React" />
                 <TechPills text="Bootstrap" />

@@ -49,26 +49,35 @@ export default function About() {
           <div id="frameworks" className="pt-5">
             <p className="text-primary ">Frameworks and Libraries</p>
             <TechPills text="ReactJS" />
-            <TechPills text="Wordpress" />
+            <TechPills text="ExpressJS" />
+            <TechPills text="Python Flask" />
+            <TechPills text="Axios" />
             <TechPills text="Bootstrap" />
             <TechPills text="jQuery" />
             <TechPills text="ASP.NET" />
             <TechPills text="styled-components" />
             <TechPills text="Material UI" />
             <TechPills text="Tailwind UI" />
-            <TechPills text="Flask" />
             <TechPills text="discord.py" />
             <TechPills text="Framer Motion" />
+            <TechPills text="ThreeJS" />
+            <TechPills text="Wordpress" />
           </div>
           <div id="tools" className="pt-5">
             <p className="text-primary ">Tools</p>
             <TechPills text="Git" />
+            <TechPills text="Postman" />
             <TechPills text="repl.it" />
             <TechPills text="Cloudflare" />
             <TechPills text="IFTTT" />
             <TechPills text="jQuery" />
             <TechPills text="npm" />
             <TechPills text="GitHub" />
+            <TechPills text="cPanel" />
+            <TechPills text="Apache" />
+            <TechPills text="SSH" />
+            <TechPills text="nginx" />
+            <TechPills text="ArduinoIDE" />
             <TechPills text="Netlify" />
             <TechPills text="Heroku" />
             <TechPills text="Vercel" />
