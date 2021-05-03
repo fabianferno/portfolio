@@ -1,12 +1,12 @@
 import Layout from "../layouts/Layout";
 import Marquee from "react-fast-marquee";
+import { SocialIcon } from "react-social-icons";
 
 function SocialPills(props) {
   return (
     <a href={props.src}>
-      <span class="btn btn-dark text-primary mr-5 font-weight-bold">
-        {props.text}
-      </span>
+      <SocialIcon url={props.src} bgColor="#60FF9F" />
+      <span class="btn social-pill mr-5 font-weight-bold">{props.text}</span>
     </a>
   );
 }
@@ -14,22 +14,31 @@ function SocialPills(props) {
 export default function Contact() {
   return (
     <Layout contained>
-      <div className="container">
-        <div className="jumbotron bg-black inner-shadow text-primary mt-5 p-5">
-          <h1 className="display-6">
-            {" "}
-            <h1 className="text-white font-weight-bold pb-3">Get in Touch</h1>
-          </h1>
-          <p className="lead text-secondary">
-            Looking to work with me?
-            <br /> Write to me and I will get back to you at the earliest!
-            <h5 className="text-primary pt-5">hello@fabianferno.tech</h5>
-            <p className="text-white ">@fabianferno</p>
-          </p>
+      <div className=" ">
+        <div className="jumbotron p-0 mx-0 py-5 bg-black  inner-shadow">
+          <div className="p-5 row d-flex align-items-start ">
+            <div className="col-12 col-md-3 ">
+              <h1
+                style={{ fontSize: "3em" }}
+                className="text-white font-weight-bold "
+              >
+                Get in <br />
+                <span className="text-primary"> Touch</span>
+              </h1>
+            </div>
+            <div className="col-md-9 col-12 ">
+              <p className="lead text-secondary">
+                Looking to work with me?
+                <br /> Write to me and I will get back to you at the earliest!
+                <h5 className="text-primary pt-5">hello@fabianferno.tech</h5>
+                <p className="text-white "> &#47;&#47; fabianferno</p>
+              </p>
+            </div>
+          </div>
 
           <Marquee
-            className="lead mt-5"
-            direction="left"
+            className=" mt-5 mb-4"
+            direction="right"
             speed={20}
             gradient
             gradientWidth={0}

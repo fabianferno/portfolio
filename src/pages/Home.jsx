@@ -22,7 +22,7 @@ export default function Home() {
         &#47;&#47; fabianferno
       </p>
 
-      <div className="row mt-3 pb-5 align-items-center justify-content-center">
+      <div className="row mt-3 ml-md-3 ml-0 pb-5 align-items-center justify-content-center">
         <div className="d-none d-md-block pr-md-5 pr-0 col-md-4  col-12">
           <img
             src={Cube1}
@@ -59,6 +59,7 @@ export default function Home() {
           </span>
         </div>
       </div>
+
       <div
         style={{ lineHeight: "45px" }}
         className="container px-4 py-5 h3 text-secondary text-justify text-md-center"

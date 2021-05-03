@@ -53,7 +53,7 @@ export default function MenuBar(props) {
         Contact
       </Link>
 
-      <motion.div className="d-flex justify-content-center mb-4">
+      <motion.div className="d-flex justify-content-start mb-4">
         <img
           className="dark-shadow"
           style={{ height: 200, marginTop: "80px" }}
@@ -61,7 +61,7 @@ export default function MenuBar(props) {
           alt="fabianferno-logo"
         />
       </motion.div>
-      <h5 className="text-center text-white">Hello There!</h5>
+      <h5 className="text-left text-white">Hello There!</h5>
     </Menu>
   );
 }
