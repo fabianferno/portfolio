@@ -23,6 +23,7 @@ export default function Contact() {
           Looking for services? | Looking to Hire Me? | Looking to Work with me?
           <br />
           <br /> Write to me and I will get back to you at the earliest!
+          <h3 className="text-primary pt-5">hello@fabianferno.tech</h3>
         </p>
 
         <Marquee
