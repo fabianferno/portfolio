@@ -1,12 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { elastic as Menu } from "react-burger-menu";
+import { slide as Menu } from "react-burger-menu";
 import "../assets/scss/menubar.scss";
 import { motion } from "framer-motion";
 import Bitmoji from "../assets/img/bitmoji.png";
 
 /* Menu Options
-
 slide
 stack
 elastic
@@ -20,8 +19,20 @@ reveal
 */
 
 export default function MenuBar(props) {
+  var isMenuOpen = function (state) {
+    if (state.isOpen) {
+      document.getElementById("page-content").classList.add("blur");
+    } else {
+      document.getElementById("page-content").classList.remove("blur");
+    }
+  };
   return (
-    <Menu right pageWrapId={"page-wrap"} outerContainerId={"outer-container"}>
+    <Menu
+      right
+      pageWrapId={"page-wrap"}
+      outerContainerId={"outer-container"}
+      onStateChange={isMenuOpen}
+    >
       <Link className="menu-item py-3" to="/">
         Home
       </Link>
@@ -34,9 +45,9 @@ export default function MenuBar(props) {
         Projects
       </Link>
 
-      <Link className=" menu-item  py-3" to="/services">
+      {/* <Link className=" menu-item  py-3" to="/services">
         Services
-      </Link>
+      </Link> */}
 
       <Link className=" menu-item  py-3" to="/contact">
         Contact

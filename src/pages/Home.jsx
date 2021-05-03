@@ -1,8 +1,6 @@
 import Layout from "../layouts/Layout";
 import { motion } from "framer-motion";
-import Bitmoji from "../assets/img/bitmoji.png";
 import Cube1 from "../assets/img/cube1.gif";
-import Cube2 from "../assets/img/cube2.gif";
 
 export default function Home() {
   const RoleBadges = (props) => {

@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import MenuBar from "../components/MenuBar";
 import Logo from "../assets/img/logo-circle-black-teal.svg";
+// import { Squash as Hamburger } from "hamburger-react";
 
 import AnimatedCursor from "react-animated-cursor";
 
@@ -47,6 +48,7 @@ export default function Layout(props) {
             “There’s a lot of beauty in ordinary things. Isn’t that kind of the
             point?” – <strong> Pam Beesly</strong>
           </div> */}
+          {/* <Hamburger color="#60ff9f" easing="ease-in" direction="right" /> */}
         </div>
 
         {/* Page Content Goes Here */}

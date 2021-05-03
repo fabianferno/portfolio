@@ -1,5 +1,6 @@
-$menu-bg-color: #000000;
+$menu-bg-color: #000000b2;
 $text-color: #60ff9f;
+
 
 
 .menu-item {
@@ -7,12 +8,14 @@ $text-color: #60ff9f;
   color: $text-color;
   font-weight: bold;
   margin-top: 10px;
-  transition: 1s ease;
+  transition: 0.5s ease;
 }
 
 .menu-item:hover {
-  color: #ffbc44;
-  background-size: 100%;
+  cursor: -webkit-grabbing;
+  cursor: grabbing;
+  color: #000000;
+  background-color: #60ff9f;
 }
 
 
@@ -80,7 +83,7 @@ $text-color: #60ff9f;
 
 /* Individual item */
 .bm-item {
-  display: inline-block;
+  display: flex;
 }
 
 /* Styling of overlay */

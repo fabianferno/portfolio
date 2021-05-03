@@ -6,12 +6,19 @@ export default function About() {
       <h1 className="text-left my-5 pb-3 text-center">
         About<span className="text-white "> Me</span>
       </h1>
+
+      <p className="text-secondary text-center pb-5">
+        I am a software engineer with 2.5 years of professional experience in
+        designing and developing. I’m currently pursuing my Bachelor of
+        Technology in IT - Engineering at Loyola - ICAM College of Engineering
+        and Technology.
+      </p>
       {/* ======= Resume Section ======= */}
       <section
         id="resume"
         className="resume  text-secondary inner-shadow card-rounded bg-black pt-5 pl-2 pl-md-5 pb-5"
       >
-        <div className="container">
+        <div className="container ">
           <div className="row">
             <div className="col-lg-6">
               <h3 className="resume-title">Education</h3>
