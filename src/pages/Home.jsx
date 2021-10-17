@@ -1,6 +1,12 @@
 import Layout from "../layouts/Layout";
 import { motion } from "framer-motion";
-import Cube1 from "../assets/img/cube1.gif";
+import { Canvas } from "@react-three/fiber";
+import {
+  Icosahedron,
+  Light1,
+  Light2,
+  Light3,
+} from "../components/ThreeComponents";
 
 export default function Home() {
   const RoleBadges = (props) => {
@@ -8,7 +14,7 @@ export default function Home() {
       <motion.button
         style={{ fontSize: "0.9em" }}
         className="btn btn-black mr-md-2 mt-3 mt-md-0 d-flex d-md-inline"
-        whileHover={{ scale: 1.025 }}
+        whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
       >
         {props.role}
@@ -18,21 +24,24 @@ export default function Home() {
 
   return (
     <Layout contained>
-      <div className="row ml-md-3 ml-0 align-items-center justify-content-center">
-        <div className="d-none d-md-block pr-md-5 pr-0 col-md-4  col-12">
-          <img src={Cube1} style={{ opacity: "20%" }} alt="fabianferno Cube1" />
-        </div>
-        <div className="d-block d-md-none pr-md-5 pr-0 col-md-4  col-12">
-          <img
-            width="100%"
-            src={Cube1}
-            style={{ opacity: "40%", marginLeft: "-40px" }}
-            alt="fabianferno Cube2"
-          />
-        </div>
-        <div className="col-md-8 col-12 ml-0 pl-5 pl-md-3">
+      <div className="row ml-md-3 d-flex ml-0 align-items-center justify-content-center">
+        <Canvas style={{ height: "50vh", width: "100vw" }} colorManagement>
+          <color attach="background" args={"#1f1f1f"} />
+          <ambientLight intensity={0.3} />
+          <pointLight position={[10, 0, 0]} intensity={0.5} />
+
+          <Light1 brightness={45} color={"#60ff9f"} />
+          <Light2 brightness={45} color={"#000000"} />
+          <Light3 brightness={45} color={"#375140"} />
+
+          <Icosahedron />
+        </Canvas>
+        <div
+          style={{ position: "absolute", top: "100px" }}
+          className="d-flex flex-column align-items-center justify-content-center"
+        >
           <h1
-            className="hero mt-3 mt-md-5 pb-3 "
+            className="hero mt-3 text-center mt-md-5 pb-3 "
             style={{ lineHeight: "115px" }}
           >
             Fabian Ferno
@@ -40,26 +49,25 @@ export default function Home() {
 
           <span
             style={{ letterSpacing: "7px" }}
-            className="text-secondary text-uppercase hover-box"
+            className="d-md-flex d-none justify-content-center align-items-center text-secondary text-uppercase"
           >
             <RoleBadges role="Freelancer" />
             <RoleBadges role="Web Developer" />
             <RoleBadges role="Graphic Designer" />
           </span>
         </div>
+        <span
+          style={{ letterSpacing: "7px" }}
+          className="d-md-none d-flex flex-column justify-content-center align-items-center text-secondary text-uppercase"
+        >
+          <RoleBadges role="Freelancer" />
+          <RoleBadges role="Web Developer" />
+          <RoleBadges role="Graphic Designer" />
+        </span>
       </div>
       <div
         style={{ lineHeight: "45px" }}
-        className="container p-5 d-md-block d-none h3 text-secondary text-justify text-md-center"
-      >
-        “There’s a lot of beauty in ordinary things. <br /> Isn’t that kind of
-        the point?” –{" "}
-        <span className="text-white font-weight-bold"> Pam Beesly</span>
-      </div>
-
-      <div
-        style={{ lineHeight: "45px" }}
-        className="container p-5 d-md-none d-block h5 text-secondary text-justify text-md-center"
+        className="container p-5 h3 text-secondary text-center"
       >
         “There’s a lot of beauty in ordinary things. <br /> Isn’t that kind of
         the point?” –{" "}

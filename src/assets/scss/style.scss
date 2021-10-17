@@ -23,7 +23,6 @@ $theme-colors: ("info": #ffbc44,
 
 html,
 body {
-  cursor: none;
   background-color: map.get($theme-colors, "dark");
   font-family: 'Comfortaa', cursive;
 }
@@ -33,7 +32,6 @@ a {
 }
 
 a:hover {
-  cursor: none;
   text-decoration: none;
 }
 
@@ -48,7 +46,7 @@ a:hover {
 }
 
 .hover-box {
-  padding-bottom: 15px;
+  padding-bottom: 5px;
   background-image: linear-gradient(to right,
       transparent calc(0% - 5px),
       #60ff9f 0%,

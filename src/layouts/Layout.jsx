@@ -1,19 +1,10 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import MenuBar from "../components/MenuBar";
-import AnimatedCursor from "react-animated-cursor";
 
 export default function Layout(props) {
   return (
     <div id="outer-container">
-      <AnimatedCursor
-        innerSize={10}
-        outerSize={8}
-        color="96, 255, 159"
-        outerAlpha={0.2}
-        innerScale={0.7}
-        outerScale={5}
-      />
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
