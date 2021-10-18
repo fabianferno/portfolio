@@ -1,12 +1,6 @@
 import Layout from "../layouts/Layout";
 import { motion } from "framer-motion";
-import { Canvas } from "@react-three/fiber";
-import {
-  Icosahedron,
-  Light1,
-  Light2,
-  Light3,
-} from "../components/ThreeComponents";
+import { HeroThree } from "../components/HeroThree";
 
 export default function Home() {
   const RoleBadges = (props) => {
@@ -25,23 +19,14 @@ export default function Home() {
   return (
     <Layout contained>
       <div className="row ml-md-3 d-flex ml-0 align-items-center justify-content-center">
-        <Canvas style={{ height: "50vh", width: "100vw" }} colorManagement>
-          <color attach="background" args={"#1f1f1f"} />
-          <ambientLight intensity={0.3} />
-          <pointLight position={[10, 0, 0]} intensity={0.5} />
+        <HeroThree />
 
-          <Light1 brightness={45} color={"#60ff9f"} />
-          <Light2 brightness={45} color={"#000000"} />
-          <Light3 brightness={45} color={"#375140"} />
-
-          <Icosahedron />
-        </Canvas>
         <div
-          style={{ position: "absolute", top: "100px" }}
+          style={{ position: "absolute", top: "120px" }}
           className="d-flex flex-column align-items-center justify-content-center"
         >
           <h1
-            className="hero mt-3 text-center mt-md-5 pb-3 "
+            className="hero  text-center mt-md-5 pb-3 "
             style={{ lineHeight: "115px" }}
           >
             Fabian Ferno

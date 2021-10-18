@@ -1,15 +1,33 @@
 import { useFrame } from "@react-three/fiber";
 import React, { useRef } from "react";
 import { MeshWobbleMaterial } from "@react-three/drei";
+import { Canvas } from "@react-three/fiber";
 
-export const Light1 = ({ brightness, color }) => {
+export const HeroThree = () => {
+  return (
+    <Canvas style={{ height: "50vh", width: "100vw" }} colorManagement>
+      <color attach="background" args={"#1f1f1f"} />
+      <ambientLight intensity={0.3} />
+      <pointLight position={[10, 0, 0]} intensity={0.5} />
+
+      <Light brightness={20} color={"#60ff9f"} position={[-5, 3, 6]} />
+
+      {/* <Icosahedron />*/}
+      <Box />
+
+      {/* <Torusknot /> */}
+    </Canvas>
+  );
+};
+
+const Light = ({ brightness, color, position }) => {
   return (
     <rectAreaLight
       width={3}
       height={3}
       color={color}
       intensity={brightness}
-      position={[-3, 3, 6]}
+      position={position}
       lookAt={[0, 0, 0]}
       penumbra={1}
       castShadow
@@ -17,37 +35,7 @@ export const Light1 = ({ brightness, color }) => {
   );
 };
 
-export const Light2 = ({ brightness, color }) => {
-  return (
-    <rectAreaLight
-      width={3}
-      height={3}
-      color={color}
-      intensity={brightness}
-      position={[3, 3, 6]}
-      lookAt={[0, 0, 0]}
-      penumbra={1}
-      castShadow
-    />
-  );
-};
-
-export const Light3 = ({ brightness, color }) => {
-  return (
-    <rectAreaLight
-      width={3}
-      height={3}
-      color={color}
-      intensity={brightness}
-      position={[0, -3, 5]}
-      lookAt={[0, 0, 0]}
-      penumbra={1}
-      castShadow
-    />
-  );
-};
-
-export const Box = () => {
+const Box = () => {
   const mesh = useRef(null);
   useFrame(() => (mesh.current.rotation.x = mesh.current.rotation.y += 0.01));
   return (
@@ -64,7 +52,7 @@ export const Box = () => {
   );
 };
 
-export const Triangle1 = () => {
+const Triangle1 = () => {
   const mesh = useRef(null);
   useFrame(() => (mesh.current.rotation.x = mesh.current.rotation.y += 0.01));
   return (
@@ -81,7 +69,7 @@ export const Triangle1 = () => {
   );
 };
 
-export const Icosahedron = ({ position }) => {
+const Icosahedron = ({ position }) => {
   const mesh = useRef(null);
   useFrame(() => (mesh.current.rotation.x = mesh.current.rotation.y += 0.01));
   return (
@@ -97,7 +85,7 @@ export const Icosahedron = ({ position }) => {
   );
 };
 
-export const Ring = () => {
+const Ring = () => {
   const mesh = useRef(null);
   useFrame(() => (mesh.current.rotation.x = mesh.current.rotation.y += 0.01));
   return (
@@ -114,7 +102,7 @@ export const Ring = () => {
   );
 };
 
-export const Triangle = () => {
+const Triangle = () => {
   const mesh = useRef(null);
   useFrame(() => (mesh.current.rotation.x = mesh.current.rotation.y += 0.01));
   return (
@@ -131,7 +119,7 @@ export const Triangle = () => {
   );
 };
 
-export const Diamond = () => {
+const Diamond = () => {
   const mesh = useRef(null);
   useFrame(() => (mesh.current.rotation.x = mesh.current.rotation.y += 0.01));
   return (
@@ -148,7 +136,7 @@ export const Diamond = () => {
   );
 };
 
-export const Torusknot = () => {
+const Torusknot = () => {
   const mesh = useRef(null);
   useFrame(() => (mesh.current.rotation.x = mesh.current.rotation.y += 0.01));
   return (
@@ -165,7 +153,7 @@ export const Torusknot = () => {
   );
 };
 
-export const Sphere1 = () => {
+const Sphere = () => {
   const mesh = useRef(null);
   useFrame(() => (mesh.current.rotation.x = mesh.current.rotation.y += 0.01));
   return (
@@ -173,7 +161,7 @@ export const Sphere1 = () => {
       <sphereGeometry attach="geometry" args={[2.5, 2.5, 2.5]} />
       <meshStandardMaterial
         attach="material"
-        color={0x444444}
+        color={0x222222}
         transparent
         roughness={0.1}
         metalness={0.01}

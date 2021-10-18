@@ -4,17 +4,18 @@ $text-color: #60ff9f;
 
 
 .menu-item {
-  padding-left: 15px;
   color: $text-color;
   font-weight: bold;
-  margin-top: 10px;
+  border-radius: 50px;
   transition: 0.5s ease;
+  background-color: #000000;
 }
 
 .menu-item:hover {
   cursor: -webkit-grabbing;
   cursor: grabbing;
   color: #000000;
+  border-radius: 20px;
   background-color: #60ff9f;
 }
 
