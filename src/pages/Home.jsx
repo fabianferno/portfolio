@@ -8,8 +8,8 @@ export default function Home() {
       <motion.button
         style={{ fontSize: "0.9em" }}
         className="btn btn-black mr-md-2 mt-3 mt-md-0 d-flex d-md-inline"
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.9 }}
+        whileHover={{ scale: 0.9 }}
+        whileTap={{ scale: 1.1 }}
       >
         {props.role}
       </motion.button>
@@ -27,7 +27,7 @@ export default function Home() {
         >
           <h1
             className="hero  text-center mt-md-5 pb-3 "
-            style={{ lineHeight: "115px" }}
+            style={{ lineHeight: "115px", pointerEvents: "none" }}
           >
             Fabian Ferno
           </h1>
@@ -36,8 +36,8 @@ export default function Home() {
             style={{ letterSpacing: "7px" }}
             className="d-md-flex d-none justify-content-center align-items-center text-secondary text-uppercase"
           >
+            <RoleBadges role="Full-Stack Engineer" />
             <RoleBadges role="Freelancer" />
-            <RoleBadges role="Web Developer" />
             <RoleBadges role="Graphic Designer" />
           </span>
         </div>

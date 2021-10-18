@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Navbar, Container, Nav } from "react-bootstrap";
+import { Navbar, Nav } from "react-bootstrap";
 
 export default function Layout(props) {
   return (
@@ -32,9 +32,6 @@ export default function Layout(props) {
               <Navbar.Toggle aria-controls="responsive-navbar-nav" />
               <Navbar.Collapse id="responsive-navbar-nav">
                 <Nav className=" mt-4 mt-md-0">
-                  <Link to="/" className="p-3 menu-item nav-link">
-                    Home
-                  </Link>
                   <Link to="/about" className="p-3  menu-item nav-link">
                     About
                   </Link>
