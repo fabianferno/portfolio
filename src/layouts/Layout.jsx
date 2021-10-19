@@ -4,7 +4,7 @@ import { Navbar, Nav } from "react-bootstrap";
 
 export default function Layout(props) {
   return (
-    <div id="outer-container">
+    <div>
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -18,7 +18,7 @@ export default function Layout(props) {
             paddingTop: "30px",
             paddingBottom: "30px",
           }}
-          className="d-flex container-md justify-content-center bg-black align-items-center pl-md-5 pl-4"
+          className="shadow d-flex container-md justify-content-center bg-black align-items-center pl-md-5 pl-4"
           collapseOnSelect
           expand="lg"
           variant="dark"
@@ -27,11 +27,17 @@ export default function Layout(props) {
             <Link
               to="/"
               style={{ fontSize: "2em" }}
-              className="navbar-brand font-weight-bold text-primary mr-5 pr-3"
+              className="navbar-brand font-weight-bold text-primary mr-md-5 mr-4"
             >
               super.skywalker
             </Link>
-            <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+
+            <Navbar.Toggle
+              className="py-3  bg-dark rounded-circle inner-shadow"
+              aria-controls="responsive-navbar-nav"
+            >
+              🐱‍👤
+            </Navbar.Toggle>
             <Navbar.Collapse id="responsive-navbar-nav">
               <Nav className=" mt-3 mt-md-0">
                 <Link to="/about" className="p-3  menu-item nav-link">

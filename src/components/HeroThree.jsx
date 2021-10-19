@@ -1,41 +1,30 @@
 import React, { useRef } from "react";
-// import { MeshWobbleMaterial } from "@react-three/drei";
-import { Canvas, useThree, useFrame, extend } from "@react-three/fiber";
-import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
+import { Canvas, useFrame, extend } from "@react-three/fiber";
+import { OrbitControls, Text } from "@react-three/drei";
 
 // Extend will make OrbitControls available as a JSX element called orbitControls for us to use.
 extend({ OrbitControls });
 
-const CameraControls = () => {
-  // Get a reference to the Three.js Camera, and the canvas html element.
-  // We need these to setup the OrbitControls component.
-  // https://threejs.org/docs/#examples/en/controls/OrbitControls
-  const {
-    camera,
-    gl: { domElement },
-  } = useThree();
-  // Ref to the controls, so that we can update them on every frame using useFrame
-  const controls = useRef();
-  useFrame((state) => controls.current.update());
-  return <orbitControls ref={controls} args={[camera, domElement]} />;
-};
-
 export const HeroThree = () => {
   return (
-    <Canvas style={{ height: "50vh", width: "100vw" }} colorManagement>
-      <CameraControls />
-
+    <Canvas style={{ height: "60vh", width: "100vw" }} colorManagement>
       <color attach="background" args={"#1f1f1f"} />
       <ambientLight intensity={0.3} />
       <pointLight position={[10, 0, 0]} intensity={0.5} />
-
       <Light brightness={20} color={"#60ff9f"} position={[-5, 3, 6]} />
       <Light brightness={20} color={"#ffffff"} position={[-5, 3, 6]} />
-
       {/* <Icosahedron />*/}
-      <Box />
+      <Text
+        scale={[15, 15, 15]}
+        color="#60ff9f" // default
+        anchorX="center" // default
+        anchorY="middle" // default
+      >
+        F A B I A N
+      </Text>
+      <OrbitControls />
 
-      {/* <Torusknot /> */}
+      <Ring />
     </Canvas>
   );
 };
@@ -55,21 +44,21 @@ const Light = ({ brightness, color, position }) => {
   );
 };
 
-const Box = () => {
-  const mesh = useRef(null);
-  useFrame(() => (mesh.current.rotation.x = mesh.current.rotation.y += 0.01));
-  return (
-    <mesh position={[0, 0, 0]} ref={mesh}>
-      <boxBufferGeometry attach="geometry" args={[2.8, 2.8, 2.8]} />
-      <meshStandardMaterial
-        attach="material"
-        color={0x222222}
-        roughness={0.5}
-        metalness={0.1}
-      />
-    </mesh>
-  );
-};
+// const Box = () => {
+//   const mesh = useRef(null);
+//   useFrame(() => (mesh.current.rotation.x = mesh.current.rotation.y += 0.01));
+//   return (
+//     <mesh position={[0, 0, 0]} ref={mesh}>
+//       <boxBufferGeometry attach="geometry" args={[1, 1, 1]} />
+//       <meshStandardMaterial
+//         attach="material"
+//         color={0x222222}
+//         roughness={0.5}
+//         metalness={0.1}
+//       />
+//     </mesh>
+//   );
+// };
 
 // const Triangle1 = () => {
 //   const mesh = useRef(null);
@@ -104,22 +93,21 @@ const Box = () => {
 //   );
 // };
 
-// const Ring = () => {
-//   const mesh = useRef(null);
-//   useFrame(() => (mesh.current.rotation.x = mesh.current.rotation.y += 0.01));
-//   return (
-//     <mesh ref={mesh}>
-//       <torusBufferGeometry attach="geometry" args={[2, 0.3, 16, 30]} />
-//       <meshStandardMaterial
-//         attach="material"
-//         color={0x444444}
-//         transparent
-//         roughness={0.1}
-//         metalness={0.1}
-//       />
-//     </mesh>
-//   );
-// };
+const Ring = () => {
+  const mesh = useRef(null);
+  useFrame(() => (mesh.current.rotation.x = mesh.current.rotation.y += 0.01));
+  return (
+    <mesh ref={mesh}>
+      <torusBufferGeometry attach="geometry" args={[1.8, 0.05, 20, 50]} />
+      <meshBasicMaterial
+        attach="material"
+        color={0x222222}
+        roughness={0.5}
+        metalness={0.7}
+      />
+    </mesh>
+  );
+};
 
 // const Triangle = () => {
 //   const mesh = useRef(null);
