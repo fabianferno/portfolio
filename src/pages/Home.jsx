@@ -43,6 +43,7 @@ export default function Home() {
         direction="left"
         speed={100}
         gradient
+        pauseOnHover
         gradientWidth={80}
         gradientColor={[31, 31, 31]}
       >
