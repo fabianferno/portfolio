@@ -10,9 +10,8 @@ export default function Layout(props) {
         animate={{ opacity: 1 }}
         transition={{ duration: 0.5 }}
       >
-        {/* <MenuBar /> */}
-        <div
-          id="page-wrap"
+        <Navbar
+          fixed="top"
           style={{
             borderEndEndRadius: "30px",
             borderEndStartRadius: "40px",
@@ -20,32 +19,34 @@ export default function Layout(props) {
             paddingBottom: "30px",
           }}
           className="d-flex container-md justify-content-center bg-black align-items-center pl-md-5 pl-4"
+          collapseOnSelect
+          expand="lg"
+          variant="dark"
         >
-          <Navbar className=" " collapseOnSelect expand="lg" variant="dark">
-            <div className="container-md  d-flex justify-content-md-center justify-content-between">
-              <Link
-                to="/"
-                className="navbar-brand font-weight-bold text-primary text-left"
-              >
-                super.skywalker
-              </Link>
-              <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-              <Navbar.Collapse id="responsive-navbar-nav">
-                <Nav className=" mt-4 mt-md-0">
-                  <Link to="/about" className="p-3  menu-item nav-link">
-                    About
-                  </Link>
-                  <Link to="/projects" className="p-3  menu-item nav-link">
-                    Projects
-                  </Link>
-                  <Link to="/contact" className="p-3  menu-item nav-link">
-                    Contact
-                  </Link>
-                </Nav>
-              </Navbar.Collapse>
-            </div>
-          </Navbar>
-        </div>
+          <div className=" d-md-flex d-block justify-content-md-center justify-content-between">
+            <Link
+              to="/"
+              style={{ fontSize: "2em" }}
+              className="navbar-brand font-weight-bold text-primary mr-5 pr-3"
+            >
+              super.skywalker
+            </Link>
+            <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+            <Navbar.Collapse id="responsive-navbar-nav">
+              <Nav className=" mt-3 mt-md-0">
+                <Link to="/about" className="p-3  menu-item nav-link">
+                  About
+                </Link>
+                <Link to="/projects" className="p-3  menu-item nav-link">
+                  Projects
+                </Link>
+                <Link to="/contact" className="p-3  menu-item nav-link">
+                  Contact
+                </Link>
+              </Nav>
+            </Navbar.Collapse>
+          </div>
+        </Navbar>
 
         {/* Page Content Goes Here */}
         <motion.div

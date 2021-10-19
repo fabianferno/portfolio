@@ -14,7 +14,7 @@ function SocialPills(props) {
 export default function Contact() {
   return (
     <Layout contained>
-      <div className=" ">
+      <div className="mt-5 pt-5">
         <div className="jumbotron p-0 mx-0 py-5 bg-black  inner-shadow">
           <div className="p-5 row d-flex align-items-start ">
             <div className="col-12 col-md-3 ">

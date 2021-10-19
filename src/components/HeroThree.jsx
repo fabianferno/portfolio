@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import { MeshWobbleMaterial } from "@react-three/drei";
+// import { MeshWobbleMaterial } from "@react-three/drei";
 import { Canvas, useThree, useFrame, extend } from "@react-three/fiber";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 
@@ -59,7 +59,7 @@ const Box = () => {
   const mesh = useRef(null);
   useFrame(() => (mesh.current.rotation.x = mesh.current.rotation.y += 0.01));
   return (
-    <mesh position={[0, 0.5, 0]} ref={mesh}>
+    <mesh position={[0, 0, 0]} ref={mesh}>
       <boxBufferGeometry attach="geometry" args={[2.8, 2.8, 2.8]} />
       <meshStandardMaterial
         attach="material"

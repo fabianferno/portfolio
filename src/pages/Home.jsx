@@ -18,11 +18,11 @@ export default function Home() {
 
   return (
     <Layout contained>
-      <div className="row ml-md-3 d-flex ml-0 align-items-center justify-content-center">
+      <div className="row ml-md-3 d-flex ml-0 align-items-center justify-content-center mt-5 pt-5">
         <HeroThree />
 
         <div
-          style={{ position: "absolute", top: "120px" }}
+          style={{ position: "absolute", top: "250px" }}
           className="d-flex flex-column align-items-center justify-content-center"
         >
           <h1
