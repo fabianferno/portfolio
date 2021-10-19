@@ -36,11 +36,11 @@ export default function Layout(props) {
               className="py-3  bg-dark rounded-circle inner-shadow"
               aria-controls="responsive-navbar-nav"
             >
-              🐱‍👤
+              ⚡
             </Navbar.Toggle>
             <Navbar.Collapse id="responsive-navbar-nav">
-              <Nav className=" mt-3 mt-md-0">
-                <Link to="/about" className="p-3  menu-item nav-link">
+              <Nav className="mt-3 mt-md-0">
+                <Link to="/about" className="p-3 menu-item nav-link">
                   About
                 </Link>
                 <Link to="/projects" className="p-3  menu-item nav-link">
