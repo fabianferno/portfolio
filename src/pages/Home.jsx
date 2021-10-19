@@ -34,35 +34,27 @@ export default function Home() {
             marginTop: "-300px",
           }}
           className="d-md-flex d-none flex-column align-items-center justify-content-center"
-        >
-          <Marquee
-            direction="left"
-            speed={50}
-            gradient
-            gradientWidth={0}
-            gradientColor={[31, 31, 31]}
-          >
-            <RoleBadges role="App Development" />
-            <RoleBadges role="Graphic Designing" />
-            <RoleBadges role="Internet of Things" />
-            <RoleBadges role="Full-Stack Engineering" />
-          </Marquee>
-        </div>
+        ></div>
       </div>
 
       <Marquee
         style={{ marginTop: "-100px" }}
-        className="d-md-none d-flex mb-3"
+        className=" d-flex mb-3"
         direction="left"
-        speed={50}
+        speed={100}
         gradient
-        gradientWidth={40}
+        gradientWidth={80}
         gradientColor={[31, 31, 31]}
       >
         <RoleBadges role="App Development" />
         <RoleBadges role="Graphic Designing" />
         <RoleBadges role="Internet of Things" />
-        <RoleBadges role="Full-Stack Engineering" />
+        <RoleBadges role="3D Modelling" />
+        <RoleBadges role="Dev Ops" />
+        <RoleBadges role="Full-Stack Web Development" />
+        <RoleBadges role="App Development" />
+        <RoleBadges role="Graphic Designing" />
+        <RoleBadges role="Internet of Things" />
       </Marquee>
 
       <div
@@ -72,7 +64,10 @@ export default function Home() {
         “There’s a lot of beauty in ordinary things.{" "}
         <div className=" d-none d-md-flex"></div> Isn’t that kind of the point?”
         <span className="d-md-block mt-md-0 mt-2 d-flex justify-content-center text-white font-weight-bold">
-          - Pam Beesly
+          Pam Beesly{"  "}
+          <span className="pl-2 font-italic text-secondary font-weight-normal">
+            - the office
+          </span>
         </span>
       </div>
     </Layout>

@@ -26,32 +26,35 @@ export default function About() {
         <div className="text-secondary text-justify text-md-left p mb-5 pb-5">
           <div id="languages" className="pt-5">
             <p className="text-primary">Languages</p>
-            <TechPills text="HTML" />
-            <TechPills text="Dart" />
-            <TechPills text="Java" />
-            <TechPills text="php" />
-            <TechPills text="C#" />
             <TechPills text="Python" />
             <TechPills text="Embedded C" />
             <TechPills text="JavaScript - ES6" />
             <TechPills text="CSS3/SASS" />
+            <TechPills text="Dart" />
+            <TechPills text="Java" />
+            <TechPills text="php" />
+            <TechPills text="C#" />
+            <TechPills text="HTML" />
           </div>
           <div id="databases" className="pt-5">
             <p className="text-primary ">Databases</p>
-            <TechPills text="Micrsoft SQL " />
+            <TechPills text="Micrsoft SQL" />
             <TechPills text="MariaDB" />
             <TechPills text="MySQL" />
             <TechPills text="PostgreSQL" />
             <TechPills text="MongoDB" />
             <TechPills text="SQLite" />
             <TechPills text="Firestore" />
+            <TechPills text="HarperDB" />
           </div>
+
           <div id="frameworks" className="pt-5">
             <p className="text-primary ">Frameworks and Libraries</p>
             <TechPills text="ReactJS" />
+            <TechPills text="NextJS" />
             <TechPills text="ExpressJS" />
-            <TechPills text="Python Flask" />
-            <TechPills text="Axios" />
+            <TechPills text="Flask | Python" />
+            <TechPills text="axios" />
             <TechPills text="Bootstrap" />
             <TechPills text="jQuery" />
             <TechPills text="ASP.NET" />
@@ -63,6 +66,7 @@ export default function About() {
             <TechPills text="ThreeJS" />
             <TechPills text="Wordpress" />
           </div>
+
           <div id="tools" className="pt-5">
             <p className="text-primary ">Tools</p>
             <TechPills text="Git" />
@@ -78,6 +82,7 @@ export default function About() {
             <TechPills text="SSH" />
             <TechPills text="nginx" />
             <TechPills text="ArduinoIDE" />
+            <TechPills text="Micropython" />
             <TechPills text="Netlify" />
             <TechPills text="Heroku" />
             <TechPills text="Vercel" />
@@ -87,6 +92,7 @@ export default function About() {
             <TechPills text="Firebase" />
             <TechPills text="Selenium" />
           </div>
+
           <div id="design" className="pt-5">
             <p className="text-primary ">Creative Design</p>
             <TechPills text="Wireframing" />
