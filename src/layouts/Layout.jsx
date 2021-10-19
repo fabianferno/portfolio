@@ -49,6 +49,9 @@ export default function Layout(props) {
                 <Link to="/contact" className="p-3  menu-item nav-link">
                   Contact
                 </Link>
+                <Link to="/resume" className="p-3  menu-item nav-link">
+                  Resume
+                </Link>
               </Nav>
             </Navbar.Collapse>
           </div>
