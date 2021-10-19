@@ -14,7 +14,7 @@ export const HeroThree = () => {
       <Light brightness={10} color={"#00ff00"} position={[-5, 3, 6]} />
 
       <Text
-        scale={[15, 13.5, 15]}
+        scale={[12.8, 12.5, 12.8]}
         color="#ffffff" // default
         anchorX="center" // default
         anchorY="middle" // default
