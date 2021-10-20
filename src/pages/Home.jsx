@@ -47,15 +47,22 @@ export default function Home() {
         gradientWidth={80}
         gradientColor={[31, 31, 31]}
       >
-        <RoleBadges role="App Development" />
-        <RoleBadges role="Graphic Designing" />
-        <RoleBadges role="Internet of Things" />
-        <RoleBadges role="3D Modelling" />
-        <RoleBadges role="Dev Ops" />
-        <RoleBadges role="Full-Stack Web Development" />
-        <RoleBadges role="App Development" />
-        <RoleBadges role="Graphic Designing" />
-        <RoleBadges role="Internet of Things" />
+        {[
+          "App Development",
+          "Graphic Designing",
+          "Internet of Things",
+          "3D Modelling",
+          "Dev Ops",
+          "Full-Stack Web Development",
+          "App Development",
+          "Graphic Designing",
+          "Internet of Things",
+          "3D Modelling",
+          "Dev Ops",
+          "Full-Stack Web Development",
+        ].map((role) => (
+          <RoleBadges role={role} />
+        ))}
       </Marquee>
 
       <div
