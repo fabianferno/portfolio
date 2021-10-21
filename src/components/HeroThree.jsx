@@ -68,7 +68,11 @@ const InnerRing = () => {
     const { camera } = state;
     // camera.rotation.y = state.mouse.x * 0.2;
     // camera.rotation.x = state.mouse.y * 0.2;
-    camera.position.z += state.mouse.y * 0.02;
+    if (camera.position.z > 0) {
+      camera.position.z += state.mouse.y * 0.02;
+    } else {
+      camera.position.z = 18;
+    }
 
     // mesh.current.rotation.x = state.mouse.y * 5;
     // mesh.current.rotation.y = state.mouse.x * 5;
