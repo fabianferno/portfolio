@@ -1,10 +1,30 @@
 import Layout from "../layouts/Layout";
 import Marquee from "react-fast-marquee";
 import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
+import octokit from "../components/Github";
 
-import { HighlightsCard, BasicCard } from "../components/ProjectCards";
+import {
+  HighlightsCard,
+  BasicCard,
+  GithubCard,
+} from "../components/ProjectCards";
+import { useEffect, useState } from "react";
 
 export default function Projects() {
+  const [projects, setProjects] = useState([]);
+
+  async function getProjects() {
+    const response = await octokit.request("GET /users/fabianferno/repos", {
+      username: "fabianferno",
+    });
+    setProjects(response.data);
+    console.log(response.data);
+  }
+
+  useEffect(() => {
+    getProjects();
+  }, []);
+
   return (
     <Layout contained>
       <div className="mt-5 pt-5">
@@ -18,6 +38,7 @@ export default function Projects() {
           </p>
           <div className="inner-shadow bg-secondary">
             <Marquee
+              pauseOnHover
               direction="right"
               speed={30}
               gradient
@@ -79,6 +100,26 @@ export default function Projects() {
           </div>
         </div>
 
+        <p className="text-primary text-left pt-5">
+          Github<span className="text-white "> Repos</span>
+        </p>
+
+        <Marquee
+          direction="left"
+          speed={150}
+          gradient
+          gradientWidth={100}
+          gradientColor={[31, 31, 31]}
+        >
+          {projects.map((project) => (
+            <GithubCard
+              src={project.html_url}
+              title={project.name}
+              text={project.description}
+              technologies={project.topics}
+            />
+          ))}
+        </Marquee>
         <div id="more-projects" className="mt-5 container">
           <p className="text-primary text-left pt-5">
             More<span className="text-white "> Projects</span>
