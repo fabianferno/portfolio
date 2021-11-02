@@ -23,8 +23,11 @@ export function HighlightsCard(props) {
               : "Some quick example text to build on the card title and make up the bulk of the card's content."}
           </p>
           <div className="col-12 p-0">
-            {props.technologies.map((tech) => (
-              <span className="badge badge-pill font-weight-bold badge-primary mr-1">
+            {props.technologies.map((tech, index) => (
+              <span
+                key={index}
+                className="badge badge-pill font-weight-bold badge-primary mr-1"
+              >
                 {tech}
               </span>
             ))}
@@ -59,8 +62,11 @@ export function GithubCard(props) {
               : "Some quick example text to build on the card title and make up the bulk of the card's content."}
           </p>
           <div className="col-12 p-0">
-            {props.technologies.map((tech) => (
-              <span className="badge badge-pill font-weight-bold badge-primary mr-1">
+            {props.technologies.map((tech, index) => (
+              <span
+                key={index}
+                className="badge badge-pill font-weight-bold badge-primary mr-1"
+              >
                 {tech}
               </span>
             ))}
@@ -94,8 +100,11 @@ export function BasicCard(props) {
               : "Some quick example text to build on the card title and make up the bulk of the card's content."}
           </p>
           <div className="col-12 p-0">
-            {props.technologies.map((tech) => (
-              <span className="badge badge-pill font-weight-bold badge-primary mr-1">
+            {props.technologies.map((tech, index) => (
+              <span
+                key={index}
+                className="badge badge-pill font-weight-bold badge-primary mr-1"
+              >
                 {tech}
               </span>
             ))}

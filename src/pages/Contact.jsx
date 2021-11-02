@@ -13,40 +13,41 @@ function SocialPills(props) {
 
 export default function Contact() {
   return (
-    <Layout contained>
-      <div className="mt-5 pt-5">
-        <div className="jumbotron p-0 mx-0 py-5 bg-black  inner-shadow">
-          <div className="p-5 row d-flex align-items-start ">
-            <div className="col-12 col-md-3 ">
-              <h1
-                style={{ fontSize: "3em" }}
-                className="text-white font-weight-bold "
-              >
-                Get in <br />
-                <span className="text-primary"> Touch</span>
-              </h1>
-            </div>
-            <div className="col-md-9 col-12 ">
-              <p className="lead text-secondary">
-                Looking to work with me?
-                <br /> Write to me and I will get back to you at the earliest!{" "}
-                <br />
-                <br />
-                <a
-                  href="mailto:hello@fabianferno.tech"
-                  className="text-primary h5 pt-5"
+    <Layout>
+      <div style={{ marginTop: "130px" }}>
+        <div className="jumbotron  p-0 mx-0 py-5 bg-black  inner-shadow">
+          <div className="container ">
+            <div className=" p-5 row ">
+              <div className="col-12 col-md-5 d-flex  justify-content-start justify-content-md-end ">
+                <h1
+                  style={{ fontSize: "3em" }}
+                  className="text-white mr-md-4 mr-0 text-left font-weight-bold "
                 >
-                  hello@fabianferno.tech
-                </a>
-                <p className="text-white "> &#47;&#47; fabianferno</p>
-              </p>
+                  Get in <br />
+                  <span className="text-primary"> Touch</span>
+                </h1>
+              </div>
+              <div className="col-md-7 col-12 ">
+                <p className="lead text-secondary">
+                  Looking to work with me?
+                  <br /> Write to me and I will get back to you
+                  <br /> at the earliest! <br />
+                  <br />
+                  <a
+                    href="mailto:hello@fabianferno.tech"
+                    className="text-primary h5 pt-5"
+                  >
+                    hello@fabianferno.tech
+                  </a>
+                </p>
+              </div>
             </div>
           </div>
 
           <Marquee
             className=" mt-5 mb-4"
             direction="right"
-            speed={20}
+            speed={40}
             gradient
             gradientWidth={0}
             gradientColor={[31, 31, 31]}
@@ -70,6 +71,18 @@ export default function Contact() {
               src="https://www.youtube.com/channel/UCDrkxune31SSSYDL02P3rHg"
             />
             <SocialPills text="Twitter" src="https://twitter.com/FabianFerno" />
+            <SocialPills
+              text="StackOverflow"
+              src="https://stackoverflow.com/users/13340320/fabian-ferno"
+            />
+            <SocialPills
+              text="Whatsapp"
+              src="https://wa.me/message/DXIEYD52L3BAJ1"
+            />
+            <SocialPills
+              text="Telegram"
+              src="tg://resolve?domain=fabianferno"
+            />
           </Marquee>
         </div>
       </div>

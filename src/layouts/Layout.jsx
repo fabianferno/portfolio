@@ -66,7 +66,7 @@ export default function Layout(props) {
           style={{}}
           className={props.contained ? "container" : ""}
         >
-          <div className="p-2 p-md-5">{props.children}</div>
+          {props.children}
         </motion.div>
       </motion.div>
     </div>

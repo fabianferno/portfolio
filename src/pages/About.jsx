@@ -9,21 +9,22 @@ function TechPills(props) {
 
 export default function About() {
   return (
-    <Layout contained>
+    <Layout className="pt-5">
+      <h1
+        style={{ fontSize: "5rem", marginTop: "140px" }}
+        className="text-black bg-primary text-center   pt-2"
+      >
+        ABOUT
+      </h1>
       <div className="pt-5 mt-5  container">
-        <p className="text-primary ">&#47;&#47; fabianferno</p>
-        <h1 className="text-left my-5 pb-3 text-justify  text-md-left ">
-          About<span className="text-white "> Me</span>
-        </h1>
-
-        <p className="text-secondary text-justify pb-3  text-md-left ">
+        <p className="text-secondary   pb-3  text-center ">
           I am a software engineer with 2.5 years of professional experience in
           designing and developing. I’m currently pursuing my Bachelor of
           Technology in IT - Engineering at Loyola - ICAM College of Engineering
           and Technology.
         </p>
 
-        <div className="text-secondary text-justify text-md-left p mb-5 pb-5">
+        <div className="text-secondary text-center  p mb-5 pb-5">
           <div id="languages" className="pt-5">
             <p className="text-primary">Languages</p>
             <TechPills text="Python" />

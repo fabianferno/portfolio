@@ -88,7 +88,7 @@ const InnerRing = () => {
       <torusBufferGeometry attach="geometry" args={[2, 0.05, 20, 50]} />
       <meshBasicMaterial
         attach="material"
-        color={0x222222}
+        color={0x000000}
         roughness={0.1}
         metalness={0.7}
       />
