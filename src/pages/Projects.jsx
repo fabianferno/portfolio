@@ -31,14 +31,18 @@ export default function Projects() {
       <div className="mt-5 pt-5">
         <h1
           style={{ fontSize: "5rem" }}
-          className="text-black bg-primary text-center mt-5 pt-3"
+          className="text-black bg-secondary shadow text-center mt-5 pt-3"
         >
           PROJECTS
         </h1>
 
-        <p className="text-primary text-center pt-5">
-          Web<span className="text-white "> Apps</span>
+        <p className="text-secondary text-center pt-2">
+          All projects in this page are live listed using the GitHub API -
+          @fabianferno .
         </p>
+        <h4 className="text-primary text-center pt-5">
+          Web<span className="text-white "> Apps</span>
+        </h4>
 
         <Marquee
           direction="left"
@@ -61,9 +65,9 @@ export default function Projects() {
           )}
         </Marquee>
 
-        <p className="text-primary text-center pt-5">
+        <h4 className="text-primary text-center pt-5">
           Freelance<span className="text-white "> Projects</span>
-        </p>
+        </h4>
 
         <Marquee
           direction="right"
@@ -87,9 +91,9 @@ export default function Projects() {
         </Marquee>
 
         <div id="more-projects" className="mt-5 ">
-          <p className="text-primary text-center pt-5">
+          <h4 className="text-primary text-center pt-5">
             Other<span className="text-white "> Projects</span>
-          </p>
+          </h4>
 
           <div className="inner-shadow bg-secondary">
             <ResponsiveMasonry
