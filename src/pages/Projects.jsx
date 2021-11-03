@@ -34,15 +34,23 @@ export default function Projects() {
       <div className="mt-5 pt-5">
         <h1
           style={{
-            fontSize: "10vh",
+            fontSize: "9vh",
           }}
-          className="text-black bg-secondary shadow text-center mt-5 pt-3"
+          className="text-black bg-secondary shadow text-center mt-5 pt-3 pb-1"
         >
           PROJECTS
         </h1>
 
-        <p className="text-secondary text-center pt-2">
-          All projects in this page are live listed using the GitHub API.
+        <p className="text-secondary text-center pt-2 px-4">
+          All projects in this page are fetched live from the{" "}
+          <a
+            href="https://docs.github.com/en/rest"
+            target="_blank"
+            rel="noreferrer"
+          >
+            GitHub API
+          </a>{" "}
+          .
         </p>
 
         {isLoading ? (

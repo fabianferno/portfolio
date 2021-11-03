@@ -6,7 +6,9 @@ function SocialPills(props) {
   return (
     <a href={props.src}>
       <SocialIcon url={props.src} bgColor="#60FF9F" />
-      <span class="btn social-pill mr-5 font-weight-bold">{props.text}</span>
+      <span class="btn social-pill mr-5 bg-black font-weight-bold">
+        {props.text}
+      </span>
     </a>
   );
 }
@@ -15,7 +17,7 @@ export default function Contact() {
   return (
     <Layout>
       <div style={{ marginTop: "130px" }}>
-        <div className="jumbotron  p-0 mx-0 py-5 bg-black  inner-shadow">
+        <div className="jumbotron  p-0 mx-0 py-5 bg-dark">
           <div className="container ">
             <div className=" p-5 row ">
               <div className="col-12 col-md-5 d-flex  justify-content-start justify-content-md-end ">
@@ -51,7 +53,7 @@ export default function Contact() {
           </div>
 
           <Marquee
-            className=" mt-5 mb-4"
+            className=" mt-5 mb-4  "
             direction="right"
             speed={40}
             gradient
