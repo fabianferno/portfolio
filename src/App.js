@@ -16,7 +16,7 @@ import Resume from "./assets/files/Resume.pdf";
 export default function App() {
   document.addEventListener("visibilitychange", (event) => {
     if (document.visibilityState === "visible") {
-      document.title = "Fabian Ferno | <Developer 🐱‍👤/>";
+      document.title = "Fabian Ferno | <Developer ⚡/>";
     } else {
       document.title = "Didn't say Goodbye ;/ 💔";
     }
