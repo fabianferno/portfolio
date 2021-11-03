@@ -1,6 +1,7 @@
 import Layout from "../layouts/Layout";
 import Kathir from "../assets/img/project-screenshots/kathirkreations.gif";
 import Duck from "../assets/img/walking-duck.gif";
+import { motion } from "framer-motion";
 
 function TechPills(props) {
   return (
@@ -11,14 +12,19 @@ function TechPills(props) {
 export default function About() {
   return (
     <Layout className="pt-5">
-      <h1
-        style={{ fontSize: "5rem", marginTop: "140px" }}
-        className="text-black bg-secondary text-center   pt-2"
+      <motion.div
+        style={{
+          fontSize: "10vh",
+          marginTop: "140px",
+        }}
+        animate={{ backgroundColor: ["#0af", "#fa0", "#f00", "#55f"] }}
+        transition={{ duration: 1, repeat: "Infinity", repeatType: "reverse" }}
+        className="h1 text-black text-center pt-2"
       >
-        ABOUT
-      </h1>
-      <div className="pt-5 mt-5 text-center container">
         <img src={Duck} style={{ height: "200px" }} alt="" srcset="" />
+        About
+      </motion.div>
+      <div className="pt-5 mt-5 text-center container">
         <p className="text-secondary   pb-3  text-center ">
           I am a software engineer with 3 years of professional experience in
           developing & designing. I co-founded & help run Pattarai - a tech

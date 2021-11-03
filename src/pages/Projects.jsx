@@ -33,7 +33,9 @@ export default function Projects() {
     <Layout>
       <div className="mt-5 pt-5">
         <h1
-          style={{ fontSize: "5rem" }}
+          style={{
+            fontSize: "10vh",
+          }}
           className="text-black bg-secondary shadow text-center mt-5 pt-3"
         >
           PROJECTS

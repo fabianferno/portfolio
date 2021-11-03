@@ -35,9 +35,15 @@ export default function Contact() {
                   <br />
                   <a
                     href="mailto:hello@fabianferno.tech"
-                    className="text-primary h5 pt-5"
+                    className=" text-primary h5 pt-5"
                   >
                     hello@fabianferno.tech
+                  </a>
+                  <a
+                    href="https://www.buymeacoffee.com/fabianferno"
+                    className="d-flex text-white h5 mt-2"
+                  >
+                    Buy me a Coffee! ☕
                   </a>
                 </p>
               </div>

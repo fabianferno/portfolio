@@ -49,9 +49,14 @@ export default function Layout(props) {
                 <Link to="/contact" className="p-3  menu-item nav-link">
                   Contact
                 </Link>
-                <Link to="/resume" className="p-3  menu-item nav-link">
+                <a
+                  href="/static/media/Resume.895e0d0a.pdf"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="p-3 menu-item nav-link"
+                >
                   Resume
-                </Link>
+                </a>
               </Nav>
             </Navbar.Collapse>
           </div>
@@ -63,7 +68,6 @@ export default function Layout(props) {
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 20 }}
           transition={{ duration: 2.5 }}
-          style={{}}
           className={props.contained ? "container" : ""}
         >
           {props.children}

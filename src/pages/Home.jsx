@@ -19,14 +19,7 @@ export default function Home() {
 
   return (
     <Layout>
-      <div className="row ml-md-3 d-flex ml-0 align-items-center justify-content-center mt-2 pt-2">
-        {/* <h1
-          className="hero   text-center mt-md-5 pb-3 "
-          style={{ pointerEvents: "none" }}
-        >
-          Fabian Ferno
-        </h1> */}
-
+      <div className="row align-items-center justify-content-center mt-2 pt-2">
         <HeroThree />
 
         <div
