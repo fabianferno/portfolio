@@ -14,7 +14,7 @@ export default function About() {
     <Layout className="pt-5">
       <motion.div
         style={{
-          fontSize: "10vh",
+          fontSize: "9vh",
           marginTop: "140px",
         }}
         animate={{ backgroundColor: ["#0af", "#fa0", "#f00", "#55f"] }}
