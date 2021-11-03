@@ -2,12 +2,15 @@ import Layout from "../layouts/Layout";
 import Marquee from "react-fast-marquee";
 import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
 import octokit from "../components/githubConfig";
+import { Loader } from "../components/ProjectLoader";
+import { motion } from "framer-motion";
 
 import { GithubCard } from "../components/ProjectCards";
 import { useEffect, useState } from "react";
 
 export default function Projects() {
   const [projects, setProjects] = useState([]);
+  const [isLoading, setLoader] = useState(true);
 
   async function getProjects() {
     await octokit
@@ -17,7 +20,7 @@ export default function Projects() {
       })
       .then((res) => {
         console.log(res.data);
-
+        setLoader(false);
         setProjects(res.data);
       });
   }
@@ -37,88 +40,98 @@ export default function Projects() {
         </h1>
 
         <p className="text-secondary text-center pt-2">
-          All projects in this page are live listed using the GitHub API -
-          @fabianferno .
+          All projects in this page are live listed using the GitHub API.
         </p>
-        <h4 className="text-primary text-center pt-5">
-          Web<span className="text-white "> Apps</span>
-        </h4>
 
-        <Marquee
-          direction="left"
-          speed={150}
-          pauseOnHover
-          gradient
-          gradientWidth={0}
-          gradientColor={[31, 31, 31]}
-        >
-          {projects.map((project, index) =>
-            project.topics.includes("web-app") ? (
-              <GithubCard
-                key={index}
-                src={project.html_url}
-                title={project.name}
-                text={project.description}
-                technologies={project.topics}
-              />
-            ) : null
-          )}
-        </Marquee>
+        {isLoading ? (
+          <Loader />
+        ) : (
+          <motion.section
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1.5 }}
+          >
+            <h4 className="text-primary text-center pt-5">
+              Web<span className="text-white "> Apps</span>
+            </h4>
 
-        <h4 className="text-primary text-center pt-5">
-          Freelance<span className="text-white "> Projects</span>
-        </h4>
-
-        <Marquee
-          direction="right"
-          speed={150}
-          pauseOnHover
-          gradient
-          gradientWidth={0}
-          gradientColor={[31, 31, 31]}
-        >
-          {projects.map((project, index) =>
-            project.topics.includes("freelance") ? (
-              <GithubCard
-                key={index}
-                src={project.html_url}
-                title={project.name}
-                text={project.description}
-                technologies={project.topics}
-              />
-            ) : null
-          )}
-        </Marquee>
-
-        <div id="more-projects" className="mt-5 ">
-          <h4 className="text-primary text-center pt-5">
-            Other<span className="text-white "> Projects</span>
-          </h4>
-
-          <div className="inner-shadow bg-secondary">
-            <ResponsiveMasonry
-              columnsCount={3}
-              className="mt-0 mt-md-5 container"
+            <Marquee
+              direction="left"
+              speed={150}
+              pauseOnHover
+              gradient
+              gradientWidth={0}
+              gradientColor={[31, 31, 31]}
             >
-              <Masonry>
-                {projects.map((project, index) =>
-                  project.topics.includes("web-app") === false &&
-                  project.topics.includes("freelance") === false &&
-                  project.topics.includes("readme-profile") === false &&
-                  project.topics.includes("ignore") === false ? (
-                    <GithubCard
-                      key={index}
-                      src={project.html_url}
-                      title={project.name}
-                      text={project.description}
-                      technologies={project.topics}
-                    />
-                  ) : null
-                )}
-              </Masonry>
-            </ResponsiveMasonry>
-          </div>
-        </div>
+              {projects.map((project, index) =>
+                project.topics.includes("web-app") ? (
+                  <GithubCard
+                    key={index}
+                    src={project.html_url}
+                    title={project.name}
+                    text={project.description}
+                    technologies={project.topics}
+                  />
+                ) : null
+              )}
+            </Marquee>
+
+            <h4 className="text-primary text-center pt-5">
+              Freelance<span className="text-white "> Projects</span>
+            </h4>
+
+            <Marquee
+              direction="right"
+              speed={150}
+              pauseOnHover
+              gradient
+              gradientWidth={0}
+              gradientColor={[31, 31, 31]}
+            >
+              {projects.map((project, index) =>
+                project.topics.includes("freelance") ? (
+                  <GithubCard
+                    key={index}
+                    src={project.html_url}
+                    title={project.name}
+                    text={project.description}
+                    technologies={project.topics}
+                  />
+                ) : null
+              )}
+            </Marquee>
+
+            <div id="more-projects" className="mt-5 ">
+              <h4 className="text-primary text-center pt-5">
+                Other<span className="text-white "> Projects</span>
+              </h4>
+
+              <div className="inner-shadow bg-secondary">
+                <ResponsiveMasonry
+                  columnsCount={3}
+                  className="mt-0 mt-md-5 container"
+                >
+                  <Masonry>
+                    {projects.map((project, index) =>
+                      project.topics.includes("web-app") === false &&
+                      project.topics.includes("freelance") === false &&
+                      project.topics.includes("readme-profile") === false &&
+                      project.topics.includes("ignore") === false ? (
+                        <GithubCard
+                          key={index}
+                          src={project.html_url}
+                          title={project.name}
+                          text={project.description}
+                          technologies={project.topics}
+                        />
+                      ) : null
+                    )}
+                  </Masonry>
+                </ResponsiveMasonry>
+              </div>
+            </div>
+          </motion.section>
+        )}
       </div>
     </Layout>
   );

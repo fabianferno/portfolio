@@ -1,5 +1,6 @@
 import Layout from "../layouts/Layout";
 import Kathir from "../assets/img/project-screenshots/kathirkreations.gif";
+import Duck from "../assets/img/walking-duck.gif";
 
 function TechPills(props) {
   return (
@@ -12,16 +13,19 @@ export default function About() {
     <Layout className="pt-5">
       <h1
         style={{ fontSize: "5rem", marginTop: "140px" }}
-        className="text-black bg-primary text-center   pt-2"
+        className="text-black bg-secondary text-center   pt-2"
       >
         ABOUT
       </h1>
-      <div className="pt-5 mt-5  container">
+      <div className="pt-5 mt-5 text-center container">
+        <img src={Duck} style={{ height: "200px" }} alt="" srcset="" />
         <p className="text-secondary   pb-3  text-center ">
-          I am a software engineer with 2.5 years of professional experience in
-          designing and developing. I’m currently pursuing my Bachelor of
-          Technology in IT - Engineering at Loyola - ICAM College of Engineering
-          and Technology.
+          I am a software engineer with 3 years of professional experience in
+          developing & designing. I co-founded & help run Pattarai - a tech
+          community. I love to build scalable web apps, cross-platform apps, IoT
+          systems & multimedia. I’m currently pursuing my Bachelor of Technology
+          in Information Technology at Loyola - ICAM College of Engineering and
+          Technology (LICET).
         </p>
 
         <div className="text-secondary text-center  p mb-5 pb-5">
