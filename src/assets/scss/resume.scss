@@ -2,7 +2,6 @@
 # Resume
 --------------------------------------------------------------*/
 .resume .resume-title {
-
     font-size: 26px;
     font-weight: 700;
     margin-top: 20px;
@@ -51,12 +50,11 @@
 }
 
 .resume .resume-item::before {
-    margin-top: 10px;
-
+    margin-top: 50px;
     content: "";
     position: absolute;
     width: 10px;
-    height: 50px;
+    height: 10px;
     border-radius: 5px;
     left: -5px;
     top: 0;

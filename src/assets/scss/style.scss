@@ -77,10 +77,10 @@ img.dark-shadow {
   margin-left: -10px;
   padding-left: 25px;
   color: map.get($theme-colors, "primary");
-  background-color: map.get($theme-colors, "dark");
+  background-color: map.get($theme-colors, "black");
 }
 
 .social-pill:hover {
-  color: map.get($theme-colors, "dark");
+  color: map.get($theme-colors, "black");
   background-color: map.get($theme-colors, "primary");
 }

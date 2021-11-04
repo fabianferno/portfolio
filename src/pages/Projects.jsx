@@ -34,9 +34,9 @@ export default function Projects() {
       <div className="mt-5 pt-5">
         <h1
           style={{
-            fontSize: "8.5vh",
+            fontSize: "7vh",
           }}
-          className="text-black bg-secondary shadow text-center mt-5 pt-3 pb-1"
+          className="text-black  font-weight-bold bg-secondary shadow text-center mt-5 pt-3 pb-1"
         >
           PROJECTS
         </h1>

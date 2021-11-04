@@ -6,9 +6,7 @@ function SocialPills(props) {
   return (
     <a href={props.src}>
       <SocialIcon url={props.src} bgColor="#60FF9F" />
-      <span class="btn social-pill mr-5 bg-black font-weight-bold">
-        {props.text}
-      </span>
+      <span class="btn social-pill mr-5 font-weight-bold">{props.text}</span>
     </a>
   );
 }
@@ -23,7 +21,7 @@ export default function Contact() {
               <div className="col-12 col-md-5 d-flex  justify-content-start justify-content-md-end ">
                 <h1
                   style={{ fontSize: "3em" }}
-                  className="text-white mr-md-4 mr-0 text-left font-weight-bold "
+                  className="text-white mr-md-4 mr-0 text-left font-weight-bold"
                 >
                   Get in <br />
                   <span className="text-primary"> Touch</span>
@@ -33,7 +31,7 @@ export default function Contact() {
                 <p className="lead text-secondary">
                   Looking to work with me?
                   <br /> Write to me and I will get back to you
-                  <br /> at the earliest! <br />
+                  <br className="d-md-block d-none" /> at the earliest! <br />
                   <br />
                   <a
                     href="mailto:hello@fabianferno.tech"
@@ -56,6 +54,7 @@ export default function Contact() {
             className=" mt-5 mb-4  "
             direction="right"
             speed={40}
+            pauseOnHover
             gradient
             gradientWidth={0}
             gradientColor={[31, 31, 31]}

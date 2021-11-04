@@ -14,18 +14,26 @@ export default function About() {
     <Layout className="pt-5">
       <motion.div
         style={{
-          fontSize: "9vh",
           marginTop: "140px",
         }}
-        animate={{ backgroundColor: ["#0af", "#fa0", "#f00", "#55f"] }}
-        transition={{ duration: 1, repeat: "Infinity", repeatType: "reverse" }}
-        className="h1 text-black text-center pt-2"
+        animate={{ backgroundColor: ["#0af", "#fa0", "#f88", "#55f"] }}
+        transition={{
+          duration: 3,
+          repeat: "Infinity",
+          repeatType: "reverse",
+        }}
+        className="h1 shadow text-center pt-2"
       >
         <img src={Duck} style={{ height: "200px" }} alt="" srcset="" />
-        About
+        <h1
+          className="text-black  font-weight-bold pb-3"
+          style={{ fontSize: "7vh" }}
+        >
+          ABOUT ME
+        </h1>
       </motion.div>
-      <div className="pt-5 mt-5 text-center container">
-        <p className="text-secondary   pb-3  text-center ">
+      <div className="pt-3 mt-5 text-center container">
+        <p className="text-secondary pb-3 text-center">
           I am a software engineer with 3 years of professional experience in
           developing & designing. I co-founded & help run Pattarai - a tech
           community. I love to build scalable web apps, cross-platform apps, IoT
@@ -125,7 +133,7 @@ export default function About() {
         {/* ======= Resume Section ======= */}
         <section
           id="resume"
-          className="resume  text-secondary inner-shadow card-rounded bg-black pl-2 pl-md-5 pb-5"
+          className="resume text-left text-secondary inner-shadow card-rounded bg-black pl-2 pl-md-5 pb-5"
         >
           <div className="container ">
             <div className="row">

@@ -18,17 +18,15 @@ function useWindowSize() {
   return size;
 }
 
-export const HeroThree = () => {
+export const FabianGyro3D = () => {
   const [width, height] = useWindowSize();
   console.log(height);
 
   return (
-    <Canvas style={{ height: "60vh", width: "100vw" }} colorManagement>
-      <color attach="background" args={"#1f1f1f"} />
-      <ambientLight intensity={0.3} />
-      <pointLight position={[10, 0, 0]} intensity={0.5} />
-      <Light brightness={10} color={"#00ff00"} position={[-5, 3, 6]} />
-
+    <Canvas
+      style={{ height: "60vh", width: "100vw", backgroundColor: "#1f1f1f" }}
+      colorManagement
+    >
       <Text
         scale={[12.8, 12.5, 12.8].map((scale) => (scale * width) / 1000)}
         color="#ffffff" // default
@@ -46,38 +44,18 @@ export const HeroThree = () => {
   );
 };
 
-const Light = ({ brightness, color, position }) => {
-  return (
-    <rectAreaLight
-      width={3}
-      height={3}
-      color={color}
-      intensity={brightness}
-      position={position}
-      lookAt={[0, 0, 0]}
-      penumbra={1}
-      castShadow
-    />
-  );
-};
-
 const InnerRing = () => {
   const mesh = useRef(null);
 
   useFrame((state) => {
     const { camera } = state;
-    // camera.rotation.y = state.mouse.x * 0.2;
-    // camera.rotation.x = state.mouse.y * 0.2;
     if (camera.position.z > 15) {
       camera.position.z = 5;
     } else if (camera.position.z > 0) {
       camera.position.z += state.mouse.y * 0.02;
     } else {
-      camera.position.z = 5;
+      camera.position.z = 10;
     }
-
-    // mesh.current.rotation.x = state.mouse.y * 5;
-    // mesh.current.rotation.y = state.mouse.x * 5;
 
     mesh.current.rotation.y += 0.005;
     mesh.current.rotation.x += 0.01;
@@ -98,14 +76,7 @@ const InnerRing = () => {
 
 const OuterRing = () => {
   const mesh = useRef(null);
-  useFrame((state) => {
-    //const { camera } = state;
-
-    // camera.rotation.x = state.mouse.y * 0.15;
-
-    // mesh.current.rotation.y = state.mouse.y * 3;
-    // mesh.current.rotation.x = state.mouse.x * 3;
-
+  useFrame(() => {
     mesh.current.rotation.y += 0.01;
     mesh.current.rotation.x += 0.02;
   });
@@ -125,14 +96,7 @@ const OuterRing = () => {
 
 const OuterMostRing = () => {
   const mesh = useRef(null);
-  useFrame((state) => {
-    //const { camera } = state;
-
-    // camera.rotation.x = state.mouse.y * 0.15;
-
-    // mesh.current.rotation.y = state.mouse.y * 3;
-    // mesh.current.rotation.x = state.mouse.x * 3;
-
+  useFrame(() => {
     mesh.current.rotation.y += 0.03;
     mesh.current.rotation.x += 0.015;
   });
