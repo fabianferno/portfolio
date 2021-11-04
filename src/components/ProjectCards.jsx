@@ -43,11 +43,11 @@ export function GithubCard(props) {
   return (
     <a href={props.src} target="_blank" rel="noreferrer">
       <motion.div
-        whileHover={{ scale: 1.08, rotate: -2 }}
+        initial={{ rotate: props.straight ? 0 : props.right ? 5 : -5 }}
+        whileHover={{ scale: 1.08, rotate: 0 }}
         className="card bg-black text-primary m-5 d-flex align-items-center"
         style={{
           width: "20em",
-
           boxShadow:
             "0 8px 16px 0 rgba(0, 0, 0, 0.15), 0 6px 20px 0 rgba(0, 0, 0, 0.16)",
         }}

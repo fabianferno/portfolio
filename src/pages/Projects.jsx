@@ -66,8 +66,8 @@ export default function Projects() {
             </h4>
 
             <Marquee
-              direction="left"
-              speed={150}
+              direction="right"
+              speed={120}
               pauseOnHover
               gradient
               gradientWidth={0}
@@ -91,8 +91,8 @@ export default function Projects() {
             </h4>
 
             <Marquee
-              direction="right"
-              speed={150}
+              direction="left"
+              speed={120}
               pauseOnHover
               gradient
               gradientWidth={0}
@@ -101,6 +101,7 @@ export default function Projects() {
               {projects.map((project, index) =>
                 project.topics.includes("freelance") ? (
                   <GithubCard
+                    right
                     key={index}
                     src={project.html_url}
                     title={project.name}
@@ -128,6 +129,7 @@ export default function Projects() {
                       project.topics.includes("readme-profile") === false &&
                       project.topics.includes("ignore") === false ? (
                         <GithubCard
+                          straight
                           key={index}
                           src={project.html_url}
                           title={project.name}
