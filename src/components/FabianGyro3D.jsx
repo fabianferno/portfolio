@@ -35,6 +35,16 @@ export const FabianGyro3D = () => {
       >
         F A B I A N
       </Text>
+      <Text
+        position={[0, -2, 0].map((scale) => (scale * width) / 2000)}
+        scale={[2.8, 2.5, 2.8].map((scale) => (scale * width) / 1000)}
+        color="#ffffff" // default
+        anchorX="center" // default
+        anchorY="middle" // default
+      >
+        I'm a Dev-inator: love to make things simpler with code.
+      </Text>
+
       <OrbitControls enableRotate={false} />
 
       <InnerRing />
