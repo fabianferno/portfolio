@@ -45,88 +45,108 @@ export default function About() {
         <div className="text-secondary text-center  p mb-5 pb-5">
           <div id="languages" className="pt-5">
             <p className="text-primary">Languages</p>
-            <TechPills text="Python" />
-            <TechPills text="Embedded C" />
-            <TechPills text="JavaScript - ES6" />
-            <TechPills text="CSS3/SASS" />
-            <TechPills text="Dart" />
-            <TechPills text="Java" />
-            <TechPills text="php" />
-            <TechPills text="C#" />
-            <TechPills text="HTML" />
+            {[
+              "Python",
+              "Embedded C",
+              "JavaScript - ES6",
+              "CSS3/SASS",
+              "Dart",
+              "Java",
+              "php",
+              "C#",
+              "HTML",
+            ].map((text, index) => (
+              <TechPills text={text} />
+            ))}
           </div>
           <div id="databases" className="pt-5">
             <p className="text-primary ">Databases</p>
-            <TechPills text="Micrsoft SQL" />
-            <TechPills text="MariaDB" />
-            <TechPills text="MySQL" />
-            <TechPills text="PostgreSQL" />
-            <TechPills text="MongoDB" />
-            <TechPills text="SQLite" />
-            <TechPills text="Firestore" />
-            <TechPills text="HarperDB" />
+            {[
+              "Micrsoft SQL",
+              "MariaDB",
+              "MySQL",
+              "PostgreSQL",
+              "MongoDB",
+              "SQLite",
+              "Firestore",
+              "HarperDB",
+            ].map((text, index) => (
+              <TechPills text={text} />
+            ))}
           </div>
 
           <div id="frameworks" className="pt-5">
             <p className="text-primary ">Frameworks and Libraries</p>
-            <TechPills text="ReactJS" />
-            <TechPills text="NextJS" />
-            <TechPills text="ExpressJS" />
-            <TechPills text="Flask | Python" />
-            <TechPills text="axios" />
-            <TechPills text="Bootstrap" />
-            <TechPills text="jQuery" />
-            <TechPills text="ASP.NET" />
-            <TechPills text="styled-components" />
-            <TechPills text="Material UI" />
-            <TechPills text="Tailwind UI" />
-            <TechPills text="discord.py" />
-            <TechPills text="Framer Motion" />
-            <TechPills text="ThreeJS" />
-            <TechPills text="Wordpress" />
+            {[
+              "ReactJS",
+              "NextJS",
+              "ExpressJS",
+              "Flask | Python",
+              "axios",
+              "Bootstrap",
+              "jQuery",
+              "ASP.NET",
+              "styled-components",
+              "Material UI",
+              "Tailwind UI",
+              "discord.py",
+              "Framer Motion",
+              "ThreeJS",
+              "Wordpress",
+            ].map((text, index) => (
+              <TechPills text={text} />
+            ))}
           </div>
 
           <div id="tools" className="pt-5">
             <p className="text-primary ">Tools</p>
-            <TechPills text="Git" />
-            <TechPills text="Postman" />
-            <TechPills text="repl.it" />
-            <TechPills text="Cloudflare" />
-            <TechPills text="IFTTT" />
-            <TechPills text="jQuery" />
-            <TechPills text="npm" />
-            <TechPills text="GitHub" />
-            <TechPills text="cPanel" />
-            <TechPills text="Apache" />
-            <TechPills text="SSH" />
-            <TechPills text="nginx" />
-            <TechPills text="ArduinoIDE" />
-            <TechPills text="Micropython" />
-            <TechPills text="Netlify" />
-            <TechPills text="Heroku" />
-            <TechPills text="Vercel" />
-            <TechPills text="Github Actions" />
-            <TechPills text="Linux" />
-            <TechPills text="Supabase" />
-            <TechPills text="Firebase" />
-            <TechPills text="Selenium" />
+            {[
+              "Git",
+              "Postman",
+              "repl.it",
+              "Cloudflare",
+              "IFTTT",
+              "jQuery",
+              "npm",
+              "GitHub",
+              "cPanel",
+              "Apache",
+              "SSH",
+              "nginx",
+              "ArduinoIDE",
+              "Micropython",
+              "Netlify",
+              "Heroku",
+              "Vercel",
+              "Github Actions",
+              "Linux",
+              "Supabase",
+              "Firebase",
+              "Selenium",
+            ].map((text, index) => (
+              <TechPills text={text} />
+            ))}
           </div>
 
           <div id="design" className="pt-5">
             <p className="text-primary ">Creative Design</p>
-            <TechPills text="Wireframing" />
-            <TechPills text="Photoshop" />
-            <TechPills text="Illustrator" />
-            <TechPills text="InDesign" />
-            <TechPills text="Premiere Pro" />
-            <TechPills text="Adobe XD" />
-            <TechPills text="Filmora" />
-            <TechPills text="After Effects" />
-            <TechPills text="Cinema4D" />
-            <TechPills text="Sketchup3D" />
-            <TechPills text="Unity3D" />
-            <TechPills text="Unreal Engine" />
-            <TechPills text="Thearender" />
+            {[
+              "Wireframing",
+              "Photoshop",
+              "Illustrator",
+              "InDesign",
+              "Premiere Pro",
+              "Adobe XD",
+              "Filmora",
+              "After Effects",
+              "Cinema4D",
+              "Sketchup3D",
+              "Unity3D",
+              "Unreal Engine",
+              "Thearender",
+            ].map((text, index) => (
+              <TechPills text={text} />
+            ))}
           </div>
         </div>
 
@@ -138,7 +158,7 @@ export default function About() {
           <div className="container ">
             <div className="row">
               <div className="col-lg-6">
-                <h3 className="resume-title pt-5">Education</h3>
+                <h3 className="font-weight-bold text-white pt-5">Education</h3>
                 <div className="resume-item">
                   <h4>B.Tech Information Technology</h4>
                   <h5>June 2019 Present</h5>
