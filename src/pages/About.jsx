@@ -2,14 +2,23 @@ import Layout from "../layouts/Layout";
 import Kathir from "../assets/img/project-screenshots/kathirkreations.gif";
 import Duck from "../assets/img/walking-duck.gif";
 import { motion } from "framer-motion";
+import { useEffect } from "react";
 
 function TechPills(props) {
   return (
-    <span class="badge badge-pill badge-black p-2 mr-1 mt-1">{props.text}</span>
+    <span className="badge badge-pill badge-black p-2 mr-1 mt-1">
+      {props.text}
+    </span>
   );
 }
 
 export default function About() {
+  useEffect(() => {
+    fetch("http://127.0.0.1:5000/users?cache=true")
+      .then((response) => response.json())
+      .then((data) => console.log(data));
+  });
+
   return (
     <Layout className="pt-5">
       <motion.div
@@ -24,7 +33,7 @@ export default function About() {
         }}
         className="h1 shadow text-center pt-2"
       >
-        <img src={Duck} style={{ height: "200px" }} alt="" srcset="" />
+        <img src={Duck} style={{ height: "200px" }} alt="" srcSet="" />
         <h1
           className="text-black  font-weight-bold pb-3"
           style={{ fontSize: "7vh" }}
@@ -56,7 +65,7 @@ export default function About() {
               "C#",
               "HTML",
             ].map((text, index) => (
-              <TechPills text={text} />
+              <TechPills key={index} text={text} />
             ))}
           </div>
           <div id="databases" className="pt-5">
@@ -71,7 +80,7 @@ export default function About() {
               "Firestore",
               "HarperDB",
             ].map((text, index) => (
-              <TechPills text={text} />
+              <TechPills key={index} text={text} />
             ))}
           </div>
 
@@ -94,7 +103,7 @@ export default function About() {
               "ThreeJS",
               "Wordpress",
             ].map((text, index) => (
-              <TechPills text={text} />
+              <TechPills key={index} text={text} />
             ))}
           </div>
 
@@ -124,7 +133,7 @@ export default function About() {
               "Firebase",
               "Selenium",
             ].map((text, index) => (
-              <TechPills text={text} />
+              <TechPills key={index} text={text} />
             ))}
           </div>
 
@@ -145,7 +154,7 @@ export default function About() {
               "Unreal Engine",
               "Thearender",
             ].map((text, index) => (
-              <TechPills text={text} />
+              <TechPills key={index} text={text} />
             ))}
           </div>
         </div>
@@ -274,7 +283,7 @@ export default function About() {
                     src={Kathir}
                     className="img-fluid pr-4"
                     alt=""
-                    srcset=""
+                    srcSet=""
                   />
                 </div>
               </div>
