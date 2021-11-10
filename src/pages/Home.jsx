@@ -3,20 +3,39 @@ import { motion } from "framer-motion";
 import { FabianGyro3D } from "../components/FabianGyro3D";
 import Marquee from "react-fast-marquee";
 import ErrorBoundary from "../components/ErrorBoundary";
+import { useEffect, useState } from "react";
+
+const RoleBadges = (props) => {
+  return (
+    <motion.button
+      style={{ fontSize: "1em" }}
+      className="btn btn-black mr-4 mt-3 d-flex d-md-inline"
+      whileHover={{ scale: 0.9 }}
+      whileTap={{ scale: 1.1 }}
+    >
+      {props.role}
+    </motion.button>
+  );
+};
 
 export default function Home() {
-  const RoleBadges = (props) => {
-    return (
-      <motion.button
-        style={{ fontSize: "1em" }}
-        className="btn btn-black mr-4 mt-3 d-flex d-md-inline"
-        whileHover={{ scale: 0.9 }}
-        whileTap={{ scale: 1.1 }}
-      >
-        {props.role}
-      </motion.button>
-    );
-  };
+  const [quote, setQuote] = useState({
+    eng: "There’s a lot of beauty in ordinary things. Isn’t that kind of the point?",
+    character: "Pam Beesly - the office",
+  });
+
+  useEffect(() => {
+    fetch(
+      "https://api-thirukkural.vercel.app/api?num=" +
+        Math.floor(Math.random() * (1330 - 0 + 1) + 0)
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        data.character = "Thirukural";
+        console.log(data);
+        setQuote(data);
+      });
+  }, []);
 
   return (
     <ErrorBoundary>
@@ -60,19 +79,26 @@ export default function Home() {
           ))}
         </Marquee>
 
-        <div
-          style={{ lineHeight: "45px" }}
-          className="mt-md-5 mt-5 container p-md-5 p-2 h3 text-secondary text-center"
-        >
-          “There’s a lot of beauty in ordinary things.{" "}
-          <div className=" d-none d-md-flex"></div> Isn’t that kind of the
-          point?”
-          <span className="d-md-block mt-md-0 mt-2 d-flex justify-content-center text-white font-weight-bold">
-            Pam Beesly{"  "}
-            <span className="pl-2 font-italic text-secondary font-weight-normal">
-              - the office
-            </span>
+        <div className="mt-md-5 mt-5 d-flex flex-column justify-content-center align-items-center container p-md-5 p-2 h3 text-secondary text-center">
+          <div
+            style={{
+              lineHeight: "45px",
+              width: "60vw",
+              wordWrap: "break-word",
+            }}
+          >
+            {JSON.stringify(quote.eng)}
+          </div>
+          <span
+            style={{ fontSize: "25px" }}
+            className=" d-md-block mt-md-2 mt-2 d-flex justify-content-center text-white font-weight-bold"
+          >
+            {"- " + quote.character + " API -"}
           </span>
+          <p className="my-5" style={{ fontSize: "15px" }}>
+            {quote.line1} <br />
+            {quote.line2}
+          </p>
         </div>
       </Layout>
     </ErrorBoundary>
