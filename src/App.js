@@ -46,23 +46,25 @@ export default function App() {
           expand="lg"
           variant="dark"
         >
-          <div className=" d-md-flex d-block justify-content-md-center justify-content-between">
+          <div className=" d-md-flex d-block align-items-center justify-content-md-center justify-content-between">
             <Link
               to="/"
               style={{ fontSize: "2em" }}
-              className="navbar-brand font-weight-bold text-primary mr-md-5 mr-4"
+              className="navbar-brand font-weight-bold text-primary mr-md-5  mr-3"
             >
               super.skywalker
             </Link>
 
-            <Navbar.Toggle
-              className="py-3  bg-dark rounded-circle inner-shadow"
-              aria-controls="responsive-navbar-nav"
-            >
-              ⚡
-            </Navbar.Toggle>
+            <span className="d-flex mt-3 d-sm-inline justify-content-center">
+              <Navbar.Toggle
+                className="py-3 bg-dark rounded-circle inner-shadow"
+                aria-controls="responsive-navbar-nav"
+              >
+                ⚡
+              </Navbar.Toggle>
+            </span>
             <Navbar.Collapse id="responsive-navbar-nav">
-              <Nav className="mt-3 mt-md-0">
+              <Nav className="mt-3  mt-md-0 text-md-left text-center">
                 <Link to="/about" className="p-3 menu-item nav-link">
                   About
                 </Link>
