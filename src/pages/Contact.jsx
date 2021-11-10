@@ -32,19 +32,28 @@ export default function Contact() {
                   Looking to work with me?
                   <br /> Write to me and I will get back to you
                   <br className="d-md-block d-none" /> at the earliest! <br />
-                  <br />
                   <a
                     href="mailto:hello@fabianferno.tech"
                     className=" text-primary h5 pt-5"
                   >
                     hello@fabianferno.tech
                   </a>
-                  <a
-                    href="https://www.buymeacoffee.com/fabianferno"
-                    className="d-flex text-white h5 mt-2"
+                  <br /> <br />
+                  <div
+                    style={{ lineHeight: "40px" }}
+                    className="text-white h5 mt-2"
                   >
-                    Buy me a Coffee! ☕
-                  </a>
+                    If you liked my portfolio, <br />
+                    buy me a{" "}
+                    <a
+                      target="_blank"
+                      rel="noreferrer"
+                      className="btn badge-pill font-weight-bold btn-dark btn-outline-primary"
+                      href="https://www.buymeacoffee.com/fabianferno"
+                    >
+                      Coffee ☕
+                    </a>{" "}
+                  </div>
                 </p>
               </div>
             </div>
