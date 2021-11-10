@@ -89,20 +89,18 @@ export default function App() {
   }
 
   return (
-    <div>
-      <Router>
-        <Header />
-        <Switch>
-          <Route exact path="/" component={Home} />
-          <Route exact path="/about" component={About} />
-          <Route exact path="/services" component={Services} />
-          <Route exact path="/projects" component={Projects} />
-          <Route exact path="/contact" component={Contact} />
-          <Route exact path="/resume">
-            <Redirect to={Resume} />
-          </Route>
-        </Switch>
-      </Router>
-    </div>
+    <Router>
+      <Header />
+      <Switch>
+        <Route exact path="/" component={Home} />
+        <Route exact path="/about" component={About} />
+        <Route exact path="/services" component={Services} />
+        <Route exact path="/projects" component={Projects} />
+        <Route exact path="/contact" component={Contact} />
+        <Route exact path="/resume">
+          <Redirect to={Resume} />
+        </Route>
+      </Switch>
+    </Router>
   );
 }
