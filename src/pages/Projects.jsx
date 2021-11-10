@@ -19,7 +19,6 @@ export default function Projects() {
         affiliation: "owner",
       })
       .then((res) => {
-        console.log(res.data);
         setLoader(false);
         setProjects(res.data);
       });
