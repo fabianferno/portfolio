@@ -32,7 +32,6 @@ export default function Home() {
       .then((response) => response.json())
       .then((data) => {
         data.character = "Thirukural";
-        console.log(data);
         setQuote(data);
       });
   }, []);

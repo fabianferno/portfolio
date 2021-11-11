@@ -42,7 +42,7 @@ export const FabianGyro3D = () => {
         anchorX="center" // default
         anchorY="middle" // default
       >
-        I'm a Dev-inator: love to make things simpler with code.
+        I'm a Dev-inator: love to make life simpler with code.
       </Text>
 
       <OrbitControls enableRotate={false} />
