@@ -15,7 +15,7 @@ function TechPills(props) {
 }
 
 export default function About() {
-  const [profileData, setProfileData] = useState({});
+  // const [profileData, setProfileData] = useState({});
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -23,7 +23,7 @@ export default function About() {
       .then((response) => response.json())
       .then((data) => {
         console.log(data);
-        setProfileData(data);
+        //setProfileData(data);
         setIsLoading(false);
       })
       .catch((error) => setIsLoading(false));
