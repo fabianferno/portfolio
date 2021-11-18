@@ -92,7 +92,7 @@ export default function Home() {
             style={{ fontSize: "25px" }}
             className=" d-md-block mt-md-2 mt-2 d-flex justify-content-center text-white font-weight-bold"
           >
-            {"- " + quote.character + " API -"}
+            {"- " + quote.character + " -"}
           </span>
           <p className="my-5" style={{ fontSize: "15px" }}>
             {quote.line1} <br />
