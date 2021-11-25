@@ -39,11 +39,19 @@ export default function Work() {
         style={{ marginTop: "200px" }}
         className="d-flex flex-column justify-content-center align-items-center"
       >
+        <h3
+          style={{
+            transform: "rotate3d(0.5, -0.866, 0, 20deg) rotateZ(-1deg)",
+          }}
+          className="text-center text-uppercase text-white"
+        >
+          A line-up of FEW previous works.
+        </h3>
         <div className="mb-5">
           <Marquee
             style={{
               width: "110vw",
-              transform: " rotate3d(0.5, -0.866, 0, 20deg) rotateZ(-1deg)",
+              transform: "rotate3d(0.5, -0.866, 0, 20deg) rotateZ(-1deg)",
             }}
             direction="right"
             speed={50}

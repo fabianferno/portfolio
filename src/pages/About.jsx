@@ -1,6 +1,6 @@
 import Layout from "../layouts/Layout";
 import Kathir from "../assets/img/project-screenshots/kathirkreations.gif";
-import Duck from "../assets/img/walking-duck.gif";
+import Duck from "../assets/img/cherryb.gif";
 import { motion } from "framer-motion";
 import { Loader } from "../components/AboutLoader";
 
@@ -35,23 +35,31 @@ export default function About() {
         style={{
           marginTop: "140px",
         }}
-        animate={{ backgroundColor: ["#0af", "#fa0", "#f88", "#55f"] }}
-        transition={{
-          duration: 3,
-          repeat: "Infinity",
-          repeatType: "reverse",
-        }}
-        className="h1 shadow text-center pt-2"
+        className="h1 shadow text-center"
       >
-        <img src={Duck} style={{ height: "200px" }} alt="" srcSet="" />
         <h1
-          className="text-black font-weight-bold pb-3"
-          style={{ fontSize: "7vh" }}
+          style={{
+            fontSize: "7vh",
+          }}
+          className="text-black  font-weight-bold bg-secondary shadow text-center mt-5 pt-3 pb-1"
         >
           ABOUT ME
         </h1>
       </motion.div>
+
       <div className="pt-3 mt-5 text-center container">
+        <img
+          className=" mb-5"
+          src={Duck}
+          style={{
+            height: "10rem",
+            borderRadius: "5%",
+            boxShadow:
+              "0px 27.5px 40px -17.5px rgb(0 0 0 / 40%), 46.2px 37.5px 40px -17.5px rgb(0 0 0 / 40%)",
+          }}
+          alt=""
+          srcSet=""
+        />
         <p className="text-secondary pb-3 text-center">
           I am a software engineer with 3 years of professional experience in
           developing & designing. I co-founded & help run Pattarai - a tech

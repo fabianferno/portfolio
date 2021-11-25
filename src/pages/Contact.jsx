@@ -18,7 +18,7 @@ export default function Contact() {
     <Layout>
       <div
         style={{
-          marginTop: "130px",
+          marginTop: "100px",
         }}
       >
         <div className="jumbotron  p-0 mx-0 py-5 bg-dark">

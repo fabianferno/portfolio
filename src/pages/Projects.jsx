@@ -34,8 +34,10 @@ export default function Projects() {
         <h1
           style={{
             fontSize: "7vh",
+            width: "110vw",
+            marginLeft: "-5vw",
           }}
-          className="text-black  font-weight-bold bg-secondary shadow text-center mt-5 pt-3 pb-1"
+          className="text-black font-weight-bold bg-secondary shadow text-center mt-5 pt-3 pb-1"
         >
           PROJECTS
         </h1>
@@ -60,7 +62,12 @@ export default function Projects() {
             animate={{ opacity: 1 }}
             transition={{ duration: 1.5 }}
           >
-            <h4 className="text-primary text-center pt-5">
+            <h4
+              style={{
+                transform: "rotate3d(0.5, -0.866, 0, 20deg) rotateZ(-1deg)",
+              }}
+              className="text-primary text-center pt-5"
+            >
               Web<span className="text-white "> Apps</span>
             </h4>
 
@@ -90,7 +97,12 @@ export default function Projects() {
                 ) : null
               )}
             </Marquee>
-            <h4 className="text-primary text-center pt-5">
+            <h4
+              style={{
+                transform: "rotate3d(0.5, -0.866, 0, 20deg) rotateZ(-1deg)",
+              }}
+              className="text-primary text-center pt-5"
+            >
               Freelance<span className="text-white "> Projects</span>
             </h4>
 
@@ -121,7 +133,13 @@ export default function Projects() {
               )}
             </Marquee>
 
-            <div id="more-projects" className="mt-5 ">
+            <div
+              style={{
+                transform: "rotate3d(0.5, -0.866, 0, 20deg) rotateZ(-1deg)",
+              }}
+              id="more-projects"
+              className="mt-5 "
+            >
               <h4 className="text-primary text-center pt-5">
                 Other<span className="text-white "> Projects</span>
               </h4>

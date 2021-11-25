@@ -39,9 +39,10 @@ export default function App() {
         <Navbar
           fixed="top"
           style={{
+            marginTop: "-20px",
             borderEndEndRadius: "30px",
             borderEndStartRadius: "40px",
-            paddingTop: "30px",
+            paddingTop: "60px",
             paddingBottom: "30px",
           }}
           className="shadow d-flex container-md justify-content-center bg-black align-items-center pl-md-5 pl-4"
