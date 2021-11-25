@@ -7,7 +7,7 @@ import {
 import { useState } from "react";
 import Home from "./pages/Home";
 import About from "./pages/About";
-import Services from "./pages/Services";
+import Work from "./pages/Work";
 import Projects from "./pages/Projects";
 import Contact from "./pages/Contact";
 
@@ -106,6 +106,13 @@ export default function App() {
                 </Link>
                 <Link
                   onClick={() => setIsOpen(false)}
+                  to="/work"
+                  className="p-3  menu-item nav-link"
+                >
+                  Works
+                </Link>
+                <Link
+                  onClick={() => setIsOpen(false)}
                   to="/contact"
                   className="p-3  menu-item nav-link"
                 >
@@ -134,7 +141,7 @@ export default function App() {
       <Switch>
         <Route exact path="/" component={Home} />
         <Route exact path="/about" component={About} />
-        <Route exact path="/services" component={Services} />
+        <Route exact path="/work" component={Work} />
         <Route exact path="/projects" component={Projects} />
         <Route exact path="/contact" component={Contact} />
         <Route exact path="/resume">

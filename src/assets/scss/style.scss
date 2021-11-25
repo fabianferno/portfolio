@@ -2,7 +2,7 @@
 /* make the customizations */
 $theme-colors: ("info": #ffbc44,
   "primary": #60ff9f,
-  "dark": rgb(31, 31, 31),
+  "dark": #2a2a2a,
   "secondary": #a7a7a7,
   "black": #0f0f0f,
 );
@@ -12,11 +12,13 @@ $theme-colors: ("info": #ffbc44,
 @import "selection.scss";
 @import "resume.scss";
 @import "scrollbar.scss";
+@import "contact.scss";
 
 
 // @import "/src/assets/fonts/fonts.css";
 @import url('https://fonts.googleapis.com/css2?family=Bilbo+Swash+Caps&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&display=swap');
+
 
 
 
@@ -43,23 +45,45 @@ a:hover {
 
 .blur {
   filter: blur(5px);
+  transition: 0.2s ease;
 }
 
-.hover-box {
-  padding-bottom: 5px;
+.blur:hover {
+  filter: blur(0px);
+  transition: 0.2s ease;
+}
+
+.hover-box-up {
+  padding: 5px;
+  margin-bottom: -10px;
   background-image: linear-gradient(to right,
       transparent calc(0% - 5px),
       #60ff9f 0%,
       #272727 100%);
   background-size: 0%;
   background-repeat: no-repeat;
-  display: inline;
+  display: flex;
   transition: 0.5s ease;
 }
 
-.hover-box:hover {
+.hover-box-down {
+  padding: 5px;
+  margin-bottom: 5px;
+  background-image: linear-gradient(to right,
+      transparent calc(0% - 5px),
+      #60ff9f 100%,
+      #272727 0%);
+  background-size: 0%;
+  background-repeat: no-repeat;
+  display: flex;
+  transition: 0.5s ease;
+}
+
+.hover-box-down:hover,
+.hover-box-up:hover {
   background-size: 100%;
 }
+
 
 h1 {
   color: map.get($theme-colors, "primary");

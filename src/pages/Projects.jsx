@@ -65,6 +65,11 @@ export default function Projects() {
             </h4>
 
             <Marquee
+              style={{
+                margin: "0 -2rem 0 -2rem",
+                width: "110vw",
+                transform: " rotate3d(0.5, -0.866, 0, 20deg) rotateZ(-1deg)",
+              }}
               direction="right"
               speed={120}
               pauseOnHover
@@ -75,6 +80,7 @@ export default function Projects() {
               {projects.map((project, index) =>
                 project.topics.includes("web-app") ? (
                   <GithubCard
+                    straight
                     key={index}
                     src={project.html_url}
                     title={project.name}
@@ -84,12 +90,16 @@ export default function Projects() {
                 ) : null
               )}
             </Marquee>
-
             <h4 className="text-primary text-center pt-5">
               Freelance<span className="text-white "> Projects</span>
             </h4>
 
             <Marquee
+              style={{
+                margin: "0 -2rem 0 -2rem",
+                width: "110vw",
+                transform: " rotate3d(0.5, -0.866, 0, 20deg) rotateZ(-1deg)",
+              }}
               direction="left"
               speed={120}
               pauseOnHover
@@ -100,7 +110,7 @@ export default function Projects() {
               {projects.map((project, index) =>
                 project.topics.includes("freelance") ? (
                   <GithubCard
-                    right
+                    straight
                     key={index}
                     src={project.html_url}
                     title={project.name}

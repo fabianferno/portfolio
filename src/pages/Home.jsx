@@ -33,15 +33,20 @@ export default function Home() {
       .then((data) => {
         data.character = "Thirukural";
         setQuote(data);
-      });
+      })
+      .catch((error) => console.log(error));
   }, []);
 
   return (
     <ErrorBoundary>
       <Layout>
-        <div className=" row align-items-center justify-content-center mt-2 pt-2">
+        <div
+          style={{
+            boxShadow: "0px -1px 82px 20px rgba(0,0,0,0.75)",
+          }}
+          className=" row align-items-center justify-content-center "
+        >
           <FabianGyro3D />
-
           <div
             style={{
               marginTop: "-300px",
@@ -78,26 +83,31 @@ export default function Home() {
           ))}
         </Marquee>
 
-        <div className="mt-md-5 mt-5 d-flex flex-column justify-content-center align-items-center container p-md-5 p-2 h3 text-secondary text-center">
-          <div
-            style={{
-              lineHeight: "45px",
-              width: "60vw",
-              wordWrap: "break-word",
-            }}
-          >
-            {JSON.stringify(quote.eng)}
+        <div className="mt-md-2 mt-3 d-flex flex-column justify-content-center align-items-center container p-md-5 p-2 h5 text-secondary text-center">
+          <h2 className="mb-5 mt-md-0 mt-5 mx-2 text-white d-flex flex-column">
+            I'm a Dev-inator: I make things simpler with code.
+          </h2>
+          <div className=" ">
+            <div
+              style={{
+                lineHeight: "25px",
+                width: "60vw",
+                wordWrap: "break-word",
+              }}
+            >
+              {JSON.stringify(quote.eng)}
+            </div>
+            <span
+              style={{ fontSize: "15px" }}
+              className="  d-md-block mt-md-2 mt-2 d-flex justify-content-center text-white font-weight-bold"
+            >
+              {"- " + quote.character + " -"}
+            </span>
           </div>
-          <span
-            style={{ fontSize: "25px" }}
-            className=" d-md-block mt-md-2 mt-2 d-flex justify-content-center text-white font-weight-bold"
-          >
-            {"- " + quote.character + " -"}
-          </span>
-          <p className="my-5" style={{ fontSize: "15px" }}>
+          {/* <p className="my-5" style={{ fontSize: "15px" }}>
             {quote.line1} <br />
             {quote.line2}
-          </p>
+          </p> */}
         </div>
       </Layout>
     </ErrorBoundary>

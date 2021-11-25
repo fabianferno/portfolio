@@ -1,0 +1,19 @@
+ .contact-dp {
+     margin-bottom: -80px;
+     margin-right: 0px;
+
+     @media screen and (min-width: 768px) {
+         margin-bottom: 0px;
+         margin-right: -80px;
+     }
+ }
+
+
+
+
+ .bw {
+
+     transform: scale(1.05);
+     filter: grayscale(0%) contrast(1.15) saturate(0.8);
+
+ }

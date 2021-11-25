@@ -2,6 +2,8 @@ import Layout from "../layouts/Layout";
 import Marquee from "react-fast-marquee";
 import { SocialIcon } from "react-social-icons";
 
+import DP from "../assets/img/dp-color.png";
+
 function SocialPills(props) {
   return (
     <a href={props.src}>
@@ -14,10 +16,14 @@ function SocialPills(props) {
 export default function Contact() {
   return (
     <Layout>
-      <div style={{ marginTop: "130px" }}>
+      <div
+        style={{
+          marginTop: "130px",
+        }}
+      >
         <div className="jumbotron  p-0 mx-0 py-5 bg-dark">
           <div className="container ">
-            <div className=" p-5 row ">
+            <div className="row p-3 ">
               <div className="col-12 col-md-5 d-flex  justify-content-start justify-content-md-end ">
                 <h1
                   style={{ fontSize: "3em" }}
@@ -28,8 +34,21 @@ export default function Contact() {
                 </h1>
               </div>
               <div className="col-md-7 col-12 ">
+                <div className="mb-3 mt-md-0 mt-2">
+                  <img
+                    src={DP}
+                    className="shadow bw p-1"
+                    style={{
+                      height: "150px",
+                      width: "150px",
+                      borderRadius: "20px",
+                    }}
+                    alt=""
+                    srcset=""
+                  />
+                </div>
                 <p className="lead text-secondary">
-                  Looking to work with me?
+                  Looking to work with me? <br />
                   <br /> Write to me and I will get back to you
                   <br className="d-md-block d-none" /> at the earliest! <br />
                   <a

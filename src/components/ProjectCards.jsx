@@ -49,7 +49,7 @@ export function GithubCard(props) {
         style={{
           width: "20em",
           boxShadow:
-            "0 8px 16px 0 rgba(0, 0, 0, 0.15), 0 6px 20px 0 rgba(0, 0, 0, 0.16)",
+            "0px 27.5px 40px -17.5px rgb(0 0 0 / 40%), 46.2px 37.5px 40px -17.5px rgb(0 0 0 / 40%)",
         }}
       >
         <div className="card-body d-flex align-content-between  flex-wrap">
