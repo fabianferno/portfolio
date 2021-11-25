@@ -50,8 +50,7 @@ export default function Projects() {
             rel="noreferrer"
           >
             GitHub API
-          </a>{" "}
-          .
+          </a>
         </p>
 
         {isLoading ? (
