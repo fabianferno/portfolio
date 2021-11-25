@@ -44,7 +44,7 @@ export default function Home() {
           style={{
             boxShadow: "0px -1px 82px 20px rgba(0,0,0,0.75)",
           }}
-          className=" row align-items-center justify-content-center "
+          className="pt-5 row align-items-center justify-content-center "
         >
           <FabianGyro3D />
           <div
@@ -66,18 +66,21 @@ export default function Home() {
           gradientColor={[31, 31, 31]}
         >
           {[
-            "App Development",
-            "Graphic Designing",
+            "Cross-Platform App Development",
+            "Multimedia",
+            "UI/UX Designing",
             "Internet of Things",
             "3D Modelling",
-            "Dev Ops",
-            "Full-Stack Web Development",
-            "App Development",
-            "Graphic Designing",
+            "Dev Ops Engineering",
+            "Full-Stack Engineering",
+
+            "Cross-Platform App Development",
+            "Multimedia",
+            "UI/UX Designing",
             "Internet of Things",
             "3D Modelling",
-            "Dev Ops",
-            "Full-Stack Web Development",
+            "Dev Ops Engineering",
+            "Full-Stack Engineering",
           ].map((role, index) => (
             <RoleBadges key={index} role={role} />
           ))}

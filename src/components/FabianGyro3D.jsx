@@ -24,7 +24,7 @@ export const FabianGyro3D = () => {
 
   return (
     <Canvas
-      style={{ height: "60vh", width: "100vw", backgroundColor: "#2a2a2a" }}
+      style={{ height: "55vh", width: "100vw", backgroundColor: "#2a2a2a" }}
       colorManagement
     >
       <Text
