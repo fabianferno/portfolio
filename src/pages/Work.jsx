@@ -39,19 +39,20 @@ export default function Work() {
         style={{ marginTop: "200px" }}
         className="d-flex flex-column justify-content-center align-items-center"
       >
-        <h3
-          style={{
-            transform: "rotate3d(0.5, -0.866, 0, 20deg) rotateZ(-1deg)",
-          }}
-          className="text-center text-uppercase text-white"
-        >
-          A line-up of FEW previous works.
+        <h3 className="text-right ml-5 text-white">
+          My<span className="text-primary"> Works</span>.
         </h3>
-        <div className="mb-5">
+        <div
+          style={{
+            width: "280vw",
+            transform:
+              "rotate(15deg) skew(-32deg, 0deg) translate(-25px, 40px)",
+          }}
+          className="mb-5"
+        >
           <Marquee
             style={{
-              width: "110vw",
-              transform: "rotate3d(0.5, -0.866, 0, 20deg) rotateZ(-1deg)",
+              width: "100%",
             }}
             direction="right"
             speed={50}
@@ -67,14 +68,19 @@ export default function Work() {
               accio,
               bestmoneygold,
               quadrantcross,
+              kathirkreations,
+              wallpaper,
+              dumptabs,
+              accio,
+              bestmoneygold,
+              quadrantcross,
             ].map((src, index) => (
               <WorkCard src={src} key={index} />
             ))}
           </Marquee>
           <Marquee
             style={{
-              width: "110vw",
-              transform: "rotate3d(0.5, -0.866, 0, 20deg) rotateZ(-1deg)",
+              width: "100%",
             }}
             direction="left"
             speed={50}
@@ -83,11 +89,20 @@ export default function Work() {
             gradientWidth={0}
             gradientColor={[31, 31, 31]}
           >
-            {[fablab3, fablab1, fablab4, fablab2, pattaraiOrientation].map(
-              (src, index) => (
-                <WorkCard src={src} key={index} />
-              )
-            )}
+            {[
+              fablab3,
+              fablab1,
+              fablab4,
+              fablab2,
+              pattaraiOrientation,
+              fablab3,
+              fablab1,
+              fablab4,
+              fablab2,
+              pattaraiOrientation,
+            ].map((src, index) => (
+              <WorkCard src={src} key={index} />
+            ))}
           </Marquee>
         </div>
       </div>
