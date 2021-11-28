@@ -17,17 +17,18 @@ import pattaraiOrientation from "../assets/img/project-screenshots/pattarai-orie
 export default function Work() {
   function WorkCard(props) {
     return (
-      <motion.div whileHover={{ scale: 1.2 }} className="p-4 m-5">
+      <motion.div whileHover={{ y: -20, x: -20 }} className="p-4 m-5">
         <img
-          src={props.src}
-          className="mx-3 "
+          srcSet=""
+          className="mx-3"
+          alt=""
+          height="200px"
           style={{
-            height: "200px",
+            height: "",
             boxShadow:
               "0px 27.5px 40px -17.5px rgb(0 0 0 / 40%), 46.2px 37.5px 40px -17.5px rgb(0 0 0 / 40%)",
           }}
-          alt=""
-          srcset=""
+          src={props.src} // use normal <img> attributes as props
         />
       </motion.div>
     );
@@ -74,6 +75,18 @@ export default function Work() {
               accio,
               bestmoneygold,
               quadrantcross,
+              kathirkreations,
+              wallpaper,
+              dumptabs,
+              accio,
+              bestmoneygold,
+              quadrantcross,
+              kathirkreations,
+              wallpaper,
+              dumptabs,
+              accio,
+              bestmoneygold,
+              quadrantcross,
             ].map((src, index) => (
               <WorkCard src={src} key={index} />
             ))}
@@ -90,6 +103,16 @@ export default function Work() {
             gradientColor={[31, 31, 31]}
           >
             {[
+              fablab3,
+              fablab1,
+              fablab4,
+              fablab2,
+              pattaraiOrientation,
+              fablab3,
+              fablab1,
+              fablab4,
+              fablab2,
+              pattaraiOrientation,
               fablab3,
               fablab1,
               fablab4,
