@@ -49,13 +49,11 @@ export default function About() {
 
       <div className="pt-3 mt-5 text-center container">
         <img
-          className=" mb-5"
+          className="p-shadow mb-5"
           src={Duck}
           style={{
             height: "10rem",
             borderRadius: "5%",
-            boxShadow:
-              "0px 27.5px 40px -17.5px rgb(0 0 0 / 40%), 46.2px 37.5px 40px -17.5px rgb(0 0 0 / 40%)",
           }}
           alt=""
           srcSet=""

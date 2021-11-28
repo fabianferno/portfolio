@@ -41,15 +41,21 @@ export function HighlightsCard(props) {
 
 export function GithubCard(props) {
   return (
-    <a href={props.src} target="_blank" rel="noreferrer">
+    <a className="p-4" href={props.src} target="_blank" rel="noreferrer">
       <motion.div
         initial={{ rotate: props.straight ? 0 : props.right ? 5 : -5 }}
-        whileHover={{ scale: 1.08, rotate: 0 }}
-        className="card bg-black text-primary m-5 d-flex align-items-center"
+        whileHover={
+          props.threed
+            ? {
+                y: 10,
+                x: 10,
+                filter: "invert(1) hue-rotate(20deg)",
+              }
+            : { scale: 1.08 }
+        }
+        className="card bg-black rounded p-shadow text-primary d-flex align-items-center"
         style={{
           width: "20em",
-          boxShadow:
-            "0px 27.5px 40px -17.5px rgb(0 0 0 / 40%), 46.2px 37.5px 40px -17.5px rgb(0 0 0 / 40%)",
         }}
       >
         <div className="card-body d-flex align-content-between  flex-wrap">

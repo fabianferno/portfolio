@@ -20,14 +20,9 @@ export default function Work() {
       <motion.div whileHover={{ y: -20, x: -20 }} className="p-4 m-5">
         <img
           srcSet=""
-          className="mx-3"
+          className="mx-3 p-shadow"
           alt=""
           height="200px"
-          style={{
-            height: "",
-            boxShadow:
-              "0px 27.5px 40px -17.5px rgb(0 0 0 / 40%), 46.2px 37.5px 40px -17.5px rgb(0 0 0 / 40%)",
-          }}
           src={props.src} // use normal <img> attributes as props
         />
       </motion.div>
@@ -46,10 +41,8 @@ export default function Work() {
         <div
           style={{
             width: "280vw",
-            transform:
-              "rotate(15deg) skew(-32deg, 0deg) translate(-25px, 40px)",
           }}
-          className="mb-5"
+          className="mb-5 p-tilt"
         >
           <Marquee
             style={{

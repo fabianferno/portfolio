@@ -21,10 +21,10 @@ export default function Contact() {
           marginTop: "100px",
         }}
       >
-        <div className="jumbotron  p-0 mx-0 py-5 bg-dark">
-          <div className="container ">
-            <div className="row p-3 ">
-              <div className="col-12 col-md-5 d-flex  justify-content-start justify-content-md-end ">
+        <div className="jumbotron p-0 mx-0 py-5 bg-dark">
+          <div className="container">
+            <div className="row p-3">
+              <div className="col-12 col-md-5 d-flex justify-content-start justify-content-md-end ">
                 <h1
                   style={{ fontSize: "3em" }}
                   className="text-white mr-md-4 mr-0 text-left font-weight-bold"
@@ -47,23 +47,23 @@ export default function Contact() {
                     srcset=""
                   />
                 </div>
-                <p className="lead text-secondary">
+                <p style={{ fontSize: "20px" }} className="lead text-secondary">
                   Looking to work with me? <br />
                   <br /> Write to me and I will get back to you
                   <br className="d-md-block d-none" /> at the earliest! <br />
                   <a
                     href="mailto:hello@fabianferno.tech"
-                    className=" text-primary h5 pt-5"
+                    className=" text-primary  pt-5"
                   >
                     hello@fabianferno.tech
                   </a>
-                  <br /> <br />
+                  <br />
                   <div
-                    style={{ lineHeight: "40px" }}
-                    className="text-white h5 mt-2"
+                    style={{ lineHeight: "35px" }}
+                    className="text-white h6 mt-2"
                   >
                     If you liked my portfolio, <br />
-                    buy me a{" "}
+                    buy me a{"  "}
                     <a
                       target="_blank"
                       rel="noreferrer"
@@ -79,7 +79,7 @@ export default function Contact() {
           </div>
 
           <Marquee
-            className=" mt-5 mb-4  "
+            className=" mt-5 mb-0  "
             direction="right"
             speed={40}
             pauseOnHover

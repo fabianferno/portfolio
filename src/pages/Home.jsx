@@ -86,22 +86,23 @@ export default function Home() {
           ))}
         </Marquee>
 
-        <div className="mt-md-2 mt-3 d-flex flex-column justify-content-center align-items-center container p-md-5 p-2 h5 text-secondary text-center">
-          <h2 className="mb-5 mt-md-0 mt-5 mx-2 text-white d-flex flex-column">
+        <div className="mt-md-2 mt-1 p-md-5 p-2 d-flex flex-column justify-content-center align-items-center container  h5 text-secondary text-center">
+          <h2 className="mb-2 mt-md-0 mt-4 mx-2 text-white d-flex flex-column">
             I'm a Dev-inator: I make things simpler with code.
           </h2>
-          <div className=" ">
+          <div className="mt-md-4">
             <div
               style={{
-                lineHeight: "25px",
-                width: "60vw",
+                fontSize: "13px",
+                lineHeight: "20px",
+                width: "90vw",
                 wordWrap: "break-word",
               }}
             >
               {JSON.stringify(quote.eng)}
             </div>
             <span
-              style={{ fontSize: "15px" }}
+              style={{ fontSize: "10px" }}
               className="  d-md-block mt-md-2 mt-2 d-flex justify-content-center text-white font-weight-bold"
             >
               {"- " + quote.character + " -"}

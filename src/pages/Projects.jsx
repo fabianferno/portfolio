@@ -74,8 +74,9 @@ export default function Projects() {
               style={{
                 margin: "0 -2rem 0 -2rem",
                 width: "110vw",
-                transform: " rotate3d(0.5, -0.866, 0, 20deg) rotateZ(-1deg)",
+                height: "500px",
               }}
+              className="p-wall-tilt "
               direction="right"
               speed={120}
               pauseOnHover
@@ -109,8 +110,9 @@ export default function Projects() {
               style={{
                 margin: "0 -2rem 0 -2rem",
                 width: "110vw",
-                transform: " rotate3d(0.5, -0.866, 0, 20deg) rotateZ(-1deg)",
+                height: "500px",
               }}
+              className="p-wall-tilt "
               direction="left"
               speed={120}
               pauseOnHover
@@ -132,29 +134,33 @@ export default function Projects() {
               )}
             </Marquee>
 
-            <div
-              style={{
-                transform: "rotate3d(0.5, -0.866, 0, 20deg) rotateZ(-1deg)",
-              }}
-              id="more-projects"
-              className="mt-5 "
-            >
-              <h4 className="text-primary text-center pt-5">
-                Other<span className="text-white "> Projects</span>
-              </h4>
-
-              <div className="inner-shadow bg-secondary">
+            <div id="more-projects" className="mt-5 pt-5">
+              <div
+                className="rounded p-tilt"
+                style={{
+                  overflowY: "scroll",
+                  marginBottom: "12vh",
+                }}
+              >
+                <h4 className=" text-primary text-left text-md-center py-5 ">
+                  Other<span className="text-white "> Projects</span>
+                </h4>
                 <ResponsiveMasonry
-                  columnsCount={3}
-                  className="mt-0 mt-md-5 container"
+                  style={{
+                    height: "600px",
+                    overflowY: "scroll",
+                  }}
+                  columnsCount={1}
+                  className="container border border-primary "
                 >
-                  <Masonry>
+                  <Masonry style={{ paddingBottom: "300px" }} className="">
                     {projects.map((project, index) =>
                       project.topics.includes("web-app") === false &&
                       project.topics.includes("freelance") === false &&
                       project.topics.includes("readme-profile") === false &&
                       project.topics.includes("ignore") === false ? (
                         <GithubCard
+                          threed
                           straight
                           key={index}
                           src={project.html_url}
