@@ -31,27 +31,27 @@ export default function Projects() {
   return (
     <Layout>
       <div className="mt-5 pt-5">
-        <h1
-          style={{
-            fontSize: "7vh",
-            width: "110vw",
-            marginLeft: "-5vw",
-          }}
-          className="text-black font-weight-bold bg-secondary shadow text-center mt-5 pt-3 pb-1"
-        >
-          PROJECTS
-        </h1>
-
-        <p className="text-secondary text-center pt-2 px-4">
-          All projects in this page are fetched live from the{" "}
-          <a
-            href="https://docs.github.com/en/rest"
-            target="_blank"
-            rel="noreferrer"
+        <div className="text-right container ">
+          <h1
+            style={{
+              fontSize: "7vh",
+            }}
+            className="text-primary font-weight-bold    mt-5 pt-3  pb-1"
           >
-            GitHub API
-          </a>
-        </p>
+            Projects.
+          </h1>
+
+          <p className="text-secondary  pt-2  pl-md-0 pl-5">
+            All projects in this page are fetched live from the{" "}
+            <a
+              href="https://docs.github.com/en/rest"
+              target="_blank"
+              rel="noreferrer"
+            >
+              GitHub API
+            </a>
+          </p>
+        </div>
 
         {isLoading ? (
           <Loader />
@@ -62,7 +62,7 @@ export default function Projects() {
             transition={{ duration: 1.5 }}
           >
             <motion.div id="web-apps" className="mt-5 pt-5">
-              <h4 className="text-primary text-center pt-5 pb-md-5 mb-md-5">
+              <h4 className="text-primary text-right container pt-5 pb-md-5 mb-md-5">
                 &lt; Web<span className="text-white "> Apps</span> / &gt;
               </h4>
 
@@ -105,7 +105,7 @@ export default function Projects() {
             </motion.div>
 
             <motion.div id="freelance" className="mt-5 pt-5">
-              <h4 className="text-primary text-center pt-5 pb-md-5 mb-md-5">
+              <h4 className="text-primary  text-right container pt-5 pb-md-5 mb-md-5">
                 - Freelance<span className="text-white "> Hustle</span> -
               </h4>
 

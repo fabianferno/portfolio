@@ -35,9 +35,15 @@ export default function Work() {
         style={{ marginTop: "200px" }}
         className="d-flex flex-column justify-content-center align-items-center"
       >
-        <h3 className="text-right ml-5 text-white">
+        <h1
+          style={{
+            fontSize: "7vh",
+          }}
+          className="text-white font-weight-bold text-right container   mt-5 pt-3  pb-1"
+        >
           My<span className="text-primary"> Works</span>.
-        </h3>
+        </h1>
+
         <div
           style={{
             width: "280vw",

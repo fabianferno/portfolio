@@ -31,45 +31,47 @@ export default function About() {
 
   return (
     <Layout className="pt-5">
-      <motion.div
+      <div
         style={{
           marginTop: "140px",
         }}
-        className="h1 shadow text-center"
+        className="pt-3 text-right container"
       >
-        <h1
-          style={{
-            fontSize: "7vh",
-          }}
-          className="text-black  font-weight-bold bg-secondary shadow text-center mt-5 pt-3 pb-1"
-        >
-          ABOUT ME
-        </h1>
-      </motion.div>
+        <div className="d-md-flex d-block align-items-center">
+          <div className="order-2 order-md-1 text-secondary pb-3 text-right d-flex flex-column justify-content-center align-items-end col-md-7 col-12">
+            <h1
+              style={{
+                fontSize: "7vh",
+              }}
+              className="text-primary font-weight-bold text-right pb-2"
+            >
+              About <span className="text-white">Me.</span>
+            </h1>
+            <p>
+              I am a software engineer with 3 years of professional experience
+              in developing & designing. I co-founded & help run Pattarai - a
+              tech community. I love to build scalable web apps, cross-platform
+              apps, IoT systems & multimedia. I’m currently pursuing my Bachelor
+              of Technology in Information Technology at Loyola - ICAM College
+              of Engineering and Technology.
+            </p>
+          </div>
+          <div className="col-md-5 col-12 order-md-2 order-1">
+            <img
+              className="p-shadow img-fluid mb-5"
+              src={Duck}
+              style={{
+                borderRadius: "5%",
+              }}
+              alt=""
+              srcSet=""
+            />
+          </div>
+        </div>
 
-      <div className="pt-3 mt-5 text-center container">
-        <img
-          className="p-shadow mb-5"
-          src={Duck}
-          style={{
-            height: "10rem",
-            borderRadius: "5%",
-          }}
-          alt=""
-          srcSet=""
-        />
-        <p className="text-secondary pb-3 text-center">
-          I am a software engineer with 3 years of professional experience in
-          developing & designing. I co-founded & help run Pattarai - a tech
-          community. I love to build scalable web apps, cross-platform apps, IoT
-          systems & multimedia. I’m currently pursuing my Bachelor of Technology
-          in Information Technology at Loyola - ICAM College of Engineering and
-          Technology (LICET).
-        </p>
-
-        <div className="text-secondary text-center  p mb-5 pb-5">
+        <div className="text-secondary text-right container mb-5 pb-5">
           <div id="languages" className="pt-5">
-            <p className="text-primary">Languages</p>
+            <p className="text-primary pr-2">Languages</p>
             {[
               "Python",
               "Embedded C",
@@ -85,7 +87,7 @@ export default function About() {
             ))}
           </div>
           <div id="databases" className="pt-5">
-            <p className="text-primary ">Databases</p>
+            <p className="text-primary  pr-2">Databases</p>
             {[
               "Micrsoft SQL",
               "MariaDB",
@@ -101,7 +103,7 @@ export default function About() {
           </div>
 
           <div id="frameworks" className="pt-5">
-            <p className="text-primary ">Frameworks and Libraries</p>
+            <p className="text-primary  pr-2">Frameworks and Libraries</p>
             {[
               "ReactJS",
               "NextJS",
@@ -124,7 +126,7 @@ export default function About() {
           </div>
 
           <div id="tools" className="pt-5">
-            <p className="text-primary ">Tools</p>
+            <p className="text-primary  pr-2">Tools</p>
             {[
               "Git",
               "Postman",
@@ -154,7 +156,7 @@ export default function About() {
           </div>
 
           <div id="design" className="pt-5">
-            <p className="text-primary ">Creative Design</p>
+            <p className="text-primary  pr-2">Creative Design</p>
             {[
               "Wireframing",
               "Photoshop",
