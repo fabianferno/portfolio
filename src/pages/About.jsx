@@ -1,7 +1,6 @@
 import Layout from "../layouts/Layout";
 import Kathir from "../assets/img/project-screenshots/kathirkreations.gif";
 import Duck from "../assets/img/cherryb.gif";
-import { motion } from "framer-motion";
 import { Loader } from "../components/AboutLoader";
 
 import { useEffect, useState } from "react";
