@@ -61,99 +61,99 @@ export default function Projects() {
             animate={{ opacity: 1 }}
             transition={{ duration: 1.5 }}
           >
-            <h4
-              style={{
-                transform: "rotate3d(0.5, -0.866, 0, 20deg) rotateZ(-1deg)",
-              }}
-              className="text-primary text-center pt-5"
-            >
-              Web<span className="text-white "> Apps</span>
-            </h4>
+            <motion.div id="web-apps" className="mt-5 pt-5">
+              <h4 className="text-primary text-center pt-5 pb-md-5 mb-md-5">
+                &lt; Web<span className="text-white "> Apps</span> / &gt;
+              </h4>
 
-            <Marquee
-              style={{
-                margin: "0 -2rem 0 -2rem",
-                width: "110vw",
-                height: "500px",
-              }}
-              className="p-wall-tilt "
-              direction="right"
-              speed={120}
-              pauseOnHover
-              gradient
-              gradientWidth={0}
-              gradientColor={[31, 31, 31]}
-            >
-              {projects.map((project, index) =>
-                project.topics.includes("web-app") ? (
-                  <GithubCard
-                    straight
-                    key={index}
-                    src={project.html_url}
-                    title={project.name}
-                    text={project.description}
-                    technologies={project.topics}
-                  />
-                ) : null
-              )}
-            </Marquee>
-            <h4
-              style={{
-                transform: "rotate3d(0.5, -0.866, 0, 20deg) rotateZ(-1deg)",
-              }}
-              className="text-primary text-center pt-5"
-            >
-              Freelance<span className="text-white "> Projects</span>
-            </h4>
+              <Marquee
+                className="projects-marquee"
+                direction="right"
+                speed={120}
+                pauseOnHover
+                gradient
+                gradientWidth={0}
+                gradientColor={[31, 31, 31]}
+              >
+                {projects.map((project, index) =>
+                  project.topics.includes("web-app") ? (
+                    <GithubCard
+                      threed
+                      straight
+                      key={index}
+                      src={project.html_url}
+                      title={project.name}
+                      text={project.description}
+                      technologies={project.topics}
+                    />
+                  ) : null
+                )}
+                {projects.map((project, index) =>
+                  project.topics.includes("web-app") ? (
+                    <GithubCard
+                      threed
+                      straight
+                      key={index}
+                      src={project.html_url}
+                      title={project.name}
+                      text={project.description}
+                      technologies={project.topics}
+                    />
+                  ) : null
+                )}
+              </Marquee>
+            </motion.div>
 
-            <Marquee
-              style={{
-                margin: "0 -2rem 0 -2rem",
-                width: "110vw",
-                height: "500px",
-              }}
-              className="p-wall-tilt "
-              direction="left"
-              speed={120}
-              pauseOnHover
-              gradient
-              gradientWidth={0}
-              gradientColor={[31, 31, 31]}
-            >
-              {projects.map((project, index) =>
-                project.topics.includes("freelance") ? (
-                  <GithubCard
-                    straight
-                    key={index}
-                    src={project.html_url}
-                    title={project.name}
-                    text={project.description}
-                    technologies={project.topics}
-                  />
-                ) : null
-              )}
-            </Marquee>
+            <motion.div id="freelance" className="mt-5 pt-5">
+              <h4 className="text-primary text-center pt-5 pb-md-5 mb-md-5">
+                - Freelance<span className="text-white "> Hustle</span> -
+              </h4>
+
+              <Marquee
+                className="projects-marquee"
+                direction="left"
+                speed={120}
+                pauseOnHover
+                gradient
+                gradientWidth={0}
+                gradientColor={[31, 31, 31]}
+              >
+                {projects.map((project, index) =>
+                  project.topics.includes("freelance") ? (
+                    <GithubCard
+                      threed
+                      straight
+                      key={index}
+                      src={project.html_url}
+                      title={project.name}
+                      text={project.description}
+                      technologies={project.topics}
+                    />
+                  ) : null
+                )}
+                {projects.map((project, index) =>
+                  project.topics.includes("freelance") ? (
+                    <GithubCard
+                      threed
+                      straight
+                      key={index}
+                      src={project.html_url}
+                      title={project.name}
+                      text={project.description}
+                      technologies={project.topics}
+                    />
+                  ) : null
+                )}
+              </Marquee>
+            </motion.div>
 
             <div id="more-projects" className="mt-5 pt-5">
-              <div
-                className="rounded p-tilt"
-                style={{
-                  overflowY: "scroll",
-                  marginBottom: "12vh",
-                }}
-              >
-                <h4 className=" text-primary text-left text-md-center py-5 ">
+              <div className="rounded ">
+                <h4 className=" text-primary text-center py-5 ">
                   Other<span className="text-white "> Projects</span>
                 </h4>
-                <ResponsiveMasonry
-                  style={{
-                    height: "600px",
-                    overflowY: "scroll",
-                  }}
-                  columnsCount={1}
-                  className="container border border-primary "
-                >
-                  <Masonry style={{ paddingBottom: "300px" }} className="">
+                <ResponsiveMasonry columnsCount={1} className="mr-5 mr-md-3">
+                  <Masonry className="container p-wall-tilt">
                     {projects.map((project, index) =>
                       project.topics.includes("web-app") === false &&
                       project.topics.includes("freelance") === false &&

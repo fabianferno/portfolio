@@ -13,6 +13,7 @@ $theme-colors: ("info": #ffbc44,
 @import "resume.scss";
 @import "scrollbar.scss";
 @import "contact.scss";
+@import "projects.scss";
 
 
 // @import "/src/assets/fonts/fonts.css";
@@ -107,16 +108,4 @@ img.dark-shadow {
 .social-pill:hover {
   color: map.get($theme-colors, "black");
   background-color: map.get($theme-colors, "primary");
-}
-
-.p-shadow {
-  box-shadow: 0px 27.5px 40px -17.5px rgb(0 0 0 / 40%), 46.2px 37.5px 40px -17.5px rgb(0 0 0 / 40%)
-}
-
-.p-tilt {
-  transform: rotate(15deg) skew(-32deg, 0deg) translate(-25px, 40px)
-}
-
-.p-wall-tilt {
-  transform: rotate3d(0.5, -0.866, 0, 20deg) rotateZ(-1deg)
 }

@@ -41,7 +41,12 @@ export function HighlightsCard(props) {
 
 export function GithubCard(props) {
   return (
-    <a className="p-4" href={props.src} target="_blank" rel="noreferrer">
+    <a
+      className="d-flex align-items-center justify-content-center"
+      href={props.src}
+      target="_blank"
+      rel="noreferrer"
+    >
       <motion.div
         initial={{ rotate: props.straight ? 0 : props.right ? 5 : -5 }}
         whileHover={
@@ -53,7 +58,7 @@ export function GithubCard(props) {
               }
             : { scale: 1.08 }
         }
-        className="card bg-black rounded p-shadow text-primary d-flex align-items-center"
+        className="card bg-black rounded p-shadow text-primary m-3 d-flex align-items-center"
         style={{
           width: "20em",
         }}
