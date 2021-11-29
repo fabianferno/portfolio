@@ -3,8 +3,10 @@
     width: 210vw;
     height: 500px;
     transform: rotate3d(0.5, -0.866, 0, 20deg) rotateZ(-1deg);
+}
 
-    @media screen and (min-width: 768px) {
+@media screen and (min-width: 768px) {
+    .projects-marquee {
         transform: rotate(15deg) skew(-32deg, 0deg) translate(-25px, 40px);
         margin: 12rem -2rem 0 -6rem;
         width: 210vw;
