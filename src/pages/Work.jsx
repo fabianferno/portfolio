@@ -22,7 +22,7 @@ export default function Work() {
           srcSet=""
           className="mx-3 p-shadow"
           alt=""
-          height="200px"
+          style={{ height: "15rem" }}
           src={props.src} // use normal <img> attributes as props
         />
       </motion.div>
@@ -48,7 +48,7 @@ export default function Work() {
           style={{
             width: "280vw",
           }}
-          className="mb-5 p-tilt"
+          className="mb-5 pb-5 p-tilt"
         >
           <Marquee
             style={{
