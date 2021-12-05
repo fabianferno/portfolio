@@ -2,7 +2,7 @@ import Layout from "../layouts/Layout";
 import Marquee from "react-fast-marquee";
 import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
 import octokit from "../components/githubConfig";
-import { Loader } from "../components/ProjectLoader";
+import { ProjectLoader } from "../components/Loaders";
 import { motion } from "framer-motion";
 
 import { GithubCard } from "../components/ProjectCards";
@@ -54,7 +54,7 @@ export default function Projects() {
         </div>
 
         {isLoading ? (
-          <Loader />
+          <ProjectLoader />
         ) : (
           <motion.section
             initial={{ opacity: 0 }}
