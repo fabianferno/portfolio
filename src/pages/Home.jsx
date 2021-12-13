@@ -108,10 +108,6 @@ export default function Home() {
               {"- " + quote.character + " -"}
             </span>
           </div>
-          {/* <p className="my-5" style={{ fontSize: "15px" }}>
-            {quote.line1} <br />
-            {quote.line2}
-          </p> */}
         </div>
       </Layout>
     </ErrorBoundary>
