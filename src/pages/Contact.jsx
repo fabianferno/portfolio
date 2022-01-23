@@ -52,10 +52,10 @@ export default function Contact() {
                   <br /> Write to me and I will get back to you
                   <br className="d-md-block d-none" /> at the earliest! <br />
                   <a
-                    href="mailto:hello@fabianferno.tech"
+                    href="mailto:hello@fabianferno.com"
                     className=" text-primary  pt-5"
                   >
-                    hello@fabianferno.tech
+                    hello@fabianferno.com
                   </a>
                   <br />
                   <div
