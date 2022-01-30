@@ -88,7 +88,7 @@ export default function Home() {
 
         <div className="mt-md-2 mt-1 p-md-5 p-2 d-flex flex-column justify-content-center align-items-center container  h5 text-secondary text-center">
           <h2 className="mb-2 mt-md-0 mt-4 mx-2 text-white d-flex flex-column">
-            I'm a Dev-inator: I make things simpler with code.
+            I, Engineer
           </h2>
           <div className="mt-md-4">
             <div
