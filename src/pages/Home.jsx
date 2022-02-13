@@ -71,16 +71,18 @@ export default function Home() {
             "UI/UX Designing",
             "Internet of Things",
             "3D Modelling",
-            "Dev Ops Engineering",
+            "Dev Ops",
             "Full-Stack Engineering",
+            "Web3 Developer",
 
             "Cross-Platform App Development",
             "Multimedia",
             "UI/UX Designing",
             "Internet of Things",
             "3D Modelling",
-            "Dev Ops Engineering",
+            "Dev Ops",
             "Full-Stack Engineering",
+            "Web3 Developer",
           ].map((role, index) => (
             <RoleBadges key={index} role={role} />
           ))}
