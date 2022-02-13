@@ -66,23 +66,24 @@ export default function Home() {
           gradientColor={[31, 31, 31]}
         >
           {[
-            "Cross-Platform App Development",
+            "Cross-Platform App Dev",
             "Multimedia",
             "UI/UX Designing",
             "Internet of Things",
             "3D Modelling",
             "Dev Ops",
             "Full-Stack Engineering",
-            "Web3 Developer",
-
-            "Cross-Platform App Development",
+            "dApp Development",
+            "NFTs"
+           
+            "Cross-Platform App Dev",
             "Multimedia",
             "UI/UX Designing",
             "Internet of Things",
             "3D Modelling",
             "Dev Ops",
             "Full-Stack Engineering",
-            "Web3 Developer",
+            "dApp Development",
           ].map((role, index) => (
             <RoleBadges key={index} role={role} />
           ))}
