@@ -74,8 +74,8 @@ export default function Home() {
             "Dev Ops",
             "Full-Stack Engineering",
             "dApp Development",
-            "NFTs"
-           
+            "NFTs",
+
             "Cross-Platform App Dev",
             "Multimedia",
             "UI/UX Designing",
