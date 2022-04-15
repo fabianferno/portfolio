@@ -5,6 +5,7 @@ import About from "./pages/About";
 import Work from "./pages/Work";
 import Projects from "./pages/Projects";
 import Contact from "./pages/Contact";
+import KYC from "./pages/KYC";
 
 import "./assets/scss/style.scss";
 // import Resume from "./assets/files/Resume.pdf";
@@ -140,6 +141,8 @@ export default function App() {
         <Route exact path="/work" component={Work} />
         <Route exact path="/projects" component={Projects} />
         <Route exact path="/contact" component={Contact} />
+        <Route exact path="/kyc" component={KYC} />
+
         {/* <Route exact path="/resume">
           <Redirect to={Resume} />
         </Route> */}
