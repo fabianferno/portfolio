@@ -1,4 +1,9 @@
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect,
+} from "react-router-dom";
 import { useState } from "react";
 import Home from "./pages/Home";
 import About from "./pages/About";
@@ -7,7 +12,7 @@ import Projects from "./pages/Projects";
 import Contact from "./pages/Contact";
 
 import "./assets/scss/style.scss";
-// import Resume from "./assets/files/Resume.pdf";
+import Resume from "./assets/files/Resume.pdf";
 
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
@@ -140,9 +145,9 @@ export default function App() {
         <Route exact path="/work" component={Work} />
         <Route exact path="/projects" component={Projects} />
         <Route exact path="/contact" component={Contact} />
-        {/* <Route exact path="/resume">
+        <Route exact path="/resume">
           <Redirect to={Resume} />
-        </Route> */}
+        </Route>
       </Switch>
     </Router>
   );
