@@ -119,7 +119,7 @@ export default function App() {
                 >
                   Contact
                 </Link>
-                {/* <a
+                <a
                   onClick={() => setIsOpen(false)}
                   href="/static/media/Resume.895e0d0a.pdf"
                   target="_blank"
@@ -127,7 +127,7 @@ export default function App() {
                   className="p-3 menu-item nav-link"
                 >
                   Resume
-                </a> */}
+                </a>
               </Nav>
             </Navbar.Collapse>
           </div>
