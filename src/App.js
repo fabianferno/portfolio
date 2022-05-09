@@ -121,7 +121,7 @@ export default function App() {
                 </Link>
                 <a
                   onClick={() => setIsOpen(false)}
-                  href="/static/media/Resume.895e0d0a.pdf"
+                  href="/Resume.pdf"
                   target="_blank"
                   rel="noreferrer"
                   className="p-3 menu-item nav-link"
