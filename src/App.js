@@ -58,7 +58,7 @@ export default function App() {
               style={{ fontSize: "2em" }}
               className="navbar-brand font-weight-bold text-primary mr-md-5  mr-3"
             >
-              super.skywalker
+              fabianferno
             </Link>
 
             <span className="d-flex  d-sm-inline  justify-content-center">
