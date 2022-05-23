@@ -47,12 +47,11 @@ export default function About() {
               About <span className="text-white">Me.</span>
             </h1>
             <p>
-              I am a software engineer with 3 years of professional experience
-              in developing & designing. I co-founded & help run Pattarai - a
-              tech community. I love to build scalable web apps, cross-platform
-              apps, IoT systems & multimedia. I’m currently pursuing my Bachelor
-              of Technology in Information Technology at Loyola - ICAM College
-              of Engineering and Technology.
+              A sentient engineer who loves talking tech & building scalable,
+              cross-platform, decentralised apps & SaaS products. Actively
+              probing IoT & the Web3 space at the moment. Co-founded Pattarai -
+              a tech community. Currently pursuing a B.Tech in Information
+              Technology at Loyola - ICAM College of Engineering and Technology.
             </p>
           </div>
           <div className="col-md-5 col-12 order-md-2 order-1">
