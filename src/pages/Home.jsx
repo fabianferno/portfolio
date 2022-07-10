@@ -37,6 +37,19 @@ export default function Home() {
       .catch((error) => console.log(error));
   }, []);
 
+  const skills = [
+    "Cross-Platform Apps",
+    "Decentralized Apps",
+    "UI/UX Designing",
+    "Internet of Things",
+    "3D Modelling",
+    "Full-Stack Engineering",
+    "Distributed Systems",
+    "NFTs",
+    "Blockchain",
+    "SaaS",
+  ];
+
   return (
     <ErrorBoundary>
       <Layout>
@@ -65,35 +78,23 @@ export default function Home() {
           gradientWidth={0}
           gradientColor={[31, 31, 31]}
         >
-          {[
-            "Cross-Platform App Dev",
-            "Multimedia",
-            "UI/UX Designing",
-            "Internet of Things",
-            "3D Modelling",
-            "Dev Ops",
-            "Full-Stack Engineering",
-            "dApp Development",
-            "NFTs",
-
-            "Cross-Platform App Dev",
-            "Multimedia",
-            "UI/UX Designing",
-            "Internet of Things",
-            "3D Modelling",
-            "Dev Ops",
-            "Full-Stack Engineering",
-            "dApp Development",
-          ].map((role, index) => (
+          {skills.concat(skills).map((role, index) => (
             <RoleBadges key={index} role={role} />
           ))}
         </Marquee>
 
-        <div className="mt-md-2 mt-1 p-md-5 p-2 d-flex flex-column justify-content-center align-items-center container  h5 text-secondary text-center">
-          <h2 className="mb-2 mt-md-0 mt-4 mx-2 text-white d-flex flex-column">
-            I, Engineer
-          </h2>
-          <div className="mt-md-4">
+        <div className="mt-md-2 mt-1 p-md-5 p-2 d-flex flex-column justify-content-center align-items-center container text-secondary text-center">
+          <h3 className="mb-2 mt-md-0 mt-4 mx-2 text-white">
+            A sentient engineer who loves technology, the Halo games and the
+            star-wars franchise - prequels too |&nbsp;
+            <span>
+              Co-founder at{" "}
+              <a className="" href="https://www.nftconomy.io">
+                nftconomy.io
+              </a>
+            </span>
+          </h3>
+          {/* <div className="mt-md-4">
             <div
               style={{
                 fontSize: "13px",
@@ -110,7 +111,7 @@ export default function Home() {
             >
               {"- " + quote.character + " -"}
             </span>
-          </div>
+          </div> */}
         </div>
       </Layout>
     </ErrorBoundary>

@@ -52,10 +52,10 @@ export default function Contact() {
                   <br /> Write to me and I will get back to you
                   <br className="d-md-block d-none" /> at the earliest! <br />
                   <a
-                    href="mailto:hello@fabianferno.com"
+                    href="mailto:hi@fabianferno.com"
                     className=" text-primary  pt-5"
                   >
-                    hello@fabianferno.com
+                    hi@fabianferno.com
                   </a>
                   <br />
                   <div
@@ -63,7 +63,7 @@ export default function Contact() {
                     className="text-white h6 mt-2"
                   >
                     If you liked my portfolio, <br />
-                    buy me a{"  "}
+                    consider buying me a{"  "}
                     <a
                       target="_blank"
                       rel="noreferrer"

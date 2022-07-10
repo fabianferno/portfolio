@@ -21,9 +21,9 @@ import { Navbar, Nav } from "react-bootstrap";
 export default function App() {
   document.addEventListener("visibilitychange", (event) => {
     if (document.visibilityState === "visible") {
-      document.title = "Fabian Ferno | <Developer ⚡/>";
+      document.title = "Hello there, I'm Fabian";
     } else {
-      document.title = "Didn't say Goodbye ;/ 💔";
+      document.title = "Don't ghost Fabian...";
     }
   });
 
