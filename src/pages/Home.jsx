@@ -24,6 +24,8 @@ export default function Home() {
     character: "Pam Beesly - the office",
   });
 
+  console.log(quote);
+
   useEffect(() => {
     fetch(
       "https://api-thirukkural.vercel.app/api?num=" +

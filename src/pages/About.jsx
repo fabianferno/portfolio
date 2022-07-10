@@ -1,9 +1,6 @@
 import Layout from "../layouts/Layout";
 import Kathir from "../assets/img/project-screenshots/kathirkreations.gif";
 import Duck from "../assets/img/cherryb.gif";
-import { Loader } from "../components/AboutLoader";
-
-import { useEffect, useState } from "react";
 
 function TechPills(props) {
   return (
@@ -15,19 +12,7 @@ function TechPills(props) {
 
 export default function About() {
   // const [profileData, setProfileData] = useState({});
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    fetch("http://127.0.0.1:5000/users?cache=true")
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data);
-        //setProfileData(data);
-        setIsLoading(false);
-      })
-      .catch((error) => setIsLoading(false));
-  }, []);
-
+  // eslint-disable-next-line no-unused-vars
   function Resume() {
     return (
       <section
