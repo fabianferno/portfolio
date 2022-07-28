@@ -2,7 +2,7 @@ import Layout from "../layouts/Layout";
 import Marquee from "react-fast-marquee";
 import { SocialIcon } from "react-social-icons";
 
-import DP from "../assets/img/dp-color.png";
+import DP from "../assets/img/dp-dope.png";
 
 function SocialPills(props) {
   return (
