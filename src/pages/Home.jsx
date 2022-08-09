@@ -86,7 +86,7 @@ export default function Home() {
         </Marquee>
 
         <div className="mt-md-2 mt-1 p-md-5 p-2 d-flex flex-column justify-content-center align-items-center container text-secondary text-center">
-          <h3 className="mb-2 mt-md-0 mt-4 mx-2 text-white">
+          <h4 className="mb-2 mt-md-0 mt-5 pt-3 mx-2 text-secondary">
             A sentient engineer who loves technology, the Halo games and the
             star-wars franchise - prequels too |&nbsp;
             <span>
@@ -95,7 +95,7 @@ export default function Home() {
                 nftconomy.io
               </a>
             </span>
-          </h3>
+          </h4>
           {/* <div className="mt-md-4">
             <div
               style={{
