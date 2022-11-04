@@ -91,8 +91,8 @@ export default function Home() {
             star-wars franchise - prequels too |&nbsp;
             <span>
               Co-founder at{" "}
-              <a className="" href="https://www.nftconomy.io">
-                nftconomy.io
+              <a className="" href="https://www.blitzcrafthq.com">
+                BlitzCraftHQ
               </a>
             </span>
           </h4>

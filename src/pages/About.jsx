@@ -166,7 +166,8 @@ export default function About() {
               <a href="https://www.pattarai.in">Pattarai</a> - a tech community
               with more than 650 members. Currently, helping accelerate the
               world’s adoption of NFTs and cryptocurrency as an asset class of
-              their own at <a href="https://www.nftconomy.io">NFTconomy</a>.
+              their own at{" "}
+              <a href="https://www.blitzcrafthq.com">BlitzCraftHQ</a>.
             </p>
           </div>
           <div className="col-md-5 col-12 order-md-2 order-1">
