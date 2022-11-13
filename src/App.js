@@ -12,7 +12,7 @@ import Projects from "./pages/Projects";
 import Contact from "./pages/Contact";
 
 import "./assets/scss/style.scss";
-import Resume from "./assets/files/Resume.pdf";
+import Resume from "./assets/files/resume.pdf";
 
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
@@ -121,7 +121,7 @@ export default function App() {
                 </Link>
                 <a
                   onClick={() => setIsOpen(false)}
-                  href="/Resume.pdf"
+                  href="/resume.pdf"
                   target="_blank"
                   rel="noreferrer"
                   className="p-3 menu-item nav-link"
