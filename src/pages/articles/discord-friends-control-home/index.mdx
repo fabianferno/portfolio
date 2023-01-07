@@ -1,0 +1,93 @@
+import { ArticleLayout } from '@/components/ArticleLayout'
+import Image from 'next/image'
+
+export const meta = {
+  author: 'Fabian Ferno',
+  date: '2021-07-21',
+  title: "I let my discord friends control my house. Could've gone worse?",
+  description:
+    "I got my friends to turn on fans and switch off some lights. So here's the fun - the bot had access to a discord server with almost 300 members. Quite the party. Anybody on the internet could toggle my devices. My friends started playing with my house.",
+}
+
+export default (props) => <ArticleLayout meta={meta} {...props} />
+
+## Hello World!
+
+Ever wondered how cool it would be to cause mayhem at your discord friend's house for fun?
+
+<Image
+  alt=""
+  width={300}
+  height={300}
+  src="https://media1.giphy.com/media/NbpSEhJcBdIouFwMsF/giphy.gif?cid=5a38a5a2w1weawqx98knjwu6491csltzrq0jqkaox7nxkk9n&amp;rid=giphy.gif&amp;ct=s"
+/>
+
+> Me and **@joshuafrankle** were working on a discord bot this year. We came up with cringe fest bot that played "Funny Tamil Comedy" soundtracks on command. We've been continuously adding features. It kinda evolved in a way we didn't imagine. Now we use [mr.robot](https://github.com/fabianferno/mr.robot) for our server management, api-testing, wiki and more.
+
+So, here it goes. I've been working with some micro-controllers lately and I thought why not bring in some IoT to the recipe. **#mightregretthisdecision**
+
+Although it ended up heating up my micro-controller and almost made my house look possessed, it was still worth a shot.
+
+---
+
+![Alt Text](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/yzmo2iphhc6byh077584.jpg)
+
+I used NodeMCU 8266 - the go to micro-controller for any hobby engineers out there. Instead of going with embedded C for my programming my board, I tried MicroPython for a change and trust me - the best decision.
+
+<Image
+  alt=""
+  width={300}
+  height={300}
+  src="https://media2.giphy.com/media/LMt9638dO8dftAjtco/giphy.gif?cid=5a38a5a25cty1c4yxb3zhki6do29hwg7lht5u481a2axskjg&amp;rid=giphy.gif&amp;ct=s"
+  height="50"
+/>
+
+Moreover that gave me an headstart in integrating it with my discord bot which already written in discord.py - a python discord client library. WebREPL modules came in handy to upload the program to my board.
+
+<Image
+  alt=""
+  width={300}
+  height={300}
+  src="https://media3.giphy.com/media/xNBcChLQt7s9a/200w.gif?cid=5a38a5a2t186siy1eil93svq63pqshgtnsmgu47yrhl67d5n&amp;rid=200w.gif&amp;ct=g"
+  style="border:0;height:300px;width:300px"
+/>
+
+<br />
+
+### Finally got everything set up and running in less than an hour.
+
+![Alt Text](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/0epi3u9lrrz3tkzdwgw5.png)
+
+I got my friends to turn on fans and switch off some lights. So here's the fun - the bot had access to a discord server with almost 300 members. Quite the party. Anybody on the internet could toggle my devices. My friends started playing with my house.
+
+<Image
+  alt=""
+  width={300}
+  height={300}
+  src="https://media4.giphy.com/media/l41YedRBFoGeyXuz6/200.gif?cid=5a38a5a20avow3xphb2zj8cmxtwf3meqqrf9a81ii6bfan7w&amp;rid=200.gif&amp;ct=g"
+  style="border:0;height:170px;width:300px"
+/>
+
+Sadly, [mr.robot](https://github.com/fabianferno/mr.robot) had to be put down. I took it offline then.
+
+<Image
+  alt=""
+  width={300}
+  height={300}
+  src="https://media1.giphy.com/media/3oEjI80DSa1grNPTDq/giphy.gif?cid=5a38a5a2keutsbt0qzajze6o7gegpf4c9xgtyrgzosyniz2c&amp;rid=giphy.gif&amp;ct=g"
+  style="border:0;height:230px;width:300px"
+/>
+
+Meanwhile I'm working on more a secure way to for this discord integration. Will post my next update with regard to this security update.
+
+<Image
+  alt=""
+  width={300}
+  height={300}
+  src="https://media4.giphy.com/media/tNdcrrDxRoYSV6k2QR/giphy.gif?cid=5a38a5a2pn1hvnivwaiw9gsq0vfhcbjwhaghygcd83uypex7&amp;rid=giphy.gif&amp;ct=g"
+  style="border:0;height:300px;width:300px"
+/>
+
+> Here's a Bonus - **[Discord Bot MicroPython WebRepl Starter Boilerplate](https://github.com/fabianferno/mr.robot/tree/iot)**
+
+> Follow & Stay tuned. I will be writing a follow-up tutorial on how we bring IoT and discord bots together. The next post will have step by step tut for you to create your own IOT discord Integration. Feel free to suggest your thoughts.
