@@ -41,10 +41,12 @@ export default function About() {
   return (
     <>
       <Head>
-        <title>About - Spencer Sharp</title>
+        <title>About - Fabian Ferno</title>
         <meta
           name="description"
-          content="I’m Spencer Sharp. I live in New York City, where I design the future."
+          content="I'm an engineer/entrepreneur with years of experience
+          building enterprise software solutions, distributed systems,
+          cross-platform apps & decentralized applications."
         />
       </Head>
       <Container className="mt-16 sm:mt-32">
@@ -120,7 +122,7 @@ export default function About() {
                 Follow on LinkedIn
               </SocialLink>
               <SocialLink
-                href="mailto:spencer@planetaria.tech"
+                href="mailto:fabian@planetaria.tech"
                 icon={MailIcon}
                 className="mt-8 border-t border-zinc-100 pt-8 dark:border-zinc-700/40"
               >

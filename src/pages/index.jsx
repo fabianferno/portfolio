@@ -17,10 +17,10 @@ import image2 from '@/images/photos/image-2.jpg'
 import image3 from '@/images/photos/image-3.jpg'
 import image4 from '@/images/photos/image-4.jpg'
 import image5 from '@/images/photos/image-5.jpg'
-import logoAirbnb from '@/images/logos/airbnb.svg'
-import logoFacebook from '@/images/logos/facebook.svg'
-import logoPlanetaria from '@/images/logos/planetaria.svg'
-import logoStarbucks from '@/images/logos/starbucks.svg'
+import logoOnfluence from '@/images/logos/onfluence.jpeg'
+import logoPattarai from '@/images/logos/pattarai.png'
+import logoDali from '@/images/logos/dali.jpeg'
+import logoBlitzcrafthq from '@/images/logos/blitzcrafthq.jpg'
 import { generateRssFeed } from '@/lib/generateRssFeed'
 import { getAllArticles } from '@/lib/getAllArticles'
 import { formatDate } from '@/lib/formatDate'
@@ -141,7 +141,7 @@ function Resume() {
     {
       company: 'BlitzCraftHQ',
       title: 'Co-founder & CTO',
-      logo: logoPlanetaria,
+      logo: logoBlitzcrafthq,
       start: '2022',
       end: {
         label: 'Present',
@@ -151,21 +151,21 @@ function Resume() {
     {
       company: 'Dali',
       title: 'Principal Software Engineer',
-      logo: logoAirbnb,
+      logo: logoDali,
       start: '2022',
       end: '2022',
     },
     {
       company: 'Onfluence',
       title: 'Software Intern Lead',
-      logo: logoFacebook,
+      logo: logoOnfluence,
       start: '2020',
       end: '2021',
     },
     {
       company: 'Pattarai',
       title: 'Co-founder',
-      logo: logoStarbucks,
+      logo: logoPattarai,
       start: '2020',
       end: {
         label: 'Present',
@@ -184,7 +184,12 @@ function Resume() {
         {resume.map((role, roleIndex) => (
           <li key={roleIndex} className="flex gap-4">
             <div className="relative mt-1 flex h-10 w-10 flex-none items-center justify-center rounded-full shadow-md shadow-zinc-800/5 ring-1 ring-zinc-900/5 dark:border dark:border-zinc-700/50 dark:bg-zinc-800 dark:ring-0">
-              <Image src={role.logo} alt="" className="h-7 w-7" unoptimized />
+              <Image
+                src={role.logo}
+                alt=""
+                className="h-7 w-7 rounded-full"
+                unoptimized
+              />
             </div>
             <dl className="flex flex-auto flex-wrap gap-x-2">
               <dt className="sr-only">Company</dt>
@@ -260,18 +265,21 @@ export default function Home({ articles }) {
         <title>Fabian Ferno - Engineer, founder, and amateur musician.</title>
         <meta
           name="description"
-          content="I’m Spencer, a software designer and entrepreneur based in New York City. I’m the founder and CEO of Planetaria, where we develop technologies that empower regular people to explore space on their own terms."
+          content="I'm an engineer/entrepreneur with years of experience
+          building enterprise software solutions, distributed systems,
+          cross-platform apps & decentralized applications."
         />
       </Head>
       <Container className="mt-9">
         <div className="max-w-2xl">
           <h1 className="text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-5xl">
-            Engineer, founder, and amateur musician.
+            Engineer, Founder, and amateur Musician.
           </h1>
           <p className="mt-6 text-base text-zinc-600 dark:text-zinc-400">
-            I&apos;m Fabian. I build enterprise software solutions, distributed
-            systems, cross-platform apps, decentralized applications and
-            experiences for a living.
+            I&apos;m Fabian. I specialize in creating scalable enterprise
+            software solutions, distributed systems, and seamless cross-platform
+            apps. I also have a passion for developing decentralized
+            applications and crafting immersive experiences.
           </p>
           <div className="mt-6 flex gap-6">
             <SocialLink
@@ -301,7 +309,7 @@ export default function Home({ articles }) {
           </div>
         </div>
       </Container>
-      {/* <Photos /> */}
+      <Photos />
       <Container className="mt-24 md:mt-28">
         <div className="mx-auto grid max-w-xl grid-cols-1 gap-y-20 lg:max-w-none lg:grid-cols-2">
           <div className="flex flex-col gap-16">

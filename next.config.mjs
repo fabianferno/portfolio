@@ -10,7 +10,14 @@ const nextConfig = {
     scrollRestoration: true,
   },
   images: {
-    domains: ['placekitten.com'],
+    domains: [
+      'placekitten.com',
+      'media4.giphy.com',
+      'dev-to-uploads.s3.amazonaws.com',
+      'media3.giphy.com',
+      'media2.giphy.com',
+      'media1.giphy.com',
+    ],
   },
 }
 
