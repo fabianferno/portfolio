@@ -13,7 +13,7 @@ import logoPlanetaria from '@/images/logos/planetaria.svg'
 import { useEffect, useState } from 'react'
 
 const octokit = new Octokit({
-  auth: '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',
+  auth: process.env.NEXT_PUBLIC_GITHUB_TOKEN,
 })
 
 function LinkIcon(props) {
