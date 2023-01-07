@@ -1,8 +1,0 @@
-@font-face {
-  font-family: "Signatria";
-  src: url("Signatria-Regular.woff2") format("woff2"),
-    url("Signatria-Regular.woff") format("woff");
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}

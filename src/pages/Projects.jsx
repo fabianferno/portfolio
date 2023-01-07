@@ -1,182 +1,159 @@
-import Layout from "../layouts/Layout";
-import Marquee from "react-fast-marquee";
-import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
-import octokit from "../components/githubConfig";
-import { ProjectLoader } from "../components/Loaders";
-import { motion } from "framer-motion";
+import Image from 'next/image'
+import Head from 'next/head'
+import { Octokit } from '@octokit/core'
 
-import { GithubCard } from "../components/ProjectCards";
-import { useEffect, useState } from "react";
+import { Card } from '@/components/Card'
+import { SimpleLayout } from '@/components/SimpleLayout'
+import logoAnimaginary from '@/images/logos/animaginary.svg'
+import logoCosmos from '@/images/logos/cosmos.svg'
+import logoHelioStream from '@/images/logos/helio-stream.svg'
+import logoOpenShuttle from '@/images/logos/open-shuttle.svg'
+import logoPlanetaria from '@/images/logos/planetaria.svg'
+
+import { useEffect, useState } from 'react'
+
+const octokit = new Octokit({
+  auth: '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',
+})
+
+function LinkIcon(props) {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true" {...props}>
+      <path
+        d="M15.712 11.823a.75.75 0 1 0 1.06 1.06l-1.06-1.06Zm-4.95 1.768a.75.75 0 0 0 1.06-1.06l-1.06 1.06Zm-2.475-1.414a.75.75 0 1 0-1.06-1.06l1.06 1.06Zm4.95-1.768a.75.75 0 1 0-1.06 1.06l1.06-1.06Zm3.359.53-.884.884 1.06 1.06.885-.883-1.061-1.06Zm-4.95-2.12 1.414-1.415L12 6.344l-1.415 1.413 1.061 1.061Zm0 3.535a2.5 2.5 0 0 1 0-3.536l-1.06-1.06a4 4 0 0 0 0 5.656l1.06-1.06Zm4.95-4.95a2.5 2.5 0 0 1 0 3.535L17.656 12a4 4 0 0 0 0-5.657l-1.06 1.06Zm1.06-1.06a4 4 0 0 0-5.656 0l1.06 1.06a2.5 2.5 0 0 1 3.536 0l1.06-1.06Zm-7.07 7.07.176.177 1.06-1.06-.176-.177-1.06 1.06Zm-3.183-.353.884-.884-1.06-1.06-.884.883 1.06 1.06Zm4.95 2.121-1.414 1.414 1.06 1.06 1.415-1.413-1.06-1.061Zm0-3.536a2.5 2.5 0 0 1 0 3.536l1.06 1.06a4 4 0 0 0 0-5.656l-1.06 1.06Zm-4.95 4.95a2.5 2.5 0 0 1 0-3.535L6.344 12a4 4 0 0 0 0 5.656l1.06-1.06Zm-1.06 1.06a4 4 0 0 0 5.657 0l-1.061-1.06a2.5 2.5 0 0 1-3.535 0l-1.061 1.06Zm7.07-7.07-.176-.177-1.06 1.06.176.178 1.06-1.061Z"
+        fill="currentColor"
+      />
+    </svg>
+  )
+}
 
 export default function Projects() {
-  const [projects, setProjects] = useState([]);
-  const [isLoading, setLoader] = useState(true);
+  const [projects, setProjects] = useState([])
+  const [loader, setLoader] = useState(true)
 
   async function getProjects() {
     await octokit
       .request(`GET /user/repos`, {
-        per_page: "100",
-        affiliation: "owner",
+        per_page: '100',
+        affiliation: 'owner',
       })
       .then((res) => {
-        setLoader(false);
-        setProjects(res.data);
-      });
+        setLoader(false)
+        let result = res.data.map((project) => {
+          return {
+            ...project,
+            //  Generate random people emojis
+            emoji: String.fromCodePoint(
+              0x1f600 + Math.floor(Math.random() * 80)
+            ),
+          }
+        })
+
+        result = result.filter((project) => !project.topics.includes('ignore'))
+        setProjects(result)
+      })
   }
 
   useEffect(() => {
-    getProjects();
-  }, []);
+    getProjects()
+  }, [])
 
-  return (
-    <Layout>
-      <div className="mt-5 pt-5">
-        <div className="text-right container ">
-          <h1
-            style={{
-              fontSize: "7vh",
-            }}
-            className="text-primary font-weight-bold    mt-5 pt-3  pb-1"
-          >
-            Projects.
-          </h1>
-
-          <p className="text-secondary  pt-2  pl-md-0 pl-5">
-            All projects in this page are fetched live from the{" "}
-            <a
-              href="https://docs.github.com/en/rest"
-              target="_blank"
-              rel="noreferrer"
-            >
-              GitHub API
-            </a>
-          </p>
-        </div>
-
-        {isLoading ? (
-          <ProjectLoader />
-        ) : (
-          <motion.section
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1.5 }}
-          >
-            <motion.div id="web-apps" className="mt-5 pt-5">
-              <h4 className="text-primary text-right container pt-5 pb-md-5 mb-md-5">
-                &lt; Web<span className="text-white "> Apps</span> / &gt;
-              </h4>
-
-              <Marquee
-                className="projects-marquee"
-                direction="right"
-                speed={120}
-                pauseOnHover
-                gradient
-                gradientWidth={0}
-                gradientColor={[31, 31, 31]}
-              >
-                {projects.map((project, index) =>
-                  project.topics.includes("web-app") ? (
-                    <GithubCard
-                      threed
-                      straight
-                      key={index}
-                      src={project.html_url}
-                      title={project.name}
-                      text={project.description}
-                      technologies={project.topics}
-                    />
-                  ) : null
-                )}
-                {projects.map((project, index) =>
-                  project.topics.includes("web-app") ? (
-                    <GithubCard
-                      threed
-                      straight
-                      key={index}
-                      src={project.html_url}
-                      title={project.name}
-                      text={project.description}
-                      technologies={project.topics}
-                    />
-                  ) : null
-                )}
-              </Marquee>
-            </motion.div>
-
-            <motion.div id="freelance" className="mt-5 pt-5">
-              <h4 className="text-primary  text-right container pt-5 pb-md-5 mb-md-5">
-                - Freelance<span className="text-white "> Hustle</span> -
-              </h4>
-
-              <Marquee
-                className="projects-marquee"
-                direction="left"
-                speed={120}
-                pauseOnHover
-                gradient
-                gradientWidth={0}
-                gradientColor={[31, 31, 31]}
-              >
-                {projects.map((project, index) =>
-                  project.topics.includes("freelance") ? (
-                    <GithubCard
-                      threed
-                      straight
-                      key={index}
-                      src={project.html_url}
-                      title={project.name}
-                      text={project.description}
-                      technologies={project.topics}
-                    />
-                  ) : null
-                )}
-                {projects.map((project, index) =>
-                  project.topics.includes("freelance") ? (
-                    <GithubCard
-                      threed
-                      straight
-                      key={index}
-                      src={project.html_url}
-                      title={project.name}
-                      text={project.description}
-                      technologies={project.topics}
-                    />
-                  ) : null
-                )}
-              </Marquee>
-            </motion.div>
-
-            <div id="more-projects" className="mt-5 pt-5">
-              <div className="rounded ">
-                <h4 className=" text-primary text-center py-5 ">
-                  Other<span className="text-white "> Projects</span>
-                </h4>
-                <ResponsiveMasonry columnsCount={1} className="mr-5 mr-md-3">
-                  <Masonry className="container p-wall-tilt">
-                    {projects.map((project, index) =>
-                      project.topics.includes("web-app") === false &&
-                      project.topics.includes("freelance") === false &&
-                      project.topics.includes("readme-profile") === false &&
-                      project.topics.includes("ignore") === false ? (
-                        <GithubCard
-                          threed
-                          straight
-                          key={index}
-                          src={project.html_url}
-                          title={project.name}
-                          text={project.description}
-                          technologies={project.topics}
-                        />
-                      ) : null
-                    )}
-                  </Masonry>
-                </ResponsiveMasonry>
+  const Shimmer = ({ n }) => {
+    let shimmers = []
+    for (let i = 0; i < n; i++) {
+      shimmers.push(
+        <Card className="mr-2">
+          <div className="w-60 animate-pulse rounded py-4 shadow-md dark:bg-zinc-900 sm:w-80">
+            <div className="flex space-x-4 p-4 sm:px-8">
+              <div className="h-16 w-16 flex-shrink-0 rounded-full dark:bg-zinc-700"></div>
+              <div className="flex-1 space-y-4 py-2">
+                <div className="h-3 w-full rounded dark:bg-zinc-700"></div>
+                <div className="h-3 w-5/6 rounded dark:bg-zinc-700"></div>
               </div>
             </div>
-          </motion.section>
-        )}
-      </div>
-    </Layout>
-  );
+            <div className="space-y-4 p-4 sm:px-8">
+              <div className="h-4 w-full rounded dark:bg-zinc-700"></div>
+              <div className="h-4 w-full rounded dark:bg-zinc-700"></div>
+              <div className="h-4 w-3/4 rounded dark:bg-zinc-700"></div>
+            </div>
+          </div>
+        </Card>
+      )
+    }
+
+    return <div className="flex">{shimmers}</div>
+  }
+
+  return (
+    <>
+      <Head>
+        <title>Projects - Spencer Sharp</title>
+        <meta
+          name="description"
+          content="Things I’ve made trying to put my dent in the universe."
+        />
+      </Head>
+      <SimpleLayout
+        title="Things I’ve made trying to put my dent in the universe."
+        intro="I’ve worked on tons of little projects over the years but these are the ones that I’m most proud of. Many of them are open-source, so if you see something that piques your interest, check out the code and contribute if you have ideas for how it can be improved."
+      >
+        <div className="-mt-16 mb-10 shadow">
+          <div className="flex">
+            <div className=" flex-1 md:flex md:justify-between">
+              <p className="text-sm text-zinc-600 ">
+                All the projects in this page are fetched live from the
+                <a
+                  href="https://docs.github.com/en/rest"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="ml-1 font-bold text-zinc-600 hover:text-zinc-500"
+                >
+                  GitHub API
+                </a>
+              </p>
+            </div>
+          </div>
+        </div>
+        <ul
+          role="list"
+          className="grid grid-cols-1 gap-x-12 gap-y-16 sm:grid-cols-2 lg:grid-cols-3"
+        >
+          {loader ? (
+            <Shimmer n={3} />
+          ) : (
+            projects.map((project) => (
+              <Card as="li" key={project.name}>
+                <div className="relative z-10 flex h-12 w-12 items-center justify-center rounded-full bg-white text-2xl shadow-md shadow-zinc-800/5 ring-1 ring-zinc-900/5 dark:border dark:border-zinc-700/50 dark:bg-zinc-800 dark:ring-0">
+                  {project.emoji}
+                </div>
+                <h2 className="mt-6 text-base font-semibold text-zinc-800 dark:text-zinc-100">
+                  <Card.Link href={project.html_url}>{project.name}</Card.Link>
+                </h2>
+                <Card.Description>{project.description}</Card.Description>
+                <p className="relative z-10 mt-6 flex text-sm font-medium text-zinc-400 transition group-hover:text-teal-500 dark:text-zinc-200">
+                  <span className="">
+                    {project.topics.map((topic, index) => (
+                      <span
+                        key={index}
+                        className="my-1 mr-1 inline-flex items-center rounded-full bg-zinc-800 px-2.5 py-0.5 text-xs font-medium text-zinc-100"
+                      >
+                        <svg
+                          className="-ml-0.5 mr-1.5 h-2 w-2 text-zinc-600"
+                          fill="currentColor"
+                          viewBox="0 0 8 8"
+                        >
+                          <circle cx={4} cy={4} r={3} />
+                        </svg>
+                        {topic}
+                      </span>
+                    ))}
+                  </span>
+                </p>
+              </Card>
+            ))
+          )}
+        </ul>
+      </SimpleLayout>
+    </>
+  )
 }

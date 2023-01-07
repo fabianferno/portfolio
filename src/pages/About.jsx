@@ -1,257 +1,135 @@
-import Layout from "../layouts/Layout";
-import Kathir from "../assets/img/project-screenshots/kathirkreations.gif";
-import Duck from "../assets/img/cherryb.gif";
+import Image from 'next/image'
+import Head from 'next/head'
+import Link from 'next/link'
+import clsx from 'clsx'
 
-function TechPills(props) {
+import { Container } from '@/components/Container'
+import {
+  TwitterIcon,
+  InstagramIcon,
+  GitHubIcon,
+  LinkedInIcon,
+} from '@/components/SocialIcons'
+import portraitImage from '@/images/portrait.png'
+
+function SocialLink({ className, href, children, icon: Icon }) {
   return (
-    <span className="badge badge-pill badge-black p-2 mr-1 mt-1">
-      {props.text}
-    </span>
-  );
+    <li className={clsx(className, 'flex')}>
+      <Link
+        href={href}
+        className="group flex text-sm font-medium text-zinc-800 transition hover:text-teal-500 dark:text-zinc-200 dark:hover:text-teal-500"
+      >
+        <Icon className="h-6 w-6 flex-none fill-zinc-500 transition group-hover:fill-teal-500" />
+        <span className="ml-4">{children}</span>
+      </Link>
+    </li>
+  )
+}
+
+function MailIcon(props) {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true" {...props}>
+      <path
+        fillRule="evenodd"
+        d="M6 5a3 3 0 0 0-3 3v8a3 3 0 0 0 3 3h12a3 3 0 0 0 3-3V8a3 3 0 0 0-3-3H6Zm.245 2.187a.75.75 0 0 0-.99 1.126l6.25 5.5a.75.75 0 0 0 .99 0l6.25-5.5a.75.75 0 0 0-.99-1.126L12 12.251 6.245 7.187Z"
+      />
+    </svg>
+  )
 }
 
 export default function About() {
-  // const [profileData, setProfileData] = useState({});
-  // eslint-disable-next-line no-unused-vars
-  function Resume() {
-    return (
-      <section
-        id="resume"
-        className="resume text-left text-secondary inner-shadow card-rounded bg-black pl-2 pl-md-5 pb-5"
-      >
-        <div className="container ">
-          <div className="row">
-            <div className="col-lg-6">
-              <h3 className="font-weight-bold text-white pt-5">Education</h3>
-
-              <div className="resume-item">
-                <h4>B.Tech Information Technology</h4>
-                <h5>June 2019 Present</h5>
-                <p>
-                  <em>
-                    Loyola ICAM College of Engineering and Technology, Chennai
-                  </em>
-                </p>
-                <p>
-                  Member of the Fablab Committee <br />
-                  Part of Media Relations <br />
-                </p>
-              </div>
-
-              <div className="resume-item">
-                <h4>Circle Program | Design</h4>
-                <h5>APRIL 2019 - AUGUST 2019 (5M)</h5>
-                <p>
-                  Academy of Digital Arts, Chennai <br /> Graphic Designing and
-                  Illustrations, Digital Communication and Media/Multimedia
-                </p>
-                <p>
-                  Adobe Photoshop <br /> Adobe illustrator <br /> Adobe InDesign{" "}
-                  <br /> Corel Draw <br />
-                  Adobe Premiere Pro
-                </p>
-              </div>
-
-              <div className="resume-item">
-                <h4>N5, Japanese Studies</h4>
-                <h5>FEB 2019 - JUNE 2019 (3M)</h5>
-                <p>
-                  Hayakawa Japanese Language School & Cultural Center, Chennai
-                </p>
-                <p>Completed JLPT N5, CJAT 1.</p>
-              </div>
-
-              <div className="resume-item">
-                <h4>HSC &amp; SSLC</h4>
-                <h5>2005 – 2019</h5>
-                <p>Don Bosco Mat. Hr. Sec. School, Egmore, Chennai</p>
-                <p>
-                  President of Red Ribbon Club <br /> Member of Bharat Scouts{" "}
-                  <br />
-                  Cultural Media Team
-                </p>
-              </div>
-
-              <h3 className="resume-title pt-5">Certifications</h3>
-
-              <div className="resume-item">
-                <h4>Google</h4>
-                <p>Google IT Automation with Python Professional Certificate</p>
-                <p>Digital Marketing with Google</p>
-                <p>Google Technical Support Fundamentals</p>
-              </div>
-
-              <div className="resume-item">
-                <h4>Coursera</h4>
-                <p>System Administration and IT Infrastructure Services</p>
-                <p>Power User - Operating System</p>
-              </div>
-            </div>
-            <div className="col-lg-6">
-              <h3 className="resume-title pt-5">Experience</h3>
-              <div className="resume-item">
-                <h4>Pattarai</h4>
-                <h5>2020 - Present</h5>
-                <p>President and Co-Founder</p>
-                <p>
-                  I run Pattarai, LICET's flagship project club. We aim to give
-                  engineers, the engineering experience. Helped organise 8
-                  events and lead more than 3 projects personally.
-                </p>
-              </div>
-
-              <div className="resume-item card bg-black d-flex">
-                <iframe
-                  style={{ marginLeft: "-20px" }}
-                  className="card-body"
-                  height={315}
-                  src="https://www.youtube.com/embed/gQRX1UlQ0Rs"
-                  title="Pattarai"
-                  frameBorder={0}
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                />
-              </div>
-              <div className="resume-item">
-                <h4>SÍMERA DESIGNS, Chennai</h4>
-                <h5>2019 - 2020</h5>
-                <p>Co-Founder and Designer</p>
-                <p>
-                  A design company. <br /> Web Developers, Graphic Designers,
-                  Videography, Photography, Mockups, Video Editing, etc.
-                </p>
-              </div>
-              <div className="resume-item">
-                <h4>INNOWELL GROUP, Dubai </h4>
-                <h5>2019 – 2020 (9 months)</h5>
-                <p>Freelance Graphic Designer</p>
-              </div>
-              <div className="resume-item ">
-                <h4>Kathir Kreations</h4>
-                <h5>NOV 2020 - MAY 2021</h5>
-                <p>
-                  Web Developer and Graphic Designer <br />- Part time{" "}
-                </p>
-                <img src={Kathir} className="img-fluid pr-4" alt="" srcSet="" />
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-    );
-  }
-
   return (
-    <Layout className="pt-5">
-      <div
-        style={{
-          marginTop: "140px",
-        }}
-        className="pt-3 text-right container"
-      >
-        <div className="d-md-flex d-block align-items-center">
-          <div className="order-2 order-md-1 text-secondary pb-3 text-right d-flex flex-column justify-content-center align-items-end col-md-7 col-12">
-            <h1
-              style={{
-                fontSize: "7vh",
-              }}
-              className="text-primary font-weight-bold text-right pb-2"
-            >
-              About <span className="text-white">Me.</span>
+    <>
+      <Head>
+        <title>About - Spencer Sharp</title>
+        <meta
+          name="description"
+          content="I’m Spencer Sharp. I live in New York City, where I design the future."
+        />
+      </Head>
+      <Container className="mt-16 sm:mt-32">
+        <div className="grid grid-cols-1 gap-y-16 lg:grid-cols-2 lg:grid-rows-[auto_1fr] lg:gap-y-12">
+          <div className="lg:pl-20">
+            <div className="max-w-xs px-2.5 lg:max-w-none">
+              <Image
+                src={portraitImage}
+                alt=""
+                sizes="(min-width: 1024px) 32rem, 20rem"
+                className="aspect-square rounded-3xl bg-zinc-100 object-cover shadow-lg dark:bg-zinc-800"
+              />
+            </div>
+          </div>
+          <div className="lg:order-first lg:row-span-2">
+            <h1 className="text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-5xl">
+              Hello there, I&apos;m Fabian Ferno. I build things for the web.
             </h1>
-            <p>
-              A sentient engineer who loves talking tech and building scalable,
-              cross-platform, decentralised apps and SaaS products. Dabbling
-              with IoT and the Web3 ecosystem. Co-founded{" "}
-              <a href="https://www.pattarai.in">Pattarai</a> - a tech community
-              with more than 650 members. Currently, helping accelerate the
-              world’s adoption of NFTs and cryptocurrency as an asset class of
-              their own at{" "}
-              <a href="https://www.blitzcrafthq.com">BlitzCraftHQ</a>.
-            </p>
+            <div className="mt-6 space-y-7 text-base text-zinc-600 dark:text-zinc-400">
+              <p>
+                I&apos;m an engineer/entrepreneur with years of experience
+                building enterprise software solutions, distributed systems,
+                cross-platform apps & decentralized applications.
+              </p>
+              <p>
+                I co-founded &apos;Pattarai&apos;, one of India&apos;s largest
+                technical talent pools to build an engineering community in
+                colleges across India. We&apos;ve organized more than 40 events
+                and mentored more than 35 projects in various domains across
+                IoT, Fabrication, Software Development, etc.
+              </p>
+              <p>
+                I have also been involved with &ldquo;We-Simera`&ldquo; - a
+                professional services start-up I founded & led. I previously
+                served as the Principal Software Engineer at Dali where I got to
+                build distributed systems, web3 integrations & big data
+                solutions.
+              </p>
+              <p>
+                Currently I&apos;m Currently, helping accelerate the world’s
+                adoption of NFTs and cryptocurrency as an asset class of their
+                own at BlitzCraftHQ.
+              </p>
+            </div>
           </div>
-          <div className="col-md-5 col-12 order-md-2 order-1">
-            <img
-              className="p-shadow img-fluid mb-5"
-              src={Duck}
-              style={{
-                borderRadius: "5%",
-              }}
-              alt=""
-              srcSet=""
-            />
-          </div>
-        </div>
-
-        <div className="text-secondary text-right container mb-5 pb-5">
-          <div id="design" className="pt-5">
-            <p className="text-primary  pr-2">
-              Things I've played with for a while now
-            </p>
-            {[
-              "Solidity",
-              "IPFS",
-              "Blockchain",
-              "Python",
-              "Embedded C",
-              "TypeScript",
-              "JavaScript - ES6",
-              "AssemblyScript",
-              "CSS3/SASS",
-              "php",
-              "C#",
-              "HTML",
-              "Prisma",
-              "Micrsoft SQL",
-              "MariaDB",
-              "MySQL",
-              "PostgreSQL",
-              "MongoDB",
-              "SQLite",
-              "Firestore",
-              "HarperDB",
-              "ReactJS",
-              "NextJS",
-              "NodeJS",
-              "ExpressJS",
-              "Flask",
-              "axios",
-              "Bootstrap",
-              "ASP.NET",
-              "Tailwind CSS",
-              "Framer Motion",
-              "ThreeJS",
-              "Wordpress",
-              "Git",
-              "Postman",
-              "Cloudflare",
-              "npm",
-              "GitHub",
-              "cPanel",
-              "Apache",
-              "nginx",
-              "Arduino",
-              "Micropython",
-              "Github Actions",
-              "Linux - Ubuntu, Kali, Fedora",
-              "Supabase",
-              "Firebase",
-              "Selenium",
-              "Wireframing",
-              "Photoshop",
-              "Illustrator",
-              "Premiere Pro",
-              "Adobe XD",
-              "After Effects",
-              "Cinema4D",
-              "Sketchup3D",
-              "Unreal Engine",
-            ].map((text, index) => (
-              <TechPills key={index} text={text} />
-            ))}
+          <div className="lg:pl-20">
+            <ul role="list">
+              <SocialLink
+                href="https://twitter.com/FabianFerno"
+                icon={TwitterIcon}
+              >
+                Follow on Twitter
+              </SocialLink>
+              <SocialLink
+                href="https://www.instagram.com/super.skywalker/"
+                icon={InstagramIcon}
+                className="mt-4"
+              >
+                Follow on Instagram
+              </SocialLink>
+              <SocialLink
+                href="https://www.github.com/fabianferno"
+                icon={GitHubIcon}
+                className="mt-4"
+              >
+                Follow on GitHub
+              </SocialLink>
+              <SocialLink
+                href="https://www.linkedin.com/in/fabianferno/"
+                icon={LinkedInIcon}
+                className="mt-4"
+              >
+                Follow on LinkedIn
+              </SocialLink>
+              <SocialLink
+                href="mailto:spencer@planetaria.tech"
+                icon={MailIcon}
+                className="mt-8 border-t border-zinc-100 pt-8 dark:border-zinc-700/40"
+              >
+                hello@fabianferno.com
+              </SocialLink>
+            </ul>
           </div>
         </div>
-      </div>
-    </Layout>
-  );
+      </Container>
+    </>
+  )
 }
