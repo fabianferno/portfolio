@@ -276,11 +276,11 @@ export default function Home({ articles }) {
             Engineer, Founder, and amateur Musician.
           </h1>
           <p className="mt-6 text-base text-zinc-600 dark:text-zinc-400">
-            Hello there. I&apos;m <strong>Fabian Ferno</strong>. I specialize in
+            Hello there! I&apos;m <strong>Fabian Ferno</strong>. I specialize in
             creating scalable enterprise software solutions, distributed
-            systems, and seamless cross-platform apps. I also have a passion for
-            developing decentralized applications and crafting immersive
-            experiences. Currently I&apos;m the Co-founder and CTO of{' '}
+            systems, & seamless cross-platform apps. I also have a passion for
+            developing decentralized applications & crafting experiences.
+            Currently, I&apos;m a co-founder at{' '}
             <a
               href="https://blitzcrafthq.com"
               className="font-bold text-zinc-500 hover:text-zinc-600 dark:text-zinc-400 dark:hover:text-zinc-300"
