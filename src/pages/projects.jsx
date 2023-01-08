@@ -4,11 +4,6 @@ import { Octokit } from '@octokit/core'
 
 import { Card } from '@/components/Card'
 import { SimpleLayout } from '@/components/SimpleLayout'
-import logoAnimaginary from '@/images/logos/animaginary.svg'
-import logoCosmos from '@/images/logos/cosmos.svg'
-import logoHelioStream from '@/images/logos/helio-stream.svg'
-import logoOpenShuttle from '@/images/logos/open-shuttle.svg'
-import logoPlanetaria from '@/images/logos/planetaria.svg'
 
 import { useEffect, useState } from 'react'
 
@@ -62,26 +57,26 @@ export default function Projects() {
     let shimmers = []
     for (let i = 0; i < n; i++) {
       shimmers.push(
-        <Card className="mr-2">
-          <div className="w-60 animate-pulse rounded py-4 shadow-md dark:bg-zinc-900 sm:w-80">
+        <Card className="m-2">
+          <div className="w-80 animate-pulse rounded bg-zinc-200 py-4 shadow-md dark:bg-zinc-900 sm:w-80">
             <div className="flex space-x-4 p-4 sm:px-8">
-              <div className="h-16 w-16 flex-shrink-0 rounded-full dark:bg-zinc-700"></div>
+              <div className="h-16 w-16 flex-shrink-0 rounded-full bg-zinc-100 dark:bg-zinc-700"></div>
               <div className="flex-1 space-y-4 py-2">
-                <div className="h-3 w-full rounded dark:bg-zinc-700"></div>
-                <div className="h-3 w-5/6 rounded dark:bg-zinc-700"></div>
+                <div className="h-3 w-full rounded bg-zinc-100 dark:bg-zinc-700"></div>
+                <div className="h-3 w-5/6 rounded bg-zinc-100 dark:bg-zinc-700"></div>
               </div>
             </div>
             <div className="space-y-4 p-4 sm:px-8">
-              <div className="h-4 w-full rounded dark:bg-zinc-700"></div>
-              <div className="h-4 w-full rounded dark:bg-zinc-700"></div>
-              <div className="h-4 w-3/4 rounded dark:bg-zinc-700"></div>
+              <div className="h-4 w-full rounded bg-zinc-100 dark:bg-zinc-700"></div>
+              <div className="h-4 w-full rounded bg-zinc-100 dark:bg-zinc-700"></div>
+              <div className="h-4 w-3/4 rounded bg-zinc-100 dark:bg-zinc-700"></div>
             </div>
           </div>
         </Card>
       )
     }
 
-    return <div className="flex">{shimmers}</div>
+    return <div className="md:flex">{shimmers}</div>
   }
 
   return (
@@ -135,7 +130,7 @@ export default function Projects() {
                     {project.topics.map((topic, index) => (
                       <span
                         key={index}
-                        className="my-1 mr-1 inline-flex items-center rounded-full bg-zinc-800 px-2.5 py-0.5 text-xs font-medium text-zinc-100"
+                        className="my-1 mr-1 inline-flex items-center rounded-full bg-zinc-200 px-2.5 py-0.5 text-xs font-medium text-zinc-600 dark:bg-zinc-800 dark:text-zinc-100"
                       >
                         <svg
                           className="-ml-0.5 mr-1.5 h-2 w-2 text-zinc-600"

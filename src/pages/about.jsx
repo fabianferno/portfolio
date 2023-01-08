@@ -67,28 +67,27 @@ export default function About() {
             </h1>
             <div className="mt-6 space-y-7 text-base text-zinc-600 dark:text-zinc-400">
               <p>
-                I&apos;m an engineer/entrepreneur with years of experience
-                building enterprise software solutions, distributed systems,
-                cross-platform apps & decentralized applications.
+                I am an engineer and entrepreneur with extensive experience in
+                developing enterprise software solutions, distributed systems,
+                cross-platform applications, and decentralized applications.
               </p>
               <p>
-                I co-founded &apos;Pattarai&apos;, one of India&apos;s largest
-                technical talent pools to build an engineering community in
-                colleges across India. We&apos;ve organized more than 40 events
-                and mentored more than 35 projects in various domains across
-                IoT, Fabrication, Software Development, etc.
+                I co-founded Pattarai, a leading technical talent pool in India,
+                with the goal of building an engineering community in colleges
+                across the country. Through Pattarai, we have organized over 40
+                events and mentored more than 35 projects in various domains
+                such as IoT, fabrication, and software development.
               </p>
               <p>
-                I have also been involved with &ldquo;We-Simera`&ldquo; - a
-                professional services start-up I founded & led. I previously
-                served as the Principal Software Engineer at Dali where I got to
-                build distributed systems, web3 integrations & big data
-                solutions.
+                In addition, I have founded and led We-Simera, a professional
+                services start-up, and served as the Principal Software Engineer
+                at Dali, where I built distributed systems, integrated web3
+                technologies, and developed big data solutions.
               </p>
               <p>
-                Currently I&apos;m Currently, helping accelerate the world’s
-                adoption of NFTs and cryptocurrency as an asset class of their
-                own at BlitzCraftHQ.
+                Currently, I am focused on driving the widespread adoption of
+                NFTs and cryptocurrency as valuable asset classes at
+                BlitzCraftHQ.
               </p>
             </div>
           </div>
