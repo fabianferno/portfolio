@@ -220,7 +220,7 @@ function Resume() {
         ))}
       </ol>
       <Button
-        href="/resume.pdf"
+        href="/Resume.pdf"
         variant="secondary"
         className="group mt-6 w-full"
       >
