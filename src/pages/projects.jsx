@@ -1,15 +1,15 @@
-import Image from 'next/image'
-import Head from 'next/head'
-import { Octokit } from '@octokit/core'
+import Image from "next/image";
+import Head from "next/head";
+import { Octokit } from "@octokit/core";
 
-import { Card } from '@/components/Card'
-import { SimpleLayout } from '@/components/SimpleLayout'
+import { Card } from "@/components/Card";
+import { SimpleLayout } from "@/components/SimpleLayout";
 
-import { useEffect, useState } from 'react'
+import { useEffect, useState } from "react";
 
 const octokit = new Octokit({
   auth: process.env.NEXT_PUBLIC_GITHUB_TOKEN,
-})
+});
 
 function LinkIcon(props) {
   return (
@@ -19,21 +19,22 @@ function LinkIcon(props) {
         fill="currentColor"
       />
     </svg>
-  )
+  );
 }
 
 export default function Projects() {
-  const [projects, setProjects] = useState([])
-  const [loader, setLoader] = useState(true)
+  const [projects, setProjects] = useState([]);
+  const [loader, setLoader] = useState(true);
 
   async function getProjects() {
     await octokit
       .request(`GET /user/repos`, {
-        per_page: '100',
-        affiliation: 'owner',
+        per_page: "100",
+        affiliation: "owner",
+        sort: "updated",
       })
       .then((res) => {
-        setLoader(false)
+        setLoader(false);
         let result = res.data.map((project) => {
           return {
             ...project,
@@ -41,20 +42,20 @@ export default function Projects() {
             emoji: String.fromCodePoint(
               0x1f600 + Math.floor(Math.random() * 80)
             ),
-          }
-        })
+          };
+        });
 
-        result = result.filter((project) => !project.topics.includes('ignore'))
-        setProjects(result)
-      })
+        result = result.filter((project) => !project.topics.includes("ignore"));
+        setProjects(result);
+      });
   }
 
   useEffect(() => {
-    getProjects()
-  }, [])
+    getProjects();
+  }, []);
 
   const Shimmer = ({ n }) => {
-    let shimmers = []
+    let shimmers = [];
     for (let i = 0; i < n; i++) {
       shimmers.push(
         <Card className="m-2">
@@ -73,11 +74,11 @@ export default function Projects() {
             </div>
           </div>
         </Card>
-      )
+      );
     }
 
-    return <div className="md:flex">{shimmers}</div>
-  }
+    return <div className="md:flex">{shimmers}</div>;
+  };
 
   return (
     <>
@@ -150,5 +151,5 @@ export default function Projects() {
         </ul>
       </SimpleLayout>
     </>
-  )
+  );
 }
