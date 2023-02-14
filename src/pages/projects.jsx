@@ -123,7 +123,7 @@ export default function Projects() {
                   {project.emoji}
                 </div>
                 <h2 className="mt-6 text-base font-semibold text-zinc-800 dark:text-zinc-100">
-                  <Card.Link href={project.html_url}>{project.name}</Card.Link>
+                  <Card.Link target="blank" href={project.homepage || project.html_url}>{project.name}</Card.Link>
                 </h2>
                 <Card.Description>{project.description}</Card.Description>
                 <p className="relative z-10 mt-6 flex text-sm font-medium text-zinc-400 transition group-hover:text-teal-500 dark:text-zinc-200">
