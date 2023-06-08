@@ -18,8 +18,9 @@ import image3 from '@/images/photos/image-3.jpg'
 import image4 from '@/images/photos/image-4.jpg'
 import image5 from '@/images/photos/image-5.jpg'
 import logoOnfluence from '@/images/logos/onfluence.jpeg'
-import logoPattarai from '@/images/logos/pattarai.png'
+import logoJKS from '@/images/logos/jks.jpg'
 import logoDali from '@/images/logos/dali.jpeg'
+import logoFabi from '@/images/portrait.png'
 import logoBlitzcrafthq from '@/images/logos/blitzcrafthq.jpg'
 import { generateRssFeed } from '@/lib/generateRssFeed'
 import { getAllArticles } from '@/lib/getAllArticles'
@@ -110,7 +111,10 @@ function SocialLink({ icon: Icon, ...props }) {
 function Newsletter() {
   return (
     <form
-      action="/thank-you"
+      method="post"
+      target="popupwindow"
+      onSubmit="window.open('https://buttondown.email/fabianferno', 'popupwindow')"
+      action="https://buttondown.email/api/emails/embed-subscribe/fabianferno"
       className="rounded-2xl border border-zinc-100 p-6 dark:border-zinc-700/40"
     >
       <h2 className="flex text-sm font-semibold text-zinc-900 dark:text-zinc-100">
@@ -122,6 +126,8 @@ function Newsletter() {
       </p>
       <div className="mt-6 flex">
         <input
+          name="email"
+          id="bd-email"
           type="email"
           placeholder="Email address"
           aria-label="Email address"
@@ -131,7 +137,16 @@ function Newsletter() {
         <Button type="submit" className="ml-4 flex-none">
           Join
         </Button>
-      </div>
+      </div>{' '}
+      <p className="mt-2 text-left text-xs text-zinc-600 dark:text-zinc-400">
+        <a
+          href="https://buttondown.email/refer/fabianferno"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Powered by Buttondown.
+        </a>
+      </p>
     </form>
   )
 }
@@ -150,27 +165,31 @@ function Resume() {
     },
     {
       company: 'Dali',
-      title: 'Principal Software Engineer',
+      title: 'Head of Engineering',
       logo: logoDali,
       start: '2022',
       end: '2022',
     },
     {
-      company: 'Onfluence',
-      title: 'Software Intern Lead',
+      company: 'JKS Info Tech Pvt Ltd',
+      title: 'Consulting Software Engineer',
+      logo: logoJKS,
+      start: '2021',
+      end: '2021',
+    },
+    {
+      company: 'Hyperwork (formerly Onfluence)',
+      title: 'Software Engineering Intern',
       logo: logoOnfluence,
       start: '2020',
       end: '2021',
     },
     {
-      company: 'Pattarai',
-      title: 'Co-founder',
-      logo: logoPattarai,
-      start: '2020',
-      end: {
-        label: 'Present',
-        dateTime: new Date().getFullYear(),
-      },
+      company: 'Freelance',
+      title: 'Full Stack Engineer',
+      logo: logoFabi,
+      start: '2019',
+      end: '2022',
     },
   ]
 
@@ -241,7 +260,7 @@ function Photos() {
           <div
             key={image.src}
             className={clsx(
-              'relative aspect-[9/8] w-44 flex-none overflow-hidden rounded-xl bg-zinc-100 brightness-50 drop-shadow-lg  grayscale filter hover:filter-none  dark:bg-zinc-800 sm:w-72 sm:rounded-2xl',
+              'relative aspect-[9/8] w-44 flex-none overflow-hidden rounded-xl bg-zinc-100 opacity-80 brightness-50 drop-shadow-lg grayscale  filter hover:opacity-100 hover:filter-none  dark:bg-zinc-800 dark:opacity-100 sm:w-72 sm:rounded-2xl',
               rotations[imageIndex % rotations.length]
             )}
           >
@@ -265,9 +284,7 @@ export default function Home({ articles }) {
         <title>Fabian Ferno - Engineer, founder, and amateur musician.</title>
         <meta
           name="description"
-          content="I'm an engineer/entrepreneur with years of experience
-          building enterprise software solutions, distributed systems,
-          cross-platform apps & decentralized applications."
+          content="CTO at BlitzCraft | Architecting Critical Solutions for Business Success | Streamlining Product Development, Delivery, and Scaling at BlitzCraft 🚀 | Generated $1.8 Billion+ In Revenue For Businesses So Far"
         />
       </Head>
       <Container className="mt-9">
@@ -276,7 +293,7 @@ export default function Home({ articles }) {
             Engineer, founder, and amateur musician.
           </h1>
           <p className="mt-6 text-base text-zinc-600 dark:text-zinc-400">
-            Hello there! I&apos;m <strong>Fabian Ferno</strong>. I specialize in
+            {/* Hello there! I&apos;m <strong>Fabian Ferno</strong>. I specialize in
             creating scalable enterprise software solutions, distributed
             systems, & seamless cross-platform apps. I also have a passion for
             developing decentralized applications & crafting experiences.
@@ -286,7 +303,21 @@ export default function Home({ articles }) {
               className="font-bold text-zinc-500 hover:text-zinc-600 dark:text-zinc-400 dark:hover:text-zinc-300"
             >
               BlitzCraftHQ.
+            </a> */}
+            Driven by a fervent passion for technology, I’ve been building
+            products by contributing to prominent companies and a few ventures
+            of my own. I architect critical solutions for businesses by solving
+            engineering problems in product development and delivery. Currently,
+            I&apos;m Co-founder & Chief Technology Officer at{' '}
+            <a
+              href="https://blitzcrafthq.com"
+              className="font-bold text-zinc-500 hover:text-zinc-600 dark:text-zinc-400 dark:hover:text-zinc-300"
+            >
+              BlitzCraftHQ.
             </a>
+            . With a diverse team of experts and a culture of continuous
+            learning, we push the boundaries of what&apos;s possible, delivering
+            exceptional results and driving tangible impact.
           </p>
           <div className="mt-6 flex gap-6">
             <SocialLink
