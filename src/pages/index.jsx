@@ -154,7 +154,7 @@ function Newsletter() {
 function Resume() {
   let resume = [
     {
-      company: 'BlitzCraftHQ',
+      company: 'BlitzCraft',
       title: 'Co-founder & CTO',
       logo: logoBlitzcrafthq,
       start: '2022',
@@ -313,7 +313,7 @@ export default function Home({ articles }) {
               href="https://blitzcrafthq.com"
               className="font-bold text-zinc-500 hover:text-zinc-600 dark:text-zinc-400 dark:hover:text-zinc-300"
             >
-              BlitzCraftHQ.
+              BlitzCraft
             </a>
             . With a diverse team of experts and a culture of continuous
             learning, we push the boundaries of what&apos;s possible, delivering
