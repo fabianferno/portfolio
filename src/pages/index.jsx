@@ -16,7 +16,7 @@ import image1 from '@/images/photos/image-1.jpg'
 import image2 from '@/images/photos/image-2.jpg'
 import image3 from '@/images/photos/image-3.jpg'
 import image4 from '@/images/photos/image-4.jpg'
-import image5 from '@/images/photos/image-5.jpg'
+import image5 from '@/images/photos/image-6.jpg'
 import logoOnfluence from '@/images/logos/onfluence.jpeg'
 import logoJKS from '@/images/logos/jks.jpg'
 import logoDali from '@/images/logos/dali.jpeg'
@@ -165,7 +165,7 @@ function Resume() {
     },
     {
       company: 'Dali',
-      title: 'Head of Engineering',
+      title: 'Principal Engineer',
       logo: logoDali,
       start: '2022',
       end: '2022',
@@ -304,20 +304,25 @@ export default function Home({ articles }) {
             >
               BlitzCraftHQ.
             </a> */}
-            Driven by a fervent passion for technology, I’ve been building
-            products by contributing to prominent companies and a few ventures
-            of my own. I architect critical solutions for businesses by solving
-            engineering problems in product development and delivery. Currently,
-            I&apos;m Co-founder & Chief Technology Officer at{' '}
+            Driven by a fervent passion for technology, I build products in a
+            good few ventures of my own. Currently, I&apos;m Co-founder & Chief
+            Technology Officer at{' '}
             <a
               href="https://blitzcrafthq.com"
               className="font-bold text-zinc-500 hover:text-zinc-600 dark:text-zinc-400 dark:hover:text-zinc-300"
             >
               BlitzCraft
             </a>
-            . With a diverse team of experts and a culture of continuous
-            learning, we push the boundaries of what&apos;s possible, delivering
-            exceptional results and driving tangible impact.
+            . I spend most of my time building next-gen software products and
+            solutions for businesses with teams who are revolutionizing digital
+            transformation through our innovative solutions, relentless pursuit
+            of excellence, and unwavering commitment to clients... (*insert more
+            corporate talk*) Yeah, we build technologies for businesses and you
+            could say we do a pretty good job at that. <br />
+            <br /> P.S And at times when I&apos;m not doing the above,
+            you&apos;re most likely to find me in hackathons, devcons and
+            meetups hacking/talking with people. So yeah, don&apos;t be shy to
+            come say Hi!
           </p>
           <div className="mt-6 flex gap-6">
             <SocialLink
