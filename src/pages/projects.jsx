@@ -5,7 +5,7 @@ import Link from 'next/link'
 import { Card } from '@/components/Card'
 import { SimpleLayout } from '@/components/SimpleLayout'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useState, Fragment } from 'react'
 
 const octokit = new Octokit({
   auth: process.env.NEXT_PUBLIC_GITHUB_TOKEN,
@@ -19,6 +19,49 @@ function LinkIcon(props) {
         fill="currentColor"
       />
     </svg>
+  )
+}
+
+function ProjectCard({ project }) {
+  console.log(project)
+  return (
+    <Card as="li" key={project.name}>
+      <Link href={project.html_url} target="blank">
+        <div className="relative z-10 flex h-12 w-12 items-center justify-center rounded-full bg-white text-2xl shadow-md shadow-zinc-800/5 ring-1 ring-zinc-900/5 dark:border dark:border-zinc-700/50 dark:bg-zinc-800 dark:ring-0">
+          {project.emoji}
+        </div>
+      </Link>
+      <h2 className="mt-6 text-base font-semibold text-zinc-800 dark:text-zinc-100">
+        <Card.Link
+          target="blank"
+          href={
+            project.private ? project.homepage || '' : project.html_url || ''
+          }
+        >
+          {project.name}
+        </Card.Link>
+      </h2>
+      <Card.Description>{project.description}</Card.Description>
+      <p className="relative z-10 mt-6 flex text-sm font-medium text-zinc-400 transition group-hover:text-teal-500 dark:text-zinc-200">
+        <span className="">
+          {project.topics.map((topic, index) => (
+            <span
+              key={index}
+              className="my-1 mr-1 inline-flex items-center rounded-full bg-zinc-200 px-2.5 py-0.5 text-xs font-medium text-zinc-600 dark:bg-zinc-800 dark:text-zinc-100"
+            >
+              <svg
+                className="-ml-0.5 mr-1.5 h-2 w-2 text-zinc-600"
+                fill="currentColor"
+                viewBox="0 0 8 8"
+              >
+                <circle cx={4} cy={4} r={3} />
+              </svg>
+              {topic}
+            </span>
+          ))}
+        </span>
+      </p>
+    </Card>
   )
 }
 
@@ -46,6 +89,7 @@ export default function Projects() {
         })
 
         result = result.filter((project) => !project.topics.includes('ignore'))
+        console.log(result)
         setProjects(result)
       })
   }
@@ -118,42 +162,8 @@ export default function Projects() {
           {loader ? (
             <Shimmer n={3} />
           ) : (
-            projects.map((project) => (
-              <Card as="li" key={project.name}>
-                <Link href={project.html_url} target="blank">
-                  <div className="relative z-10 flex h-12 w-12 items-center justify-center rounded-full bg-white text-2xl shadow-md shadow-zinc-800/5 ring-1 ring-zinc-900/5 dark:border dark:border-zinc-700/50 dark:bg-zinc-800 dark:ring-0">
-                    {project.emoji}
-                  </div>
-                </Link>
-                <h2 className="mt-6 text-base font-semibold text-zinc-800 dark:text-zinc-100">
-                  <Card.Link
-                    target="blank"
-                    href={project.private ? project.homepage : project.html_url}
-                  >
-                    {project.name}
-                  </Card.Link>
-                </h2>
-                <Card.Description>{project.description}</Card.Description>
-                <p className="relative z-10 mt-6 flex text-sm font-medium text-zinc-400 transition group-hover:text-teal-500 dark:text-zinc-200">
-                  <span className="">
-                    {project.topics.map((topic, index) => (
-                      <span
-                        key={index}
-                        className="my-1 mr-1 inline-flex items-center rounded-full bg-zinc-200 px-2.5 py-0.5 text-xs font-medium text-zinc-600 dark:bg-zinc-800 dark:text-zinc-100"
-                      >
-                        <svg
-                          className="-ml-0.5 mr-1.5 h-2 w-2 text-zinc-600"
-                          fill="currentColor"
-                          viewBox="0 0 8 8"
-                        >
-                          <circle cx={4} cy={4} r={3} />
-                        </svg>
-                        {topic}
-                      </span>
-                    ))}
-                  </span>
-                </p>
-              </Card>
+            projects.map((project, i) => (
+              <ProjectCard project={project} key={i} />
             ))
           )}
         </ul>
