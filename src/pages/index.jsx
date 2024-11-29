@@ -12,19 +12,16 @@ import {
   GitHubIcon,
   LinkedInIcon,
 } from '@/components/SocialIcons'
-import image1 from '@/images/photos/image-1.jpg'
-import image2 from '@/images/photos/image-2.jpg'
-import image3 from '@/images/photos/image-3.jpg'
-import image4 from '@/images/photos/image-4.jpg'
-import image5 from '@/images/photos/image-6.jpg'
-import logoOnfluence from '@/images/logos/onfluence.jpeg'
+import { Photos } from '@/components/Photos'
 import logoJKS from '@/images/logos/jks.jpg'
 import logoDali from '@/images/logos/dali.jpeg'
 import logoFabi from '@/images/portrait.png'
+import logoKarma from '@/images/logos/karma.jpg'
 import logoBlitzcrafthq from '@/images/logos/blitzcrafthq.jpg'
 import { generateRssFeed } from '@/lib/generateRssFeed'
 import { getAllArticles } from '@/lib/getAllArticles'
 import { formatDate } from '@/lib/formatDate'
+import Marquee from 'react-fast-marquee'
 
 function MailIcon(props) {
   return (
@@ -154,14 +151,21 @@ function Newsletter() {
 function Resume() {
   let resume = [
     {
-      company: 'BlitzCraft',
-      title: 'Co-founder & CTO',
-      logo: logoBlitzcrafthq,
-      start: '2022',
+      company: 'Karma',
+      title: 'Lead Engineer',
+      logo: logoKarma,
+      start: '2023',
       end: {
         label: 'Present',
         dateTime: new Date().getFullYear(),
       },
+    },
+    {
+      company: 'BlitzCraft',
+      title: 'Co-founder & CTO',
+      logo: logoBlitzcrafthq,
+      start: '2022',
+      end: '2024',
     },
     {
       company: 'Dali',
@@ -172,21 +176,14 @@ function Resume() {
     },
     {
       company: 'JKS Info Tech Pvt Ltd',
-      title: 'Consulting Software Engineer',
+      title: 'Software Engineer',
       logo: logoJKS,
       start: '2021',
       end: '2021',
     },
     {
-      company: 'Hyperwork (formerly Onfluence)',
-      title: 'Software Engineering Intern',
-      logo: logoOnfluence,
-      start: '2020',
-      end: '2021',
-    },
-    {
-      company: 'Freelance',
-      title: 'Full Stack Engineer',
+      company: 'Freelance stuff',
+      title: '"The Engineer"',
       logo: logoFabi,
       start: '2019',
       end: '2022',
@@ -250,33 +247,6 @@ function Resume() {
   )
 }
 
-function Photos() {
-  let rotations = ['rotate-2', '-rotate-2', 'rotate-2', 'rotate-2', '-rotate-2']
-
-  return (
-    <div className="mt-16 sm:mt-20">
-      <div className="-my-4 flex justify-center gap-5 overflow-hidden py-4 sm:gap-8">
-        {[image1, image2, image3, image4, image5].map((image, imageIndex) => (
-          <div
-            key={image.src}
-            className={clsx(
-              'relative aspect-[9/8] w-44 flex-none overflow-hidden rounded-xl bg-zinc-100 opacity-80 brightness-50 drop-shadow-lg grayscale  filter hover:opacity-100 hover:filter-none  dark:bg-zinc-800 dark:opacity-100 sm:w-72 sm:rounded-2xl',
-              rotations[imageIndex % rotations.length]
-            )}
-          >
-            <Image
-              src={image}
-              alt=""
-              sizes="(min-width: 640px) 18rem, 11rem"
-              className="absolute inset-0 h-full w-full object-cover"
-            />
-          </div>
-        ))}
-      </div>
-    </div>
-  )
-}
-
 export default function Home({ articles }) {
   return (
     <>
@@ -290,39 +260,17 @@ export default function Home({ articles }) {
       <Container className="mt-9">
         <div className="max-w-2xl">
           <h1 className="text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-5xl">
-            Engineer, founder, and amateur musician.
+            Engineer, founder & <br /> amateur musician.
           </h1>
           <p className="mt-6 text-base text-zinc-600 dark:text-zinc-400">
-            {/* Hello there! I&apos;m <strong>Fabian Ferno</strong>. I specialize in
-            creating scalable enterprise software solutions, distributed
-            systems, & seamless cross-platform apps. I also have a passion for
-            developing decentralized applications & crafting experiences.
-            Currently, I&apos;m a co-founder at{' '}
-            <a
-              href="https://blitzcrafthq.com"
-              className="font-bold text-zinc-500 hover:text-zinc-600 dark:text-zinc-400 dark:hover:text-zinc-300"
-            >
-              BlitzCraftHQ.
-            </a> */}
-            Driven by a fervent passion for technology, I build products in a
-            good few ventures of my own. Currently, I&apos;m Co-founder & Chief
-            Technology Officer at{' '}
-            <a
-              href="https://blitzcrafthq.com"
-              className="font-bold text-zinc-500 hover:text-zinc-600 dark:text-zinc-400 dark:hover:text-zinc-300"
-            >
-              BlitzCraft
-            </a>
-            . I spend most of my time building next-gen software products and
-            solutions for businesses with teams who are revolutionizing digital
-            transformation through our innovative solutions, relentless pursuit
-            of excellence, and unwavering commitment to clients... (*insert more
-            corporate talk*) Yeah, we build technologies for businesses and you
-            could say we do a pretty good job at that. <br />
-            <br /> P.S And at times when I&apos;m not doing the above,
-            you&apos;re most likely to find me in hackathons, devcons and
-            meetups hacking/talking with people. So yeah, don&apos;t be shy to
-            come say Hi!
+            Traveller, Engineer, Entrepreneur. Driven by a fervent passion for
+            technology, I spend most of my time building next-gen software
+            products and solutions for businesses.
+            <br />
+            <br />
+            P.S And at times when I&apos;m not doing the above, you&apos;re most
+            likely to find me in hackathons, devcons and meetups hacking/talking
+            with people. Don&apos;t be shy to come say Hi!
           </p>
           <div className="mt-6 flex gap-6">
             <SocialLink
@@ -361,7 +309,7 @@ export default function Home({ articles }) {
             ))}
           </div>
           <div className="space-y-10 lg:pl-16 xl:pl-24">
-            <Newsletter />
+            {/* <Newsletter /> */}
             <Resume />
           </div>
         </div>

@@ -2,3 +2,69 @@
 @import 'tailwindcss/components';
 @import './prism.css';
 @import 'tailwindcss/utilities';
+
+.my-masonry-grid {
+  display: -webkit-box; /* Not needed if autoprefixing */
+  display: -ms-flexbox; /* Not needed if autoprefixing */
+  display: flex;
+  margin-left: -30px; /* gutter size offset */
+  width: auto;
+}
+.my-masonry-grid_column {
+  padding-left: 30px; /* gutter size */
+  background-clip: padding-box;
+}
+
+/* Style your items */
+.my-masonry-grid_column > div {
+  /* change div to reference your elements you put in <Masonry> */
+  background: grey;
+  margin-bottom: 30px;
+}
+
+.projects-marquee {
+  margin: 2rem -2rem 0 -5rem !important;
+  width: 210vw !important;
+  height: 500px !important;
+  transform: rotate3d(0.5, -0.866, 0, 20deg) rotateZ(-1deg);
+}
+
+@media screen and (min-width: 768px) {
+  .projects-marquee {
+    transform: rotate(15deg) skew(344deg, 352deg) translate(-25px, 40px);
+    margin: 4rem -2rem 0 -6rem !important;
+  }
+}
+
+.p-shadow {
+  box-shadow: 0px 27.5px 40px -17.5px rgb(0 0 0 / 40%),
+    46.2px 37.5px 40px -17.5px rgb(0 0 0 / 40%);
+}
+
+.p-tilt {
+  transform: rotate(15deg) skew(344deg, 352deg) translate(-25px, 40px);
+}
+
+.p-wall-tilt {
+  transform: rotate3d(0.5, -0.866, 0, 20deg) rotateZ(-1deg);
+}
+
+html::-webkit-scrollbar {
+  width: 3px;
+  background: gray;
+}
+
+html::-webkit-scrollbar-thumb {
+  background: white;
+  border-radius: 5px;
+}
+
+*::-webkit-scrollbar {
+  width: 3px;
+  background: gray;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: white;
+  border-radius: 5px;
+}

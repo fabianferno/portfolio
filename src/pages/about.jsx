@@ -65,54 +65,37 @@ export default function About() {
             </h1>
             <div className="mt-6 space-y-7 text-base text-zinc-600 dark:text-zinc-400">
               <p>
-                Co-founded & ran a blockchain R&D company that developed 4
-                different NFT analytics products. Led a 23-member team across
-                various verticals & built various aggregation pipelines for
-                processing more than 20 billion data points from multiple
-                blockchains and data sources using MongoDB, ZeroMQ & redis.
-                Architected a highly scalable API platform and microservice
-                architecture for blockchain data and deep analytics using big
-                data solutions & distributed systems. Developed a deep analytics
-                dashboard for Adidas, Nike & Jump.Trade (GuardianLink) -
-                Asia&apos;s Largest NFT marketplace, outperforming platforms
-                such as DappRadar & NFTGo. The B2C NFT analytics platform
-                garnered over 52,000 non-cumulative MAUs since launch & was
-                ranked #6 on ProductHunt on the day of its launch.
+                Currently Lead Engineer at{' '}
+                <a
+                  href="https://karmahq.xyz"
+                  className="underline-none font-bold text-teal-500"
+                >
+                  KarmaHQ
+                </a>
+                , On-chain toolkit for builders, grants & DAO governance. Also
+                working on a few side projects of my own.
               </p>
               <p>
-                Spearheaded the engineering team at Dali, a creative
-                intelligence-powered platform for NFT launch and sales. Worked
-                with statistical scoring algorithms & blockchain indexers,
-                enabling data-driven insights. Experimented with various models
-                for AI-enabled analytics. Implemented agile test-driven
-                development. Incubated at IIT Madras Research Park, Guardian
-                Link Web3 Accelerator, and successfully raised pre-seed funding
-                of $150k to support the development of the NFT analytics
-                platform.
+                Co-founded & ran a blockchain R&D company developing NFT
+                analytics products. Led a 23-member team building data
+                aggregation pipelines processing 20B+ datapoints from multiple
+                blockchains using MongoDB, ZeroMQ & Redis. Architected scalable
+                API platform and microservices for blockchain analytics. Built
+                analytics dashboard for major brands like Adidas and Nike,
+                reaching 52k MAUs and ranking #6 on ProductHunt.
               </p>
               <p>
-                Co-founded one of the country&apos;s largest engineering clubs -
-                Pattarai during college. With a community of more than 850
-                members, I conducted more than 10 technical workshops, 40+
-                events, 5 hackathons & mentored 25+ projects across different
-                engineering verticals including product fabrication and software
-                development. Collaborated with colleges across India to foster
-                collaborative engineering.
+                Led engineering at Dali, a creative intelligence platform for
+                NFTs. Worked on statistical scoring algorithms, blockchain
+                indexers and AI analytics. Incubated at IIT Madras Research Park
+                and raised $150k pre-seed funding.
               </p>
               <p>
-                Helped launch Licet&apos;s Fablab - by formulating policies,
-                frameworks, and operational procedures, and conducting
-                orientations & training sessions for over 1000 students.
-                Designed the fabrication lab with prototyping and co-working
-                spaces across 3600 sq ft. & led the development of the booking
-                app to streamline reservation processes and enhance user
-                experience.
-              </p>
-              <p>
-                Freelanced software projects since 2019. Also ran a professional
-                services startup while in college, &apos;we-símera&apos; to
-                serve various clients across verticals of development and
-                digital marketing.
+                Co-founded Pattarai, one of India&apos;s largest engineering
+                clubs with 850+ members. Conducted workshops, hackathons and
+                mentored projects across engineering verticals. Helped launch
+                Licet&apos;s Fablab - a 3600 sq ft fabrication space, creating
+                frameworks and systems serving 1000+ students.
               </p>
             </div>
           </div>

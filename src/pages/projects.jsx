@@ -4,8 +4,13 @@ import { Octokit } from '@octokit/core'
 import Link from 'next/link'
 import { Card } from '@/components/Card'
 import { SimpleLayout } from '@/components/SimpleLayout'
-
 import { useEffect, useState, Fragment } from 'react'
+import { motion } from 'framer-motion'
+import Marquee from 'react-fast-marquee'
+import SafeLayout from '@/components/SafeLayout'
+import Masonry from 'react-masonry-css'
+import { ProjectLoader } from '@/components/Loaders'
+import { GithubCard } from '@/components/ProjectCards'
 
 const octokit = new Octokit({
   auth: process.env.NEXT_PUBLIC_GITHUB_TOKEN,
@@ -22,10 +27,9 @@ function LinkIcon(props) {
   )
 }
 
-function ProjectCard({ project }) {
-  console.log(project)
+function ProjectCard({ project, key }) {
   return (
-    <Card as="li" key={project.name}>
+    <Card as="li" key={key}>
       <Link href={project.html_url} target="blank">
         <div className="relative z-10 flex h-12 w-12 items-center justify-center rounded-full bg-white text-2xl shadow-md shadow-zinc-800/5 ring-1 ring-zinc-900/5 dark:border dark:border-zinc-700/50 dark:bg-zinc-800 dark:ring-0">
           {project.emoji}
@@ -138,7 +142,7 @@ export default function Projects() {
         intro="I’ve worked on tons of little projects over the years that can be found at my personal code museum, GitHub. I've listed them here for your convenience. In case you're still wondering, I specialize in
         creating scalable enterprise software solutions, architecting distributed systems, & seamless cross-platform apps. Currently exploring the horizons of AI."
       >
-        <div className="-mt-16 mb-10 shadow">
+        <div className="-mt-16 mb-5 shadow">
           <div className="flex">
             <div className=" flex-1 md:flex md:justify-between">
               <p className="text-sm text-zinc-600 ">
@@ -155,18 +159,45 @@ export default function Projects() {
             </div>
           </div>
         </div>
-        <ul
-          role="list"
-          className="grid grid-cols-1 gap-x-12 gap-y-16 sm:grid-cols-2 lg:grid-cols-3"
-        >
+
+        <SafeLayout>
           {loader ? (
-            <Shimmer n={3} />
+            <ProjectLoader />
           ) : (
-            projects.map((project, i) => (
-              <ProjectCard project={project} key={i} />
-            ))
+            <motion.section
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 1.5 }}
+              className="-ml-[120px] mr-10 md:-ml-[65px]"
+            >
+              <Masonry
+                breakpointCols={{
+                  default: 3,
+                  1100: 3,
+                  700: 1,
+                  500: 1,
+                }}
+                className="my-masonry-grid"
+                columnClassName="my-masonry-grid_column p-wall-tilt container"
+              >
+                {projects.map((project, index) =>
+                  project.topics.includes('readme-profile') === false &&
+                  project.topics.includes('ignore') === false ? (
+                    <GithubCard
+                      threed
+                      straight
+                      key={index}
+                      src={project.html_url}
+                      title={project.name}
+                      text={project.description}
+                      technologies={project.topics}
+                    />
+                  ) : null
+                )}
+              </Masonry>
+            </motion.section>
           )}
-        </ul>
+        </SafeLayout>
       </SimpleLayout>
     </>
   )
