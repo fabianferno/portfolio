@@ -41,7 +41,7 @@ export function HighlightsCard(props) {
 export function GithubCard(props) {
   return (
     <a
-      className="flex items-center justify-center"
+      className="my-7 flex items-center justify-center"
       href={props.src}
       target="_blank"
       rel="noreferrer"

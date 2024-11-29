@@ -46,7 +46,7 @@
 }
 
 .p-wall-tilt {
-  transform: rotate3d(0.5, -0.866, 0, 20deg) rotateZ(-1deg);
+  transform: rotate3d(0.5, -0.866, 0, 20deg) rotateZ(-1.65deg);
 }
 
 html::-webkit-scrollbar {

@@ -168,7 +168,7 @@ export default function Projects() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 1.5 }}
-              className="-ml-[120px] mr-10 md:-ml-[65px]"
+              className="-ml-[10px] md:-ml-[20px]"
             >
               <Masonry
                 breakpointCols={{
