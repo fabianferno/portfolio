@@ -30,7 +30,7 @@ export function Photos() {
     { src: '/photos/neocast-hk.jpg', alt: 'photos' },
     { src: '/photos/eth-sg.JPG', alt: 'photos' },
     { src: '/photos/vitalik.jpg', alt: 'photos' },
-    { src: '/photos/gm-vietnam.JPG', alt: 'photos' },
+    { src: '/photos/gm-vietnam.jpg', alt: 'photos' },
     { src: '/photos/riot.JPG', alt: 'photos' },
     { src: '/photos/web3-chennai-2.jpg', alt: 'photos' },
     { src: '/photos/pattarai-2.jpg', alt: 'photos' },
