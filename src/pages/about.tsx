@@ -2,6 +2,7 @@ import Image from 'next/image'
 import Head from 'next/head'
 import Link from 'next/link'
 import clsx from 'clsx'
+import { ComponentType, ReactNode } from 'react'
 
 import { Container } from '@/components/Container'
 import {
@@ -12,7 +13,14 @@ import {
 } from '@/components/SocialIcons'
 import portraitImage from '@/images/portrait.png'
 
-function SocialLink({ className, href, children, icon: Icon }) {
+interface SocialLinkProps {
+  className?: string
+  href: string
+  children: ReactNode
+  icon: ComponentType<{ className?: string }>
+}
+
+function SocialLink({ className, href, children, icon: Icon }: SocialLinkProps) {
   return (
     <li className={clsx(className, 'flex')}>
       <Link
@@ -26,7 +34,7 @@ function SocialLink({ className, href, children, icon: Icon }) {
   )
 }
 
-function MailIcon(props) {
+function MailIcon(props: { className?: string }) {
   return (
     <svg viewBox="0 0 24 24" aria-hidden="true" {...props}>
       <path

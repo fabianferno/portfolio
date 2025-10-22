@@ -4,7 +4,15 @@ import Marquee from 'react-fast-marquee'
 import Masonry from 'react-masonry-css'
 import Image from 'next/image'
 
-function LoaderCard(props) {
+interface LoaderCardProps {
+  github?: boolean
+  title?: string
+  description?: string
+  image?: string
+  link?: string
+}
+
+function LoaderCard(props: LoaderCardProps) {
   return (
     <div className="p-shadow mx-3 bg-black">
       <div className="flex items-center justify-center bg-zinc-700">
@@ -28,10 +36,13 @@ function LoaderCard(props) {
   )
 }
 
-export function ProjectLoader(props) {
+interface ProjectLoaderProps {
+  children?: React.ReactNode
+}
+
+export function ProjectLoader(props: ProjectLoaderProps) {
   return (
-    <motion.div
-      whileHover={{ scale: 1.05 }}
+    <div
       className="mt-20 text-right text-zinc-800"
     >
       <Masonry
@@ -47,14 +58,17 @@ export function ProjectLoader(props) {
         <LoaderCard github /> <LoaderCard github /> <LoaderCard github />
         <LoaderCard github /> <LoaderCard github /> <LoaderCard github />
       </Masonry>
-    </motion.div>
+    </div>
   )
 }
 
-export function WorksLoader(props) {
+interface WorksLoaderProps {
+  children?: React.ReactNode
+}
+
+export function WorksLoader(props: WorksLoaderProps) {
   return (
-    <motion.div
-      whileHover={{ scale: 1.05 }}
+    <div
       className=" bg-dark text-primary d-flex align-items-center justify-content-end text-right"
     >
       <Marquee
@@ -64,11 +78,11 @@ export function WorksLoader(props) {
         pauseOnHover
         gradient
         gradientWidth={0}
-        gradientColor={[31, 31, 31]}
+        gradientColor="rgb(31, 31, 31)"
       >
         <LoaderCard /> <LoaderCard /> <LoaderCard /> <LoaderCard />{' '}
         <LoaderCard /> <LoaderCard />
       </Marquee>
-    </motion.div>
+    </div>
   )
 }

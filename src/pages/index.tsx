@@ -2,6 +2,8 @@ import Image from 'next/image'
 import Head from 'next/head'
 import Link from 'next/link'
 import clsx from 'clsx'
+import { SVGProps, ComponentType, ReactNode } from 'react'
+import { GetStaticProps } from 'next'
 
 import { Button } from '@/components/Button'
 import { Card } from '@/components/Card'
@@ -23,7 +25,7 @@ import { getAllArticles } from '@/lib/getAllArticles'
 import { formatDate } from '@/lib/formatDate'
 import Marquee from 'react-fast-marquee'
 
-function MailIcon(props) {
+function MailIcon(props: SVGProps<SVGSVGElement>) {
   return (
     <svg
       viewBox="0 0 24 24"
@@ -46,7 +48,7 @@ function MailIcon(props) {
   )
 }
 
-function BriefcaseIcon(props) {
+function BriefcaseIcon(props: SVGProps<SVGSVGElement>) {
   return (
     <svg
       viewBox="0 0 24 24"
@@ -69,7 +71,7 @@ function BriefcaseIcon(props) {
   )
 }
 
-function ArrowDownIcon(props) {
+function ArrowDownIcon(props: SVGProps<SVGSVGElement>) {
   return (
     <svg viewBox="0 0 16 16" fill="none" aria-hidden="true" {...props}>
       <path
@@ -82,7 +84,18 @@ function ArrowDownIcon(props) {
   )
 }
 
-function Article({ article }) {
+interface ArticleMeta {
+  slug: string
+  title: string
+  description: string
+  date: string
+}
+
+interface ArticleProps {
+  article: ArticleMeta
+}
+
+function Article({ article }: ArticleProps) {
   return (
     <Card as="article">
       <Card.Title href={`/articles/${article.slug}`}>
@@ -97,7 +110,14 @@ function Article({ article }) {
   )
 }
 
-function SocialLink({ icon: Icon, ...props }) {
+interface SocialLinkProps {
+  icon: ComponentType<{ className?: string }>
+  href: string
+  'aria-label': string
+  target?: string
+}
+
+function SocialLink({ icon: Icon, ...props }: SocialLinkProps) {
   return (
     <Link className="group -m-1 p-1" {...props}>
       <Icon className="h-6 w-6 fill-zinc-500 transition group-hover:fill-zinc-600 dark:fill-zinc-400 dark:group-hover:fill-zinc-300" />
@@ -110,7 +130,7 @@ function Newsletter() {
     <form
       method="post"
       target="popupwindow"
-      onSubmit="window.open('https://buttondown.email/fabianferno', 'popupwindow')"
+      onSubmit={() => window.open('https://buttondown.email/fabianferno', 'popupwindow')}
       action="https://buttondown.email/api/emails/embed-subscribe/fabianferno"
       className="rounded-2xl border border-zinc-100 p-6 dark:border-zinc-700/40"
     >
@@ -148,8 +168,16 @@ function Newsletter() {
   )
 }
 
+interface ResumeItem {
+  company: string
+  title: string
+  logo: any
+  start: string | { label: string; dateTime: number }
+  end: string | { label: string; dateTime: number }
+}
+
 function Resume() {
-  let resume = [
+  let resume: ResumeItem[] = [
     {
       company: 'Karma',
       title: 'Lead Engineer',
@@ -219,16 +247,15 @@ function Resume() {
               <dt className="sr-only">Date</dt>
               <dd
                 className="ml-auto text-xs text-zinc-400 dark:text-zinc-500"
-                aria-label={`${role.start.label ?? role.start} until ${
-                  role.end.label ?? role.end
-                }`}
+                aria-label={`${typeof role.start === 'string' ? role.start : role.start.label} until ${typeof role.end === 'string' ? role.end : role.end.label
+                  }`}
               >
-                <time dateTime={role.start.dateTime ?? role.start}>
-                  {role.start.label ?? role.start}
+                <time dateTime={typeof role.start === 'string' ? role.start : role.start.dateTime.toString()}>
+                  {typeof role.start === 'string' ? role.start : role.start.label}
                 </time>{' '}
                 <span aria-hidden="true">—</span>{' '}
-                <time dateTime={role.end.dateTime ?? role.end}>
-                  {role.end.label ?? role.end}
+                <time dateTime={typeof role.end === 'string' ? role.end : role.end.dateTime.toString()}>
+                  {typeof role.end === 'string' ? role.end : role.end.label}
                 </time>
               </dd>
             </dl>
@@ -247,7 +274,11 @@ function Resume() {
   )
 }
 
-export default function Home({ articles }) {
+interface HomeProps {
+  articles: ArticleMeta[]
+}
+
+export default function Home({ articles }: HomeProps) {
   return (
     <>
       <Head>
@@ -318,7 +349,7 @@ export default function Home({ articles }) {
   )
 }
 
-export async function getStaticProps() {
+export const getStaticProps: GetStaticProps<HomeProps> = async () => {
   if (process.env.NODE_ENV === 'production') {
     await generateRssFeed()
   }

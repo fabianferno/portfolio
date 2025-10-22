@@ -4,7 +4,7 @@ import { Octokit } from '@octokit/core'
 import Link from 'next/link'
 import { Card } from '@/components/Card'
 import { SimpleLayout } from '@/components/SimpleLayout'
-import { useEffect, useState, Fragment } from 'react'
+import { useEffect, useState, Fragment, SVGProps } from 'react'
 import { motion } from 'framer-motion'
 import Marquee from 'react-fast-marquee'
 import SafeLayout from '@/components/SafeLayout'
@@ -16,7 +16,7 @@ const octokit = new Octokit({
   auth: process.env.NEXT_PUBLIC_GITHUB_TOKEN,
 })
 
-function LinkIcon(props) {
+function LinkIcon(props: SVGProps<SVGSVGElement>) {
   return (
     <svg viewBox="0 0 24 24" aria-hidden="true" {...props}>
       <path
@@ -27,7 +27,22 @@ function LinkIcon(props) {
   )
 }
 
-function ProjectCard({ project, key }) {
+interface Project {
+  html_url: string
+  name: string
+  description: string | null
+  topics: string[] | undefined
+  emoji: string
+  private: boolean
+  homepage?: string
+}
+
+interface ProjectCardProps {
+  project: Project
+  key: string | number
+}
+
+function ProjectCard({ project, key }: ProjectCardProps) {
   return (
     <Card as="li" key={key}>
       <Link href={project.html_url} target="blank">
@@ -45,10 +60,10 @@ function ProjectCard({ project, key }) {
           {project.name}
         </Card.Link>
       </h2>
-      <Card.Description>{project.description}</Card.Description>
+      <Card.Description>{project.description || 'No description available'}</Card.Description>
       <p className="relative z-10 mt-6 flex text-sm font-medium text-zinc-400 transition group-hover:text-teal-500 dark:text-zinc-200">
         <span className="">
-          {project.topics.map((topic, index) => (
+          {project.topics?.map((topic, index) => (
             <span
               key={index}
               className="my-1 mr-1 inline-flex items-center rounded-full bg-zinc-200 px-2.5 py-0.5 text-xs font-medium text-zinc-600 dark:bg-zinc-800 dark:text-zinc-100"
@@ -70,13 +85,13 @@ function ProjectCard({ project, key }) {
 }
 
 export default function Projects() {
-  const [projects, setProjects] = useState([])
+  const [projects, setProjects] = useState<Project[]>([])
   const [loader, setLoader] = useState(true)
 
   async function getProjects() {
     await octokit
       .request(`GET /user/repos`, {
-        per_page: '100',
+        per_page: 100,
         affiliation: 'owner',
         sort: 'updated',
       })
@@ -92,9 +107,9 @@ export default function Projects() {
           }
         })
 
-        result = result.filter((project) => !project.topics.includes('ignore'))
+        result = result.filter((project) => !project.topics?.includes('ignore'))
         console.log(result)
-        setProjects(result)
+        setProjects(result as Project[])
       })
   }
 
@@ -102,7 +117,7 @@ export default function Projects() {
     getProjects()
   }, [])
 
-  const Shimmer = ({ n }) => {
+  const Shimmer = ({ n }: { n: number }) => {
     let shimmers = []
     for (let i = 0; i < n; i++) {
       shimmers.push(
@@ -164,38 +179,39 @@ export default function Projects() {
           {loader ? (
             <ProjectLoader />
           ) : (
-            <motion.section
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 1.5 }}
-              className="-ml-[10px] md:-ml-[20px]"
-            >
-              <Masonry
-                breakpointCols={{
-                  default: 3,
-                  1100: 3,
-                  700: 1,
-                  500: 1,
-                }}
-                className="my-masonry-grid"
-                columnClassName="my-masonry-grid_column p-wall-tilt container"
+            <div className="-ml-[10px] md:-ml-[20px]">
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 1.5 }}
               >
-                {projects.map((project, index) =>
-                  project.topics.includes('readme-profile') === false &&
-                  project.topics.includes('ignore') === false ? (
-                    <GithubCard
-                      threed
-                      straight
-                      key={index}
-                      src={project.html_url}
-                      title={project.name}
-                      text={project.description}
-                      technologies={project.topics}
-                    />
-                  ) : null
-                )}
-              </Masonry>
-            </motion.section>
+                <Masonry
+                  breakpointCols={{
+                    default: 3,
+                    1100: 3,
+                    700: 1,
+                    500: 1,
+                  }}
+                  className="my-masonry-grid"
+                  columnClassName="my-masonry-grid_column p-wall-tilt container"
+                >
+                  {projects.map((project, index) =>
+                    project.topics?.includes('readme-profile') === false &&
+                      project.topics?.includes('ignore') === false ? (
+                      <GithubCard
+                        threed
+                        straight
+                        key={index}
+                        src={project.html_url}
+                        title={project.name}
+                        text={project.description || undefined}
+                        technologies={project.topics}
+                      />
+                    ) : null
+                  )}
+                </Masonry>
+              </motion.div>
+            </div>
           )}
         </SafeLayout>
       </SimpleLayout>

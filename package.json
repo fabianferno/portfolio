@@ -37,9 +37,13 @@
     "three": "^0.170.0"
   },
   "devDependencies": {
+    "@types/node": "^24.9.1",
+    "@types/react": "^19.2.2",
+    "@types/react-dom": "^19.2.2",
     "eslint": "8.26.0",
     "eslint-config-next": "13.0.2",
     "prettier": "^2.7.1",
-    "prettier-plugin-tailwindcss": "^0.1.11"
+    "prettier-plugin-tailwindcss": "^0.1.11",
+    "typescript": "^5.9.3"
   }
 }

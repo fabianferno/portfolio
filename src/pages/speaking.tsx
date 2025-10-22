@@ -1,18 +1,32 @@
 import Head from 'next/head'
+import { ReactNode } from 'react'
 
 import { Card } from '@/components/Card'
 import { Section } from '@/components/Section'
 import { SimpleLayout } from '@/components/SimpleLayout'
 
-function SpeakingSection({ children, ...props }) {
+interface SpeakingSectionProps {
+  children: ReactNode
+  title: string
+}
+
+function SpeakingSection({ children, title }: SpeakingSectionProps) {
   return (
-    <Section {...props}>
+    <Section title={title}>
       <div className="space-y-16">{children}</div>
     </Section>
   )
 }
 
-function Appearance({ title, description, event, cta, href }) {
+interface AppearanceProps {
+  title: string
+  description: string
+  event: string
+  cta: string
+  href: string
+}
+
+function Appearance({ title, description, event, cta, href }: AppearanceProps) {
   return (
     <Card as="article">
       <Card.Title as="h3" href={href}>
