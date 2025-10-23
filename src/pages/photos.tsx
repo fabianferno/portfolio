@@ -25,22 +25,52 @@ const items = [
         height: 300,
     },
     {
-        id: "3",
+        id: "5",
         img: "/gallery/IMG_3220.JPG",
         url: "/gallery/IMG_3220.JPG",
         height: 500,
     },
     {
-        id: "5",
+        id: "6",
+        img: "/gallery/IMG_3236.JPG",
+        url: "/gallery/IMG_3236.JPG",
+        height: 400,
+    },
+    {
+        id: "7",
+        img: "/gallery/IMG_3238.JPG",
+        url: "/gallery/IMG_3238.JPG",
+        height: 350,
+    },
+    {
+        id: "8",
         img: "/gallery/IMG_3224.JPG",
         url: "/gallery/IMG_3224.JPG",
         height: 450,
     },
     {
-        id: "6",
+        id: "9",
         img: "/gallery/IMG_3226.JPG",
         url: "/gallery/IMG_3226.JPG",
         height: 400,
+    },
+    {
+        id: "9",
+        img: "/gallery/IMG_3227.JPG",
+        url: "/gallery/IMG_3227.JPG",
+        height: 500,
+    },
+    {
+        id: "9",
+        img: "/gallery/IMG_3225.JPG",
+        url: "/gallery/IMG_3225.JPG",
+        height: 500,
+    },
+    {
+        id: "9",
+        img: "/gallery/IMG_3222.JPG",
+        url: "/gallery/IMG_3222.JPG",
+        height: 500,
     },
 ];
 
