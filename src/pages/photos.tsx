@@ -54,7 +54,7 @@ export default function Photos() {
                     content="Hello there! I'm Fabian Ferno. I build things for the web. Read more about me here."
                 />
             </Head>
-            <Container className="mt-16 min-h-[50vh] sm:mt-32">
+            <Container className="mt-16 min-h-screen sm:mt-32">
                 <div className='mb-8 text-white'>
                     <h1 className='text-4xl font-bold'>
                         Photography
