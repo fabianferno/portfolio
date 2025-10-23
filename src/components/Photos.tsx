@@ -21,7 +21,6 @@ export function Photos() {
     'brightness-40 relative aspect-[9/8] w-44 flex-none overflow-hidden rounded-xl bg-zinc-100 opacity-80 drop-shadow-lg grayscale filter hover:opacity-100 hover:filter-none dark:bg-zinc-800 dark:opacity-100 sm:w-72 sm:rounded-2xl'
 
   const photos = [
-    { src: '/photos/band.jpg', alt: 'photos' },
     { src: '/photos/eth-india-2022.jpg', alt: 'photos' },
     { src: '/photos/ethglobal-paris.jpg', alt: 'photos' },
     { src: '/photos/vitalik.jpg', alt: 'photos' },

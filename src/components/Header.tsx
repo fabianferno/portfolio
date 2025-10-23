@@ -84,7 +84,7 @@ function MobileNavItem({ href, children }: MobileNavItemProps) {
   )
 }
 
-interface MobileNavigationProps extends HTMLAttributes<HTMLDivElement> {}
+interface MobileNavigationProps extends HTMLAttributes<HTMLDivElement> { }
 
 function MobileNavigation(props: MobileNavigationProps) {
   return (
@@ -170,7 +170,7 @@ function NavItem({ href, children }: NavItemProps) {
   )
 }
 
-interface DesktopNavigationProps extends HTMLAttributes<HTMLElement> {}
+interface DesktopNavigationProps extends HTMLAttributes<HTMLElement> { }
 
 function DesktopNavigation(props: DesktopNavigationProps) {
   return (
@@ -179,6 +179,7 @@ function DesktopNavigation(props: DesktopNavigationProps) {
         <NavItem href="/about">About</NavItem>
         <NavItem href="/articles">Blog</NavItem>
         <NavItem href="/projects">Projects</NavItem>
+        <NavItem href="/photos">Photos</NavItem>
         {/* <NavItem href="/speaking">Speaking</NavItem>
         <NavItem href="/uses">Uses</NavItem> */}
       </ul>
@@ -227,7 +228,7 @@ function clamp(number: number, a: number, b: number) {
   return Math.min(Math.max(number, min), max)
 }
 
-interface AvatarContainerProps extends HTMLAttributes<HTMLDivElement> {}
+interface AvatarContainerProps extends HTMLAttributes<HTMLDivElement> { }
 
 function AvatarContainer({ className, ...props }: AvatarContainerProps) {
   return (
@@ -288,7 +289,7 @@ export function Header() {
 
     function updateHeaderStyles() {
       if (!headerRef.current) return
-      
+
       let { top, height } = headerRef.current.getBoundingClientRect()
       let scrollY = clamp(
         window.scrollY,

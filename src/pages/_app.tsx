@@ -4,6 +4,7 @@ import { useRouter } from 'next/router'
 
 import { Footer } from '@/components/Footer'
 import { Header } from '@/components/Header'
+import GradualBlur from '@/blocks/Animations/GradualBlur/GradualBlur';
 
 import '@/styles/tailwind.css'
 import 'focus-visible'
@@ -34,7 +35,18 @@ export default function App({ Component, pageProps }: AppProps) {
         <main>
           <Component previousPathname={previousPathname} {...pageProps} />
         </main>
+        <GradualBlur
+          target="page"
+          position="bottom"
+          height="6rem"
+          strength={3}
+          divCount={5}
+          curve="bezier"
+          exponential={true}
+          opacity={1}
+        />
         <Footer />
+
       </div>
     </>
   )

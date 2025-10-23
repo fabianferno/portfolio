@@ -1,0 +1,80 @@
+
+import Head from 'next/head'
+import { Container } from '@/components/Container'
+import Masonry from '@/blocks/Components/Masonry/Masonry'
+
+
+
+const items = [
+    {
+        id: "1",
+        img: "/gallery/IMG_3218.JPG",
+        url: "/gallery/IMG_3218.JPG",
+        height: 400,
+    },
+    {
+        id: "2",
+        img: "/gallery/IMG_3219.JPG",
+        url: "/gallery/IMG_3219.JPG",
+        height: 500,
+    },
+    {
+        id: "4",
+        img: "/gallery/IMG_3221.JPG",
+        url: "/gallery/IMG_3221.JPG",
+        height: 300,
+    },
+    {
+        id: "3",
+        img: "/gallery/IMG_3220.JPG",
+        url: "/gallery/IMG_3220.JPG",
+        height: 500,
+    },
+    {
+        id: "5",
+        img: "/gallery/IMG_3224.JPG",
+        url: "/gallery/IMG_3224.JPG",
+        height: 450,
+    },
+    {
+        id: "6",
+        img: "/gallery/IMG_3226.JPG",
+        url: "/gallery/IMG_3226.JPG",
+        height: 400,
+    },
+];
+
+export default function Photos() {
+    return (
+        <>
+            <Head>
+                <title>About - Fabian Ferno</title>
+                <meta
+                    name="description"
+                    content="Hello there! I'm Fabian Ferno. I build things for the web. Read more about me here."
+                />
+            </Head>
+            <Container className="mt-16 min-h-[50vh] sm:mt-32">
+                <div className='mb-8 text-white'>
+                    <h1 className='text-4xl font-bold'>
+                        Photography
+                    </h1>
+                    <p className='text-lg mt-2'>
+                        I like taking pictures of people, places, and things. Here are some of my favorite photos from my travels.
+                    </p>
+                </div>
+                <Masonry
+                    items={items}
+                    ease="power3.out"
+                    duration={0.6}
+                    stagger={0.05}
+                    animateFrom="bottom"
+                    scaleOnHover={true}
+                    hoverScale={0.95}
+                    blurToFocus={true}
+                    colorShiftOnHover={false}
+                />
+            </Container>
+        </>
+    )
+}
