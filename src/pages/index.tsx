@@ -17,8 +17,9 @@ import {
 import { Photos } from '@/components/Photos'
 import logoJKS from '@/images/logos/jks.jpg'
 import logoDali from '@/images/logos/dali.jpeg'
-import logoFabi from '@/images/portrait.png'
+import logoStateless from '@/images/logos/stateless.png'
 import logoKarma from '@/images/logos/karma.jpg'
+import logoUngate from '@/images/logos/ungate.jpeg'
 import logoBlitzcrafthq from '@/images/logos/blitzcrafthq.jpg'
 import { generateRssFeed } from '@/lib/generateRssFeed'
 import { getAllArticles } from '@/lib/getAllArticles'
@@ -179,42 +180,52 @@ interface ResumeItem {
 function Resume() {
   let resume: ResumeItem[] = [
     {
-      company: 'Karma',
-      title: 'Lead Engineer',
-      logo: logoKarma,
-      start: '2023',
+      company: 'Stateless',
+      title: 'Founder',
+      logo: logoStateless,
+      start: '2025',
+      end: 'Present'
+    },
+    {
+      company: 'Ungate AI, Dubai',
+      title: 'Interim CTO',
+      logo: logoUngate,
+      start: {
+        label: 'May 2025',
+        dateTime: 2025,
+      },
       end: {
-        label: 'Present',
-        dateTime: new Date().getFullYear(),
+        label: 'Jul 2025',
+        dateTime: 2025,
       },
     },
     {
-      company: 'BlitzCraft',
-      title: 'Co-founder & CTO',
-      logo: logoBlitzcrafthq,
-      start: '2022',
-      end: '2024',
+      company: 'Karma Crypto Inc, US',
+      title: 'Lead Engineer',
+      logo: logoKarma,
+      start: '2023',
+      end: '2025'
     },
     {
-      company: 'Dali',
+      company: 'Dali, India',
       title: 'Principal Engineer',
       logo: logoDali,
       start: '2022',
       end: '2022',
     },
     {
-      company: 'JKS Info Tech Pvt Ltd',
+      company: 'JKS Info Tech, India',
       title: 'Software Engineer',
       logo: logoJKS,
       start: '2021',
       end: '2021',
     },
     {
-      company: 'Freelance stuff',
-      title: '"The Engineer"',
-      logo: logoFabi,
+      company: 'BlitzCraft',
+      title: 'Co-founder & CTO',
+      logo: logoBlitzcrafthq,
       start: '2019',
-      end: '2022',
+      end: '2024',
     },
   ]
 
@@ -262,14 +273,14 @@ function Resume() {
           </li>
         ))}
       </ol>
-      <Button
+      {/* <Button 
         href="/Resume.pdf"
         variant="secondary"
-        className="group mt-6 w-full"
+        className="group  mt-6 w-full"
       >
         Download CV
         <ArrowDownIcon className="h-4 w-4 stroke-zinc-400 transition group-active:stroke-zinc-600 dark:group-hover:stroke-zinc-50 dark:group-active:stroke-zinc-50" />
-      </Button>
+      </Button> */}
     </div>
   )
 }

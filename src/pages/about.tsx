@@ -52,7 +52,7 @@ export default function About() {
         <title>About - Fabian Ferno</title>
         <meta
           name="description"
-          content="Hello there! I'm Fabian Ferno. I build things for the web. Read more about me here."
+          content="I build things that connect people — on the web, on-chain, and in the real world."
         />
       </Head>
       <Container className="mt-16 sm:mt-32">
@@ -69,41 +69,62 @@ export default function About() {
           </div>
           <div className="lg:order-first lg:row-span-2">
             <h1 className="text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-5xl">
-              Hello there, I&apos;m Fabian Ferno. I build things for the web.
+              I build things that connect people — on the web, on-chain, and in the real world.
             </h1>
             <div className="mt-6 space-y-7 text-base text-zinc-600 dark:text-zinc-400">
               <p>
-                Currently Lead Engineer at{' '}
+                I&apos;m currently help run{' '}
+                <a
+                  href="https://cloka.in"
+                  className="underline-none font-bold text-teal-500"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Cloka
+                </a>
+                , Chennai&apos;s first and largest fitness community and app which I co-founded, where 7,000+ fitness enthusiasts move together across disciplines. At Cloka, I lead product, engineering, and community tech — building systems that blend social connection with movement. We&apos;ve partnered with Phoenix Marketcity, Starbucks, Blinkit, and more to create immersive, lifestyle-driven fitness experiences, including India&apos;s first &quot;Mallathon.&quot; Cloka is evolving into a tech-enabled collective where every run, lift, spar, or game strengthens both body and community.
+              </p>
+              <p>
+                Previously, I served as Lead Engineer at{' '}
                 <a
                   href="https://karmahq.xyz"
                   className="underline-none font-bold text-teal-500"
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
                   KarmaHQ
                 </a>
-                , On-chain toolkit for builders, grants & DAO governance. Also
-                working on a few side projects of my own.
+                , building the on-chain infrastructure powering grants, governance, and reputation for ecosystems like Gitcoin, Optimism, Celo, Arbitrum, and ENS DAO. I led the development of the Grantee Accountability Protocol (GAP), now adopted as a standard across multiple public goods organizations, and contributed to products like Karma AI and Delegate Dashboards — foundational tools driving transparent, data-backed coordination in Web3.
               </p>
               <p>
-                Co-founded & ran a blockchain R&D company developing NFT
-                analytics products. Led a 23-member team building data
-                aggregation pipelines processing 20B+ datapoints from multiple
-                blockchains using MongoDB, ZeroMQ & Redis. Architected scalable
-                API platform and microservices for blockchain analytics. Built
-                analytics dashboard for major brands like Adidas and Nike,
-                reaching 52k MAUs and ranking #6 on ProductHunt.
+                As Interim CTO at{' '}
+                <a
+                  href="https://ungate.io"
+                  className="underline-none font-bold text-teal-500"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Ungate
+                </a>
+                , I helped pioneer verifiable AI infrastructure — leading the development of Wukong, the first AI AVS (Actively Validated Service) on EigenLayer Mainnet. Our work was spotlighted by the Eigen Foundation, enabling AI agents to operate inside Trusted Execution Environments (TEEs) with cryptographic proofs of behavior and state.
               </p>
               <p>
-                Led engineering at Dali, a creative intelligence platform for
-                NFTs. Worked on statistical scoring algorithms, blockchain
-                indexers and AI analytics. Incubated at IIT Madras Research Park
-                and raised $150k pre-seed funding.
+                Before that, I co-founded{' '}
+                <a
+                  href="https://blitzcrafthq.com"
+                  className="underline-none font-bold text-teal-500"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  BlitzCraft
+                </a>
+                , a blockchain R&D company that built NFT analytics platforms used by Adidas, Nike, and Jump.Trade. We processed 20B+ blockchain data points, ranked #6 on ProductHunt, and joined Foundership&apos;s Polygon 0xCamp accelerator.
               </p>
               <p>
-                Co-founded Pattarai, one of India&apos;s largest engineering
-                clubs with 850+ members. Conducted workshops, hackathons and
-                mentored projects across engineering verticals. Helped launch
-                Licet&apos;s Fablab - a 3600 sq ft fabrication space, creating
-                frameworks and systems serving 1000+ students.
+                Earlier in my journey, I led engineering at Dali, a creative intelligence platform for NFTs incubated at IIT Madras Research Park, and raised $150K in pre-seed capital. I also co-founded Pattarai, one of India&apos;s largest student engineering collectives with 850+ members, mentoring projects and launching LICET&apos;s 3600 sq ft FabLab.
+              </p>
+              <p>
+                Across roles, I&apos;ve worked at the intersection of technology, community, and creativity — from verifiable AI to governance tooling, analytics, and real-world fitness experiences. My focus remains constant: building systems that empower people to connect, create, and move — whether online or on the ground.
               </p>
             </div>
           </div>
