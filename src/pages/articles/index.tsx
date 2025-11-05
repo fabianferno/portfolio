@@ -19,8 +19,8 @@ interface ArticleProps {
 
 function Article({ article }: ArticleProps) {
   return (
-    <article className="md:grid md:grid-cols-4 md:items-baseline">
-      <Card className="md:col-span-3">
+    <article className="bg-zinc-950 p-3 rounded-2xl md:grid md:grid-cols-4 md:items-baseline">
+      <Card className="md:col-span-3 ">
         <Card.Title href={`/articles/${article.slug}`}>
           {article.title}
         </Card.Title>

@@ -157,6 +157,12 @@ const Masonry: React.FC<MasonryProps> = ({
     });
   }, [columns, items, width]);
 
+  const containerHeight = useMemo(() => {
+    if (grid.length === 0) return 0;
+    const maxY = Math.max(...grid.map(item => item.y + item.h));
+    return maxY;
+  }, [grid]);
+
   const hasMounted = useRef(false);
 
   useLayoutEffect(() => {
@@ -229,7 +235,11 @@ const Masonry: React.FC<MasonryProps> = ({
   };
 
   return (
-    <div ref={containerRef} className="relative w-full h-full">
+    <div 
+      ref={containerRef} 
+      className="relative w-full"
+      style={{ minHeight: containerHeight > 0 ? `${containerHeight}px` : 'auto' }}
+    >
       {grid.map(item => (
         <div
           key={item.id}

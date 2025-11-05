@@ -67,7 +67,7 @@ export function GithubCard(props: GithubCardProps) {
       rel="noreferrer"
     >
       <div
-        className="p-shadow m-3 flex items-center rounded bg-black text-white"
+        className="p-shadow m-3 flex items-center rounded-2xl bg-black text-white"
         style={{
           width: '20em',
         }}

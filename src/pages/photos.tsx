@@ -55,19 +55,19 @@ const items = [
         height: 400,
     },
     {
-        id: "9",
+        id: "10",
         img: "/gallery/IMG_3227.JPG",
         url: "/gallery/IMG_3227.JPG",
         height: 500,
     },
     {
-        id: "9",
+        id: "11",
         img: "/gallery/IMG_3225.JPG",
         url: "/gallery/IMG_3225.JPG",
         height: 500,
     },
     {
-        id: "9",
+        id: "12",
         img: "/gallery/IMG_3222.JPG",
         url: "/gallery/IMG_3222.JPG",
         height: 500,
@@ -84,8 +84,8 @@ export default function Photos() {
                     content="Hello there! I'm Fabian Ferno. I build things for the web. Read more about me here."
                 />
             </Head>
-            <Container className="mt-16 min-h-screen sm:mt-32">
-                <div className='mb-8 text-white'>
+            <Container className="mt-16 sm:mt-32 h-fit pb-16">
+                <div className='mb-8 dark:text-white'>
                     <h1 className='text-4xl font-bold'>
                         Photography
                     </h1>

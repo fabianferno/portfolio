@@ -93,11 +93,11 @@ interface ArticleMeta {
 
 interface ArticleProps {
   article: ArticleMeta
-}
+} 
 
 function Article({ article }: ArticleProps) {
   return (
-    <Card as="article">
+    <Card as="article" className="bg-zinc-950 p-3 rounded-2xl">
       <Card.Title href={`/articles/${article.slug}`}>
         {article.title}
       </Card.Title>
@@ -219,7 +219,7 @@ function Resume() {
   ]
 
   return (
-    <div className="rounded-2xl border border-zinc-100 p-6 dark:border-zinc-700/40">
+    <div className="rounded-2xl bg-zinc-950 border border-zinc-100 p-6 dark:border-zinc-700/40">
       <h2 className="flex text-sm font-semibold text-zinc-900 dark:text-zinc-100">
         <BriefcaseIcon className="h-6 w-6 flex-none" />
         <span className="ml-3">Work</span>

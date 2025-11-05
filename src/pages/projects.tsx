@@ -157,7 +157,7 @@ export default function Projects() {
         intro="I’ve worked on tons of little projects over the years that can be found at my personal code museum, GitHub. I've listed them here for your convenience. In case you're still wondering, I specialize in
         creating scalable enterprise software solutions, architecting distributed systems, & seamless cross-platform apps. Currently exploring the horizons of AI."
       >
-        <div className="-mt-16 mb-5 shadow">
+        <div className="-mt-16 md:mb-5 shadow">
           <div className="flex">
             <div className=" flex-1 md:flex md:justify-between">
               <p className="text-sm text-zinc-600 ">
@@ -179,7 +179,7 @@ export default function Projects() {
           {loader ? (
             <ProjectLoader />
           ) : (
-            <div className="-ml-[10px] md:-ml-[20px]">
+            <div className="-ml-[5px] md:-ml-[10px] ">
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -193,7 +193,7 @@ export default function Projects() {
                     500: 1,
                   }}
                   className="my-masonry-grid"
-                  columnClassName="my-masonry-grid_column p-wall-tilt container"
+                  columnClassName="my-masonry-grid_column p-wall-tilt container -mt-10 md:-mt-8"
                 >
                   {projects.map((project, index) =>
                     project.topics?.includes('readme-profile') === false &&
