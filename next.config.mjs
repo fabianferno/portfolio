@@ -18,6 +18,7 @@ const nextConfig = {
       'media2.giphy.com',
       'media1.giphy.com',
     ],
+    formats: ['image/avif', 'image/webp'],
   },
 }
 

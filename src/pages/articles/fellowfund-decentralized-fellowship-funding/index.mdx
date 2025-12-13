@@ -1,0 +1,196 @@
+import { ArticleLayout } from '@/components/ArticleLayout'
+import Image from 'next/image'
+import featured from '@/images/blog/featured-1600w.avif'
+import userFlow from '@/images/blog/user-flow-1600w.avif'
+
+export const meta = {
+  author: 'Fabian Ferno',
+  date: '2024-11-27',
+  title: 'fellowfund: decentralized fellowship funding',
+  description:
+    'fellowships are broken. subjective selection, zero accountability. built fellowfund for ethglobal bangkok to fix this. prediction markets, skin in the game, true community consensus.',
+}
+
+export default (props) => <ArticleLayout meta={meta} {...props} />
+
+<Image src={featured} alt="FellowFund Featured" />
+
+traditional fellowships are broken. subjective selection. closed doors. zero accountability. money upfront, hope for the best.
+
+we changed the game. built for **ethglobal bangkok 2024**, fellowfund introduces prediction market primitives into fellowship funding. transparency. accountability. skin in the game.
+
+## the problem
+
+why change it? looks fine, right? wrong.
+
+- **subjective selection**: hidden committees deciding fate.
+- **no accountability**: money gone, results unknown.
+- **binary outcomes**: funded or rejected. no nuance.
+- **no stakes**: evaluators lose nothing for being wrong.
+
+fellowfund flips this. market-based mechanisms. collective intelligence.
+
+## the flow
+
+organization creates fellowship. builders apply with kpis. community evaluates via prediction markets. verified outcomes determine payouts. simple.
+
+<Image src={userFlow} alt="FellowFund User Flow" />
+
+## architecture
+
+it’s not just a smart contract. it’s an engine.
+
+```javascript
+const FELLOWFUND_STACK = {
+  // Blockchain Layer
+  smartContracts: 'Solidity + OpenZeppelin',
+  networks: ['Ethereum', 'Polygon', 'Optimism', 'Base', 'Celo', 'Flow', 'Rootstock'],
+
+  // Oracle & Verification
+  oracle: 'Phala Network TEE',
+  identity: 'WorldCoin ID verification',
+  proofSystem: 'vLayer ZK proofs',
+
+  // Data Infrastructure
+  indexing: 'The Graph Protocol',
+  subgraphs: 'Multi-chain event indexing',
+
+  // Frontend & Integration
+  web: 'Next.js + TypeScript',
+  auth: 'Web3Auth + Social Login',
+  messaging: 'Push Protocol',
+
+  // Backend Services
+  api: 'Express.js + Node.js',
+  automation: 'Operator service polling',
+
+  // Infrastructure
+  deployment: 'Hardhat + Ignition'
+};
+```
+
+## smart contracts: the trust layer
+
+orchestration layer. lifecycle management.
+
+```solidity
+contract FellowFund is IFellowFund, Ownable {
+    uint256 public fellowshipCount;
+    mapping(uint256 => Fellowship) public fellowships;
+    mapping(uint256 => Application[]) public applications;
+    mapping(uint256 => mapping(uint256 => IMarket)) public markets;
+
+    address public phalaVerifier;
+    address public operator;
+
+    constructor(address _phalaVerifier, address _operator) Ownable(msg.sender) {
+        phalaVerifier = _phalaVerifier;
+        operator = _operator;
+    }
+}
+```
+
+state machine is key. created -> accepting -> market open -> epoch started -> resolved. clear transitions.
+
+## prediction markets: skin in the game
+
+this is where it gets interesting. every applicant gets a market.
+
+community stakes eth. yes or no. you believe in them? put money on it.
+
+```solidity
+function placeBet(Side _side) external payable {
+    if (isMarketResolved) revert MarkedAlreadyResolved();
+    if (msg.value == 0) revert InvalidBetAmount();
+
+    bets[_side] += msg.value;
+    betsPerBettor[msg.sender][_side] += msg.value;
+
+    if (!isBettor[msg.sender]) {
+        bettors.push(msg.sender);
+        isBettor[msg.sender] = true;
+    }
+
+    emit BetPlaced(msg.sender, _side, msg.value);
+}
+```
+
+winners take all. proportional distribution. incentives aligned.
+
+## market-based selection
+
+application period ends. markets open.
+
+if >50% stakes say "YES", you get funded. market consensus decides, not a board.
+
+```solidity
+function evaluateMarket(uint256 fellowshipId) external onlyOperator {
+    Fellowship storage fellowship = fellowships[fellowshipId];
+    require(fellowship.status == FellowshipStatus.MarketOpen, "Invalid status");
+
+    Application[] storage apps = applications[fellowshipId];
+    uint256 acceptedApplicantsCount = 0;
+
+    uint256 nrApps = apps.length;
+    // Evaluate each application based on market stakes
+    for (uint256 i = 0; i < nrApps; i++) {
+        Application storage app = apps[i];
+        IMarket market = markets[fellowshipId][i];
+        uint256 yesBets = market.getBet(Side.Yes);
+        uint256 noBets = market.getBet(Side.No);
+        uint256 totalBets = yesBets + noBets;
+
+        if (totalBets > 0) {
+            if (yesBets > noBets) {
+                app.accepted = true;
+                acceptedApplicantsCount++;
+                emit ApplicantAccepted(fellowshipId, i);
+            }
+        }
+    }
+    // ... grant distribution logic
+}
+```
+
+## oracle integration: phala network
+
+trust but verify. phala network tee ensures proofs are tamper-proof. automated kpi tracking. verifying github commits, poap events. hard data.
+
+```solidity
+function setApplicantImpact(uint256 fellowshipId, uint256 applicationId, bool achieved, bytes calldata proof)
+    external
+    onlyVerifier
+{
+    require(fellowships[fellowshipId].status == FellowshipStatus.EpochStarted, "Invalid status");
+
+    // Verify TEE proof
+    (bool success,) = phalaVerifier.call(proof);
+    require(success, "Invalid achievement proof");
+
+    Application storage application = applications[fellowshipId][applicationId];
+    application.achieved = achieved;
+    application.verified = true;
+
+    emit ApplicationEvaluated(fellowshipId, applicationId, achieved);
+}
+```
+
+## shipping it
+
+built in 48 hours. chaos. caffeine. code.
+
+deployed across 8+ networks. polygon. optimism. base. celo. finding the best execution environment.
+
+frontend? next.js. web3auth. worldcoin identity verification. smooth onboarding.
+
+## why it matters
+
+- **market-driven**: money talks. bullshit walks.
+- **accountability**: funds tied to actual kpis.
+- **transparency**: everything on-chain.
+
+funding is changing. subjectivity is out. prediction markets are in.
+
+fellowfund.
+
+tags: #web3 #ethereum #prediction-markets #hackathon

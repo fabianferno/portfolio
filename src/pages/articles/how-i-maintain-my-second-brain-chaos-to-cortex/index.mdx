@@ -1,4 +1,6 @@
 import { ArticleLayout } from '@/components/ArticleLayout'
+import Image from 'next/image'
+import obsidian from '@/images/blog/obsidian.png'
 
 export const meta = {
   author: 'Fabian Ferno',
@@ -18,6 +20,8 @@ but then the seedbox happened. notes weren't just staying static. they were conn
 
 notepad -> garden -> second brain. sounds crazy on paper but the graph view doesn't lie. moved from just capturing text to cultivating ideas. realized the value wasn't the storage, it was the synthesis.
 
+<Image src={obsidian} alt="My Obsidian graph view showing connected notes" className="my-8 rounded-xl" />
+
 ## the stack
 
 kept it powerful to move fast. core:
@@ -25,12 +29,21 @@ kept it powerful to move fast. core:
 - obsidian (the operating system)
 - templater (standardization, because i'm lazy)
 - smart connections (ai serendipity, finding links i missed)
+- excalidraw (visual thinking, drawing my brain)
 - kanban (project flow management)
 - git (version control, syncing)
 
 ## feature: the flows
 
 this is the heartbeat. wanted something organic but structured. built "the growth cycle".
+
+my entry point is always the **Daily Note**. it’s the scratchpad. everything goes there—tasks, random thoughts, meeting notes. it’s a stream of consciousness.
+
+but a stream washes away if you don't build dams.
+at the end of the day, i review the daily note. if a bullet point has weight, i refactor it into its own note in the `🌱 Seedbox`.
+
+i force myself to link aggressively. if i write about a concept, i `[[wrap it in brackets]]` immediately, even if the destination note doesn't exist yet. this creates "ghost nodes" in the graph—empty placeholders that demand to be filled. it drives the system forward.
+
 most notes start in the `🌱 Seedbox`. they are messy, incomplete. tagged `#state/seedling`.
 as they connect and grow, they move to `⚜️ Cortex`. tagged `#state/forest`.
 this isn't just filing; it's gardening. ideas compete for attention. the strong ones survive and become evergreen.
