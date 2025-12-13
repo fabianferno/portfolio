@@ -89,8 +89,8 @@ export default function Photos() {
                     <h1 className='text-4xl font-bold'>
                         Photography
                     </h1>
-                    <p className='text-lg mt-2'>
-                        I like taking pictures of people, places, and things. Here are some of my favorite photos from my travels.
+                    <p className='text-lg mt-2 text-zinc-600 dark:text-zinc-400'>
+                        I like taking pictures of pretty people, places, and things. Here are some of my favorite photos from my travels.
                     </p>
                 </div>
 

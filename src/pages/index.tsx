@@ -179,6 +179,85 @@ interface ResumeItem {
   start: string | { label: string; dateTime: number }
   end: string | { label: string; dateTime: number }
 }
+function MusicIMade() {
+  return <div>
+    <h1 className="text-2xl mb-8 tracking-tight text-zinc-900 dark:text-zinc-100">
+      music i made
+    </h1>
+    <>
+      <iframe
+        className='filter invert rounded-2xl'
+        width="100%"
+        height="166"
+        scrolling="no"
+        frameBorder="0"
+        allow="autoplay"
+        src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A2228791307&color=%23000000&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"
+      ></iframe>
+      <div
+        style={{
+          fontSize: '10px',
+          color: '#cccccc',
+          lineBreak: 'anywhere',
+          wordBreak: 'normal',
+          overflow: 'hidden',
+          whiteSpace: 'nowrap',
+          textOverflow: 'ellipsis',
+          fontFamily: 'Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif',
+          fontWeight: 100,
+        }}
+      >
+        <a
+          href="https://soundcloud.com/fabian-ferno"
+          title="Fabian Ferno"
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{ color: '#cccccc', textDecoration: 'none' }}
+        >
+          Fabian Ferno
+        </a>{' '}
+        ·{' '}
+        <a
+          href="https://soundcloud.com/fabian-ferno/chronicles-of-fabelism"
+          title="Neo, Trinity v the World"
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{ color: '#cccccc', textDecoration: 'none' }}
+        >
+          Neo, Trinity v the World
+        </a>
+      </div>
+    </>
+  </div>
+}
+
+function MakingPlaylists() {
+  return <div>
+    <h1 className="text-2xl mb-8 tracking-tight text-zinc-900 dark:text-zinc-100">
+      music i listen to
+    </h1>
+
+    <iframe
+      data-testid="embed-iframe"
+      className='filter contrast-150'
+      style={{ borderRadius: '12px' }}
+      src="https://open.spotify.com/embed/playlist/2oHiDnFXDc2cgIajgUhAK2?utm_source=generator&theme=0"
+      width="100%"
+      height="352"
+      frameBorder="0"
+      allowFullScreen
+      allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+      loading="lazy"
+    ></iframe>
+
+    <div className='text-md mt-2 text-teal-600 dark:text-teal-500 font-bold'>
+      <a href="https://open.spotify.com/playlist/42H9VguLdX1afctGklv6nf?si=745625aacb0c4d26">+ Skywalker Symphony</a>,
+      <a href="https://open.spotify.com/playlist/42H9VguLdX1afctGklv6nf?si=745625aacb0c4d26"> Phantom Tones</a> <span className='text-zinc-600 dark:text-zinc-400'>&</span>
+      <a href="https://open.spotify.com/user/pqfnzbkmew1e4y9o5r0uy83p6?si=d47bfcef48944553"> more</a>
+    </div>
+  </div>
+}
+
 
 function Resume() {
   let resume: ResumeItem[] = [
@@ -276,14 +355,14 @@ function Resume() {
           </li>
         ))}
       </ol>
-      {/* <Button 
+      <Button
         href="/Resume.pdf"
         variant="secondary"
         className="group  mt-6 w-full"
       >
         Download CV
         <ArrowDownIcon className="h-4 w-4 stroke-zinc-400 transition group-active:stroke-zinc-600 dark:group-hover:stroke-zinc-50 dark:group-active:stroke-zinc-50" />
-      </Button> */}
+      </Button>
     </div>
   )
 }
@@ -379,54 +458,12 @@ export default function Home({ articles }: HomeProps) {
               <Article key={article.slug} article={article} />
             ))}
           </div>
-          <div className="lg:pl-16 xl:pl-24">
-            <h1 className="text-2xl mb-8 tracking-tight text-zinc-900 dark:text-zinc-100">
-              music i made
-            </h1>
-            <>
-              <iframe
-                className='filter invert rounded-2xl'
-                width="100%"
-                height="166"
-                scrolling="no"
-                frameBorder="0"
-                allow="autoplay"
-                src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A2228791307&color=%23000000&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"
-              ></iframe>
-              <div
-                style={{
-                  fontSize: '10px',
-                  color: '#cccccc',
-                  lineBreak: 'anywhere',
-                  wordBreak: 'normal',
-                  overflow: 'hidden',
-                  whiteSpace: 'nowrap',
-                  textOverflow: 'ellipsis',
-                  fontFamily: 'Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif',
-                  fontWeight: 100,
-                }}
-              >
-                <a
-                  href="https://soundcloud.com/fabian-ferno"
-                  title="Fabian Ferno"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  style={{ color: '#cccccc', textDecoration: 'none' }}
-                >
-                  Fabian Ferno
-                </a>{' '}
-                ·{' '}
-                <a
-                  href="https://soundcloud.com/fabian-ferno/chronicles-of-fabelism"
-                  title="Neo, Trinity v the World"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  style={{ color: '#cccccc', textDecoration: 'none' }}
-                >
-                  Neo, Trinity v the World
-                </a>
-              </div>
-            </>
+          <div className="lg:pl-16 space-y-8 xl:pl-24">
+
+            <MusicIMade />
+            <hr className="opacity-20 pb-10" />
+            <MakingPlaylists />
+
             {/* <Newsletter /> */}
             {/* <Resume /> */}
           </div>
