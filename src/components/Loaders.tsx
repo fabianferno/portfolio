@@ -44,9 +44,6 @@ interface ProjectLoaderProps {
 export function ProjectLoader(props: ProjectLoaderProps) {
   return (
     <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 1.5 }}
     >
       <div className="mt-[180px] -ml-[5px] md:mt-24 text-right text-zinc-800 md:-ml-2">
         <Masonry

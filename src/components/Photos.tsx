@@ -18,7 +18,7 @@ export function Photos() {
   ]
 
   const baseImageClassName =
-    'brightness-40 relative aspect-[9/8] w-44 flex-none overflow-hidden rounded-xl bg-zinc-100 opacity-80 drop-shadow-lg grayscale filter hover:opacity-100 dark:bg-zinc-800 dark:opacity-100 sm:w-72 sm:rounded-2xl'
+    'brightness-40 relative aspect-[9/8] w-44 flex-none overflow-hidden rounded-xl bg-zinc-100 opacity-80 drop-shadow-lg grayscale filter hover:opacity-100 dark:bg-zinc-800 dark:opacity-100 sm:w-32 sm:rounded-2xl'
 
   const photos = [
     { src: '/photos/eth-india-2022.jpg', alt: 'photos' },
@@ -38,7 +38,7 @@ export function Photos() {
   return (
     <div className="mt-16 sm:mt-20">
       <Marquee
-        speed={150}
+        speed={50}
         autoFill={true}
         className="-my-4 flex justify-center gap-5 overflow-hidden py-4 sm:gap-8"
       >

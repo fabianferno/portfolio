@@ -1,0 +1,59 @@
+import { ArticleLayout } from '@/components/ArticleLayout'
+
+export const meta = {
+  author: 'Fabian Ferno',
+  date: '2025-12-13',
+  title: 'how i built cloka: merch to movement',
+  description:
+    "so, cloka wasn't supposed to be this. started back in march 2025 like a typical side quest. clothing brand. simple storefront. sell some hoodies, vibe out.",
+}
+
+export default (props) => <ArticleLayout meta={meta} {...props} />
+
+so, cloka wasn't supposed to be this. started back in march 2025 like a typical side quest. clothing brand. simple storefront. sell some hoodies, vibe out. standard stack: next.js, tailwind, stripe.
+
+but then the community happened. people weren't just buying clothes. they were running. they wanted to connect. saw the signal, decided to pivot. hard.
+
+## the pivot
+
+clothing brand -> run club -> social health tech. sounds crazy on paper but the git logs don't lie. moved from products to events, check-ins, and arcs. realized the value wasn't the fabric, it was the sweat.
+
+## the stack
+
+kept it simple to move fast. core:
+
+- next.js 15 (app router is good actually)
+- typescript (sanity checks)
+- tailwind (speed)
+- mongodb + mongoose (flexible schema for a pivoting brain)
+
+infrastructure:
+
+- vercel (hosting, blob for images)
+- github actions (ci/cd)
+
+## feature: arcs
+
+this is the social layer. wanted something ephemeral but sticky. built "arcs". think of it like a seasonal campaign for your health. you join an arc, you check in, you track progress. leveraged html-to-image for those shareable cards you see on twitter. make it look good, people will share it. simple growth loop.
+
+## the strava integration
+
+couldn't build a run club without the data. integrated strava oauth. now we pull:
+
+- prs (5k, 10k, half marathon)
+- streaks
+- weekly distance
+
+gamified it. you don't just run; you unlock achievements. the backend syncs this automatically. user connects once, we handle the refreshing tokens and data fetching in the background.
+
+## handling scale (and images)
+
+user generated content is heavy. check-in photos, profile pics, event galleries. dumped s3 for vercel blob. easier DX. implemented pwa features because runners have spotty signal. offline support via service workers. if you're on a trail, the app should still work.
+
+## what's next
+
+cloka is evolving. it’s not just a run club anymore. it’s becoming a social health protocol. building a mobile app now. more health integrations. more social graph features.
+
+built with intent. shipped with speed. evolution is the only constant.
+
+more soon. fabian.

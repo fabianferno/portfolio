@@ -11,7 +11,7 @@ interface HighlightsCardProps {
 
 export function HighlightsCard(props: HighlightsCardProps) {
   return (
-    <a href={props.src} target="_blank" rel="noreferrer">
+    <a href={props.src} target="_blank" className="" rel="noreferrer">
       <div
         className="m-5 flex items-center bg-black"
         style={{
@@ -61,7 +61,7 @@ interface GithubCardProps {
 export function GithubCard(props: GithubCardProps) {
   return (
     <a
-      className="my-7 flex items-center justify-center"
+      className="my-7 flex  filter hover:invert items-center justify-center transition-all duration-300 ease-in-out"
       href={props.src}
       target="_blank"
       rel="noreferrer"

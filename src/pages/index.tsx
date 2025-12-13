@@ -9,10 +9,13 @@ import { Button } from '@/components/Button'
 import { Card } from '@/components/Card'
 import { Container } from '@/components/Container'
 import {
-  TwitterIcon,
   InstagramIcon,
   GitHubIcon,
   LinkedInIcon,
+  XIcon,
+  FarcasterIcon,
+  TelegramIcon,
+  YouTubeIcon,
 } from '@/components/SocialIcons'
 import { Photos } from '@/components/Photos'
 import logoJKS from '@/images/logos/jks.jpg'
@@ -94,11 +97,11 @@ interface ArticleMeta {
 
 interface ArticleProps {
   article: ArticleMeta
-} 
+}
 
 function Article({ article }: ArticleProps) {
   return (
-    <Card as="article" className="bg-zinc-950 p-3 rounded-2xl">
+    <Card as="article" className="bg-zinc-950 rounded-2xl p-6">
       <Card.Title href={`/articles/${article.slug}`}>
         {article.title}
       </Card.Title>
@@ -314,12 +317,18 @@ export default function Home({ articles }: HomeProps) {
             likely to find me in hackathons, devcons and meetups hacking/talking
             with people. Don&apos;t be shy to come say Hi!
           </p>
-          <div className="mt-6 flex gap-6">
+          <div className="mt-6 flex-wrap flex gap-6 items-center">
             <SocialLink
-              href="https://twitter.com/fabianferno"
-              aria-label="Follow on Twitter"
+              href="https://x.com/fabianferno"
+              aria-label="Follow on X"
               target="_blank"
-              icon={TwitterIcon}
+              icon={XIcon}
+            />
+            <SocialLink
+              href="https://farcaster.xyz/fabianferno"
+              aria-label="Follow on Farcaster"
+              target="_blank"
+              icon={FarcasterIcon}
             />
             <SocialLink
               href="https://instagram.com/super.skywalker"
@@ -339,20 +348,87 @@ export default function Home({ articles }: HomeProps) {
               icon={LinkedInIcon}
               target="_blank"
             />
+            <SocialLink
+              href="https://youtube.com/@fabianferno"
+              aria-label="Follow on YouTube"
+              icon={YouTubeIcon}
+              target="_blank"
+            />
+            <div className="flex bg-zinc-800 px-2 py-1 rounded-md items-center text-sm font-medium text-zinc-600 dark:text-zinc-400">
+              <a
+                href="https://t.me/fabianferno"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex items-center hover:text-teal-500 transition"
+              >
+                <TelegramIcon className="h-4 w-4 mr-2 fill-zinc-500 transition group-hover:fill-teal-500 dark:fill-zinc-400" />
+                DM
+              </a>
+            </div>
           </div>
         </div>
       </Container>
       <Photos />
       <Container className="mt-24 md:mt-28">
         <div className="mx-auto grid max-w-xl grid-cols-1 gap-y-20 lg:max-w-none lg:grid-cols-2">
-          <div className="flex flex-col gap-16">
+          <div className="flex flex-col gap-8">
+            <h1 className="text-2xl tracking-tight text-zinc-900 dark:text-zinc-100">
+              stuff i wrote
+            </h1>
             {articles.map((article) => (
               <Article key={article.slug} article={article} />
             ))}
           </div>
-          <div className="space-y-10 lg:pl-16 xl:pl-24">
+          <div className="lg:pl-16 xl:pl-24">
+            <h1 className="text-2xl mb-8 tracking-tight text-zinc-900 dark:text-zinc-100">
+              music i made
+            </h1>
+            <>
+              <iframe
+                className='filter invert rounded-2xl'
+                width="100%"
+                height="166"
+                scrolling="no"
+                frameBorder="0"
+                allow="autoplay"
+                src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A2228791307&color=%23000000&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"
+              ></iframe>
+              <div
+                style={{
+                  fontSize: '10px',
+                  color: '#cccccc',
+                  lineBreak: 'anywhere',
+                  wordBreak: 'normal',
+                  overflow: 'hidden',
+                  whiteSpace: 'nowrap',
+                  textOverflow: 'ellipsis',
+                  fontFamily: 'Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif',
+                  fontWeight: 100,
+                }}
+              >
+                <a
+                  href="https://soundcloud.com/fabian-ferno"
+                  title="Fabian Ferno"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{ color: '#cccccc', textDecoration: 'none' }}
+                >
+                  Fabian Ferno
+                </a>{' '}
+                ·{' '}
+                <a
+                  href="https://soundcloud.com/fabian-ferno/chronicles-of-fabelism"
+                  title="Neo, Trinity v the World"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{ color: '#cccccc', textDecoration: 'none' }}
+                >
+                  Neo, Trinity v the World
+                </a>
+              </div>
+            </>
             {/* <Newsletter /> */}
-            <Resume />
+            {/* <Resume /> */}
           </div>
         </div>
       </Container>

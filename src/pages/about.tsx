@@ -73,7 +73,7 @@ export default function About() {
             </h1>
             <div className="mt-6 space-y-7 text-base text-zinc-600 dark:text-zinc-400">
               <p>
-                I&apos;m currently help run{' '}
+                I currently help run{' '}
                 <a
                   href="https://cloka.in"
                   className="underline-none font-bold text-teal-500"

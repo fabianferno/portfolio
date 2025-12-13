@@ -78,7 +78,7 @@ export default function Photos() {
     return (
         <>
             <Head>
-                <title>About - Fabian Ferno</title>
+                <title>Photos - Fabian Ferno</title>
                 <meta
                     name="description"
                     content="Hello there! I'm Fabian Ferno. I build things for the web. Read more about me here."
@@ -93,6 +93,8 @@ export default function Photos() {
                         I like taking pictures of people, places, and things. Here are some of my favorite photos from my travels.
                     </p>
                 </div>
+
+
                 <Masonry
                     items={items}
                     ease="power3.out"
@@ -101,6 +103,7 @@ export default function Photos() {
                     animateFrom="bottom"
                     scaleOnHover={true}
                     hoverScale={0.95}
+
                     blurToFocus={true}
                     colorShiftOnHover={false}
                 />

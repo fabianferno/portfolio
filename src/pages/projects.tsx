@@ -161,7 +161,7 @@ export default function Projects() {
           <div className="flex">
             <div className=" flex-1 md:flex md:justify-between">
               <p className="text-sm text-zinc-600 ">
-                All the projects in this page are fetched live from the
+                Live from the
                 <a
                   href="https://docs.github.com/en/rest"
                   target="_blank"

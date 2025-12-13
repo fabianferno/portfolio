@@ -4,123 +4,71 @@ import Image from 'next/image'
 export const meta = {
   author: 'Fabian Ferno',
   date: '2022-08-11',
-  title: 'Warp Ads: Decentralized Advertising for AI Agents',
+  title: 'warp ads: ads for agents.',
   description:
-    'Discover how Warp Ads is revolutionizing digital advertising through a decentralized protocol designed specifically for AI agents. Learn about its innovative approach to monetization, transparent validation system, and how it benefits developers, advertisers, and users in the AI ecosystem.',
+    'decentralized advertising protocol for ai agents. monetize in 3 lines of code.',
 }
 
 export default (props) => <ArticleLayout meta={meta} {...props} />
 
-# Warp Ads: Decentralized Advertising for AI Agents
+# [warp ads](https://warpads-agentic.vercel.app): ads for agents.
 
-## Abstract
+## the problem
+ai agents are here. they code. they plan trips. they shop.
+but devs can't monetize them efficiently.
+advertisers can't reach them.
+users hate interruptions.
 
-Warp Ads introduces the world's first decentralized advertising protocol tailored for AI agents. By harnessing blockchain technology and decentralized validation, Warp Ads empowers developers to monetize their AI agents effortlessly, provides advertisers with unparalleled access to hyper-targeted impressions, and delivers users a seamless, value-adding ad experience. Operating on scalable blockchain networks and integrating with leading AI frameworks, Warp Ads redefines advertising in the AI ecosystem with transparency, ethics, and efficiency.
+current ads? broken.
+agentic future? needs a new protocol.
 
-## 1. Introduction
+## the fix: warp ads
+decentralized advertising protocol.
+built specifically for ai agents. [try it out](https://warpads-agentic.vercel.app).
 
-The rise of AI agents—specialized tools for tasks like coding assistance, travel planning, and shopping—has transformed how users interact with technology. Yet, monetizing these agents remains a challenge for developers, while advertisers struggle to reach niche audiences effectively. Traditional ads often disrupt user experiences, eroding trust and engagement. Warp Ads bridges this gap with a decentralized ad network that turns AI agents into ethical, influential ad channels, benefiting developers, advertisers, and users alike.
+**for devs:**
+- monetize in 3 lines of code.
+- works with eliza, crewai, langgraph.
+- passive income. no ux compromises.
 
-## 2. Problem Statement
+**for advertisers:**
+- 1500+ ai influencers.
+- 10k+ daily users.
+- hyper-targeted. target intents, not keywords.
 
-- **Developers**: Lack simple, non-intrusive ways to monetize AI agents without complex setups or user experience trade-offs.
-- **Advertisers**: Face difficulties targeting niche audiences through AI agents due to limited contextual ad solutions.
-- **Users**: Encounter irrelevant or disruptive ads that detract from their interactions with AI agents.
+**for users:**
+- ads that help, not annoy.
+- context-aware.
+- native to the conversation.
 
-## 3. Solution: Warp Ads
+## how it works
+**adspaces (erc721)**
+unique nfts representing your agent's ad slot.
+register. install plugin. profit.
 
-Warp Ads is a decentralized protocol that seamlessly connects AI agents with advertisers, creating a transparent and ethical ad ecosystem.
+**campaigns (erc1155)**
+flexible ad tokens.
+set budget. set targeting. go live.
 
-### For Developers
+**validation**
+eigenlayer avs.
+decentralized operators verify every impression.
+no fraud. pure transparency.
 
-- Monetize AI agents instantly with just three lines of code
-- Compatible with top frameworks like Eliza, CrewAI, and LangGraph
-- Ensures passive revenue without compromising user experience
+## tech stack
+- **chains**: arbitrum, base, flow.
+- **storage**: mongodb + vector/embeddings.
+- **validation**: eigenlayer.
 
-### For Advertisers
+## tokenomics ($WARP)
+- **stake**: agents stake to earn.
+- **burn**: bad actors get slashed.
+- **gov**: community runs the show.
 
-- Tap into a network of over 1,500 AI "influencers" with 10,000+ daily users
-- Hyper-targeted, conversational ads leverage AI-native intent signals
-- Reach specialized audiences with unmatched relevance
+## why?
+transparency.
+decentralization.
+ethics.
 
-### For Users
-
-- Experience ads that enhance, not interrupt
-- Contextual recommendations blend naturally into AI interactions
-- Value-adding content instead of clutter
-
-## 4. Key Features
-
-### AdSpaces
-
-- **What**: Unique ERC721 tokens representing advertising real estate for each AI agent
-- **How**: Developers register their agents, install the WarpAds plugin, and configure an API key
-- **Purpose**: Turns agents into tradable ad spaces, incentivizing quality integrations
-
-### Ad Campaigns
-
-- **What**: ERC1155 tokens representing fixed-duration ad campaigns
-- **How**: Advertisers create campaigns with base cost and optional priority fees
-- **Purpose**: Offers flexible, transparent ad placement with real-time analytics
-
-### Validation System
-
-- **What**: Decentralized operators validate ad integrations and engagements
-- **How**: Operators stake ETH via EigenLayer and provide ECDSA signatures
-- **Purpose**: Ensures fairness and transparency in incentive distribution
-
-## 5. Technology Stack
-
-### Blockchain Networks
-
-- Arbitrum, Base, and Flow—chosen for scalability and transaction speed
-
-### Smart Contracts
-
-- ERC721 for AdSpaces (unique agent NFTs)
-- ERC1155 for Ad Campaigns (multi-instance campaign tokens)
-
-### Data Storage
-
-- MongoDB for campaign metadata and vector-stored ad embeddings
-
-### Validation
-
-- Actively Validated Service (AVS) on EigenLayer for decentralized operator validation
-
-## 6. Tokenomics
-
-### WARP Token
-
-- **Use**: Staking by agents for incentives; priority fees by advertisers
-- **Slashing**: Penalizes invalid ad responses or replay attacks
-
-### Incentives
-
-- Developers earn based on ad engagement
-- Operators earn for validation services
-- Platform collects base fees for sustainability
-
-## 7. Benefits
-
-### Transparency
-
-- Verifiable engagement metrics
-- Clear cost structures
-- Traceable incentives
-
-### Decentralization
-
-- Community-driven governance
-- Token mechanics
-- Stakeholder participation
-
-### Enhanced User Experience
-
-- Contextual, ethical ads
-- Seamless AI agent interactions
-- Value-driven content
-
-## 8. Conclusion
-
-Warp Ads pioneers a new era of advertising by transforming AI agents into decentralized, ethical ad channels. With effortless monetization for developers, hyper-targeted reach for advertisers, and value-driven ads for users, Warp Ads aligns incentives across its ecosystem. Built on cutting-edge blockchain technology and validated through EigenLayer, Warp Ads is poised to lead the fusion of Web3 and AI advertising.
+we’re building the economic layer for the agentic web.
+join us.
