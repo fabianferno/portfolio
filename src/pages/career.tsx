@@ -115,7 +115,8 @@ export default function Career() {
             highlights: [
                 'Launched the product on Base and integrated with the Virtuals AI Agent ecosystem, enabling autonomous trading and gameplay features for thousands of users.',
                 'Drove the product from hackathon prototype to a live ecosystem token with $2M+ peak market capitalization, validating market demand and early PMF.',
-                'Engineered tokenomics that maintained a 34% liquidity-to-market-cap ratio, ensuring pool health and sustainable market operations.'
+                'Engineered tokenomics that maintained a 34% liquidity-to-market-cap ratio, ensuring pool health and sustainable market operations.',
+                'Built marketing pipelines and built tools similar to Kaito to create a community led product growth on X, working with notable Twitch Streamers like AndySlaps.'
             ],
             logo: logoWhimbet
         },
