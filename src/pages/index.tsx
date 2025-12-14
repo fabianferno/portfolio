@@ -234,7 +234,7 @@ function MusicIMade() {
 function MakingPlaylists() {
   return <div>
     <h1 className="text-2xl mb-8 tracking-tight text-zinc-900 dark:text-zinc-100">
-      music i listen to
+      music i&apos;ve curated
     </h1>
 
     <iframe
@@ -250,11 +250,17 @@ function MakingPlaylists() {
       loading="lazy"
     ></iframe>
 
-    <div className='text-md mt-2 text-teal-600 dark:text-teal-500 font-bold'>
-      <a href="https://open.spotify.com/playlist/42H9VguLdX1afctGklv6nf?si=745625aacb0c4d26">+ Skywalker Symphony</a>,
-      <a href="https://open.spotify.com/playlist/42H9VguLdX1afctGklv6nf?si=745625aacb0c4d26"> Phantom Tones</a> <span className='text-zinc-600 dark:text-zinc-400'>&</span>
-      <a href="https://open.spotify.com/user/pqfnzbkmew1e4y9o5r0uy83p6?si=d47bfcef48944553"> more</a>
-    </div>
+    <ul className='text-md mt-2 text-teal-600 dark:text-teal-500 font-bold'>
+      <li>
+        <a href="https://open.spotify.com/playlist/42H9VguLdX1afctGklv6nf?si=745625aacb0c4d26">- Skywalker Symphony</a>
+      </li>
+      <li>
+        <a href="https://open.spotify.com/playlist/42H9VguLdX1afctGklv6nf?si=745625aacb0c4d26">- Phantom Tones</a>
+      </li>
+      <li>
+        <a href="https://open.spotify.com/user/pqfnzbkmew1e4y9o5r0uy83p6?si=d47bfcef48944553">- more</a>
+      </li>
+    </ul>
   </div>
 }
 
@@ -396,7 +402,7 @@ export default function Home({ articles }: HomeProps) {
             likely to find me in hackathons, devcons and meetups hacking/talking
             with people. Don&apos;t be shy to come say Hi!
           </p>
-          <div className="mt-6 flex-wrap flex gap-6 items-center">
+          <div className="mt-6 flex-wrap flex sm:gap-6 gap-5 items-center">
             <SocialLink
               href="https://x.com/fabianferno"
               aria-label="Follow on X"

@@ -6,10 +6,13 @@ import { ComponentType, ReactNode } from 'react'
 
 import { Container } from '@/components/Container'
 import {
-  TwitterIcon,
+  XIcon,
   InstagramIcon,
   GitHubIcon,
   LinkedInIcon,
+  FarcasterIcon,
+  YouTubeIcon,
+  TelegramIcon,
 } from '@/components/SocialIcons'
 import portraitImage from '@/images/portrait.png'
 
@@ -72,69 +75,49 @@ export default function About() {
               I build things that connect people — on the web, on-chain, and in the real world.
             </h1>
             <div className="mt-6 space-y-7 text-base text-zinc-600 dark:text-zinc-400">
+
               <p>
-                I currently help run{' '}
-                <a
-                  href="https://cloka.in"
-                  className="underline-none font-bold text-teal-500"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Cloka
-                </a>
-                , Chennai&apos;s first and largest fitness community and app which I co-founded, where 7,000+ fitness enthusiasts move together across disciplines. At Cloka, I lead product, engineering, and community tech — building systems that blend social connection with movement. We&apos;ve partnered with Phoenix Marketcity, Starbucks, Blinkit, and more to create immersive, lifestyle-driven fitness experiences, including India&apos;s first &quot;Mallathon.&quot; Cloka is evolving into a tech-enabled collective where every run, lift, spar, or game strengthens both body and community.
+                For those who don’t know me:
               </p>
-              <p>
-                Previously, I served as Lead Engineer at{' '}
-                <a
-                  href="https://karmahq.xyz"
-                  className="underline-none font-bold text-teal-500"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  KarmaHQ
-                </a>
-                , building the on-chain infrastructure powering grants, governance, and reputation for ecosystems like Gitcoin, Optimism, Celo, Arbitrum, and ENS DAO. I led the development of the Grantee Accountability Protocol (GAP), now adopted as a standard across multiple public goods organizations, and contributed to products like Karma AI and Delegate Dashboards — foundational tools driving transparent, data-backed coordination in Web3.
-              </p>
-              <p>
-                As Interim CTO at{' '}
-                <a
-                  href="https://ungate.io"
-                  className="underline-none font-bold text-teal-500"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Ungate
-                </a>
-                , I helped pioneer verifiable AI infrastructure — leading the development of Wukong, the first AI AVS (Actively Validated Service) on EigenLayer Mainnet. Our work was spotlighted by the Eigen Foundation, enabling AI agents to operate inside Trusted Execution Environments (TEEs) with cryptographic proofs of behavior and state.
-              </p>
-              <p>
-                Before that, I co-founded{' '}
-                <a
-                  href="https://blitzcrafthq.com"
-                  className="underline-none font-bold text-teal-500"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  BlitzCraft
-                </a>
-                , a blockchain R&D company that built NFT analytics platforms used by Adidas, Nike, and Jump.Trade. We processed 20B+ blockchain data points, ranked #6 on ProductHunt, and joined Foundership&apos;s Polygon 0xCamp accelerator.
-              </p>
-              <p>
-                Earlier in my journey, I led engineering at Dali, a creative intelligence platform for NFTs incubated at IIT Madras Research Park, and raised $150K in pre-seed capital. I also co-founded Pattarai, one of India&apos;s largest student engineering collectives with 850+ members, mentoring projects and launching LICET&apos;s 3600 sq ft FabLab.
-              </p>
-              <p>
-                Across roles, I&apos;ve worked at the intersection of technology, community, and creativity — from verifiable AI to governance tooling, analytics, and real-world fitness experiences. My focus remains constant: building systems that empower people to connect, create, and move — whether online or on the ground.
+              <ul role="list" className="list-disc pl-5 space-y-2">
+                <li>
+                  Used to work in the governance, grants and public good space as lead engineer at <Link href="https://karmahq.xyz" className="text-teal-500 font-bold hover:text-teal-600 dark:hover:text-teal-400">Karma</Link> contributing to protocols like <Link href="https://gitcoin.co" className="text-teal-500 font-bold hover:text-teal-600 dark:hover:text-teal-400">Gitcoin</Link>, <Link href="https://octant.app" className="text-teal-500 font-bold hover:text-teal-600 dark:hover:text-teal-400">Octant</Link>, etc. Most notable work was leading the development of <Link href="https://karmahq.xyz" className="text-teal-500 font-bold hover:text-teal-600 dark:hover:text-teal-400">Grantee Accountability Protocol</Link>(GAP) which is now used by ecosystems like Gitcoin, Celo and Polygon as their grants tooling.
+                </li>
+                <li>
+                  Exited couple startups as a cofounder before that (<Link href="https://nftconomy.com" className="text-teal-500 font-bold hover:text-teal-600 dark:hover:text-teal-400">nftconomy.com</Link>, <Link href="https://blitzcrafthq.com" className="text-teal-500 font-bold hover:text-teal-600 dark:hover:text-teal-400">blitzcrafthq.com</Link>)
+                </li>
+                <li>
+                  Currently building an AI call centre stack for CX (<Link href="https://tenorilabs.ai" className="text-teal-500 font-bold hover:text-teal-600 dark:hover:text-teal-400">tenorilabs.ai</Link>)
+                </li>
+                <li>
+                  Also cofounded one of India’s largest fitness/wellness community app - (<Link href="https://cloka.in" className="text-teal-500 font-bold hover:text-teal-600 dark:hover:text-teal-400">cloka.in</Link>)
+                </li>
+                <li>
+                  <Link href="https://whim.bet" className="text-teal-500 font-bold hover:text-teal-600 dark:hover:text-teal-400">Whim.bet</Link> - with <Link href="https://virtuals.io" className="text-teal-500 font-bold hover:text-teal-600 dark:hover:text-teal-400">Virtuals Protocol</Link>/ 9m total volume last year
+                </li>
+                <li>
+                  But I’m mostly known for my <Link href="https://ethglobal.com" className="text-teal-500 font-bold hover:text-teal-600 dark:hover:text-teal-400">EthGlobal</Link> records - most hacks + finalist titles (x6) topping 85+ hackathons over last 3 years
+                </li>
+              </ul>
+              <p className="mt-8">
+                Outside of work, I love hackathons, travel, and learning to produce music.
               </p>
             </div>
           </div>
           <div className="lg:pl-20">
             <ul role="list">
               <SocialLink
-                href="https://twitter.com/FabianFerno"
-                icon={TwitterIcon}
+                href="https://x.com/fabianferno"
+                icon={XIcon}
               >
-                Follow on Twitter
+                Follow on X
+              </SocialLink>
+              <SocialLink
+                href="https://farcaster.xyz/fabianferno"
+                icon={FarcasterIcon}
+                className="mt-4"
+              >
+                Follow on Farcaster
               </SocialLink>
               <SocialLink
                 href="https://www.instagram.com/super.skywalker/"
@@ -156,6 +139,20 @@ export default function About() {
                 className="mt-4"
               >
                 Follow on LinkedIn
+              </SocialLink>
+              <SocialLink
+                href="https://youtube.com/@fabianferno"
+                icon={YouTubeIcon}
+                className="mt-4"
+              >
+                Follow on YouTube
+              </SocialLink>
+              <SocialLink
+                href="https://t.me/fabianferno"
+                icon={TelegramIcon}
+                className="mt-4"
+              >
+                DM on Telegram
               </SocialLink>
               <SocialLink
                 href="mailto:fabian@planetaria.tech"

@@ -1,0 +1,133 @@
+import { ArticleLayout } from '@/components/ArticleLayout'
+import Image from 'next/image'
+import featuredImage from '@/images/blog/featured-1600w-2.avif'
+import architectureImage from '@/images/blog/neocast-architecture-1600w.avif'
+
+export const meta = {
+  author: 'Daniel Mark',
+  date: '2024-12-26',
+  title: 'neocast: the future of web3 notifications',
+  description:
+    'a revolutionary web3 communication platform that bridges smart contract events with real-world notifications. build automated workflows that trigger discord messages, emails, and webhooks from blockchain activity.',
+}
+
+export default (props) => <ArticleLayout meta={meta} {...props} />
+
+<Image src={featuredImage} alt="NeoCast web3 notification platform interface showing smart contract automation workflows" className="my-8 rounded-xl" />
+
+so, web3 communication is broken. users are constantly refreshing interfaces, checking explorers, and missing critical updates. the infrastructure is there—on-chain events are firing—but the connection to the real world is missing.
+
+enter **neocast**. bridging the gap between the chain and your inbox.
+
+## the problem
+
+traditional web apps have this solved. you get a slack ping when a deployment finishes. you get an email when someone replies to you. but in web3? silence.
+
+common scenarios:
+- defi traders glue themselves to screens to watch positions.
+- nft creators manually refreshing opensea.
+- dao votes passing while you sleep.
+- devs blindly hoping their contracts are behaving.
+
+the data is public. the access is painful. neocast fixes this.
+
+## what is neocast?
+
+think zapier for blockchain. it’s a communication network that listens to smart contracts and triggers real-world actions. discord webhooks, emails, api calls. if it happens on-chain, you know about it off-chain. instantly.
+
+## the architecture
+
+simple concept, powerful execution:
+
+`event` -> `neocast` -> `action`
+
+<Image src={architectureImage} alt="NeoCast Platform Architecture" className="my-8 rounded-xl" />
+
+we monitor the network nodes directly. no polling. no delays. when a block is finalized, the notification is already on its way.
+
+## the features
+
+**multi-chain native.**
+started with neo n3, expanded to evm. ethereum, polygon, bsc. doesn't matter where you build, we listen.
+
+**real-time detection.**
+websockets over http polling. speed matters. if a liquidation is happening, you need to know now, not in 5 minutes.
+
+**flexible actions.**
+- discord for the community.
+- email for the suits.
+- webhooks for the devs.
+- custom api calls for the wild cards.
+
+## visual builder
+
+we built a drag-and-drop workflow builder. because not everyone wants to write scripts to get a notification.
+
+1. pick your contract.
+2. pick your event.
+3. pick your destination.
+4. deploy.
+
+## use cases
+
+**defi monitoring**
+```javascript
+// liquidity alerts straightforward
+const alert = {
+  trigger: 'LiquidityAdded',
+  action: 'sendEmail',
+  message: 'heads up: liquidity changed. new balance: {newBalance}'
+};
+```
+
+**nft drops**
+discord blows up the second a mint happens. automated hype generation.
+
+**dao governance**
+no more "i didn't know there was a vote". push notifications for new proposals. transparency enforced by code.
+
+## tech deep dive
+
+integration is standard solidity events. nothing proprietary to install on your contract.
+
+```solidity
+// just emit standard events
+event LiquidityAdded(address user, uint256 amount);
+
+function addLiquidity(uint256 amount) external {
+    // logic...
+    emit LiquidityAdded(msg.sender, amount);
+}
+```
+
+we catch that emit, parse the abi, and hydrate a template:
+
+```json
+{
+  "template": "yo {{user}}, you just added {{amount}} tokens",
+  "variables": { "user": "{user}", "amount": "{amount}" }
+}
+```
+
+## security
+
+non-custodial. we don't touch keys. we don't touch funds. we just read public data and shout about it. decentralized nodes for redundancy. rate limiting to prevent spam.
+
+## partnerships
+
+big names backing the vision.
+- **neo foundation**: native n3 support.
+- **okx**: wallet integration.
+- **axlabs**: tooling partners.
+
+## what's next
+
+neocast isn't just a notification tool. it's the notification layer. infrastructure for the next wave of dapps.
+
+users shouldn't have to seek information. it should come to them. improved ux, better developer tools, engaged communities.
+
+the future is connected. neocast is the bridge.
+
+## tags
+
+#web3 #blockchain #notifications #neo #automation

@@ -18,7 +18,7 @@ export function Photos() {
   ]
 
   const baseImageClassName =
-    'brightness-40 relative aspect-[9/8] w-44 flex-none overflow-hidden rounded-xl bg-zinc-100 opacity-80 drop-shadow-lg grayscale filter hover:opacity-100 dark:bg-zinc-800 dark:opacity-100 sm:w-32 sm:rounded-2xl'
+    'brightness-40 relative aspect-[9/8] w-32 flex-none overflow-hidden rounded-xl bg-zinc-100 opacity-80 drop-shadow-lg grayscale filter hover:opacity-100 dark:bg-zinc-800 dark:opacity-100 sm:w-32 sm:rounded-2xl'
 
   const photos = [
     { src: '/photos/eth-india-2022.jpg', alt: 'photos' },

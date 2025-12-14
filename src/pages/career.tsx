@@ -49,7 +49,19 @@ function Role({ role }: { role: any }) {
             </div>
             <div className="flex flex-col">
                 <h2 className="text-lg font-semibold text-zinc-100">
-                    {role.title} at {role.company}
+                    {role.title} at{' '}
+                    {role.website ? (
+                        <a
+                            href={role.website}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-teal-400 transition"
+                        >
+                            {role.company}
+                        </a>
+                    ) : (
+                        role.company
+                    )}
                 </h2>
                 <span className="text-zinc-500">
                     {role.start} – {role.end}
@@ -75,16 +87,17 @@ export default function Career() {
     const experiences = [
         {
             company: 'Cloka',
-            title: 'Co-Founder & CTO',
+            title: 'Co-Founder',
             start: 'Jul 2023',
             end: 'Present',
+            website: 'https://cloka.in',
             description: [
-                'Cloka (cloka.in) is Chennai’s first and largest fitness community and app, bringing together runners, lifters, fighters, and athletes across disciplines like running, strength training, MMA, and pickleball — united by a shared culture of movement, consistency, and community.',
-                'I lead product, engineering, and community tech, building tools that power our events, tracking, and member engagement while connecting 7K+ active users online and IRL.',
+                'Cloka (cloka.in) is Chennai’s first and one of India’s largest fitness app / community, bringing together runners, lifters, fighters, and athletes across disciplines like running, strength training, MMA, and pickleball — united by a shared culture of movement, consistency, and community.',
+                'I lead product, partnerships, operations, and community tech, building tools that power our events, tracking, and member engagement while connecting 8000+ active members and an online community of over 16000 athletes.',
                 'Cloka is evolving into a tech-enabled fitness collective — where every run, lift, spar, or game strengthens both body and community.'
             ],
             highlights: [
-                'We’ve partnered with Phoenix Marketcity (hosting India’s first “Mallathon”), Supply6, Starbucks, Aceblend, Blinkit, Mirchi FM, and many more notable brands along with local cafés and gyms, to create immersive, lifestyle-driven experiences that blend fitness with social connection.'
+                'We’ve worked with global brands like Red Bull, Phoenix Marketcity (hosting India’s first “Mallathon”), Supply6, Starbucks, Aceblend, Blinkit, Mirchi FM, and many more notable brands along with local cafés and gyms, to create immersive, lifestyle-driven experiences that blend fitness with social connection.'
             ],
             logo: logoCloka
         },
@@ -92,8 +105,9 @@ export default function Career() {
             company: 'Whim.Bet',
             title: 'Cofounder & CTO',
             start: 'May 2025',
-            end: 'Jul 2025',
-            location: 'Dubai, United Arab Emirates',
+            end: 'Oct 2025',
+            location: 'Internet',
+            website: 'https://whim.bet',
             description: [
                 'Built and scaled an on-chain betting platform that processed over $9M in transaction volume, demonstrating secure contract architecture and high user throughput.',
                 'Led all technical development, from smart contract design to infrastructure, security reviews, devops, and product iteration.'
@@ -111,6 +125,7 @@ export default function Career() {
             start: 'May 2025',
             end: 'Jul 2025',
             location: 'Dubai, United Arab Emirates',
+            website: 'https://ungate.ai',
             description: [
                 'Ungate is building the trust infrastructure for the trillion-dollar agent economy — securing how AI agents handle user funds, data, and decisions through verifiable security instead of blind trust.',
                 'Led development of Wukong, the first AI AVS (Actively Validated Service) on EigenLayer Mainnet, spotlighted by the Eigen Foundation. Wukong enables verifiable AI by running agents inside Trusted Execution Environments (TEEs) that continuously generate proofs for their actions and state — stored on EigenDA and Filecoin for public auditability. Onboarded 40+ EigenLayer operators securing $5B+ in Total Value Restaked (TVR).',
@@ -128,8 +143,9 @@ export default function Career() {
             start: 'Nov 2023',
             end: 'Apr 2025',
             location: 'California, United States',
+            website: 'https://karmahq.xyz',
             description: [
-                'Led development of the Grantee Accountability Protocol (GAP) — now adopted as a standard for evaluating grants across Gitcoin, Octant, Optimism, Celo, Scroll and various other public good organizations.',
+                'Led development of the Grantee Accountability Protocol (GAP) — now adopted as a standard for evaluating grants across Gitcoin, Octant, Optimism, Celo, Scroll and various other public good projects.',
                 'Built reputation and governance tools that power the on-chain coordination layer for major ecosystems including Arbitrum, Aave, Nouns, ENS DAO, and Compound Finance and a few other notable DAOs.',
                 'Karma’s tools are now foundational infrastructure for transparent, data-driven governance across Web3.'
             ],
@@ -149,6 +165,7 @@ export default function Career() {
             start: 'Jun 2022',
             end: 'Apr 2024',
             location: 'Chennai, Tamil Nadu, India',
+            website: 'https://blitzcrafthq.com',
             description: [
                 'Co-founded a blockchain R&D company focused on NFT analytics and infrastructure. Led a 14-member engineering team across product, DevOps, and blockchain to ship 4 analytics products used by Adidas, Nike, and Jump.Trade (GuardianLink).',
                 'Built deep analytics dashboards tracking 150+ on-chain metrics — outperforming industry leaders like DappRadar and NFTGo. Architected large-scale data pipelines processing 20B+ blockchain data points, optimizing infrastructure costs by 95% through on-prem clusters, caching layers, and distributed systems using ZeroMQ, Cassandra, ZeroMQ and big data solutions.',
@@ -158,14 +175,16 @@ export default function Career() {
         },
         {
             company: 'Hackathons',
-            title: 'Serial Builder',
+            title: 'Comp',
             start: '2016',
             end: 'Present',
+            website: 'https://ethglobal.com',
             description: [
                 'Competed in over 85+ hackathons globally, specializing in rapid product development, blockchain infrastructure, and creative problem solving. Known for consistently shipping functional MVPs within 24-48 hour timeframes.',
             ],
             highlights: [
-                'EthGlobal Records: Secured 6 finalist titles and holds the record for most hacks submitted.',
+                'EthGlobal Records: Secured 6 finalist titles and holds the record for most IRL finalist titles. (as of 2025)',
+                'Winner of the Trifecta Cup - Ethglobal’s first competition exclusive for Ethglobal Finalists.',
                 'Consistently topped leaderboards across various ecosystems including Ethereum, Polygon, and Solana.',
                 'Built and shipped over 100+ projects ranging from DeFi protocols to AI agents and consumer social apps.'
             ],
@@ -176,9 +195,10 @@ export default function Career() {
             title: 'Freelance & Open Source',
             start: '2019',
             end: '2023',
+            website: 'https://pattarai.in',
             description: [],
             highlights: [
-                'Co-founded an active open-source software development community, during college, which had grown to over 850 members across India, fostering collaboration and innovation in software projects.',
+                'Co-founded an active open-source engineering community, during college, which had grown to over 850 members across India, fostering collaboration and innovation in software projects (pattarai.in)',
                 'Designed and set up a state-of-the-art Fabrication laboratory (FabLab) across 3600 sq ft at LICET, Chennai, equipped with advanced technology including 3D printers, laser cutters and CNC machines. Conducted 40+ workshops in the FabLab, mentoring more than 1K+ students in various technological disciplines and practical applications.',
                 'Offered a wide range of services including software development, application development, web automation & digital marketing to a diverse client base.'
             ],
@@ -190,6 +210,7 @@ export default function Career() {
             start: 'Dec 2021',
             end: 'Sep 2022',
             location: 'Chennai, Tamil Nadu, India',
+            website: 'https://www.instagram.com/dali.hq/',
             description: [
                 'Led a cross-functional engineering team of 10, overseeing product design, operations, engineering, & software architecture & systems design. Developed data mining algorithms, built scraping and indexing flows for on-chain & off-chain community data - Reddit, Twitter, Discord and Google Trends.',
                 'Developed an NFT & blockchain aggregator platform with statistical scoring algorithms & blockchain indexers, enabling data-driven insights using Postgres + ORM, AWS S3, Python Django (DRF), NextJS & Apache e-charts. Experimented with LSTM, & ARIMA models for ML-enabled analytics. Implemented A/B testing flows & usability tests with tools like Selenium, HotJar, & MS Clarity. Built a GraphQL API.',
@@ -203,6 +224,7 @@ export default function Career() {
             start: '2020',
             end: '2021',
             location: 'Germany',
+            website: 'https://blitz-work.com/',
             description: [],
             highlights: [
                 'Led the development of a booking system, admin panels, and an ERP for Stretch Inc. UK, streamlining operations. Provided technical support and documentation for Gazeal UK, ensuring seamless collaboration and successful project completion.'
@@ -215,6 +237,7 @@ export default function Career() {
             start: '2020',
             end: '2021',
             location: 'Chennai',
+            website: 'https://www.jksinfotech.in/',
             description: [
                 'Joined a legacy IT firm and helped modernize the backbone of over 400 businesses under the Chettiar Chamber of Commerce. Spearheaded teams and built custom ERPs, CMS systems, and payment solutions that brought finance, construction, & retail sectors into the digital era. Worked hands-on across architecture, backend, and deployment — specializing in ASP.NET MVC, SQL Server, and Azure Cloud — to create systems that scaled and stuck.'
             ],
