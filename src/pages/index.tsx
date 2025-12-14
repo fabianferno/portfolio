@@ -250,17 +250,11 @@ function MakingPlaylists() {
       loading="lazy"
     ></iframe>
 
-    <ul className='text-md mt-2 text-teal-600 dark:text-teal-500 font-bold'>
-      <li>
-        <a href="https://open.spotify.com/playlist/42H9VguLdX1afctGklv6nf?si=745625aacb0c4d26">- Skywalker Symphony</a>
-      </li>
-      <li>
-        <a href="https://open.spotify.com/playlist/42H9VguLdX1afctGklv6nf?si=745625aacb0c4d26">- Phantom Tones</a>
-      </li>
-      <li>
-        <a href="https://open.spotify.com/user/pqfnzbkmew1e4y9o5r0uy83p6?si=d47bfcef48944553">- more</a>
-      </li>
-    </ul>
+    <div className='text-md mt-2 text-zinc-600 dark:text-zinc-300'>
+      also check out
+      <a className='text-teal-600 dark:text-teal-500 font-bold' href="https://open.spotify.com/playlist/42H9VguLdX1afctGklv6nf?si=745625aacb0c4d26"> skywalker symphony</a>, <a className='text-teal-600 dark:text-teal-500 font-bold' href="https://open.spotify.com/playlist/42H9VguLdX1afctGklv6nf?si=745625aacb0c4d26">phantom tones</a> and <a className='text-teal-600 dark:text-teal-500 font-bold' href="https://open.spotify.com/user/pqfnzbkmew1e4y9o5r0uy83p6?si=bcedd5bb81cb4dad">more</a>
+
+    </div>
   </div>
 }
 
@@ -390,17 +384,16 @@ export default function Home({ articles }: HomeProps) {
       <Container className="mt-9">
         <div className="max-w-2xl">
           <h1 className="text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-5xl">
-            Engineer, founder & <br /> amateur musician.
+            engineer, founder & <br /> amateur musician.
           </h1>
           <p className="mt-6 text-base text-zinc-600 dark:text-zinc-400">
-            Traveller, Engineer, Entrepreneur. Driven by a fervent passion for
-            technology, I spend most of my time building next-gen software
-            products and solutions for businesses.
+            traveller, engineer, entrepreneur. driven by a fervent passion for
+            technology, i spend most of my time building things that connect people — on the web, on-chain, and in the real world.
             <br />
             <br />
-            P.S And at times when I&apos;m not doing the above, you&apos;re most
-            likely to find me in hackathons, devcons and meetups hacking/talking
-            with people. Don&apos;t be shy to come say Hi!
+            p.s. and at times when i&apos;m not doing the above, you&apos;re most
+            likely to find me in hackathons, conferences, pop-up cities and meetups hacking / talking
+            with people. don&apos;t be shy to come say hi!
           </p>
           <div className="mt-6 flex-wrap flex sm:gap-6 gap-5 items-center">
             <SocialLink

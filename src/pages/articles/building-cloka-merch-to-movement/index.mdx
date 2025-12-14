@@ -1,4 +1,9 @@
 import { ArticleLayout } from '@/components/ArticleLayout'
+import Image from 'next/image'
+import cloka1 from '@/images/blog/cloka-1.png'
+import cloka2 from '@/images/blog/cloka-2.png'
+import cloka3 from '@/images/blog/cloka-3.png'
+import cloka4 from '@/images/blog/cloka-4.png'
 
 export const meta = {
   author: 'Fabian Ferno',
@@ -12,6 +17,8 @@ export default (props) => <ArticleLayout meta={meta} {...props} />
 
 so, cloka wasn't supposed to be this. started back in march 2025 like a typical side quest. clothing brand. simple storefront. sell some hoodies, vibe out. standard stack: next.js, tailwind, stripe.
 
+<Image src={cloka1} alt="Cloka storefront and branding" className="my-8 rounded-xl" />
+
 ## the origin
 
 started with a single prompt. "build a dark mode run club hosting website". cursor spit out the bones in seconds. vibe coding isn't just a meme, it's about velocity. skipped the boilerplate, focused on the aesthetic. 80% of the initial code was AI generated. raw functionality over perfection.
@@ -21,6 +28,8 @@ but then the community happened. people weren't just buying clothes. they were r
 ## the pivot
 
 clothing brand -> run club -> social health tech. sounds crazy on paper but the git logs don't lie. moved from products to events, check-ins, and arcs. realized the value wasn't the fabric, it was the sweat.
+
+<Image src={cloka2} alt="Cloka pivot to social health tech" className="my-8 rounded-xl" />
 
 ## the stack
 
@@ -38,7 +47,7 @@ infrastructure:
 
 ## why mongo?
 
-why mongo? because rigid schemas kill creativity. early cloka was chaos. features morphed daily. sql migrations would have slowed me down. mongo let me dump objects and figure it out later. flexible schema for a flexible roadmap.
+why mongo? because rigid schemas kill creativity. early cloka was chaos. features changed daily. sql migrations would have slowed me down. mongo let me dump objects and figure it out later. flexible schema for a flexible roadmap.
 
 ## why pwa?
 
@@ -47,6 +56,8 @@ native apps have friction. download, install, update. wanted zero friction. clok
 ## feature: arcs
 
 this is the social layer. wanted something ephemeral but sticky. built "arcs". think of it like a seasonal campaign for your health. you join an arc, you check in, you track progress. leveraged html-to-image for those shareable cards you see on twitter. make it look good, people will share it. simple growth loop.
+
+<Image src={cloka3} alt="Cloka Arcs feature" className="my-8 rounded-xl" />
 
 ## the strava integration
 
@@ -61,6 +72,8 @@ gamified it. you don't just run; you unlock achievements. the backend syncs this
 ## handling scale (and images)
 
 user generated content is heavy. check-in photos, profile pics, event galleries. dumped s3 for vercel blob. easier DX. serves optimized images fast, without configuring buckets or permissions policies.
+
+<Image src={cloka4} alt="Cloka handling scale and images" className="my-8 rounded-xl" />
 
 ## what's next
 

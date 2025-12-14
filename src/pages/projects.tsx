@@ -153,9 +153,9 @@ export default function Projects() {
         />
       </Head>
       <SimpleLayout
-        title="Things I’ve made trying to put my dent in the universe."
-        intro="I’ve worked on tons of little projects over the years that can be found at my personal code museum, GitHub. I've listed them here for your convenience. In case you're still wondering, I specialize in
-        creating scalable enterprise software solutions, architecting distributed systems, & seamless cross-platform apps. Currently exploring the horizons of AI."
+        title="things i’ve made trying to put my dent in the universe."
+        intro="i’ve worked on tons of little projects over the years that can be found at my personal code museum, github. i've listed them here for your convenience. in case you're still wondering, i specialize in
+        rapidly building scalable softwares, architecting distributed systems, & web3 protocols."
       >
         <div className="-mt-16 md:mb-5 shadow">
           <div className="flex">
