@@ -16,12 +16,7 @@ import logoWhimbet from '@/images/logos/whimbet.webp'
 import logoSimera from '@/images/logos/simera.jpeg'
 import logoBlitzwork from '@/images/logos/blitzwork.jpeg'
 import logoHacks from '@/images/logos/hacks.png'
-// Placeholder or similar logic for missing logos
-// Cloka, Blitzwork, Simera don't have logos in list_dir output.
-// I will use a generic briefcase icon or text fallback if I can't find them, but for now I'll use a placeholder variable to avoid errors, or just not pass a logo if the component handles it.
-// Actually, looking at Resume in index.tsx, it expects a logo.
-// I'll assume I should use a placeholder or one of the existing ones temporarily, or maybe omitting it is fine if I adjust the component.
-// But wait, I'm creating a NEW page, I can define the structure.
+
 
 function Tools({ tools }: { tools: string[] }) {
     return (
@@ -85,6 +80,22 @@ function Role({ role }: { role: any }) {
 
 export default function Career() {
     const experiences = [
+        {
+            company: 'Stateless',
+            title: 'Founder',
+            start: 'Nov 2025',
+            end: 'Present',
+            website: 'https://stateless.cx',
+            description: [
+                'I started Stateless as a space for serious builders who want to go beyond weekend hacks — a mix of residencies, pop-up city energy, experiments, and a lot of shipping in public.',
+                'Taking inspirations and mentorship from various network states like Edge City, Oz City, and NS.',
+                'While prepping for our first IRL community residency, we invite everyone to participate in our side events and activities: white paper reading clubs, deep work sessions, research + focus groups, hack parties, and hackathon resurrection arcs.'
+            ],
+            highlights: [
+                'Community Origins: Cultivated this community through connections with passionate builders met at hackathons over the years.'
+            ],
+            logo: logoStateless
+        },
         {
             company: 'Cloka',
             title: 'Co-Founder',
