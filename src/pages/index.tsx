@@ -5,6 +5,7 @@ import clsx from 'clsx'
 import { SVGProps, ComponentType, ReactNode } from 'react'
 import { GetStaticProps } from 'next'
 
+
 import { Button } from '@/components/Button'
 import { Card } from '@/components/Card'
 import { Container } from '@/components/Container'
@@ -239,11 +240,8 @@ function MakingPlaylists() {
 
     <iframe
       data-testid="embed-iframe"
-      className='filter contrast-150'
-      style={{ borderRadius: '12px' }}
+      className='filter contrast-150 rounded-2xl w-[100%] sm:h-[352px] h-[200px]'
       src="https://open.spotify.com/embed/playlist/2oHiDnFXDc2cgIajgUhAK2?utm_source=generator&theme=0"
-      width="100%"
-      height="352"
       frameBorder="0"
       allowFullScreen
       allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
@@ -252,10 +250,35 @@ function MakingPlaylists() {
 
     <div className='text-md mt-2 text-zinc-600 dark:text-zinc-300'>
       also check out
-      <a className='text-teal-600 dark:text-teal-500 font-bold' href="https://open.spotify.com/playlist/42H9VguLdX1afctGklv6nf?si=745625aacb0c4d26"> skywalker symphony</a>, <a className='text-teal-600 dark:text-teal-500 font-bold' href="https://open.spotify.com/playlist/42H9VguLdX1afctGklv6nf?si=745625aacb0c4d26">phantom tones</a> and <a className='text-teal-600 dark:text-teal-500 font-bold' href="https://open.spotify.com/user/pqfnzbkmew1e4y9o5r0uy83p6?si=bcedd5bb81cb4dad">more</a>
-
+      <a className='text-teal-600 dark:text-teal-500 font-bold' href="https://open.spotify.com/playlist/42H9VguLdX1afctGklv6nf?si=745625aacb0c4d26"> skywalker symphony</a>, <a className='text-teal-600 dark:text-teal-500 font-bold' href="https://open.spotify.com/playlist/42H9VguLdX1afctGklv6nf?si=745625aacb0c4d26">phantom tones</a>, <a className='text-teal-600 dark:text-teal-500 font-bold' href="https://open.spotify.com/playlist/4vJjTe2YrQvBEKUmF8AQD3?si=d662cb03b0554195">hannibal productivity</a> and <a className='text-teal-600 dark:text-teal-500 font-bold' href="https://open.spotify.com/user/pqfnzbkmew1e4y9o5r0uy83p6?si=bcedd5bb81cb4dad">more</a>
     </div>
   </div>
+}
+
+function MusicImListeningTo() {
+  return (
+    <div>
+      <h1 className="text-2xl mb-8 tracking-tight text-zinc-900 dark:text-zinc-100">
+        music i&apos;m listening to
+      </h1>
+      <p className='text-center'>
+        <Link
+          href="https://github.com/kittinan/spotify-github-profile"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <Image
+            src="https://spotify-github-profile.kittinanx.com/api/view?uid=pqfnzbkmew1e4y9o5r0uy83p6&cover_image=true&theme=spotify-embed&show_offline=false&background_color=000000&interchange=false&profanity=false&bar_color=53b14f&bar_color_cover=false&mode=dark"
+            alt="Spotify profile showing currently listening song"
+            width={600} // Approximate width, adjust as needed
+            height={120} // Approximate height, adjust as needed
+            unoptimized // Use unoptimized for external, dynamically generated images
+            className="rounded-2xl filter contrast-150" // Add rounded corners for consistency
+          />
+        </Link>
+      </p>
+    </div>
+  )
 }
 
 
@@ -458,6 +481,8 @@ export default function Home({ articles }: HomeProps) {
             ))}
           </div>
           <div className="lg:pl-16 space-y-8 xl:pl-24">
+            <MusicImListeningTo />
+            <hr className="opacity-20 pb-10" />
 
             <MusicIMade />
             <hr className="opacity-20 pb-10" />
