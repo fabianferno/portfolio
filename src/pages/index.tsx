@@ -398,13 +398,13 @@ export default function Home({ articles }: HomeProps) {
   return (
     <>
       <Head>
-        <title>Fabian Ferno - Engineer, founder, and amateur musician.</title>
+        <title>Fabian Ferno - engineer, founder & amateur musician.</title>
         <meta
           name="description"
-          content="CTO at BlitzCraft | Architecting Critical Solutions for Business Success | Streamlining Product Development, Delivery, and Scaling at BlitzCraft 🚀 | Generated $1.8 Billion+ In Revenue For Businesses So Far"
+          content="I build products that connect people—web, on-chain, and IRL; founder, prev public good software, grants, web3, consumer AI, communities, 6x ethglobal finalist, read more"
         />
       </Head>
-      <Container className="mt-9">
+      <Container className="md:mt-9 mt-9">
         <div className="max-w-2xl">
           <h1 className="text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-5xl">
             engineer, founder & <br /> amateur musician.

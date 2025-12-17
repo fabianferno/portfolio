@@ -44,7 +44,7 @@ export function Photos() {
       >
         {photos.map((photo, index) => (
           <div
-            key={photo.src}
+            key={photo.src + index}
             className={clsx(baseImageClassName, imageRotations[index], 'mx-4')}
           >
             <Image

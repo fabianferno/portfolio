@@ -1,12 +1,15 @@
+
 import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { Popover, Transition } from '@headlessui/react'
 import clsx from 'clsx'
-import { ReactNode, useEffect, useRef, SVGProps, HTMLAttributes } from 'react'
+import { ReactNode, useEffect, useRef, useState, SVGProps, HTMLAttributes } from 'react'
+import { PencilIcon } from '@heroicons/react/24/outline'
 
 import { Container } from '@/components/Container'
 import avatarImage from '@/images/avatar-bw.jpg'
+import { GuestbookModal } from '@/components/GuestbookModal'
 
 function CloseIcon(props: SVGProps<SVGSVGElement>) {
   return (
@@ -61,6 +64,21 @@ function MoonIcon(props: SVGProps<SVGSVGElement>) {
     <svg viewBox="0 0 24 24" aria-hidden="true" {...props}>
       <path
         d="M17.25 16.22a6.937 6.937 0 0 1-9.47-9.47 7.451 7.451 0 1 0 9.47 9.47ZM12.75 7C17 7 17 2.75 17 2.75S17 7 21.25 7C17 7 17 11.25 17 11.25S17 7 12.75 7Z"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  )
+}
+
+function PenIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true" {...props}>
+      <path
+        d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10"
+        fill="none"
+        stroke="currentColor"
         strokeWidth="1.5"
         strokeLinecap="round"
         strokeLinejoin="round"
@@ -129,13 +147,10 @@ function MobileNavigation(props: MobileNavigationProps) {
             <nav className="mt-6">
               <ul className="-my-2 divide-y divide-zinc-100 text-base text-zinc-800 dark:divide-zinc-100/5 dark:text-zinc-300">
                 <MobileNavItem href="/about">About</MobileNavItem>
-                <MobileNavItem href="/articles">Blog</MobileNavItem>
+                <MobileNavItem href="/articles">Articles</MobileNavItem>
                 <MobileNavItem href="/projects">Projects</MobileNavItem>
+                <MobileNavItem href="/guestbook">Guestbook</MobileNavItem>
                 <MobileNavItem href="/career">Career</MobileNavItem>
-                <MobileNavItem href="/photos">Photos</MobileNavItem>
-
-                {/* <MobileNavItem href="/speaking">Speaking</MobileNavItem>
-                <MobileNavItem href="/uses">Uses</MobileNavItem> */}
               </ul>
             </nav>
           </Popover.Panel>
@@ -177,16 +192,13 @@ interface DesktopNavigationProps extends HTMLAttributes<HTMLElement> { }
 
 function DesktopNavigation(props: DesktopNavigationProps) {
   return (
-    <nav {...props}>
+    <nav className="pointer-events-auto hidden md:block" {...props}>
       <ul className="flex rounded-full bg-white/90 px-3 text-sm font-medium text-zinc-800 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur dark:bg-zinc-800/90 dark:text-zinc-200 dark:ring-white/10">
         <NavItem href="/about">About</NavItem>
-        <NavItem href="/articles">Blog</NavItem>
+        <NavItem href="/articles">Articles</NavItem>
         <NavItem href="/projects">Projects</NavItem>
+        <NavItem href="/guestbook">Guestbook</NavItem>
         <NavItem href="/career">Career</NavItem>
-        <NavItem href="/photos">Photos</NavItem>
-
-        {/* <NavItem href="/speaking">Speaking</NavItem>
-        <NavItem href="/uses">Uses</NavItem> */}
       </ul>
     </nav>
   )
@@ -240,7 +252,7 @@ function AvatarContainer({ className, ...props }: AvatarContainerProps) {
     <div
       className={clsx(
         className,
-        'h-10 w-10 rounded-full bg-white/90 p-0.5 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur dark:bg-zinc-800/90 dark:ring-white/10'
+        'h-10 w-10 rounded-full p-0.5 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur'
       )}
       {...props}
     />
@@ -275,6 +287,7 @@ function Avatar({ large = false, className, ...props }: AvatarProps) {
 
 export function Header() {
   let isHomePage = useRouter().pathname === '/'
+  const [isGuestbookOpen, setIsGuestbookOpen] = useState(false)
 
   let headerRef = useRef<HTMLDivElement>(null)
   let avatarRef = useRef<HTMLDivElement>(null)
@@ -380,6 +393,7 @@ export function Header() {
 
   return (
     <>
+      <GuestbookModal isOpen={isGuestbookOpen} closeMsg={() => setIsGuestbookOpen(false)} />
       <header
         className="pointer-events-none relative z-50 flex flex-col"
         style={{
@@ -440,7 +454,17 @@ export function Header() {
                 <MobileNavigation className="pointer-events-auto md:hidden" />
                 <DesktopNavigation className="pointer-events-auto hidden md:block" />
               </div>
-              <div className="flex justify-end md:flex-1">
+              <div className="flex justify-end md:flex-1 gap-4">
+                <div className="pointer-events-auto">
+                  <button
+                    type="button"
+                    aria-label="Sign guestbook"
+                    className="group rounded-full bg-white/90 px-3 py-2 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur transition dark:bg-zinc-800/90 dark:ring-white/10 dark:hover:ring-white/20"
+                    onClick={() => setIsGuestbookOpen(true)}
+                  >
+                    <PenIcon className="h-6 w-6 text-zinc-500 transition group-hover:text-zinc-700 dark:text-zinc-500 dark:group-hover:text-zinc-400" />
+                  </button>
+                </div>
                 <div className="pointer-events-auto">
                   <ModeToggle />
                 </div>
