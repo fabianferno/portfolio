@@ -4,12 +4,13 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { Popover, Transition } from '@headlessui/react'
 import clsx from 'clsx'
-import { ReactNode, useEffect, useRef, useState, SVGProps, HTMLAttributes } from 'react'
-import { PencilIcon } from '@heroicons/react/24/outline'
+import { ReactNode, useEffect, useRef, useState, SVGProps, HTMLAttributes, useCallback } from 'react'
+import { PencilIcon, MagnifyingGlassIcon } from '@heroicons/react/24/outline'
 
 import { Container } from '@/components/Container'
 import avatarImage from '@/images/avatar-bw.jpg'
 import { GuestbookModal } from '@/components/GuestbookModal'
+import { Search } from '@/components/Search'
 
 function CloseIcon(props: SVGProps<SVGSVGElement>) {
   return (
@@ -288,6 +289,7 @@ function Avatar({ large = false, className, ...props }: AvatarProps) {
 export function Header() {
   let isHomePage = useRouter().pathname === '/'
   const [isGuestbookOpen, setIsGuestbookOpen] = useState(false)
+  const [isSearchOpen, setIsSearchOpen] = useState(false)
 
   let headerRef = useRef<HTMLDivElement>(null)
   let avatarRef = useRef<HTMLDivElement>(null)
@@ -391,8 +393,25 @@ export function Header() {
     }
   }, [isHomePage])
 
+  const openSearch = useCallback(() => setIsSearchOpen(true), [])
+
+  useEffect(() => {
+    function onKeyDown(event: KeyboardEvent) {
+      if (event.key === 'k' && (event.metaKey || event.ctrlKey)) {
+        event.preventDefault()
+        openSearch()
+      }
+    }
+
+    window.addEventListener('keydown', onKeyDown)
+    return () => {
+      window.removeEventListener('keydown', onKeyDown)
+    }
+  }, [openSearch])
+
   return (
     <>
+      <Search isOpen={isSearchOpen} onClose={() => setIsSearchOpen(false)} />
       <GuestbookModal isOpen={isGuestbookOpen} closeMsg={() => setIsGuestbookOpen(false)} />
       <header
         className="pointer-events-none relative z-50 flex flex-col"
@@ -455,6 +474,16 @@ export function Header() {
                 <DesktopNavigation className="pointer-events-auto hidden md:block" />
               </div>
               <div className="flex justify-end md:flex-1 gap-4">
+                <div className="pointer-events-auto">
+                  <button
+                    type="button"
+                    aria-label="Search"
+                    className="group rounded-full bg-white/90 px-3 py-2 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur transition dark:bg-zinc-800/90 dark:ring-white/10 dark:hover:ring-white/20"
+                    onClick={() => setIsSearchOpen(true)}
+                  >
+                    <MagnifyingGlassIcon className="h-6 w-6 text-zinc-500 transition group-hover:text-zinc-700 dark:text-zinc-500 dark:group-hover:text-zinc-400" />
+                  </button>
+                </div>
                 <div className="pointer-events-auto">
                   <button
                     type="button"

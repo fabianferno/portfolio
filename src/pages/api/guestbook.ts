@@ -1,7 +1,7 @@
 
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { supabase } from '@/lib/supabase'
-import Filter from 'bad-words'
+import { Filter } from 'bad-words'
 
 const filter = new Filter()
 

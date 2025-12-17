@@ -1,0 +1,128 @@
+import { ArticleLayout } from '@/components/ArticleLayout'
+import Image from 'next/image'
+import happinessCurve from '@/images/blog/happiness-curve.png'
+
+export const meta = {
+  author: 'Fabian Ferno',
+  date: '2025-12-17',
+  title: 'personal finance',
+  description:
+    'when it comes to my fiscal health - after very limited yet strongly aligned research, I was able to narrow down to this: keep expenses sane, kill bad debt, stay liquid, invest globally with low-cost indexes, avoid hype, let your wealth come from building equity in real things, not trading noise.',
+}
+
+export default (props) => <ArticleLayout meta={meta} {...props} />
+
+when it comes to my fiscal health - after a very limited yet strongly aligned research, I was able to narrow down to this:
+
+> _keep expenses sane, kill bad debt, stay liquid, invest globally with low-cost indexes, avoid hype, let your wealth come from building equity in real things, not trading noise._
+
+## core personal finance principles
+
+i found this very interesting read, which talks about how money affects our happiness and its curve on they affect each other.
+see ([https://80000hours.org/articles/money-and-happiness/](https://80000hours.org/articles/money-and-happiness/))
+- moment-to-moment "happiness" increases with money until you’re making ~$70-80k
+- income reduces stress up to a “comfortable” baseline, after which **life satisfaction still increases**, even if day-to-day happiness plateaus.
+
+a [study](https://www.pnas.org/doi/full/10.1073/pnas.1011492107) by Nobel prize winners Daniel Kahneman and Angus Deaton done w Americans (first world country)
+- positive affect – “were you happy yesterday?”
+- low stress – “did you feel stressed yesterday?”
+- not blue – “did you feel sad yesterday?”
+- ladder – “how satisfied are you with your life overall?”
+
+result:
+
+<Image src={happinessCurve} alt="happiness curve" className="my-8 rounded-xl" />
+
+key takeaway from the graph:
+"extra income had _no_ relationship with how happy, sad and stressed people felt after a point on the curve"
+(note: study was done in 2010 - so adjust for inflation but inference stays the same - human psychology hadn't changed)
+
+but also not all studies found money to not have impact on happiness - in a different studies that spanned its research across varying countries - the money impact inflection point either diminished or just shifted forward (meaning poorer countries associate happiness with money more)
+
+**what do we learn from that research?**
+you take the best opportunities to invest in your happiness first, so as you get more money, it becomes harder and harder to buy more happiness
+
+## best uses of money
+in relation to the happiness curve
+1. buy time (delegation, convenience)
+2. experiences over possessions
+3. giving (strong psychological ROI)
+this applies strongly to my **high-output, high-variance career**.
+    
+# general infered rules for pf from my research
+1. **budgeting and cash reserves**
+   - keep 3-6 months of expenses in liquid cash (savings + liquid mutual fund)
+   - as income grows, adjust savings rate before lifestyle expenses creep in
+2. **housing rent / EMIs**
+   - rent can take upto ≤30% of income (consider home EMIs within this bracket as well)
+     - NOTE: a house you live in is **not** an investment - so don't think that going with home loan EMIs is a better option compared to renting as a bias
+   - treat it as a lifestyle decision, not an investment, **unless**:
+     - you plan to stay ≥ 7 years
+     - EMI ≤ 25% of net income
+     - still invest aggressively
+     - career is geographically stable
+3. **debt priority framework**
+   - kill high interest debt first (credit cards, loans etc)
+   - can ignore low interest debts if returns elsewhere are high sourced from this
+4. **investing philosophy**
+   - focus on passive > active
+   - index first mindset
+   - mental model: earning + building over stock picking
+   - **invest aggressively until your income stream is mostly passive.** - rich dad, poor dad
+5. **dollar cost averaging (DCA)**
+   - statistically lump sum wins most of the time
+   - DCA is fine, as it helps staying emotionally invested
+6. **portfolio construction**
+   - simplify portfolio, lower cost, periodic rebalancing, no tinkering
+   - can also have half yearly rebalancing but also look into mechanical threshold based rebalancing
+     - define target allocation: eg. equity: 70%, debt: 25%, gold: 5% - if there is a drift of ±5-10% then rebalance
+     - check twice a year, rebalance once a year (if needed), prefer absolute threshold deviance for early career
+   - think of equity indexes, debt funds, gold funds
+   - expense ratios on the funds matter more than we think (fee taken by the fund annually)
+   - be careful with recency bias
+7. **geographic diversification**
+   - single country portfolio is an actual risk to consider
+   - think global equities + emerging markets + some India tilt
+   - can think of this when income crosses 80K USD
+8. **risk tolerance > optimization**
+   - consistency beats cleverness
+9. **gold**
+   - gold is NOT a growth asset
+   - it's a hedge against systemic risk
+   - 5% direct gold allocation is reasonable
+   - anything beyond can be with ETFs, sovereign bonds
+   - can be extended based on cultural reasons (ornamentals)
+10. **market timings**
+    - boring, hated sectors often outperform hype.
+    - “next revolution” is often overpriced (ai, crypto, etc)
+11. **income growth on year**
+    - baseline stable income professional: 10–15% YoY - beats inflation and lifestyle creeps
+    - founder / high variance path: 
+      - think in step functions
+      - flat or modest growth for couple years atleast
+      - 30-100% jumps when: equity crystallizes, consulting rates reset, a product starts paying, a role upgrade happens
+    - if you’re not seeing a **meaningful income reset every ~24 months**, something’s off
+    - don’t force a clean CAGR on a chaotic career. force _shots on goal_.
+12. **buying a car**
+    - a car is a pure consumption asset. buy it consiously
+    - hard constraints:
+      - total car cost ≤ 6–12 months of net income, if higher → lifestyle inflation
+      - down payment ≥ 30–40%; avoid heavy leverage on any depreciating asset
+      - loan tenure ≤ 4 years
+      - EMI ≤ 10–12% of net monthly income
+13. **misc**
+    - social proof is a dangerous drug (“everyone thinks housing only goes up.”)
+
+##### References
+- Nick Bradford's personal finance guide inspired me to go do my own research on the topic he had covered: https://docs.google.com/document/d/1NkatARKAKqRDoJDDuXqse3Wx5LXjBVrh0UFXeIaReiQ/edit?tab=t.0#heading=h.mo3q1go2k80u
+- https://www.youtube.com/watch?v=Uwl3-jBNEd4
+- The Big Short - movie
+- JP Morgan Guide to the Markets (Real Assets section)
+- Edmunds: _True Cost of Ownership (TCO)_
+- SPIVA Reports (S&P Dow Jones Indices): _Active vs Passive Scorecards_
+- Bogleheads Wiki: _Investment Philosophy_
+- Investopedia
+- Vanguard: _The Cost Matters Hypothesis_
+- Swedroe & Balin: _Reducing the Risk of Black Swans_
+- Daniel Kahneman: _Thinking, Fast and Slow_
+- Morgan Housel: _The Psychology of Money_
