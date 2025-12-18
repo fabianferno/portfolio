@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import { StaticImageData } from 'next/image'
 import { useRouter } from 'next/router'
 import { ReactNode, SVGProps } from 'react'
 
@@ -23,6 +24,7 @@ interface ArticleMeta {
   title: string
   description: string
   date: string
+  image?: StaticImageData | string
 }
 
 interface ArticleLayoutProps {
@@ -44,11 +46,31 @@ export function ArticleLayout({
     return children
   }
 
+  let imageUrl = meta.image
+    ? typeof meta.image === 'string'
+      ? meta.image
+      : meta.image.src
+    : null
+
   return (
     <>
       <Head>
         <title>{`${meta.title} - Fabian Ferno`}</title>
         <meta name="description" content={meta.description} />
+        {imageUrl && (
+          <>
+            <meta
+              property="og:image"
+              content={`${process.env.NEXT_PUBLIC_SITE_URL}${imageUrl}`}
+              key="og:image"
+            />
+            <meta
+              name="twitter:image"
+              content={`${process.env.NEXT_PUBLIC_SITE_URL}${imageUrl}`}
+              key="twitter:image"
+            />
+          </>
+        )}
       </Head>
       <Container className="mt-16 lg:mt-32">
         <div className="xl:relative">

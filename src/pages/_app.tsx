@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react'
 import { AppProps } from 'next/app'
+import Head from 'next/head'
 import { useRouter } from 'next/router'
 
 import { Footer } from '@/components/Footer'
@@ -25,6 +26,19 @@ export default function App({ Component, pageProps }: AppProps) {
 
   return (
     <>
+      <Head>
+        <meta
+          property="og:image"
+          content={`${process.env.NEXT_PUBLIC_SITE_URL}/banner.png`}
+          key="og:image"
+        />
+        <meta
+          name="twitter:image"
+          content={`${process.env.NEXT_PUBLIC_SITE_URL}/banner.png`}
+          key="twitter:image"
+        />
+        <meta name="twitter:card" content="summary_large_image" key="twitter:card" />
+      </Head>
       <div className="fixed inset-0 flex justify-center sm:px-8">
         <div className="flex w-full max-w-7xl lg:px-8">
           <div className="md:rounded-3xl mt-20 mx-3 rounded-t-xl md:rounded-xl md:my-24 w-full bg-white ring-1 ring-zinc-100 dark:bg-zinc-900 dark:ring-zinc-300/20" />
