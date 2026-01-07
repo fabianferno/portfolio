@@ -406,6 +406,7 @@ export default function Home({ articles }: HomeProps) {
       </Head>
       <Container className="md:mt-9 mt-9">
         <div className="max-w-2xl">
+
           <h1 className="text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-5xl">
             engineer, founder, traveller & <br /> amateur musician
           </h1>
@@ -466,6 +467,14 @@ export default function Home({ articles }: HomeProps) {
                 <TelegramIcon className="h-4 w-4 mr-2 dark:fill-zinc-300 fill-zinc-300 transition group-hover:fill-teal-500 dark:fill-zinc-400 dark:hover:fill-teal-400" />
                 DM
               </a>
+            </div>
+
+            <div className="flex px-2 border-l-[1px] pl-5 border-zinc-500 items-center space-x-2">
+              <span className="relative flex h-3 w-3">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-teal-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-3 w-3 bg-teal-500"></span>
+              </span>
+              <span className="text-sm font-medium text-zinc-600 dark:text-zinc-400">Open to work</span>
             </div>
           </div>
         </div>
