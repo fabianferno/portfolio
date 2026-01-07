@@ -16,6 +16,7 @@
     "@mdx-js/loader": "^2.1.5",
     "@mdx-js/react": "^2.1.5",
     "@next/mdx": "^13.0.2",
+    "@octokit/core": "^7.0.6",
     "@react-three/drei": "^9.117.3",
     "@react-three/fiber": "^8.17.10",
     "@supabase/ssr": "^0.8.0",
