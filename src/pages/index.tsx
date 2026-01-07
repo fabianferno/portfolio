@@ -407,10 +407,11 @@ export default function Home({ articles }: HomeProps) {
       <Container className="md:mt-9 mt-9">
         <div className="max-w-2xl">
           <h1 className="text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-5xl">
-            engineer, founder & <br /> amateur musician
+            engineer, founder, traveller & <br /> amateur musician
           </h1>
           <p className="mt-6 text-base text-zinc-600 dark:text-zinc-400">
-            traveller, engineer, entrepreneur. driven by a fervent passion for
+            hello there, i&apos;m <span className="font-bold text-teal-600 dark:text-teal-400">
+              Fabian Ferno</span>. driven by a fervent passion for
             technology, i spend most of my time building things that connect people — on the web, on-chain, and in the real world.
             <br />
             <br />
@@ -460,9 +461,9 @@ export default function Home({ articles }: HomeProps) {
                 href="https://t.me/fabianferno"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex items-center hover:text-teal-500 transition"
+                className="group flex items-center text-zinc-200 dark:text-zinc-300 hover:text-teal-500 transition dark:hover:text-teal-400"
               >
-                <TelegramIcon className="h-4 w-4 mr-2 fill-zinc-500 transition group-hover:fill-teal-500 dark:fill-zinc-400" />
+                <TelegramIcon className="h-4 w-4 mr-2 dark:fill-zinc-300 fill-zinc-300 transition group-hover:fill-teal-500 dark:fill-zinc-400 dark:hover:fill-teal-400" />
                 DM
               </a>
             </div>
