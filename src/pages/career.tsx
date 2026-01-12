@@ -3,7 +3,7 @@ import Image from 'next/image'
 import { Card } from '@/components/Card'
 import { Section } from '@/components/Section'
 import { SimpleLayout } from '@/components/SimpleLayout'
-import { BriefcaseIcon } from '@heroicons/react/24/outline'
+import { BriefcaseIcon, ArrowDownTrayIcon } from '@heroicons/react/24/outline'
 
 import logoJKS from '@/images/logos/jks.jpg'
 import logoDali from '@/images/logos/dali.jpeg'
@@ -279,8 +279,12 @@ export default function Career() {
             </Head>
             <SimpleLayout
                 title="Career"
-                intro="I'm currently building an AI call centre stack at Tenori Labs and co-founded Cloka, India's largest fitness community. Previously, I was a Lead Engineer at Karma, contributing to public goods protocols like Gitcoin and Octant. I've co-founded and exited multiple startups including Whim.bet and BlitzCraft. I'm also known for my EthGlobal records—securing 6 finalist titles and topping 85+ hackathons over the last 3 years."
+                intro="I'm currently building an AI call centre stack at Tenori Labs and co-founded Cloka, India's largest run club. Previously, I was a Lead Engineer at Karma, contributing to public goods protocols like Gitcoin and Octant. I've co-founded and exited multiple startups including Whim.bet and BlitzCraft. I'm also known for my EthGlobal records—securing 6 finalist titles and topping 85+ hackathons over the last 3 years."
             >
+                <div className="mb-8 flex justify-between items-center">
+                    <p className='text-zinc-800 dark:text-zinc-500'>If you're looking to hire me or want to know more about my work, you can download my ATS friendly resume <a className='font-bold text-teal-500' href="/FabianFernoResumeJan2026.pdf">here</a>.</p>
+
+                </div>
                 <div className="space-y-20">
                     {experiences.map((role, index) => (
                         <Role key={index} role={role} />

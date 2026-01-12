@@ -2,7 +2,7 @@ import Image from 'next/image'
 import Head from 'next/head'
 import Link from 'next/link'
 import clsx from 'clsx'
-import { SVGProps, ComponentType, ReactNode } from 'react'
+import { SVGProps, ComponentType, ReactNode, useState, useEffect } from 'react'
 import { GetStaticProps } from 'next'
 
 
@@ -29,6 +29,7 @@ import { generateRssFeed } from '@/lib/generateRssFeed'
 import { getAllArticles } from '@/lib/getAllArticles'
 import { formatDate } from '@/lib/formatDate'
 import Marquee from 'react-fast-marquee'
+import { Skeleton } from '@/components/Skeleton'
 
 function MailIcon(props: SVGProps<SVGSVGElement>) {
   return (
@@ -181,20 +182,35 @@ interface ResumeItem {
   end: string | { label: string; dateTime: number }
 }
 function MusicIMade() {
+  const [isLoading, setIsLoading] = useState(true)
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false)
+    }, 3000)
+    return () => clearTimeout(timer)
+  }, [])
+
   return <div>
     <h1 className="text-2xl mb-8 tracking-tight text-zinc-900 dark:text-zinc-100">
       music i made
     </h1>
     <>
-      <iframe
-        className='filter invert rounded-2xl'
-        width="100%"
-        height="166"
-        scrolling="no"
-        frameBorder="0"
-        allow="autoplay"
-        src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A2228791307&color=%23000000&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"
-      ></iframe>
+      <div className="relative">
+        {isLoading && (
+          <Skeleton className="absolute inset-0 h-[166px] w-full rounded-2xl" />
+        )}
+        <iframe
+          onLoad={() => setIsLoading(false)}
+          className={clsx('filter invert rounded-2xl', isLoading && 'invisible')}
+          width="100%"
+          height="166"
+          scrolling="no"
+          frameBorder="0"
+          allow="autoplay"
+          src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A2228791307&color=%23000000&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"
+        ></iframe>
+      </div>
       <div
         style={{
           fontSize: '10px',
@@ -223,7 +239,7 @@ function MusicIMade() {
           title="Neo, Trinity v the World"
           target="_blank"
           rel="noopener noreferrer"
-          style={{ color: '#cccccc', textDecoration: 'none' }}
+          style={{ color: '#cccccc', textDecoration: 'none', }}
         >
           Neo, Trinity v the World
         </a>
@@ -233,20 +249,35 @@ function MusicIMade() {
 }
 
 function MakingPlaylists() {
+  const [isLoading, setIsLoading] = useState(true)
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false)
+    }, 3000)
+    return () => clearTimeout(timer)
+  }, [])
+
   return <div>
     <h1 className="text-2xl mb-8 tracking-tight text-zinc-900 dark:text-zinc-100">
       music i&apos;ve curated
     </h1>
 
-    <iframe
-      data-testid="embed-iframe"
-      className='filter contrast-150 rounded-2xl w-[100%] sm:h-[352px] h-[200px]'
-      src="https://open.spotify.com/embed/playlist/2oHiDnFXDc2cgIajgUhAK2?utm_source=generator&theme=0"
-      frameBorder="0"
-      allowFullScreen
-      allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-      loading="lazy"
-    ></iframe>
+    <div className="relative">
+      {isLoading && (
+        <Skeleton className="absolute inset-0 h-[200px] w-full rounded-2xl sm:h-[352px]" />
+      )}
+      <iframe
+        onLoad={() => setIsLoading(false)}
+        data-testid="embed-iframe"
+        className={clsx('filter contrast-150 rounded-2xl w-[100%] sm:h-[352px] h-[200px]', isLoading && 'invisible')}
+        src="https://open.spotify.com/embed/playlist/2oHiDnFXDc2cgIajgUhAK2?utm_source=generator&theme=0"
+        frameBorder="0"
+        allowFullScreen
+        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+        loading="lazy"
+      ></iframe>
+    </div>
 
     <div className='text-md mt-2 text-zinc-600 dark:text-zinc-300'>
       also check out
@@ -256,12 +287,17 @@ function MakingPlaylists() {
 }
 
 function MusicImListeningTo() {
+  const [isLoading, setIsLoading] = useState(true)
+
   return (
     <div>
       <h1 className="text-2xl mb-8 tracking-tight text-zinc-900 dark:text-zinc-100">
         music i&apos;m listening to
       </h1>
-      <p className='text-center'>
+      <div className='text-center relative'>
+        {isLoading && (
+          <Skeleton className="absolute inset-0 h-[120px] w-full rounded-2xl" />
+        )}
         <Link
           href="https://github.com/kittinan/spotify-github-profile"
           target="_blank"
@@ -273,10 +309,11 @@ function MusicImListeningTo() {
             width={600} // Approximate width, adjust as needed
             height={120} // Approximate height, adjust as needed
             unoptimized // Use unoptimized for external, dynamically generated images
-            className="rounded-2xl filter contrast-150" // Add rounded corners for consistency
+            className={clsx("rounded-2xl filter contrast-150", isLoading && "invisible")} // Add rounded corners for consistency
+            onLoadingComplete={() => setIsLoading(false)}
           />
         </Link>
-      </p>
+      </div>
     </div>
   )
 }

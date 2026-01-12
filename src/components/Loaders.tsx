@@ -19,7 +19,7 @@ function LoaderCard(props: LoaderCardProps) {
       <div className="flex py-5 items-center justify-center rounded-2xl bg-black">
         {props.github ? (
           <div className="flex items-center justify-center">
-            <p className="text-sm text-zinc-400">Loading...</p>
+            {/* <p className="text-sm text-zinc-400">Loading...</p> */}
             <Image
               src={GithubLogo}
               height={50}
