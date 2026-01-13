@@ -103,7 +103,7 @@ interface ArticleProps {
 
 function Article({ article }: ArticleProps) {
   return (
-    <Card as="article" className="bg-zinc-950 rounded-2xl p-6">
+    <Card as="article" className="bg-zinc-100 dark:bg-zinc-800/60 rounded-2xl p-6">
       <Card.Title href={`/articles/${article.slug}`}>
         {article.title}
       </Card.Title>
@@ -111,7 +111,7 @@ function Article({ article }: ArticleProps) {
         {formatDate(article.date)}
       </Card.Eyebrow>
       <Card.Description>{article.description}</Card.Description>
-      <Card.Cta>Read article</Card.Cta>
+      <Card.Cta><Link href={`/articles/${article.slug}`}>Read article</Link></Card.Cta>
     </Card>
   )
 }
@@ -181,7 +181,7 @@ interface ResumeItem {
   start: string | { label: string; dateTime: number }
   end: string | { label: string; dateTime: number }
 }
-function MusicIMade() {
+function ProducedMusic() {
   const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
@@ -196,13 +196,13 @@ function MusicIMade() {
       music i made
     </h1>
     <>
-      <div className="relative">
+      <div className="relative ">
         {isLoading && (
-          <Skeleton className="absolute inset-0 h-[166px] w-full rounded-2xl" />
+          <Skeleton className="absolute inset-0 h-[166px] w-full border border-zinc-100 dark:border-zinc-400/40 rounded-2xl" />
         )}
         <iframe
           onLoad={() => setIsLoading(false)}
-          className={clsx('filter invert rounded-2xl', isLoading && 'invisible')}
+          className={clsx('filter  dark:brightness-100 contrast-200 invert rounded-2xl border border-zinc-100 dark:border-zinc-400/90', isLoading && 'invisible')}
           width="100%"
           height="166"
           scrolling="no"
@@ -211,44 +211,11 @@ function MusicIMade() {
           src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A2228791307&color=%23000000&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"
         ></iframe>
       </div>
-      <div
-        style={{
-          fontSize: '10px',
-          color: '#cccccc',
-          lineBreak: 'anywhere',
-          wordBreak: 'normal',
-          overflow: 'hidden',
-          whiteSpace: 'nowrap',
-          textOverflow: 'ellipsis',
-          fontFamily: 'Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif',
-          fontWeight: 100,
-        }}
-      >
-        <a
-          href="https://soundcloud.com/fabian-ferno"
-          title="Fabian Ferno"
-          target="_blank"
-          rel="noopener noreferrer"
-          style={{ color: '#cccccc', textDecoration: 'none' }}
-        >
-          Fabian Ferno
-        </a>{' '}
-        ·{' '}
-        <a
-          href="https://soundcloud.com/fabian-ferno/chronicles-of-fabelism"
-          title="Neo, Trinity v the World"
-          target="_blank"
-          rel="noopener noreferrer"
-          style={{ color: '#cccccc', textDecoration: 'none', }}
-        >
-          Neo, Trinity v the World
-        </a>
-      </div>
     </>
   </div>
 }
 
-function MakingPlaylists() {
+function CuratedMusic() {
   const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
@@ -263,14 +230,14 @@ function MakingPlaylists() {
       music i&apos;ve curated
     </h1>
 
-    <div className="relative">
+    <div className="relative ">
       {isLoading && (
-        <Skeleton className="absolute inset-0 h-[200px] w-full rounded-2xl sm:h-[352px]" />
+        <Skeleton className="absolute inset-0 h-[200px] w-full border border-zinc-100 dark:border-zinc-400/40 rounded-2xl sm:h-[352px]" />
       )}
       <iframe
         onLoad={() => setIsLoading(false)}
         data-testid="embed-iframe"
-        className={clsx('filter contrast-150 rounded-2xl w-[100%] sm:h-[352px] h-[200px]', isLoading && 'invisible')}
+        className={clsx('filter contrast-150 border w-[100%]  h-[155px] border-zinc-100 dark:border-zinc-400/30 rounded-2xl', isLoading && 'invisible')}
         src="https://open.spotify.com/embed/playlist/2oHiDnFXDc2cgIajgUhAK2?utm_source=generator&theme=0"
         frameBorder="0"
         allowFullScreen
@@ -286,7 +253,7 @@ function MakingPlaylists() {
   </div>
 }
 
-function MusicImListeningTo() {
+function ListeningMusic() {
   const [isLoading, setIsLoading] = useState(true)
 
   return (
@@ -294,9 +261,9 @@ function MusicImListeningTo() {
       <h1 className="text-2xl mb-8 tracking-tight text-zinc-900 dark:text-zinc-100">
         music i&apos;m listening to
       </h1>
-      <div className='text-center relative'>
+      <div className='text-center relative '>
         {isLoading && (
-          <Skeleton className="absolute inset-0 h-[120px] w-full rounded-2xl" />
+          <Skeleton className="absolute border border-zinc-100 dark:border-zinc-400/40 rounded-2xl inset-0 h-[120px] w-full" />
         )}
         <Link
           href="https://github.com/kittinan/spotify-github-profile"
@@ -309,7 +276,7 @@ function MusicImListeningTo() {
             width={600} // Approximate width, adjust as needed
             height={120} // Approximate height, adjust as needed
             unoptimized // Use unoptimized for external, dynamically generated images
-            className={clsx("rounded-2xl filter contrast-150", isLoading && "invisible")} // Add rounded corners for consistency
+            className={clsx("filter contrast-150 border border-zinc-100 dark:border-zinc-400/30 rounded-2xl", isLoading && "invisible")} // Add rounded corners for consistency
             onLoadingComplete={() => setIsLoading(false)}
           />
         </Link>
@@ -527,13 +494,10 @@ export default function Home({ articles }: HomeProps) {
               <Article key={article.slug} article={article} />
             ))}
           </div>
-          <div className="lg:pl-16 space-y-8 xl:pl-24">
-            <MusicImListeningTo />
-            <hr className="opacity-20 pb-10" />
-
-            <MusicIMade />
-            <hr className="opacity-20 pb-10" />
-            <MakingPlaylists />
+          <div className="lg:pl-16 space-y-14 xl:pl-24 ">
+            <ProducedMusic />
+            <CuratedMusic />
+            <ListeningMusic />
 
             {/* <Newsletter /> */}
             {/* <Resume /> */}

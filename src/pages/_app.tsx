@@ -41,7 +41,7 @@ export default function App({ Component, pageProps }: AppProps) {
       </Head>
       <div className="fixed inset-0 flex justify-center sm:px-8">
         <div className="flex w-full max-w-7xl lg:px-8">
-          <div className="md:rounded-3xl mt-20 mx-3 rounded-t-xl md:rounded-xl md:my-24 w-full bg-white ring-1 ring-zinc-100 dark:bg-zinc-900 dark:ring-zinc-300/20" />
+          <div className="mx-3 w-full bg-zinc-800 bg-gradient-to-br from-zinc-300 to-zinc-100 dark:from-zinc-900/70 dark:to-black ring-1 ring-zinc-100 dark:ring-zinc-300/20" />
         </div>
       </div>
       <div className="relative">
