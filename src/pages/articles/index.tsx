@@ -20,7 +20,7 @@ interface ArticleProps {
 
 function Article({ article }: ArticleProps) {
   return (
-    <article className="bg-zinc-700/20 p-3 rounded-2xl md:grid md:grid-cols-4 md:items-baseline">
+    <article className="dark:bg-zinc-700/20 bg-zinc-50 p-3 rounded-2xl md:grid md:grid-cols-4 md:items-baseline">
       <Card className="md:col-span-3 py-2">
         <Card.Title href={`/articles/${article.slug}`}>
           {article.title}

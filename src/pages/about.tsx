@@ -77,30 +77,30 @@ export default function About() {
             <div className="mt-6 space-y-7 text-base text-zinc-600 dark:text-zinc-400">
 
               <p>
-                check out my <Link href="/career" className="text-teal-500 font-bold hover:text-teal-600 dark:hover:text-teal-400">career</Link> page for extended details of the following:
+                check out my <Link href="/career" className="dark:text-teal-500 text-teal-600 font-bold hover:text-teal-600 dark:hover:text-teal-400">career</Link> page for extended details of the following:
               </p>
               <ul role="list" className="list-disc pl-5 space-y-2">
                 <li>
-                  Used to work in the governance, grants and public good space as lead engineer at <Link target="_blank" href="https://karmahq.xyz" className="text-teal-500 font-bold hover:text-teal-600 dark:hover:text-teal-400">Karma</Link> contributing to protocols like <Link target="_blank" href="https://gitcoin.co" className="text-teal-500 font-bold hover:text-teal-600 dark:hover:text-teal-400">Gitcoin</Link>, <Link target="_blank" href="https://octant.app" className="text-teal-500 font-bold hover:text-teal-600 dark:hover:text-teal-400">Octant</Link>, etc. Most notable work was leading the development of <Link target="_blank" href="https://karmahq.xyz" className="text-teal-500 font-bold hover:text-teal-600 dark:hover:text-teal-400">Grantee Accountability Protocol</Link>(GAP) which is now used by ecosystems like Gitcoin, Celo and Polygon as their grants tooling.
+                  Used to work in the governance, grants and public good space as lead engineer at <Link target="_blank" href="https://karmahq.xyz" className="dark:text-teal-500 text-teal-600 font-bold hover:text-teal-600 dark:hover:text-teal-400">Karma</Link> contributing to protocols like <Link target="_blank" href="https://gitcoin.co" className="dark:text-teal-500 text-teal-600 font-bold hover:text-teal-600 dark:hover:text-teal-400">Gitcoin</Link>, <Link target="_blank" href="https://octant.app" className="dark:text-teal-500 text-teal-600 font-bold hover:text-teal-600 dark:hover:text-teal-400">Octant</Link>, etc. Most notable work was leading the development of <Link target="_blank" href="https://karmahq.xyz" className="dark:text-teal-500 text-teal-600 font-bold hover:text-teal-600 dark:hover:text-teal-400">Grantee Accountability Protocol</Link>(GAP) which is now used by ecosystems like Gitcoin, Celo and Polygon as their grants tooling.
                 </li>
                 <li>
-                  Exited a b2b nft analytics startup as a cofounder - <Link target="_blank" href="https://blitzcrafthq.com" className="text-teal-500 font-bold hover:text-teal-600 dark:hover:text-teal-400">blitzcrafthq.com</Link> (prev nftconomy.com)
+                  Exited a b2b nft analytics startup as a cofounder - <Link target="_blank" href="https://blitzcrafthq.com" className="dark:text-teal-500 text-teal-600 font-bold hover:text-teal-600 dark:hover:text-teal-400">blitzcrafthq.com</Link> (prev nftconomy.com)
                 </li>
                 <li>
-                  Currently building an AI call centre stack for customer XP at <Link target="_blank" href="https://tenorilabs.ai" className="text-teal-500 font-bold hover:text-teal-600 dark:hover:text-teal-400">TenoriLabs</Link> for businesses in APAC
+                  Currently building an AI call centre stack for customer XP at <Link target="_blank" href="https://tenorilabs.ai" className="dark:text-teal-500 text-teal-600 font-bold hover:text-teal-600 dark:hover:text-teal-400">TenoriLabs</Link> for businesses in APAC
                 </li>
                 <li>
-                  Also cofounded one of India’s largest fitness/wellness community app - (<Link target="_blank" href="https://cloka.in" className="text-teal-500 font-bold hover:text-teal-600 dark:hover:text-teal-400">cloka.in</Link>)
+                  Also cofounded one of India’s largest fitness/wellness community app - (<Link target="_blank" href="https://cloka.in" className="dark:text-teal-500 text-teal-600 font-bold hover:text-teal-600 dark:hover:text-teal-400">cloka.in</Link>)
                 </li>
                 <li>
-                  Launched one of my hackathon projects - <Link target="_blank" href="https://whim.bet" className="text-teal-500 font-bold hover:text-teal-600 dark:hover:text-teal-400">Whim.bet</Link> an agentic prediction market platform for twitch livestreams - with the <Link target="_blank" href="https://virtuals.io" className="text-teal-500 font-bold hover:text-teal-600 dark:hover:text-teal-400">Virtuals Protocol</Link> on their Genesis Cohort w/ over <Link target="_blank" href="https://app.uniswap.org/explore/tokens/base/0x39a1CCE09D7354Ac2DB86c6b02924360a10E4793?inputCurrency=NATIVE" className="text-teal-500 font-bold hover:text-teal-600 dark:hover:text-teal-400">9m total volume</Link> last year
+                  Launched one of my hackathon projects - <Link target="_blank" href="https://whim.bet" className="dark:text-teal-500 text-teal-600 font-bold hover:text-teal-600 dark:hover:text-teal-400">Whim.bet</Link> an agentic prediction market platform for twitch livestreams - with the <Link target="_blank" href="https://virtuals.io" className="dark:text-teal-500 text-teal-600 font-bold hover:text-teal-600 dark:hover:text-teal-400">Virtuals Protocol</Link> on their Genesis Cohort w/ over <Link target="_blank" href="https://app.uniswap.org/explore/tokens/base/0x39a1CCE09D7354Ac2DB86c6b02924360a10E4793?inputCurrency=NATIVE" className="dark:text-teal-500 text-teal-600 font-bold hover:text-teal-600 dark:hover:text-teal-400">9m total volume</Link> last year
                 </li>
                 <li>
-                  But I’m mostly known for my <Link target="_blank" href="https://ethglobal.com" className="text-teal-500 font-bold hover:text-teal-600 dark:hover:text-teal-400">EthGlobal</Link> records - most hacks + finalist titles (x6) topping 85+ hackathons over last 3 years
+                  But I’m mostly known for my <Link target="_blank" href="https://ethglobal.com" className="dark:text-teal-500 text-teal-600 font-bold hover:text-teal-600 dark:hover:text-teal-400">EthGlobal</Link> records - most hacks + finalist titles (x6) topping 85+ hackathons over last 3 years
                 </li>
               </ul>
               <p className="mt-8">
-                Outside of work, I love <Link target="_blank" href="https://www.strava.com/athletes/168385610" className="text-teal-500 font-bold hover:text-teal-600 dark:hover:text-teal-400">running</Link>, travel, and trying to produce music (i can play the violin and guitar now!)
+                Outside of work, I love <Link target="_blank" href="https://www.strava.com/athletes/168385610" className="dark:text-teal-500 text-teal-600 font-bold hover:text-teal-600 dark:hover:text-teal-400">running</Link>, travel, and trying to produce music (i can play the violin and guitar now!)
               </p>
             </div>
           </div>
@@ -159,7 +159,7 @@ export default function About() {
                 icon={MailIcon}
                 className="mt-8 border-t border-zinc-100 pt-8 dark:border-zinc-700/40"
               >
-                hello@fabianferno.com
+                hi@fabianferno.com
               </SocialLink>
             </ul>
           </div>

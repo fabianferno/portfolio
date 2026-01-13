@@ -33,7 +33,7 @@ function Tools({ tools }: { tools: string[] }) {
 function Role({ role }: { role: any }) {
     return (
         <div className="flex gap-4">
-            <div className="relative mt-1 flex h-12 w-12 flex-none items-center justify-center rounded-lg bg-zinc-800 shadow-md ring-1 ring-zinc-900/5 dark:border dark:border-zinc-700/50 dark:bg-zinc-800 dark:ring-0">
+            <div className="relative mt-1 flex h-12 w-12 flex-none items-center justify-center rounded-lg bg-zinc-100 shadow-md ring-1 ring-zinc-900/5 dark:border dark:border-zinc-700/50 dark:bg-zinc-800 dark:ring-0">
                 {role.logo ? (
                     <Image src={role.logo} alt="" className="h-8 w-8 rounded-full" unoptimized />
                 ) : (
@@ -43,14 +43,14 @@ function Role({ role }: { role: any }) {
                 )}
             </div>
             <div className="flex flex-col">
-                <h2 className="text-lg font-semibold text-zinc-100">
+                <h2 className="text-lg font-semibold dark:text-zinc-100 text-zinc-800">
                     {role.title} at{' '}
                     {role.website ? (
                         <a
                             href={role.website}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="text-teal-400 transition"
+                            className="dark:text-teal-400 text-teal-600 transition"
                         >
                             {role.company}
                         </a>

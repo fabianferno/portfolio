@@ -60,7 +60,7 @@ interface GithubCardProps {
 export function GithubCard(props: GithubCardProps) {
   return (
     <a
-      className="my-7 flex  filter hover:invert items-center justify-center transition-all duration-300 ease-in-out"
+      className="my-7 flex filter hover:invert items-center justify-center transition-all duration-300 ease-in-out"
       href={props.src}
       target="_blank"
       rel="noreferrer"
