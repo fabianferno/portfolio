@@ -48,12 +48,6 @@ export default async function handler(
         },
         {
             category: 'Page',
-            title: 'Guestbook',
-            description: 'Sign my guestbook and leave a message.',
-            href: '/guestbook',
-        },
-        {
-            category: 'Page',
             title: 'Career',
             description: 'My professional journey and experience.',
             href: '/career',

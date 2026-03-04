@@ -5,11 +5,10 @@ import { useRouter } from 'next/router'
 import { Popover, Transition } from '@headlessui/react'
 import clsx from 'clsx'
 import { ReactNode, useEffect, useRef, useState, SVGProps, HTMLAttributes, useCallback } from 'react'
-import { PencilIcon, MagnifyingGlassIcon } from '@heroicons/react/24/outline'
+import { MagnifyingGlassIcon } from '@heroicons/react/24/outline'
 
 import { Container } from '@/components/Container'
 import avatarImage from '@/images/avatar-bw.jpg'
-import { GuestbookModal } from '@/components/GuestbookModal'
 import { Search } from '@/components/Search'
 
 function CloseIcon(props: SVGProps<SVGSVGElement>) {
@@ -65,21 +64,6 @@ function MoonIcon(props: SVGProps<SVGSVGElement>) {
     <svg viewBox="0 0 24 24" aria-hidden="true" {...props}>
       <path
         d="M17.25 16.22a6.937 6.937 0 0 1-9.47-9.47 7.451 7.451 0 1 0 9.47 9.47ZM12.75 7C17 7 17 2.75 17 2.75S17 7 21.25 7C17 7 17 11.25 17 11.25S17 7 12.75 7Z"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  )
-}
-
-function PenIcon(props: SVGProps<SVGSVGElement>) {
-  return (
-    <svg viewBox="0 0 24 24" aria-hidden="true" {...props}>
-      <path
-        d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10"
-        fill="none"
-        stroke="currentColor"
         strokeWidth="1.5"
         strokeLinecap="round"
         strokeLinejoin="round"
@@ -288,7 +272,6 @@ function Avatar({ large = false, className, ...props }: AvatarProps) {
 
 export function Header() {
   let isHomePage = useRouter().pathname === '/'
-  const [isGuestbookOpen, setIsGuestbookOpen] = useState(false)
   const [isSearchOpen, setIsSearchOpen] = useState(false)
 
   let headerRef = useRef<HTMLDivElement>(null)
@@ -412,7 +395,6 @@ export function Header() {
   return (
     <>
       <Search isOpen={isSearchOpen} onClose={() => setIsSearchOpen(false)} />
-      <GuestbookModal isOpen={isGuestbookOpen} closeMsg={() => setIsGuestbookOpen(false)} />
       <header
         className="pointer-events-none relative z-50 flex flex-col"
         style={{
@@ -482,16 +464,6 @@ export function Header() {
                     onClick={() => setIsSearchOpen(true)}
                   >
                     <MagnifyingGlassIcon className="h-6 w-6 text-zinc-500 transition group-hover:text-zinc-700 dark:text-zinc-500 dark:group-hover:text-zinc-400" />
-                  </button>
-                </div>
-                <div className="pointer-events-auto">
-                  <button
-                    type="button"
-                    aria-label="Sign guestbook"
-                    className="group rounded-full bg-white/90 px-3 py-2 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur transition dark:bg-zinc-800/90 dark:ring-white/10 dark:hover:ring-white/20"
-                    onClick={() => setIsGuestbookOpen(true)}
-                  >
-                    <PenIcon className="h-6 w-6 text-zinc-500 transition group-hover:text-zinc-700 dark:text-zinc-500 dark:group-hover:text-zinc-400" />
                   </button>
                 </div>
                 <div className="pointer-events-auto">

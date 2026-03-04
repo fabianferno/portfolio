@@ -28,6 +28,7 @@ import logoBlitzcrafthq from '@/images/logos/blitzcrafthq.jpg'
 import { generateRssFeed } from '@/lib/generateRssFeed'
 import { getAllArticles } from '@/lib/getAllArticles'
 import { formatDate } from '@/lib/formatDate'
+import { TWITTER_SPACES } from '@/data/twitterSpaces'
 import Marquee from 'react-fast-marquee'
 import { Skeleton } from '@/components/Skeleton'
 
@@ -253,34 +254,35 @@ function CuratedMusic() {
   </div>
 }
 
-function ListeningMusic() {
-  const [isLoading, setIsLoading] = useState(true)
-
+function TwitterSpaces() {
   return (
     <div>
       <h1 className="text-2xl mb-8 tracking-tight text-zinc-900 dark:text-zinc-100">
-        music i&apos;m listening to
+        spaces where i&apos;ve talked
       </h1>
-      <div className='text-center relative '>
-        {isLoading && (
-          <Skeleton className="absolute border border-zinc-100 dark:border-zinc-400/40 rounded-2xl inset-0 h-[120px] w-full" />
-        )}
-        <Link
-          href="https://github.com/kittinan/spotify-github-profile"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            src="https://spotify-github-profile.kittinanx.com/api/view?uid=pqfnzbkmew1e4y9o5r0uy83p6&cover_image=true&theme=spotify-embed&show_offline=false&background_color=000000&interchange=false&profanity=false&bar_color=53b14f&bar_color_cover=false&mode=dark"
-            alt="Spotify profile showing currently listening song"
-            width={600} // Approximate width, adjust as needed
-            height={120} // Approximate height, adjust as needed
-            unoptimized // Use unoptimized for external, dynamically generated images
-            className={clsx("filter contrast-150 border border-zinc-100 dark:border-zinc-400/30 rounded-2xl", isLoading && "invisible")} // Add rounded corners for consistency
-            onLoadingComplete={() => setIsLoading(false)}
-          />
-        </Link>
-      </div>
+      <ul className="space-y-3">
+        {TWITTER_SPACES.map(({ url, title, duration }) => (
+          <li key={url}>
+            <a
+              href={url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group flex items-center gap-4 rounded-xl border border-zinc-100 px-4 py-3 transition dark:border-zinc-700/40 hover:border-teal-500/50 dark:hover:border-teal-500/30 hover:bg-zinc-50 dark:hover:bg-zinc-800/50"
+            >
+              <XIcon className="h-6 w-6 flex-shrink-0 fill-zinc-500 transition group-hover:fill-teal-500 dark:fill-zinc-400 dark:group-hover:fill-teal-400" />
+              <span className="flex flex-col min-w-0 flex-1">
+                <span className="text-sm font-medium text-zinc-700 dark:text-zinc-300 group-hover:text-teal-600 dark:group-hover:text-teal-400 truncate">
+                  {title}
+                </span>
+                {duration && (
+                  <span className="text-xs text-zinc-500 dark:text-zinc-400 ">{duration}</span>
+                )}
+              </span>
+              <span className="ml-auto text-zinc-400 dark:text-zinc-500 flex-shrink-0">→</span>
+            </a>
+          </li>
+        ))}
+      </ul>
     </div>
   )
 }
@@ -497,7 +499,7 @@ export default function Home({ articles }: HomeProps) {
           <div className="lg:pl-16 space-y-14 xl:pl-24 ">
             <ProducedMusic />
             <CuratedMusic />
-            <ListeningMusic />
+            <TwitterSpaces />
 
             {/* <Newsletter /> */}
             {/* <Resume /> */}
