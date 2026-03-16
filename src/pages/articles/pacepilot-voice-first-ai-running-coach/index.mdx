@@ -1,9 +1,13 @@
 import { ArticleLayout } from '@/components/ArticleLayout'
+import Image from 'next/image'
+
+const pacepilotImage =
+  'https://github.com/user-attachments/assets/76957300-369d-4fb6-bbea-a8d2402c3cf7'
 
 export const meta = {
   author: 'Fabian Ferno',
   date: '2026-03-15',
-  image: 'https://github.com/user-attachments/assets/76957300-369d-4fb6-bbea-a8d2402c3cf7',
+  image: pacepilotImage,
   title: 'how we built pacepilot: a voice-first AI running coach powered by Google',
   description:
     'A voice-first AI running coach that listens, talks back intelligently, and knows your heart rate before you do. Built with Gemini Live on Vertex AI, Pipecat, and Daily.co.',
@@ -16,6 +20,15 @@ ever tried talking to your phone mid-run? yeah, it's terrible. your hands are sw
 pacepilot is a voice-first AI running coach. you talk to it like a real coach. it talks back. it knows your training plan, your heart rate, your pace zones, and whether you're slacking on your long runs. no screens. no tapping. just voice.
 
 here's how we built it — and why google's AI stack was the backbone of the whole thing.
+
+<Image
+  src={pacepilotImage}
+  alt="PacePilot voice-first AI running coach"
+  width={1200}
+  height={630}
+  className="my-8 rounded-xl"
+  unoptimized
+/>
 
 ## the core idea
 

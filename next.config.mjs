@@ -11,6 +11,7 @@ const nextConfig = {
   },
   images: {
     domains: [
+      'github.com',
       'placekitten.com',
       'media4.giphy.com',
       'dev-to-uploads.s3.amazonaws.com',

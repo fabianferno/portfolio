@@ -52,21 +52,28 @@ export function ArticleLayout({
       : meta.image.src
     : null
 
+  let absoluteImageUrl =
+    imageUrl && imageUrl.startsWith('http')
+      ? imageUrl
+      : imageUrl
+        ? `${process.env.NEXT_PUBLIC_SITE_URL}${imageUrl}`
+        : null
+
   return (
     <>
       <Head>
         <title>{`${meta.title} - Fabian Ferno`}</title>
         <meta name="description" content={meta.description} />
-        {imageUrl && (
+        {absoluteImageUrl && (
           <>
             <meta
               property="og:image"
-              content={`${process.env.NEXT_PUBLIC_SITE_URL}${imageUrl}`}
+              content={absoluteImageUrl}
               key="og:image"
             />
             <meta
               name="twitter:image"
-              content={`${process.env.NEXT_PUBLIC_SITE_URL}${imageUrl}`}
+              content={absoluteImageUrl}
               key="twitter:image"
             />
           </>
