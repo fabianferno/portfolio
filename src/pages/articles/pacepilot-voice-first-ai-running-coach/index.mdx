@@ -1,13 +1,11 @@
 import { ArticleLayout } from '@/components/ArticleLayout'
 import Image from 'next/image'
-
-const pacepilotImage =
-  'https://github.com/user-attachments/assets/76957300-369d-4fb6-bbea-a8d2402c3cf7'
+import pacepilotImage from '@/images/blog/pacepilot-featured.png'
 
 export const meta = {
   author: 'Fabian Ferno',
   date: '2026-03-15',
-  image: pacepilotImage,
+  image: pacepilotImage.src,
   title: 'how we built pacepilot: a voice-first AI running coach powered by Google',
   description:
     'A voice-first AI running coach that listens, talks back intelligently, and knows your heart rate before you do. Built with Gemini Live on Vertex AI, Pipecat, and Daily.co.',
@@ -24,10 +22,7 @@ here's how we built it — and why google's AI stack was the backbone of the who
 <Image
   src={pacepilotImage}
   alt="PacePilot voice-first AI running coach"
-  width={1200}
-  height={630}
   className="my-8 rounded-xl"
-  unoptimized
 />
 
 ## the core idea
