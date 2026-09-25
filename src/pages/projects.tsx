@@ -1,6 +1,5 @@
 import Image from 'next/image'
 import Head from 'next/head'
-import { Octokit } from '@octokit/core'
 import Link from 'next/link'
 import { Card } from '@/components/Card'
 import { SimpleLayout } from '@/components/SimpleLayout'
@@ -10,11 +9,6 @@ import SafeLayout from '@/components/SafeLayout'
 import Masonry from 'react-masonry-css'
 import { ProjectLoader } from '@/components/Loaders'
 import { GithubCard } from '@/components/ProjectCards'
-
-const octokit = new Octokit({
-  auth: process.env.NEXT_PUBLIC_GITHUB_TOKEN,
-})
-
 
 interface Project {
   html_url: string
@@ -76,30 +70,29 @@ function ProjectCard({ project, key }: ProjectCardProps) {
 export default function Projects() {
   const [projects, setProjects] = useState<Project[]>([])
   const [loader, setLoader] = useState(true)
+  const [error, setError] = useState<string | null>(null)
 
   async function getProjects() {
-    await octokit
-      .request(`GET /user/repos`, {
-        per_page: 100,
-        affiliation: 'owner',
-        sort: 'updated',
-      })
-      .then((res) => {
-        setLoader(false)
-        let result = res.data.map((project) => {
-          return {
-            ...project,
-            //  Generate random people emojis
-            emoji: String.fromCodePoint(
-              0x1f600 + Math.floor(Math.random() * 80)
-            ),
-          }
-        })
-
-        result = result.filter((project) => !project.topics?.includes('ignore'))
-        console.log(result)
-        setProjects(result as Project[])
-      })
+    try {
+      const res = await fetch('/api/projects')
+      if (!res.ok) {
+        const body = await res.json().catch(() => ({}))
+        throw new Error(
+          body.error || `Request failed with status ${res.status}`
+        )
+      }
+      const data: Project[] = await res.json()
+      setProjects(data)
+    } catch (err) {
+      console.error('Failed to load projects:', err)
+      setError(
+        err instanceof Error
+          ? err.message
+          : 'Something went wrong loading projects.'
+      )
+    } finally {
+      setLoader(false)
+    }
   }
 
   useEffect(() => {
@@ -167,6 +160,31 @@ export default function Projects() {
         <SafeLayout>
           {loader ? (
             <ProjectLoader />
+          ) : error ? (
+            <div className="rounded-lg border border-zinc-200 p-6 text-sm dark:border-zinc-700/50">
+              <p className="font-medium text-zinc-800 dark:text-zinc-100">
+                Couldn’t load projects right now.
+              </p>
+              <p className="mt-1 text-xs text-zinc-500 dark:text-zinc-400">
+                {error}
+              </p>
+              <p className="mt-3 text-xs text-zinc-500 dark:text-zinc-400">
+                In the meantime, you can browse them directly on{' '}
+                <a
+                  href="https://github.com/fabianferno?tab=repositories"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="font-bold text-zinc-600 hover:text-zinc-500 dark:text-zinc-300"
+                >
+                  GitHub
+                </a>
+                .
+              </p>
+            </div>
+          ) : projects.length === 0 ? (
+            <p className="text-sm text-zinc-600 dark:text-zinc-400">
+              No projects to show yet.
+            </p>
           ) : (
             <div className="-ml-[5px] md:-ml-[10px] ">
               <motion.div
