@@ -5,7 +5,7 @@ import { motion } from 'framer-motion'
 import { Card } from '@/components/Card'
 import { SimpleLayout } from '@/components/SimpleLayout'
 import SafeLayout from '@/components/SafeLayout'
-import flightHistory from '@/data/flights.json'
+import { GetServerSideProps } from 'next'
 
 // WebGL scene — client-only, so it never runs during SSR.
 const FlightMap = dynamic(() => import('@/components/FlightMap'), {
@@ -54,9 +54,8 @@ interface FlightHistory {
     dateRange: { earliest: string; latest: string }
     byStatus: Record<string, number>
   }
+  coverageNotes?: string
 }
-
-const history = flightHistory as FlightHistory
 
 const STATUS_FILTERS = ['all', 'flown', 'confirmed', 'cancelled'] as const
 type StatusFilter = (typeof STATUS_FILTERS)[number]
@@ -161,7 +160,41 @@ function FlightCard({ flight }: { flight: Flight }) {
   )
 }
 
-export default function Flights() {
+interface FlightsProps {
+  history: FlightHistory
+}
+
+export const getServerSideProps: GetServerSideProps<FlightsProps> = async (
+  context
+) => {
+  try {
+    // Fetch flight data from our API route (which handles GitHub auth server-side)
+    const protocol = context.req.headers.host?.includes('localhost')
+      ? 'http'
+      : 'https'
+    const baseUrl = `${protocol}://${context.req.headers.host}`
+    const response = await fetch(`${baseUrl}/api/flights`)
+
+    if (!response.ok) {
+      throw new Error(`Failed to fetch flights: ${response.statusText}`)
+    }
+
+    const history: FlightHistory = await response.json()
+
+    return {
+      props: {
+        history,
+      },
+    }
+  } catch (error) {
+    console.error('[flights page] Failed to load flight data:', error)
+    // If fetch fails, the API should have returned the fallback already
+    // but if something else goes wrong, we rethrow to show an error page
+    throw error
+  }
+}
+
+export default function Flights({ history }: FlightsProps) {
   const [filter, setFilter] = useState<StatusFilter>('all')
 
   const flights = useMemo(() => {
@@ -173,7 +206,7 @@ export default function Flights() {
     return filter === 'all'
       ? sorted
       : sorted.filter((f) => f.status === filter)
-  }, [filter])
+  }, [filter, history.flights])
 
   const { stats } = history
 
