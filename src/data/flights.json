@@ -1,0 +1,1676 @@
+{
+  "generatedAt": "2026-09-17T12:18:18+05:30",
+  "source": "personal Gmail (fabianferno@gmail.com)",
+  "passenger": "Fabian Ferno",
+  "flights": [
+    {
+      "airline": {
+        "name": "Vistara",
+        "iata": "UK"
+      },
+      "flightNumber": "UK22",
+      "bookingReference": "OK9QEY",
+      "departureAirport": {
+        "iata": "CDG",
+        "city": "Paris"
+      },
+      "arrivalAirport": {
+        "iata": "DEL",
+        "city": "New Delhi"
+      },
+      "departureDateTime": "2023-08-05T22:25:00+02:00",
+      "arrivalDateTime": "2023-08-06T10:05:00+05:30",
+      "passengerName": "Fabian Ferno",
+      "cabinClass": "Economy (K)",
+      "status": "flown",
+      "ticketSource": "personal",
+      "gmailThreadId": "189c2c36880064b6",
+      "gmailMessageId": "189c2c3690e14194",
+      "subject": "YOUR VISTARA ITINERARY FOR PNR OK9QEY",
+      "notes": "Ticket 228 2407896565; NVML meal confirmed; Amadeus boarding pass same day. Attachment: Your Electronic Ticket-EMD Receipt.pdf"
+    },
+    {
+      "airline": {
+        "name": "Vistara",
+        "iata": "UK"
+      },
+      "flightNumber": "UK839",
+      "bookingReference": "OK9QEY",
+      "departureAirport": {
+        "iata": "DEL",
+        "city": "New Delhi"
+      },
+      "arrivalAirport": {
+        "iata": "MAA",
+        "city": "Chennai"
+      },
+      "departureDateTime": "2023-08-06T13:30:00+05:30",
+      "arrivalDateTime": "2023-08-06T16:20:00+05:30",
+      "passengerName": "Fabian Ferno",
+      "cabinClass": "Economy (K)",
+      "status": "flown",
+      "ticketSource": "personal",
+      "gmailThreadId": "189c2c36880064b6",
+      "gmailMessageId": "189c2c3690e14194",
+      "subject": "YOUR VISTARA ITINERARY FOR PNR OK9QEY",
+      "notes": "Same PNR OK9QEY; connection from CDG"
+    },
+    {
+      "airline": {
+        "name": "Etihad Airways",
+        "iata": "EY"
+      },
+      "flightNumber": "EY247",
+      "bookingReference": "SIU4ZY",
+      "departureAirport": {
+        "iata": "MAA",
+        "city": "Chennai"
+      },
+      "arrivalAirport": {
+        "iata": "AUH",
+        "city": "Abu Dhabi"
+      },
+      "departureDateTime": "2024-03-14T10:10:00+05:30",
+      "arrivalDateTime": "2024-03-14T13:05:00+04:00",
+      "passengerName": "Fabian Ferno",
+      "cabinClass": "Economy Value",
+      "status": "cancelled",
+      "ticketSource": "personal",
+      "gmailThreadId": "18c91b1aa56fa8e3",
+      "gmailMessageId": "18c91b1aa56fa8e3",
+      "subject": "E-Ticket for Your Flight Booking ID : NN2RSOCHURT09I4D3202",
+      "notes": "MMT booking NN2RSOCHURT09I4D3202; ticket 607-3544807398; later Tax Invoice for Cancelled Flight Booking (Feb 2024). Attachment: NN2RSOCHURT09I4D3202.ETicket.pdf"
+    },
+    {
+      "airline": {
+        "name": "Etihad Airways",
+        "iata": "EY"
+      },
+      "flightNumber": "EY17",
+      "bookingReference": "SIU4ZY",
+      "departureAirport": {
+        "iata": "AUH",
+        "city": "Abu Dhabi"
+      },
+      "arrivalAirport": {
+        "iata": "LHR",
+        "city": "London"
+      },
+      "departureDateTime": "2024-03-14T14:05:00+04:00",
+      "arrivalDateTime": "2024-03-14T18:10:00+00:00",
+      "passengerName": "Fabian Ferno",
+      "cabinClass": "Economy Value",
+      "status": "cancelled",
+      "ticketSource": "personal",
+      "gmailThreadId": "18c91b1aa56fa8e3",
+      "gmailMessageId": "18c91b1aa56fa8e3",
+      "subject": "E-Ticket for Your Flight Booking ID : NN2RSOCHURT09I4D3202",
+      "notes": "MMT booking NN2RSOCHURT09I4D3202; ticket 607-3544807398; later Tax Invoice for Cancelled Flight Booking (Feb 2024). Attachment: NN2RSOCHURT09I4D3202.ETicket.pdf"
+    },
+    {
+      "airline": {
+        "name": "Etihad Airways",
+        "iata": "EY"
+      },
+      "flightNumber": "EY20",
+      "bookingReference": "SIU4ZY",
+      "departureAirport": {
+        "iata": "LHR",
+        "city": "London"
+      },
+      "arrivalAirport": {
+        "iata": "AUH",
+        "city": "Abu Dhabi"
+      },
+      "departureDateTime": "2024-03-21T13:55:00+00:00",
+      "arrivalDateTime": "2024-03-22T00:55:00+04:00",
+      "passengerName": "Fabian Ferno",
+      "cabinClass": "Economy Value",
+      "status": "cancelled",
+      "ticketSource": "personal",
+      "gmailThreadId": "18c91b1aa56fa8e3",
+      "gmailMessageId": "18c91b1aa56fa8e3",
+      "subject": "E-Ticket for Your Flight Booking ID : NN2RSOCHURT09I4D3202",
+      "notes": "MMT booking NN2RSOCHURT09I4D3202; ticket 607-3544807398; later Tax Invoice for Cancelled Flight Booking (Feb 2024). Attachment: NN2RSOCHURT09I4D3202.ETicket.pdf"
+    },
+    {
+      "airline": {
+        "name": "Etihad Airways",
+        "iata": "EY"
+      },
+      "flightNumber": "EY246",
+      "bookingReference": "SIU4ZY",
+      "departureAirport": {
+        "iata": "AUH",
+        "city": "Abu Dhabi"
+      },
+      "arrivalAirport": {
+        "iata": "MAA",
+        "city": "Chennai"
+      },
+      "departureDateTime": "2024-03-22T02:55:00+04:00",
+      "arrivalDateTime": "2024-03-22T08:25:00+05:30",
+      "passengerName": "Fabian Ferno",
+      "cabinClass": "Economy Value",
+      "status": "cancelled",
+      "ticketSource": "personal",
+      "gmailThreadId": "18c91b1aa56fa8e3",
+      "gmailMessageId": "18c91b1aa56fa8e3",
+      "subject": "E-Ticket for Your Flight Booking ID : NN2RSOCHURT09I4D3202",
+      "notes": "MMT booking NN2RSOCHURT09I4D3202; ticket 607-3544807398; later Tax Invoice for Cancelled Flight Booking (Feb 2024). Attachment: NN2RSOCHURT09I4D3202.ETicket.pdf"
+    },
+    {
+      "airline": {
+        "name": "Scoot",
+        "iata": "TR"
+      },
+      "flightNumber": "TR579",
+      "bookingReference": "J7DISC",
+      "departureAirport": {
+        "iata": "MAA",
+        "city": "Chennai"
+      },
+      "arrivalAirport": {
+        "iata": "SIN",
+        "city": "Singapore"
+      },
+      "departureDateTime": "2024-04-30T01:20:00+05:30",
+      "arrivalDateTime": "2024-04-30T08:15:00+08:00",
+      "passengerName": "Fabian Ferno",
+      "cabinClass": "Economy",
+      "status": "flown",
+      "ticketSource": "personal",
+      "gmailThreadId": "18f14e0c5279675a",
+      "gmailMessageId": "18f14e0c5279675a",
+      "subject": "E-Ticket for Your Flight Booking ID : NN2NO4HCS9KKV47D5065",
+      "notes": "MMT NN2NO4HCS9KKV47D5065; also Scoot confirmation emails from your-trip@itinerary.flyscoot.com. Attachment: NN2NO4HCS9KKV47D5065.ETicket.pdf"
+    },
+    {
+      "airline": {
+        "name": "Scoot",
+        "iata": "TR"
+      },
+      "flightNumber": "TR12",
+      "bookingReference": "J7DISC",
+      "departureAirport": {
+        "iata": "SIN",
+        "city": "Singapore"
+      },
+      "arrivalAirport": {
+        "iata": "SYD",
+        "city": "Sydney"
+      },
+      "departureDateTime": "2024-04-30T10:00:00+08:00",
+      "arrivalDateTime": "2024-04-30T19:45:00+10:00",
+      "passengerName": "Fabian Ferno",
+      "cabinClass": "Economy",
+      "status": "flown",
+      "ticketSource": "personal",
+      "gmailThreadId": "18f14e0c5279675a",
+      "gmailMessageId": "18f14e0c5279675a",
+      "subject": "E-Ticket for Your Flight Booking ID : NN2NO4HCS9KKV47D5065",
+      "notes": "MMT NN2NO4HCS9KKV47D5065; also Scoot confirmation emails from your-trip@itinerary.flyscoot.com. Attachment: NN2NO4HCS9KKV47D5065.ETicket.pdf"
+    },
+    {
+      "airline": {
+        "name": "Scoot",
+        "iata": "TR"
+      },
+      "flightNumber": "TR3",
+      "bookingReference": "J7DISC",
+      "departureAirport": {
+        "iata": "SYD",
+        "city": "Sydney"
+      },
+      "arrivalAirport": {
+        "iata": "SIN",
+        "city": "Singapore"
+      },
+      "departureDateTime": "2024-05-14T12:35:00+10:00",
+      "arrivalDateTime": "2024-05-14T18:55:00+08:00",
+      "passengerName": "Fabian Ferno",
+      "cabinClass": "Economy",
+      "status": "flown",
+      "ticketSource": "personal",
+      "gmailThreadId": "18f14e0c5279675a",
+      "gmailMessageId": "18f14e0c5279675a",
+      "subject": "E-Ticket for Your Flight Booking ID : NN2NO4HCS9KKV47D5065",
+      "notes": "MMT NN2NO4HCS9KKV47D5065; also Scoot confirmation emails from your-trip@itinerary.flyscoot.com. Attachment: NN2NO4HCS9KKV47D5065.ETicket.pdf"
+    },
+    {
+      "airline": {
+        "name": "Scoot",
+        "iata": "TR"
+      },
+      "flightNumber": "TR578",
+      "bookingReference": "J7DISC",
+      "departureAirport": {
+        "iata": "SIN",
+        "city": "Singapore"
+      },
+      "arrivalAirport": {
+        "iata": "MAA",
+        "city": "Chennai"
+      },
+      "departureDateTime": "2024-05-14T22:20:00+08:00",
+      "arrivalDateTime": "2024-05-14T23:55:00+05:30",
+      "passengerName": "Fabian Ferno",
+      "cabinClass": "Economy",
+      "status": "flown",
+      "ticketSource": "personal",
+      "gmailThreadId": "18f14e0c5279675a",
+      "gmailMessageId": "18f14e0c5279675a",
+      "subject": "E-Ticket for Your Flight Booking ID : NN2NO4HCS9KKV47D5065",
+      "notes": "MMT NN2NO4HCS9KKV47D5065; also Scoot confirmation emails from your-trip@itinerary.flyscoot.com. Attachment: NN2NO4HCS9KKV47D5065.ETicket.pdf"
+    },
+    {
+      "airline": {
+        "name": "Etihad Airways",
+        "iata": "EY"
+      },
+      "flightNumber": "EY271",
+      "bookingReference": "TT3G2X",
+      "departureAirport": {
+        "iata": "MAA",
+        "city": "Chennai"
+      },
+      "arrivalAirport": {
+        "iata": "AUH",
+        "city": "Abu Dhabi"
+      },
+      "departureDateTime": "2024-07-04T21:45:00+05:30",
+      "arrivalDateTime": "2024-07-05T00:35:00+04:00",
+      "passengerName": "Fabian Ferno",
+      "cabinClass": "Economy Value",
+      "status": "flown",
+      "ticketSource": "personal",
+      "gmailThreadId": "18ff42f57a298f5d",
+      "gmailMessageId": "18ff42f57a298f5d",
+      "subject": "E-Ticket for Your Flight Booking ID : NN258I59MI5YA5OC4802",
+      "notes": "MMT NN258I59MI5YA5OC4802; ticket 607-5412379950; boarding pass email Jul 23. Attachment: NN258I59MI5YA5OC4802.ETicket.pdf"
+    },
+    {
+      "airline": {
+        "name": "Etihad Airways",
+        "iata": "EY"
+      },
+      "flightNumber": "EY31",
+      "bookingReference": "TT3G2X",
+      "departureAirport": {
+        "iata": "AUH",
+        "city": "Abu Dhabi"
+      },
+      "arrivalAirport": {
+        "iata": "CDG",
+        "city": "Paris"
+      },
+      "departureDateTime": "2024-07-05T02:25:00+04:00",
+      "arrivalDateTime": "2024-07-05T07:45:00+02:00",
+      "passengerName": "Fabian Ferno",
+      "cabinClass": "Economy Value",
+      "status": "flown",
+      "ticketSource": "personal",
+      "gmailThreadId": "18ff42f57a298f5d",
+      "gmailMessageId": "18ff42f57a298f5d",
+      "subject": "E-Ticket for Your Flight Booking ID : NN258I59MI5YA5OC4802",
+      "notes": "MMT NN258I59MI5YA5OC4802; ticket 607-5412379950; boarding pass email Jul 23. Attachment: NN258I59MI5YA5OC4802.ETicket.pdf"
+    },
+    {
+      "airline": {
+        "name": "Etihad Airways",
+        "iata": "EY"
+      },
+      "flightNumber": "EY32",
+      "bookingReference": "TT3G2X",
+      "departureAirport": {
+        "iata": "CDG",
+        "city": "Paris"
+      },
+      "arrivalAirport": {
+        "iata": "AUH",
+        "city": "Abu Dhabi"
+      },
+      "departureDateTime": "2024-07-24T10:20:00+02:00",
+      "arrivalDateTime": "2024-07-24T19:00:00+04:00",
+      "passengerName": "Fabian Ferno",
+      "cabinClass": "Economy Value",
+      "status": "flown",
+      "ticketSource": "personal",
+      "gmailThreadId": "18ff42f57a298f5d",
+      "gmailMessageId": "18ff42f57a298f5d",
+      "subject": "E-Ticket for Your Flight Booking ID : NN258I59MI5YA5OC4802",
+      "notes": "MMT NN258I59MI5YA5OC4802; ticket 607-5412379950; boarding pass email Jul 23. Attachment: NN258I59MI5YA5OC4802.ETicket.pdf"
+    },
+    {
+      "airline": {
+        "name": "Etihad Airways",
+        "iata": "EY"
+      },
+      "flightNumber": "EY246",
+      "bookingReference": "TT3G2X",
+      "departureAirport": {
+        "iata": "AUH",
+        "city": "Abu Dhabi"
+      },
+      "arrivalAirport": {
+        "iata": "MAA",
+        "city": "Chennai"
+      },
+      "departureDateTime": "2024-07-25T02:45:00+04:00",
+      "arrivalDateTime": "2024-07-25T08:35:00+05:30",
+      "passengerName": "Fabian Ferno",
+      "cabinClass": "Economy Value",
+      "status": "flown",
+      "ticketSource": "personal",
+      "gmailThreadId": "18ff42f57a298f5d",
+      "gmailMessageId": "18ff42f57a298f5d",
+      "subject": "E-Ticket for Your Flight Booking ID : NN258I59MI5YA5OC4802",
+      "notes": "MMT NN258I59MI5YA5OC4802; ticket 607-5412379950; boarding pass email Jul 23. Attachment: NN258I59MI5YA5OC4802.ETicket.pdf"
+    },
+    {
+      "airline": {
+        "name": "Air India Express",
+        "iata": "IX"
+      },
+      "flightNumber": "IX688",
+      "bookingReference": "O92VRN",
+      "departureAirport": {
+        "iata": "MAA",
+        "city": "Chennai"
+      },
+      "arrivalAirport": {
+        "iata": "SIN",
+        "city": "Singapore"
+      },
+      "departureDateTime": "2024-09-19T01:40:00+05:30",
+      "arrivalDateTime": "2024-09-19T08:30:00+08:00",
+      "passengerName": "Fabian Ferno",
+      "cabinClass": "Economy",
+      "status": "flown",
+      "ticketSource": "personal",
+      "gmailThreadId": "1913b86176a07634",
+      "gmailMessageId": "1913b86176a07634",
+      "subject": "Here’s your itinerary, Happy Skytrippin’",
+      "notes": "Schedule-change email Sep 18 for PNR O92VRN. Attachment: Itinerary-O92VRN.pdf"
+    },
+    {
+      "airline": {
+        "name": "Air India Express",
+        "iata": "IX"
+      },
+      "flightNumber": "IX687",
+      "bookingReference": "O92VRN",
+      "departureAirport": {
+        "iata": "SIN",
+        "city": "Singapore"
+      },
+      "arrivalAirport": {
+        "iata": "MAA",
+        "city": "Chennai"
+      },
+      "departureDateTime": "2024-09-26T21:50:00+08:00",
+      "arrivalDateTime": "2024-09-26T23:40:00+05:30",
+      "passengerName": "Fabian Ferno",
+      "cabinClass": "Economy",
+      "status": "flown",
+      "ticketSource": "personal",
+      "gmailThreadId": "1913b86176a07634",
+      "gmailMessageId": "1913b86176a07634",
+      "subject": "Here’s your itinerary, Happy Skytrippin’",
+      "notes": "Return leg; 25kg check-in baggage noted"
+    },
+    {
+      "airline": {
+        "name": "Malaysia Airlines",
+        "iata": "MH"
+      },
+      "flightNumber": "MH181",
+      "bookingReference": "MHXFSC",
+      "departureAirport": {
+        "iata": "MAA",
+        "city": "Chennai"
+      },
+      "arrivalAirport": {
+        "iata": "KUL",
+        "city": "Kuala Lumpur"
+      },
+      "departureDateTime": "2024-10-26T23:55:00+05:30",
+      "arrivalDateTime": "2024-10-27T06:30:00+08:00",
+      "passengerName": "Fabian Ferno",
+      "cabinClass": "Economy (Basic)",
+      "status": "flown",
+      "ticketSource": "personal",
+      "gmailThreadId": "19284327f0a1d6ad",
+      "gmailMessageId": "19284327f0a1d6ad",
+      "subject": "E-Ticket for Your Flight Booking ID : NN2AAJGO20212914563",
+      "notes": "MMT NN2AAJGO20212914563 multicity; e-ticket 232-3808727619; Malaysia check-in open Oct 24"
+    },
+    {
+      "airline": {
+        "name": "Malaysia Airlines",
+        "iata": "MH"
+      },
+      "flightNumber": "MH772",
+      "bookingReference": "MHXFSC",
+      "departureAirport": {
+        "iata": "KUL",
+        "city": "Kuala Lumpur"
+      },
+      "arrivalAirport": {
+        "iata": "CNX",
+        "city": "Chiang Mai"
+      },
+      "departureDateTime": "2024-10-27T09:45:00+08:00",
+      "arrivalDateTime": "2024-10-27T11:25:00+07:00",
+      "passengerName": "Fabian Ferno",
+      "cabinClass": "Economy (Basic)",
+      "status": "flown",
+      "ticketSource": "personal",
+      "gmailThreadId": "19284327f0a1d6ad",
+      "gmailMessageId": "19284327f0a1d6ad",
+      "subject": "E-Ticket for Your Flight Booking ID : NN2AAJGO20212914563",
+      "notes": "Same PNR MHXFSC"
+    },
+    {
+      "airline": {
+        "name": "Thai Vietjet Air",
+        "iata": "VZ"
+      },
+      "flightNumber": "VZ101",
+      "bookingReference": "SAPNS2",
+      "departureAirport": {
+        "iata": "CNX",
+        "city": "Chiang Mai"
+      },
+      "arrivalAirport": {
+        "iata": "BKK",
+        "city": "Bangkok"
+      },
+      "departureDateTime": "2024-11-03T08:05:00+07:00",
+      "arrivalDateTime": "2024-11-03T09:25:00+07:00",
+      "passengerName": "Fabian Ferno",
+      "cabinClass": "Economy",
+      "status": "flown",
+      "ticketSource": "personal",
+      "gmailThreadId": "19284327f0a1d6ad",
+      "gmailMessageId": "19284327f0a1d6ad",
+      "subject": "E-Ticket for Your Flight Booking ID : NN2AAJGO20212914563",
+      "notes": "Aero V.I.P. Ltd / Thai Vietjet; e-ticket 863-3420908240"
+    },
+    {
+      "airline": {
+        "name": "Thai AirAsia",
+        "iata": "FD"
+      },
+      "flightNumber": "FD192",
+      "bookingReference": "T97Z3J",
+      "departureAirport": {
+        "iata": "HKT",
+        "city": "Phuket"
+      },
+      "arrivalAirport": {
+        "iata": "MAA",
+        "city": "Chennai"
+      },
+      "departureDateTime": "2024-11-21T23:50:00+07:00",
+      "arrivalDateTime": "2024-11-22T01:35:00+05:30",
+      "passengerName": "Fabian Ferno",
+      "cabinClass": "Economy (Premium Flex)",
+      "status": "flown",
+      "ticketSource": "personal",
+      "gmailThreadId": "19284327f0a1d6ad",
+      "gmailMessageId": "19284327f0a1d6ad",
+      "subject": "E-Ticket for Your Flight Booking ID : NN2AAJGO20212914563",
+      "notes": "Seat 2A; meal basil fried chicken; Attachment: NN2AAJGO20212914563.ETicket.pdf"
+    },
+    {
+      "airline": {
+        "name": "Scoot",
+        "iata": "TR"
+      },
+      "flightNumber": "TR579",
+      "bookingReference": "Q7E52C",
+      "departureAirport": {
+        "iata": "MAA",
+        "city": "Chennai"
+      },
+      "arrivalAirport": {
+        "iata": "SIN",
+        "city": "Singapore"
+      },
+      "departureDateTime": "2025-04-01T00:05:00+05:30",
+      "arrivalDateTime": "2025-04-01T06:30:00+08:00",
+      "passengerName": "Fabian Ferno",
+      "cabinClass": "Economy",
+      "status": "flown",
+      "ticketSource": "personal",
+      "gmailThreadId": "195530bb40e205e4",
+      "gmailMessageId": "195530bb40e205e4",
+      "subject": "E-Ticket for Your Flight Booking ID : NN7AD4IS10194607523",
+      "notes": "MMT NN7AD4IS10194607523 outbound via SIN"
+    },
+    {
+      "airline": {
+        "name": "Scoot",
+        "iata": "TR"
+      },
+      "flightNumber": "TR874",
+      "bookingReference": "Q7E52C",
+      "departureAirport": {
+        "iata": "SIN",
+        "city": "Singapore"
+      },
+      "arrivalAirport": {
+        "iata": "TPE",
+        "city": "Taipei"
+      },
+      "departureDateTime": "2025-04-01T09:45:00+08:00",
+      "arrivalDateTime": "2025-04-01T14:30:00+08:00",
+      "passengerName": "Fabian Ferno",
+      "cabinClass": "Economy",
+      "status": "flown",
+      "ticketSource": "personal",
+      "gmailThreadId": "195530bb40e205e4",
+      "gmailMessageId": "195530bb40e205e4",
+      "subject": "E-Ticket for Your Flight Booking ID : NN7AD4IS10194607523",
+      "notes": "Outbound to TPE"
+    },
+    {
+      "airline": {
+        "name": "Scoot",
+        "iata": "TR"
+      },
+      "flightNumber": "TR875",
+      "bookingReference": "QG7B9U",
+      "departureAirport": {
+        "iata": "TPE",
+        "city": "Taipei"
+      },
+      "arrivalAirport": {
+        "iata": "SIN",
+        "city": "Singapore"
+      },
+      "departureDateTime": "2025-04-09T01:55:00+08:00",
+      "arrivalDateTime": "2025-04-09T06:50:00+08:00",
+      "passengerName": "Fabian Ferno",
+      "cabinClass": "Economy",
+      "status": "flown",
+      "ticketSource": "personal",
+      "gmailThreadId": "195530bb40e205e4",
+      "gmailMessageId": "195530bb40e205e4",
+      "subject": "E-Ticket for Your Flight Booking ID : NN7AD4IS10194607523",
+      "notes": "Return; additional 20kg baggage purchased"
+    },
+    {
+      "airline": {
+        "name": "Scoot",
+        "iata": "TR"
+      },
+      "flightNumber": "TR578",
+      "bookingReference": "QG7B9U",
+      "departureAirport": {
+        "iata": "SIN",
+        "city": "Singapore"
+      },
+      "arrivalAirport": {
+        "iata": "MAA",
+        "city": "Chennai"
+      },
+      "departureDateTime": "2025-04-09T21:30:00+08:00",
+      "arrivalDateTime": "2025-04-09T23:05:00+05:30",
+      "passengerName": "Fabian Ferno",
+      "cabinClass": "Economy",
+      "status": "flown",
+      "ticketSource": "personal",
+      "gmailThreadId": "195530bb40e205e4",
+      "gmailMessageId": "195530bb40e205e4",
+      "subject": "E-Ticket for Your Flight Booking ID : NN7AD4IS10194607523",
+      "notes": "Attachment: NN7AD4IS10194607523.ETicket.pdf"
+    },
+    {
+      "airline": {
+        "name": "Air India",
+        "iata": "AI"
+      },
+      "flightNumber": "AI892",
+      "bookingReference": "U3AKBI",
+      "departureAirport": {
+        "iata": "MAA",
+        "city": "Chennai"
+      },
+      "arrivalAirport": {
+        "iata": "DEL",
+        "city": "New Delhi"
+      },
+      "departureDateTime": "2025-05-24T08:05:00+05:30",
+      "arrivalDateTime": "2025-05-24T10:47:00+05:30",
+      "passengerName": "Fabian Ferno",
+      "cabinClass": "unknown",
+      "status": "flown",
+      "ticketSource": "personal",
+      "gmailThreadId": "19634f820c30dccf",
+      "gmailMessageId": "1970005ebb8fcce0",
+      "subject": "Baggage receipt confirmation for AI 892 to New Delhi",
+      "notes": "Part of web eticket U3AKBI (PDF). Times from baggage receipt. Companion eticket for Leo Franklin John also received."
+    },
+    {
+      "airline": {
+        "name": "Air India",
+        "iata": "AI"
+      },
+      "flightNumber": "AI153",
+      "bookingReference": "U3AKBI",
+      "departureAirport": {
+        "iata": "DEL",
+        "city": "New Delhi"
+      },
+      "arrivalAirport": {
+        "iata": "VIE",
+        "city": "Vienna"
+      },
+      "departureDateTime": "2025-05-24T13:55:00+05:30",
+      "arrivalDateTime": "2025-05-24T19:05:00+02:00",
+      "passengerName": "Fabian Ferno",
+      "cabinClass": "unknown",
+      "status": "flown",
+      "ticketSource": "personal",
+      "gmailThreadId": "19634f820c30dccf",
+      "gmailMessageId": "196f71eb9c4538bb",
+      "subject": "Web check-in now for flight AI 153 to Vienna",
+      "notes": "PNR U3AKBI; times from check-in email. Attachment on eticket: Air India Web Booking eTicket (U3AKBI) - FABIAN.pdf"
+    },
+    {
+      "airline": {
+        "name": "Air India",
+        "iata": "AI"
+      },
+      "flightNumber": "AI148",
+      "bookingReference": null,
+      "departureAirport": {
+        "iata": "CDG",
+        "city": "Paris"
+      },
+      "arrivalAirport": {
+        "iata": "DEL",
+        "city": "New Delhi"
+      },
+      "departureDateTime": "2025-07-14T12:10:00+02:00",
+      "arrivalDateTime": "2025-07-15T01:03:00+05:30",
+      "passengerName": "Fabian Ferno",
+      "cabinClass": "Economy",
+      "status": "flown",
+      "ticketSource": "personal",
+      "gmailThreadId": "19807fe18b3b1373",
+      "gmailMessageId": "19807fe18b3b1373",
+      "subject": "Boarding gate announced for flight AI 148",
+      "notes": "PNR not in check-in/boarding emails; Gate C91. Possibly linked to Vienna/Europe trip return."
+    },
+    {
+      "airline": {
+        "name": "Air India",
+        "iata": "AI"
+      },
+      "flightNumber": "AI2525",
+      "bookingReference": null,
+      "departureAirport": {
+        "iata": "DEL",
+        "city": "New Delhi"
+      },
+      "arrivalAirport": {
+        "iata": "MAA",
+        "city": "Chennai"
+      },
+      "departureDateTime": "2025-07-15T05:20:00+05:30",
+      "arrivalDateTime": "2025-07-15T08:07:00+05:30",
+      "passengerName": "Fabian Ferno",
+      "cabinClass": "Economy",
+      "status": "flown",
+      "ticketSource": "personal",
+      "gmailThreadId": "1980aeb86b32a000",
+      "gmailMessageId": "1980aeb86b32a000",
+      "subject": "Boarding gate announced for flight AI 2525",
+      "notes": "Schedule change email May 28; Gate 31A; PNR not in body"
+    },
+    {
+      "airline": {
+        "name": "Air India",
+        "iata": "AI"
+      },
+      "flightNumber": "AI2550",
+      "bookingReference": "8D63P7",
+      "departureAirport": {
+        "iata": "MAA",
+        "city": "Chennai"
+      },
+      "arrivalAirport": {
+        "iata": "DEL",
+        "city": "New Delhi"
+      },
+      "departureDateTime": "2025-09-24T06:10:00+05:30",
+      "arrivalDateTime": "2025-09-24T08:55:00+05:30",
+      "passengerName": "Fabian Ferno",
+      "cabinClass": "unknown",
+      "status": "flown",
+      "ticketSource": "personal",
+      "gmailThreadId": "1996ee0d4dc5de6e",
+      "gmailMessageId": "1996ee0d4dc5de6e",
+      "subject": "Web check-in now for flight AI 2550 to Delhi",
+      "notes": "Boarding/baggage emails Sep 23-24; return segment not found in personal Gmail search"
+    },
+    {
+      "airline": {
+        "name": "Air India Express",
+        "iata": "IX"
+      },
+      "flightNumber": "IX2872",
+      "bookingReference": "Q946FA",
+      "departureAirport": {
+        "iata": "JAI",
+        "city": "Jaipur"
+      },
+      "arrivalAirport": {
+        "iata": "HYD",
+        "city": "Hyderabad"
+      },
+      "departureDateTime": "2025-10-04T08:55:00+05:30",
+      "arrivalDateTime": "2025-10-04T10:55:00+05:30",
+      "passengerName": "Fabian Ferno",
+      "cabinClass": "Economy",
+      "status": "flown",
+      "ticketSource": "personal",
+      "gmailThreadId": "199aaf33e2e72090",
+      "gmailMessageId": "199aaf33e2e72090",
+      "subject": "Here's your AirIndiaExpress Boarding Pass for IX 2872 JAI - HYD on 4-Oct-25, PNR Q946FA 08:55",
+      "notes": "Marketed as AI9743; seat 17A; Attachment: Boarding_Pass(JAI-MAA).pdf"
+    },
+    {
+      "airline": {
+        "name": "Air India Express",
+        "iata": "IX"
+      },
+      "flightNumber": "IX2822",
+      "bookingReference": "Q946FA",
+      "departureAirport": {
+        "iata": "HYD",
+        "city": "Hyderabad"
+      },
+      "arrivalAirport": {
+        "iata": "MAA",
+        "city": "Chennai"
+      },
+      "departureDateTime": "2025-10-04T20:05:00+05:30",
+      "arrivalDateTime": "2025-10-04T21:35:00+05:30",
+      "passengerName": "Fabian Ferno",
+      "cabinClass": "Economy",
+      "status": "flown",
+      "ticketSource": "personal",
+      "gmailThreadId": "199aaf33e2e72090",
+      "gmailMessageId": "199aaf33e2e72090",
+      "subject": "Here's your AirIndiaExpress Boarding Pass for IX 2872 JAI - HYD on 4-Oct-25, PNR Q946FA 08:55",
+      "notes": "Marketed as AI9794; seat 24F; same boarding-pass email"
+    },
+    {
+      "airline": {
+        "name": "IndiGo",
+        "iata": "6E"
+      },
+      "flightNumber": "6E796",
+      "bookingReference": "LEEWTR",
+      "departureAirport": {
+        "iata": "MAA",
+        "city": "Chennai"
+      },
+      "arrivalAirport": {
+        "iata": "BLR",
+        "city": "Bengaluru"
+      },
+      "departureDateTime": "2025-10-27T22:30:00+05:30",
+      "arrivalDateTime": "2025-10-27T23:40:00+05:30",
+      "passengerName": "Fabian Ferno",
+      "cabinClass": "Flexi Plus",
+      "status": "flown",
+      "ticketSource": "personal",
+      "gmailThreadId": "19a25ce9b3e8cd90",
+      "gmailMessageId": "19a25ce9b3e8cd90",
+      "subject": "Your IndiGo Itinerary - LEEWTR",
+      "notes": "Seat 30C"
+    },
+    {
+      "airline": {
+        "name": "Sky Airline",
+        "iata": "H2"
+      },
+      "flightNumber": "H25810",
+      "bookingReference": null,
+      "departureAirport": {
+        "iata": "AEP",
+        "city": "Buenos Aires"
+      },
+      "arrivalAirport": {
+        "iata": "LIM",
+        "city": "Lima"
+      },
+      "departureDateTime": "2025-11-24T04:40:00-03:00",
+      "arrivalDateTime": "2025-11-24T07:50:00-05:00",
+      "passengerName": "Fabian Ferno",
+      "cabinClass": "MAX / Economy",
+      "status": "flown",
+      "ticketSource": "personal",
+      "gmailThreadId": "19a3565928c7cd22",
+      "gmailMessageId": "19a3565928c7cd22",
+      "subject": "Ticket for Buenos Aires - Lima one-way flight -- Trip ID 251030633848",
+      "notes": "Cleartrip Trip ID 251030633848; Muslim meal; PNR not clearly parsed from body; Booking.com confirmation also present. Attachment: Cleartrip Flight E-Ticket.pdf"
+    },
+    {
+      "airline": {
+        "name": "KLM Royal Dutch Airlines",
+        "iata": "KL"
+      },
+      "flightNumber": "KL744",
+      "bookingReference": "694194248",
+      "departureAirport": {
+        "iata": "LIM",
+        "city": "Lima"
+      },
+      "arrivalAirport": {
+        "iata": "AMS",
+        "city": "Amsterdam"
+      },
+      "departureDateTime": "2025-11-28T20:10:00-05:00",
+      "arrivalDateTime": "2025-11-29T14:05:00+01:00",
+      "passengerName": "Fabian Ferno",
+      "cabinClass": "Economy (Saver)",
+      "status": "flown",
+      "ticketSource": "personal",
+      "gmailThreadId": "19a2f2826791fc3c",
+      "gmailMessageId": "19a2f2826791fc3c",
+      "subject": "Booking 694194248: Your booking is confirmed, Fabian",
+      "notes": "Kiwi self-transfer via MAD; delay email for LIM-AMS; Attachment: E-ticket_passenger_Njk0MTk0MjQ4.pdf"
+    },
+    {
+      "airline": {
+        "name": "Air Europa",
+        "iata": "UX"
+      },
+      "flightNumber": "UX1094",
+      "bookingReference": "694194248",
+      "departureAirport": {
+        "iata": "AMS",
+        "city": "Amsterdam"
+      },
+      "arrivalAirport": {
+        "iata": "MAD",
+        "city": "Madrid"
+      },
+      "departureDateTime": "2025-11-29T19:00:00+01:00",
+      "arrivalDateTime": "2025-11-29T21:40:00+01:00",
+      "passengerName": "Fabian Ferno",
+      "cabinClass": "Economy (Saver)",
+      "status": "flown",
+      "ticketSource": "personal",
+      "gmailThreadId": "19a2f2826791fc3c",
+      "gmailMessageId": "19a2f2826791fc3c",
+      "subject": "Booking 694194248: Your booking is confirmed, Fabian",
+      "notes": "Departure time inferred from 2h40m duration and 21:40 arrival; verify if needed"
+    },
+    {
+      "airline": {
+        "name": "Etihad Airways",
+        "iata": "EY"
+      },
+      "flightNumber": "EY102",
+      "bookingReference": "694194248",
+      "departureAirport": {
+        "iata": "MAD",
+        "city": "Madrid"
+      },
+      "arrivalAirport": {
+        "iata": "AUH",
+        "city": "Abu Dhabi"
+      },
+      "departureDateTime": "2025-11-30T10:50:00+01:00",
+      "arrivalDateTime": "2025-11-30T19:35:00+04:00",
+      "passengerName": "Fabian Ferno",
+      "cabinClass": "Economy (Saver)",
+      "status": "flown",
+      "ticketSource": "personal",
+      "gmailThreadId": "19a2f2826791fc3c",
+      "gmailMessageId": "19a2f2826791fc3c",
+      "subject": "Booking 694194248: Your booking is confirmed, Fabian",
+      "notes": "MAD departure approx from 6h45m duration + AUH 19:35 arrival"
+    },
+    {
+      "airline": {
+        "name": "Etihad Airways",
+        "iata": "EY"
+      },
+      "flightNumber": "EY342",
+      "bookingReference": "694194248",
+      "departureAirport": {
+        "iata": "AUH",
+        "city": "Abu Dhabi"
+      },
+      "arrivalAirport": {
+        "iata": "MAA",
+        "city": "Chennai"
+      },
+      "departureDateTime": "2025-12-01T02:30:00+04:00",
+      "arrivalDateTime": "2025-12-01T08:10:00+05:30",
+      "passengerName": "Fabian Ferno",
+      "cabinClass": "Economy (Saver)",
+      "status": "flown",
+      "ticketSource": "personal",
+      "gmailThreadId": "19a2f2826791fc3c",
+      "gmailMessageId": "19ad07533d023bba",
+      "subject": "Booking 694194248: Please check in with the carrier for your flight Abu Dhabi → Chennai",
+      "notes": "AUH dep approximate from 4h10m duration; boarding pass email Nov 29"
+    },
+    {
+      "airline": {
+        "name": "IndiGo",
+        "iata": "6E"
+      },
+      "flightNumber": "6E987",
+      "bookingReference": "E9FBRD",
+      "departureAirport": {
+        "iata": "MAA",
+        "city": "Chennai"
+      },
+      "arrivalAirport": {
+        "iata": "CCU",
+        "city": "Kolkata"
+      },
+      "departureDateTime": "2025-12-18T04:45:00+05:30",
+      "arrivalDateTime": "2025-12-18T06:55:00+05:30",
+      "passengerName": "Fabian Ferno",
+      "cabinClass": "Economy (Saver Regular)",
+      "status": "cancelled",
+      "ticketSource": "personal",
+      "gmailThreadId": "19b0493589788a3b",
+      "gmailMessageId": "19b2da54aa21a3cc",
+      "subject": "Your IndiGo flight canceled",
+      "notes": "Goibibo GOFLDGTAID7E5625150; cancelled operational reasons Dec 18; delay notification Dec 17; boarding passes also emailed"
+    },
+    {
+      "airline": {
+        "name": "IndiGo",
+        "iata": "6E"
+      },
+      "flightNumber": "6E723",
+      "bookingReference": "E9FBRD",
+      "departureAirport": {
+        "iata": "CCU",
+        "city": "Kolkata"
+      },
+      "arrivalAirport": {
+        "iata": "MAA",
+        "city": "Chennai"
+      },
+      "departureDateTime": "2025-12-19T21:40:00+05:30",
+      "arrivalDateTime": "2025-12-20T00:10:00+05:30",
+      "passengerName": "Fabian Ferno",
+      "cabinClass": "Economy (Saver Regular)",
+      "status": "cancelled",
+      "ticketSource": "personal",
+      "gmailThreadId": "19b04937c2c0ad1d",
+      "gmailMessageId": "19b04937c2c0ad1d",
+      "subject": "E-Ticket for Your Flight Booking ID: GOFLDGTAID7E5625150",
+      "notes": "Return likely voided with outbound cancel; treat as cancelled. Attachment: E-Ticket_GOFLDGTAID7E5625150.pdf"
+    },
+    {
+      "airline": {
+        "name": "Emirates",
+        "iata": "EK"
+      },
+      "flightNumber": "EK547",
+      "bookingReference": "LBVGF2",
+      "departureAirport": {
+        "iata": "MAA",
+        "city": "Chennai"
+      },
+      "arrivalAirport": {
+        "iata": "DXB",
+        "city": "Dubai"
+      },
+      "departureDateTime": "2026-03-26T21:45:00+05:30",
+      "arrivalDateTime": "2026-03-27T00:45:00+04:00",
+      "passengerName": "Fabian Ferno",
+      "cabinClass": "Economy / Saver",
+      "status": "flown",
+      "ticketSource": "personal",
+      "gmailThreadId": "19ce27e0044ee5b2",
+      "gmailMessageId": "19ce27e0044ee5b2",
+      "subject": "Your booking is confirmed - LBVGF2",
+      "notes": "Departure time change email Mar 26 for Dubai leg; Attachments: EmiratesTicket1.pdf"
+    },
+    {
+      "airline": {
+        "name": "Emirates",
+        "iata": "EK"
+      },
+      "flightNumber": "EK077",
+      "bookingReference": "LBVGF2",
+      "departureAirport": {
+        "iata": "DXB",
+        "city": "Dubai"
+      },
+      "arrivalAirport": {
+        "iata": "NCE",
+        "city": "Nice"
+      },
+      "departureDateTime": "2026-03-27T07:35:00+04:00",
+      "arrivalDateTime": "2026-03-27T12:35:00+01:00",
+      "passengerName": "Fabian Ferno",
+      "cabinClass": "Economy / Saver",
+      "status": "flown",
+      "ticketSource": "personal",
+      "gmailThreadId": "19ce27e0044ee5b2",
+      "gmailMessageId": "19ce27e0044ee5b2",
+      "subject": "Your booking is confirmed - LBVGF2",
+      "notes": "A380; check-in email to Nice Mar 24"
+    },
+    {
+      "airline": {
+        "name": "Emirates",
+        "iata": "EK"
+      },
+      "flightNumber": "EK072",
+      "bookingReference": "LBVGF2",
+      "departureAirport": {
+        "iata": "CDG",
+        "city": "Paris"
+      },
+      "arrivalAirport": {
+        "iata": "DXB",
+        "city": "Dubai"
+      },
+      "departureDateTime": "2026-04-15T11:20:00+02:00",
+      "arrivalDateTime": "2026-04-15T20:00:00+04:00",
+      "passengerName": "Fabian Ferno",
+      "cabinClass": "Economy / Saver",
+      "status": "flown",
+      "ticketSource": "personal",
+      "gmailThreadId": "19ce27e0044ee5b2",
+      "gmailMessageId": "19ce27e0044ee5b2",
+      "subject": "Your booking is confirmed - LBVGF2",
+      "notes": "Open-jaw return via CDG"
+    },
+    {
+      "airline": {
+        "name": "Emirates",
+        "iata": "EK"
+      },
+      "flightNumber": "EK544",
+      "bookingReference": "LBVGF2",
+      "departureAirport": {
+        "iata": "DXB",
+        "city": "Dubai"
+      },
+      "arrivalAirport": {
+        "iata": "MAA",
+        "city": "Chennai"
+      },
+      "departureDateTime": "2026-04-16T02:30:00+04:00",
+      "arrivalDateTime": "2026-04-16T08:05:00+05:30",
+      "passengerName": "Fabian Ferno",
+      "cabinClass": "Economy / Saver",
+      "status": "flown",
+      "ticketSource": "personal",
+      "gmailThreadId": "19ce27e0044ee5b2",
+      "gmailMessageId": "19d8d9d3f02896ab",
+      "subject": "Check in online for your flight to Chennai on 16 April",
+      "notes": "Skywards EK765125104"
+    },
+    {
+      "airline": {
+        "name": "IndiGo",
+        "iata": "6E"
+      },
+      "flightNumber": "6E588",
+      "bookingReference": "A59VVV",
+      "departureAirport": {
+        "iata": "MAA",
+        "city": "Chennai"
+      },
+      "arrivalAirport": {
+        "iata": "GOI",
+        "city": "Goa"
+      },
+      "departureDateTime": "2026-05-27T17:40:00+05:30",
+      "arrivalDateTime": "2026-05-27T19:10:00+05:30",
+      "passengerName": "Fabian Ferno",
+      "cabinClass": "unknown",
+      "status": "flown",
+      "ticketSource": "personal",
+      "gmailThreadId": "19e1cac45e7e4cfe",
+      "gmailMessageId": "19e1cac45e7e4cfe",
+      "subject": "Fwd: Your IndiGo Itinerary - A59VVV",
+      "notes": "Forwarded by rohanjebaraj@gmail.com; group of 4 incl Fabian"
+    },
+    {
+      "airline": {
+        "name": "Etihad Airways",
+        "iata": "EY"
+      },
+      "flightNumber": "EY343",
+      "bookingReference": "7OVNC7",
+      "departureAirport": {
+        "iata": "MAA",
+        "city": "Chennai"
+      },
+      "arrivalAirport": {
+        "iata": "AUH",
+        "city": "Abu Dhabi"
+      },
+      "departureDateTime": "2026-07-22T10:15:00+05:30",
+      "arrivalDateTime": "2026-07-22T12:55:00+04:00",
+      "passengerName": "Fabian Ferno",
+      "cabinClass": "Economy",
+      "status": "flown",
+      "ticketSource": "personal",
+      "gmailThreadId": "19eff0bcc40770c8",
+      "gmailMessageId": "19eff0bcc40770c8",
+      "subject": "Your Etihad Airways booking confirmation, reference 7OVNC7",
+      "notes": "Ticket 6072416746288; open-jaw MAD/LIS; boarding gate emails Jul 27. Attachment: FABIAN FERNO 7OVNC7 22JUL 1015 MAA.pdf"
+    },
+    {
+      "airline": {
+        "name": "Etihad Airways",
+        "iata": "EY"
+      },
+      "flightNumber": "EY103",
+      "bookingReference": "7OVNC7",
+      "departureAirport": {
+        "iata": "AUH",
+        "city": "Abu Dhabi"
+      },
+      "arrivalAirport": {
+        "iata": "MAD",
+        "city": "Madrid"
+      },
+      "departureDateTime": "2026-07-22T14:05:00+04:00",
+      "arrivalDateTime": "2026-07-22T19:40:00+02:00",
+      "passengerName": "Fabian Ferno",
+      "cabinClass": "Economy",
+      "status": "flown",
+      "ticketSource": "personal",
+      "gmailThreadId": "19eff0bcc40770c8",
+      "gmailMessageId": "19eff0bcc40770c8",
+      "subject": "Your Etihad Airways booking confirmation, reference 7OVNC7",
+      "notes": "Ticket 6072416746288; open-jaw MAD/LIS; boarding gate emails Jul 27. Attachment: FABIAN FERNO 7OVNC7 22JUL 1015 MAA.pdf"
+    },
+    {
+      "airline": {
+        "name": "Etihad Airways",
+        "iata": "EY"
+      },
+      "flightNumber": "EY100",
+      "bookingReference": "7OVNC7",
+      "departureAirport": {
+        "iata": "LIS",
+        "city": "Lisbon"
+      },
+      "arrivalAirport": {
+        "iata": "AUH",
+        "city": "Abu Dhabi"
+      },
+      "departureDateTime": "2026-07-27T08:50:00+01:00",
+      "arrivalDateTime": "2026-07-27T19:25:00+04:00",
+      "passengerName": "Fabian Ferno",
+      "cabinClass": "Economy",
+      "status": "flown",
+      "ticketSource": "personal",
+      "gmailThreadId": "19eff0bcc40770c8",
+      "gmailMessageId": "19eff0bcc40770c8",
+      "subject": "Your Etihad Airways booking confirmation, reference 7OVNC7",
+      "notes": "Ticket 6072416746288; open-jaw MAD/LIS; boarding gate emails Jul 27. Attachment: FABIAN FERNO 7OVNC7 22JUL 1015 MAA.pdf"
+    },
+    {
+      "airline": {
+        "name": "Etihad Airways",
+        "iata": "EY"
+      },
+      "flightNumber": "EY342",
+      "bookingReference": "7OVNC7",
+      "departureAirport": {
+        "iata": "AUH",
+        "city": "Abu Dhabi"
+      },
+      "arrivalAirport": {
+        "iata": "MAA",
+        "city": "Chennai"
+      },
+      "departureDateTime": "2026-07-28T02:35:00+04:00",
+      "arrivalDateTime": "2026-07-30T08:25:00+05:30",
+      "passengerName": "Fabian Ferno",
+      "cabinClass": "Economy",
+      "status": "flown",
+      "ticketSource": "personal",
+      "gmailThreadId": "19eff0bcc40770c8",
+      "gmailMessageId": "19eff0bcc40770c8",
+      "subject": "Your Etihad Airways booking confirmation, reference 7OVNC7",
+      "notes": "Ticket 6072416746288; open-jaw MAD/LIS; boarding gate emails Jul 27. Attachment: FABIAN FERNO 7OVNC7 22JUL 1015 MAA.pdf"
+    },
+    {
+      "airline": {
+        "name": "SriLankan Airlines",
+        "iata": "UL"
+      },
+      "flightNumber": "UL124",
+      "bookingReference": "9XWFZG",
+      "departureAirport": {
+        "iata": "MAA",
+        "city": "Chennai"
+      },
+      "arrivalAirport": {
+        "iata": "CMB",
+        "city": "Colombo"
+      },
+      "departureDateTime": "2026-07-31T21:15:00+05:30",
+      "arrivalDateTime": "2026-07-31T22:40:00+05:30",
+      "passengerName": "Fabian Ferno",
+      "cabinClass": "Economy (Standard)",
+      "status": "cancelled",
+      "ticketSource": "personal",
+      "gmailThreadId": "19f5303b3175015e",
+      "gmailMessageId": "19f9c4e43beb7554",
+      "subject": "Cancellation confirmation for Chennai - Singapore return flight -- Trip ID 260712146350",
+      "notes": "Cleartrip 260712146350; cancelled Jul 26 refunded. Seat 6D"
+    },
+    {
+      "airline": {
+        "name": "SriLankan Airlines",
+        "iata": "UL"
+      },
+      "flightNumber": "UL306",
+      "bookingReference": "9XWFZG",
+      "departureAirport": {
+        "iata": "CMB",
+        "city": "Colombo"
+      },
+      "arrivalAirport": {
+        "iata": "SIN",
+        "city": "Singapore"
+      },
+      "departureDateTime": "2026-08-01T01:50:00+05:30",
+      "arrivalDateTime": "2026-08-01T08:00:00+08:00",
+      "passengerName": "Fabian Ferno",
+      "cabinClass": "Economy (Standard)",
+      "status": "cancelled",
+      "ticketSource": "personal",
+      "gmailThreadId": "19f5303b3175015e",
+      "gmailMessageId": "19f9c4e43beb7554",
+      "subject": "Cancellation confirmation for Chennai - Singapore return flight -- Trip ID 260712146350",
+      "notes": "Cleartrip 260712146350; cancelled Jul 26 refunded. Seat 21K; arr approx"
+    },
+    {
+      "airline": {
+        "name": "SriLankan Airlines",
+        "iata": "UL"
+      },
+      "flightNumber": "UL307",
+      "bookingReference": "9XWFZG",
+      "departureAirport": {
+        "iata": "SIN",
+        "city": "Singapore"
+      },
+      "arrivalAirport": {
+        "iata": "CMB",
+        "city": "Colombo"
+      },
+      "departureDateTime": "2026-09-01T09:45:00+08:00",
+      "arrivalDateTime": "2026-09-01T11:05:00+05:30",
+      "passengerName": "Fabian Ferno",
+      "cabinClass": "Economy (Standard)",
+      "status": "cancelled",
+      "ticketSource": "personal",
+      "gmailThreadId": "19f5303b3175015e",
+      "gmailMessageId": "19f9c4e43beb7554",
+      "subject": "Cancellation confirmation for Chennai - Singapore return flight -- Trip ID 260712146350",
+      "notes": "Cleartrip 260712146350; cancelled Jul 26 refunded. Seat 14F"
+    },
+    {
+      "airline": {
+        "name": "SriLankan Airlines",
+        "iata": "UL"
+      },
+      "flightNumber": "UL127",
+      "bookingReference": "9XWFZG",
+      "departureAirport": {
+        "iata": "CMB",
+        "city": "Colombo"
+      },
+      "arrivalAirport": {
+        "iata": "MAA",
+        "city": "Chennai"
+      },
+      "departureDateTime": "2026-09-01T13:35:00+05:30",
+      "arrivalDateTime": "2026-09-01T15:00:00+05:30",
+      "passengerName": "Fabian Ferno",
+      "cabinClass": "Economy (Standard)",
+      "status": "cancelled",
+      "ticketSource": "personal",
+      "gmailThreadId": "19f5303b3175015e",
+      "gmailMessageId": "19f9c4e43beb7554",
+      "subject": "Cancellation confirmation for Chennai - Singapore return flight -- Trip ID 260712146350",
+      "notes": "Cleartrip 260712146350; cancelled Jul 26 refunded. Seat 6A"
+    },
+    {
+      "airline": {
+        "name": "Air India",
+        "iata": "AI"
+      },
+      "flightNumber": "AI538",
+      "bookingReference": "8JRFSC",
+      "departureAirport": {
+        "iata": "MAA",
+        "city": "Chennai"
+      },
+      "arrivalAirport": {
+        "iata": "DEL",
+        "city": "New Delhi"
+      },
+      "departureDateTime": "2026-09-02T20:10:00+05:30",
+      "arrivalDateTime": "2026-09-02T23:10:00+05:30",
+      "passengerName": "Fabian Ferno",
+      "cabinClass": "unknown",
+      "status": "flown",
+      "ticketSource": "personal",
+      "gmailThreadId": "19f44a8b094a2795",
+      "gmailMessageId": "19f44a8b094a2795",
+      "subject": "Air India Web Booking eTicket (8JRFSC) - FABIAN",
+      "notes": "Times from Google Calendar notification; PDF eticket (body lacks segments). Boarding gate Sep 2. Attachment: Air India Web Booking eTicket (8JRFSC) - FABIAN.pdf"
+    },
+    {
+      "airline": {
+        "name": "Air India",
+        "iata": "AI"
+      },
+      "flightNumber": "AI2454",
+      "bookingReference": "8JRFSC",
+      "departureAirport": {
+        "iata": "DEL",
+        "city": "New Delhi"
+      },
+      "arrivalAirport": {
+        "iata": "IXL",
+        "city": "Leh"
+      },
+      "departureDateTime": "2026-09-03T08:00:00+05:30",
+      "arrivalDateTime": "2026-09-03T09:30:00+05:30",
+      "passengerName": "Fabian Ferno",
+      "cabinClass": "unknown",
+      "status": "flown",
+      "ticketSource": "personal",
+      "gmailThreadId": "19f44a8b094a2795",
+      "gmailMessageId": "1a064adc7736d6b4",
+      "subject": "Boarding gate announced for flight AI 2454",
+      "notes": "Arrival time estimated; calendar said 8am-9am IST"
+    },
+    {
+      "airline": {
+        "name": "SpiceJet",
+        "iata": "SG"
+      },
+      "flightNumber": "SG122",
+      "bookingReference": "HJHQ8E",
+      "departureAirport": {
+        "iata": "IXL",
+        "city": "Leh"
+      },
+      "arrivalAirport": {
+        "iata": "DEL",
+        "city": "New Delhi"
+      },
+      "departureDateTime": "2026-09-15T08:05:00+05:30",
+      "arrivalDateTime": "2026-09-15T09:45:00+05:30",
+      "passengerName": "Fabian Ferno",
+      "cabinClass": "Economy (SpiceSaver Regular)",
+      "status": "flown",
+      "ticketSource": "personal",
+      "gmailThreadId": "19f4496b7918c3ee",
+      "gmailMessageId": "19f4496b7918c3ee",
+      "subject": "SpiceJet Booking PNR HJHQ8E: 15 Sep 2026 Leh-Delhi for MR. FERNO",
+      "notes": "Seat 8F; also on MMT NF2AMA1V94713887921; boarding pass Sep 13"
+    },
+    {
+      "airline": {
+        "name": "Air India",
+        "iata": "AI"
+      },
+      "flightNumber": "AI2483",
+      "bookingReference": "8JNNGD",
+      "departureAirport": {
+        "iata": "DEL",
+        "city": "New Delhi"
+      },
+      "arrivalAirport": {
+        "iata": "MAA",
+        "city": "Chennai"
+      },
+      "departureDateTime": "2026-09-15T12:10:00+05:30",
+      "arrivalDateTime": "2026-09-15T15:10:00+05:30",
+      "passengerName": "Fabian Ferno",
+      "cabinClass": "Economy (Eco Value Regular)",
+      "status": "flown",
+      "ticketSource": "personal",
+      "gmailThreadId": "19f449792bf6a701",
+      "gmailMessageId": "19f449792bf6a701",
+      "subject": "E-Ticket for Your Flight Booking ID: NF2AMA1V94713887921",
+      "notes": "MMT multi-ticket with SG122; e-ticket 4847163291; schedule changed Aug 6; also AI web eticket 8JRFSC PDF for outbound to Leh"
+    },
+    {
+      "airline": {
+        "name": "Malaysia Airlines",
+        "iata": "MH"
+      },
+      "flightNumber": "MH183",
+      "bookingReference": "DBC3XV",
+      "departureAirport": {
+        "iata": "MAA",
+        "city": "Chennai"
+      },
+      "arrivalAirport": {
+        "iata": "KUL",
+        "city": "Kuala Lumpur"
+      },
+      "departureDateTime": "2026-09-16T11:45:00+05:30",
+      "arrivalDateTime": "2026-09-16T18:50:00+08:00",
+      "passengerName": "Fabian Ferno",
+      "cabinClass": "Economy (Standard)",
+      "status": "flown",
+      "ticketSource": "personal",
+      "gmailThreadId": "19f536869dacd8f1",
+      "gmailMessageId": "19f536869dacd8f1",
+      "subject": "Ticket for Chennai - Tokyo return flight -- Trip ID 260712148566",
+      "notes": "Cleartrip 260712148566; Hindu NV meal; flightinfo MH183 Sep 16; PNR DBC3XV"
+    },
+    {
+      "airline": {
+        "name": "Malaysia Airlines",
+        "iata": "MH"
+      },
+      "flightNumber": "MH88",
+      "bookingReference": "DBC3XV",
+      "departureAirport": {
+        "iata": "KUL",
+        "city": "Kuala Lumpur"
+      },
+      "arrivalAirport": {
+        "iata": "NRT",
+        "city": "Tokyo/Narita"
+      },
+      "departureDateTime": "2026-09-16T23:30:00+08:00",
+      "arrivalDateTime": "2026-09-17T07:40:00+09:00",
+      "passengerName": "Fabian Ferno",
+      "cabinClass": "Economy (Standard)",
+      "status": "flown",
+      "ticketSource": "personal",
+      "gmailThreadId": "19f536869dacd8f1",
+      "gmailMessageId": "1a0aa9849d9dd95a",
+      "subject": "An important message regarding flight MH88",
+      "notes": "Seat 29K; arrival approx from 7h10m duration"
+    },
+    {
+      "airline": {
+        "name": "All Nippon Airways",
+        "iata": "NH"
+      },
+      "flightNumber": "NH401",
+      "bookingReference": "828909939",
+      "departureAirport": {
+        "iata": "HND",
+        "city": "Tokyo"
+      },
+      "arrivalAirport": {
+        "iata": "AXT",
+        "city": "Akita"
+      },
+      "departureDateTime": "2026-09-18T07:45:00+09:00",
+      "arrivalDateTime": "2026-09-18T08:50:00+09:00",
+      "passengerName": "Fabian Ferno",
+      "cabinClass": "Economy (Saver)",
+      "status": "confirmed",
+      "ticketSource": "personal",
+      "gmailThreadId": "19ff14df8007dadb",
+      "gmailMessageId": "19ff14df8007dadb",
+      "subject": "Booking 828909939: Your booking is confirmed, Fabian",
+      "notes": "Boarding pass email Sep 17; Attachment: E-ticket_passenger_ODI4OTA5OTM5.pdf"
+    },
+    {
+      "airline": {
+        "name": "All Nippon Airways",
+        "iata": "NH"
+      },
+      "flightNumber": "NH410",
+      "bookingReference": "DXWOF2",
+      "departureAirport": {
+        "iata": "AXT",
+        "city": "Akita"
+      },
+      "arrivalAirport": {
+        "iata": "HND",
+        "city": "Tokyo"
+      },
+      "departureDateTime": "2026-09-20T19:55:00+09:00",
+      "arrivalDateTime": "2026-09-20T21:05:00+09:00",
+      "passengerName": "Fabian Ferno",
+      "cabinClass": "Economy",
+      "status": "confirmed",
+      "ticketSource": "personal",
+      "gmailThreadId": "1a06bf36253c6fa1",
+      "gmailMessageId": "1a06bf36253c6fa1",
+      "subject": "Flight Booking Confirmed:  Akita City - Tokyo, Tokyo - Osaka",
+      "notes": "Trip.com 1365645188558581; operated by ANA Wings; ticket 205-2104057941; Attachments: E-itinerary.pdf, E-receipt.pdf"
+    },
+    {
+      "airline": {
+        "name": "All Nippon Airways",
+        "iata": "NH"
+      },
+      "flightNumber": "NH411",
+      "bookingReference": "DXWOF2",
+      "departureAirport": {
+        "iata": "HND",
+        "city": "Tokyo"
+      },
+      "arrivalAirport": {
+        "iata": "UKB",
+        "city": "Osaka/Kobe"
+      },
+      "departureDateTime": "2026-09-21T06:40:00+09:00",
+      "arrivalDateTime": "2026-09-21T07:50:00+09:00",
+      "passengerName": "Fabian Ferno",
+      "cabinClass": "Economy",
+      "status": "confirmed",
+      "ticketSource": "personal",
+      "gmailThreadId": "1a06bf36253c6fa1",
+      "gmailMessageId": "1a06bf36253c6fa1",
+      "subject": "Flight Booking Confirmed:  Akita City - Tokyo, Tokyo - Osaka",
+      "notes": "9h35m layover HND; collect & re-check baggage"
+    },
+    {
+      "airline": {
+        "name": "Malaysia Airlines",
+        "iata": "MH"
+      },
+      "flightNumber": "MH89",
+      "bookingReference": "DBC3XV",
+      "departureAirport": {
+        "iata": "NRT",
+        "city": "Tokyo/Narita"
+      },
+      "arrivalAirport": {
+        "iata": "KUL",
+        "city": "Kuala Lumpur"
+      },
+      "departureDateTime": "2026-10-01T10:05:00+09:00",
+      "arrivalDateTime": "2026-10-01T17:45:00+08:00",
+      "passengerName": "Fabian Ferno",
+      "cabinClass": "Economy (Standard)",
+      "status": "confirmed",
+      "ticketSource": "personal",
+      "gmailThreadId": "19f536869dacd8f1",
+      "gmailMessageId": "19f536869dacd8f1",
+      "subject": "Ticket for Chennai - Tokyo return flight -- Trip ID 260712148566",
+      "notes": "Seat 29A; return"
+    },
+    {
+      "airline": {
+        "name": "Malaysia Airlines",
+        "iata": "MH"
+      },
+      "flightNumber": "MH180",
+      "bookingReference": "DBC3XV",
+      "departureAirport": {
+        "iata": "KUL",
+        "city": "Kuala Lumpur"
+      },
+      "arrivalAirport": {
+        "iata": "MAA",
+        "city": "Chennai"
+      },
+      "departureDateTime": "2026-10-01T21:30:00+08:00",
+      "arrivalDateTime": "2026-10-02T01:20:00+05:30",
+      "passengerName": "Fabian Ferno",
+      "cabinClass": "Economy (Standard)",
+      "status": "confirmed",
+      "ticketSource": "personal",
+      "gmailThreadId": "19f536869dacd8f1",
+      "gmailMessageId": "19f536869dacd8f1",
+      "subject": "Ticket for Chennai - Tokyo return flight -- Trip ID 260712148566",
+      "notes": "Arrival approx from 3h50m; Attachment: Cleartrip Flight E-Ticket.pdf"
+    }
+  ],
+  "stats": {
+    "totalSegments": 63,
+    "airlines": [
+      "Air Europa",
+      "Air India",
+      "Air India Express",
+      "All Nippon Airways",
+      "Emirates",
+      "Etihad Airways",
+      "IndiGo",
+      "KLM Royal Dutch Airlines",
+      "Malaysia Airlines",
+      "Scoot",
+      "Sky Airline",
+      "SpiceJet",
+      "SriLankan Airlines",
+      "Thai AirAsia",
+      "Thai Vietjet Air",
+      "Vistara"
+    ],
+    "dateRange": {
+      "earliest": "2023-08-05",
+      "latest": "2026-10-01"
+    },
+    "byStatus": {
+      "flown": 48,
+      "cancelled": 10,
+      "confirmed": 5
+    }
+  },
+  "coverageNotes": "Built from personal Gmail (fabianferno@gmail.com) only; mail not mutated. Searched eticket/airline/OTA/PNR queries with pagination until exhausted for primary queries. Air India web etickets (8JRFSC, U3AKBI) are PDF-only in body—segment times for AI538/AI2454 come from calendar/boarding notifications. Some connecting times for Kiwi 694194248 (UX1094 dep, EY102 dep, EY342 dep) inferred from duration+arrival. Cleartrip H25810 airline PNR not clearly present in plaintext. AI148/AI2525 PNR unknown from operational emails. London SIU4ZY marked cancelled per MMT cancelled-invoice. IndiGo E9FBRD outbound cancelled; return treated cancelled. SriLankan Cleartrip 9XWFZG fully cancelled/refunded. Ignored Maharaja Club marketing, FlixBus, NueGo bus, rail e-tickets, fake ABC12345 test emails, Leo Franklin John companion ticket as separate passenger. Work Gmail not systematically searched—personal coverage looked complete for major trips; may miss employer-only bookings. PDF attachment contents not OCR'd; filenames noted in notes."
+}
