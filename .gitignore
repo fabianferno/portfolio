@@ -33,3 +33,7 @@ yarn-error.log*
 
 # generated files
 /public/rss/
+
+# October desktop — local canvas state
+.october/
+.gstack/
