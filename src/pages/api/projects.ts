@@ -14,6 +14,49 @@ interface Project {
 // Server-only token. Prefer GITHUB_TOKEN (not exposed to the browser).
 // Falls back to the legacy NEXT_PUBLIC_ var so existing setups keep working.
 const token = process.env.GITHUB_TOKEN || process.env.NEXT_PUBLIC_GITHUB_TOKEN
+const GITHUB_USERNAME = 'fabianferno'
+
+interface Repo {
+  html_url: string
+  name: string
+  description: string | null
+  topics?: string[]
+  private: boolean
+  homepage?: string | null
+}
+
+// With a valid token, list all owned repos (including private ones).
+// Without one, or if it's rejected, fall back to the public repo listing
+// so the page still shows something.
+async function fetchRepos(): Promise<Repo[]> {
+  if (token) {
+    try {
+      const response = await new Octokit({ auth: token }).request(
+        'GET /user/repos',
+        { per_page: 100, affiliation: 'owner', sort: 'updated' }
+      )
+      return response.data as Repo[]
+    } catch (error) {
+      const status = (error as { status?: number }).status
+      if (status !== 401) throw error
+      console.warn(
+        '[api/projects] GitHub token rejected (401), falling back to public repos.'
+      )
+    }
+  } else {
+    console.warn(
+      '[api/projects] GitHub token not configured, using public repos.'
+    )
+  }
+
+  const response = await new Octokit().request('GET /users/{username}/repos', {
+    username: GITHUB_USERNAME,
+    per_page: 100,
+    type: 'owner',
+    sort: 'updated',
+  })
+  return response.data as Repo[]
+}
 
 export default async function handler(
   req: NextApiRequest,
@@ -24,22 +67,10 @@ export default async function handler(
     return
   }
 
-  if (!token) {
-    res
-      .status(500)
-      .json({ error: 'GitHub token is not configured on the server.' })
-    return
-  }
-
   try {
-    const octokit = new Octokit({ auth: token })
-    const response = await octokit.request('GET /user/repos', {
-      per_page: 100,
-      affiliation: 'owner',
-      sort: 'updated',
-    })
+    const repos = await fetchRepos()
 
-    const projects: Project[] = response.data
+    const projects: Project[] = repos
       .filter((project) => !project.topics?.includes('ignore'))
       .map((project) => ({
         html_url: project.html_url,
