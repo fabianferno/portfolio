@@ -5,7 +5,8 @@ import { motion } from 'framer-motion'
 import { Card } from '@/components/Card'
 import { SimpleLayout } from '@/components/SimpleLayout'
 import SafeLayout from '@/components/SafeLayout'
-import { GetServerSideProps } from 'next'
+import { GetStaticProps } from 'next'
+import { getFlightHistory } from '@/lib/getFlightHistory'
 
 // WebGL scene — client-only, so it never runs during SSR.
 const FlightMap = dynamic(() => import('@/components/FlightMap'), {
@@ -164,33 +165,13 @@ interface FlightsProps {
   history: FlightHistory
 }
 
-export const getServerSideProps: GetServerSideProps<FlightsProps> = async (
-  context
-) => {
-  try {
-    // Fetch flight data from our API route (which handles GitHub auth server-side)
-    const protocol = context.req.headers.host?.includes('localhost')
-      ? 'http'
-      : 'https'
-    const baseUrl = `${protocol}://${context.req.headers.host}`
-    const response = await fetch(`${baseUrl}/api/flights`)
-
-    if (!response.ok) {
-      throw new Error(`Failed to fetch flights: ${response.statusText}`)
-    }
-
-    const history: FlightHistory = await response.json()
-
-    return {
-      props: {
-        history,
-      },
-    }
-  } catch (error) {
-    console.error('[flights page] Failed to load flight data:', error)
-    // If fetch fails, the API should have returned the fallback already
-    // but if something else goes wrong, we rethrow to show an error page
-    throw error
+// ISR: rebuilt at most every 10 minutes with the latest data from the
+// private flights repo; falls back to the bundled snapshot if GitHub fails.
+export const getStaticProps: GetStaticProps<FlightsProps> = async () => {
+  const { history } = await getFlightHistory()
+  return {
+    props: { history: history as FlightHistory },
+    revalidate: 600,
   }
 }
 
