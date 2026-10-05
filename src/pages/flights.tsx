@@ -166,7 +166,7 @@ interface FlightsProps {
 }
 
 // ISR: rebuilt at most every 10 minutes with the latest data from the
-// private flights repo; falls back to the bundled snapshot if GitHub fails.
+// public flights repo; falls back to the bundled snapshot if GitHub fails.
 export const getStaticProps: GetStaticProps<FlightsProps> = async () => {
   const { history } = await getFlightHistory()
   return {
