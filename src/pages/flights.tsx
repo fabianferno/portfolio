@@ -5,7 +5,8 @@ import { motion } from 'framer-motion'
 import { Card } from '@/components/Card'
 import { SimpleLayout } from '@/components/SimpleLayout'
 import SafeLayout from '@/components/SafeLayout'
-import flightHistory from '@/data/flights.json'
+import { GetStaticProps } from 'next'
+import { getFlightHistory } from '@/lib/getFlightHistory'
 
 // WebGL scene — client-only, so it never runs during SSR.
 const FlightMap = dynamic(() => import('@/components/FlightMap'), {
@@ -54,9 +55,8 @@ interface FlightHistory {
     dateRange: { earliest: string; latest: string }
     byStatus: Record<string, number>
   }
+  coverageNotes?: string
 }
-
-const history = flightHistory as FlightHistory
 
 const STATUS_FILTERS = ['all', 'flown', 'confirmed', 'cancelled'] as const
 type StatusFilter = (typeof STATUS_FILTERS)[number]
@@ -161,7 +161,21 @@ function FlightCard({ flight }: { flight: Flight }) {
   )
 }
 
-export default function Flights() {
+interface FlightsProps {
+  history: FlightHistory
+}
+
+// ISR: rebuilt at most every 10 minutes with the latest data from the
+// public flights repo; falls back to the bundled snapshot if GitHub fails.
+export const getStaticProps: GetStaticProps<FlightsProps> = async () => {
+  const { history } = await getFlightHistory()
+  return {
+    props: { history: history as FlightHistory },
+    revalidate: 600,
+  }
+}
+
+export default function Flights({ history }: FlightsProps) {
   const [filter, setFilter] = useState<StatusFilter>('all')
 
   const flights = useMemo(() => {
@@ -173,7 +187,7 @@ export default function Flights() {
     return filter === 'all'
       ? sorted
       : sorted.filter((f) => f.status === filter)
-  }, [filter])
+  }, [filter, history.flights])
 
   const { stats } = history
 
