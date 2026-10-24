@@ -1,31 +1,13 @@
 import { useEffect, useRef, useState } from 'react'
+import { motion } from 'motion/react'
 
 // Keyed clips live in /public/hands (webm VP9-alpha, mov HEVC-alpha for Safari).
-const CLIPS = [
-  '1-click-1-finger',
-  '1-click-1-finger_1',
-  '1-click-2-fingers',
-  '1-click-palm',
-  '2-click-1-finger',
-  '2-click-2-fingers',
-  '2-click-palm',
-  'flick-off-down',
-  'flick-off-up',
-  'grab-to-down',
-  'grab-to-up',
-  'push-1-finger',
-  'push-2-fingers',
-  'push-palm',
-  'put-hand-up',
-  'slide-to-down-1-finger',
-  'slide-to-down-palm',
-  'slide-to-left-palm',
-  'slide-to-right-1-finger',
-  'slide-to-right-palm',
-  'slide-to-up-palm',
-  'zoom-in',
-  'zoom-out',
-]
+// Only tap-like gestures; grab/slide/zoom don't fit a click.
+// Value = ms into the clip when the finger lands; the real click fires then.
+const TAP_MS: Record<string, number> = {
+  '1-click-2-fingers': 450,
+  '1-click-palm': 500,
+}
 
 type Edge = 'bottom' | 'left' | 'top' | 'right'
 
@@ -38,10 +20,18 @@ const ANCHOR_Y = Math.round(SHOW_H * 0.17)
 const ARM = SHOW_H - ANCHOR_Y
 const SLICE = 10
 const EDGE_REACH = 160
+// Scale the hand so roughly this many px of it (at full size) fit between the
+// fingertip and the screen edge, instead of mostly sitting off-screen.
+const HAND_FIT = 120
+const MIN_SCALE = 0.4
+const MAX_SCALE = 0.6
+// The hand only ever comes from a screen edge: if the arm would need to stretch
+// more than this to reach it, the click just goes through with no hand.
+const MAX_STRETCH = 60
 const ROTATE: Record<Edge, number> = { bottom: 0, left: 90, top: 180, right: -90 }
 
-const BUTTON_SELECTOR = 'button, [role="button"], [role="menuitem"]'
-const CARD_SELECTOR = '[data-hand], [role="menuitem"]'
+const BUTTON_SELECTOR = 'button, [role="button"]'
+const CARD_SELECTOR = '[data-hand]'
 
 interface Play {
   id: number
@@ -49,11 +39,12 @@ interface Play {
   x: number
   y: number
   edge: Edge
+  scale: number
   gap: number
 }
 
 function pickClip(previous?: string) {
-  let options = CLIPS.filter((c) => c !== previous)
+  let options = Object.keys(TAP_MS).filter((c) => c !== previous)
   return options[Math.floor(Math.random() * options.length)]
 }
 
@@ -94,6 +85,8 @@ export function HandClick() {
   let nextClip = useRef<string>('')
   let blobs = useRef<Record<string, string>>({})
   let counter = useRef(0)
+  let pending = useRef<ReturnType<typeof setTimeout> | null>(null)
+  let replaying = useRef(false)
   let ext = useRef<'webm' | 'mov'>('webm')
 
   useEffect(() => {
@@ -117,7 +110,7 @@ export function HandClick() {
     prefetch()
 
     let onClick = (e: MouseEvent) => {
-      if (reduceMotion.matches) return
+      if (replaying.current || reduceMotion.matches) return
       let target = e.target
       if (!(target instanceof Element)) return
 
@@ -129,10 +122,14 @@ export function HandClick() {
       let button = target.closest<HTMLElement>(BUTTON_SELECTOR)
       let card = target.closest<HTMLElement>(CARD_SELECTOR)
       let nearEdge = false
+      let box: DOMRect | null = null
       if (button && !(button as HTMLButtonElement).disabled) {
         let r = button.getBoundingClientRect()
         nearEdge =
           Math.min(r.left, r.top, vw - r.right, vh - r.bottom) <= EDGE_REACH
+        box = r
+        // Popover menu rows are <button role="menuitem">; they never get a hand.
+        if (button.hasAttribute('data-no-hand') || button.matches('[role="menuitem"]')) return
         x = r.left + r.width / 2
         y = r.top + r.height / 2
       } else {
@@ -162,10 +159,57 @@ export function HandClick() {
         distances[b] < distances[a] ? b : a
       )
 
+      // Edge buttons: tap the side facing away from the edge, which leaves
+      // more room for the hand between the fingertip and the edge.
+      if (nearEdge && box) {
+        if (edge === 'bottom') y -= box.height * 0.25
+        else if (edge === 'top') y += box.height * 0.25
+        else if (edge === 'left') x += box.width * 0.25
+        else x -= box.width * 0.25
+        distances = { left: x, right: vw - x, top: y, bottom: vh - y }
+      }
+      let scale = Math.min(MAX_SCALE, Math.max(MIN_SCALE, distances[edge] / HAND_FIT))
+
+      let reach = distances[edge] / scale - ARM + 2
+      if (reach > MAX_STRETCH) return
+
+      // Hold the real click until the finger lands; swallow extra clicks
+      // while a hand is still on its way.
+      e.preventDefault()
+      e.stopImmediatePropagation()
+      if (pending.current) return
+
       let clip = nextClip.current
       let src = blobs.current[clip] ?? urlFor(clip)
       delete blobs.current[clip]
       prefetch()
+
+      let click = new MouseEvent('click', {
+        bubbles: true,
+        cancelable: true,
+        composed: true,
+        view: window,
+        detail: e.detail,
+        button: e.button,
+        clientX: e.clientX,
+        clientY: e.clientY,
+        screenX: e.screenX,
+        screenY: e.screenY,
+        ctrlKey: e.ctrlKey,
+        shiftKey: e.shiftKey,
+        altKey: e.altKey,
+        metaKey: e.metaKey,
+      })
+      pending.current = setTimeout(() => {
+        pending.current = null
+        if (!target.isConnected) return
+        replaying.current = true
+        try {
+          target.dispatchEvent(click)
+        } finally {
+          replaying.current = false
+        }
+      }, TAP_MS[clip])
 
       setPlay({
         id: ++counter.current,
@@ -173,14 +217,16 @@ export function HandClick() {
         x,
         y,
         edge,
+        scale,
         // Arm length below the fingertip; stretch the last rows to reach the edge.
-        gap: Math.max(0, distances[edge] - ARM + 2),
+        gap: Math.max(0, reach),
       })
     }
 
     document.addEventListener('click', onClick, true)
     return () => {
       document.removeEventListener('click', onClick, true)
+      if (pending.current) clearTimeout(pending.current)
       Object.values(blobs.current).forEach(URL.revokeObjectURL)
       blobs.current = {}
     }
@@ -195,7 +241,9 @@ export function HandClick() {
 
   let done = () => {
     setPlay((current) => {
-      if (current?.src.startsWith('blob:')) URL.revokeObjectURL(current.src)
+      if (current?.src.startsWith('blob:')) {
+        URL.revokeObjectURL(current.src)
+      }
       return null
     })
   }
@@ -215,14 +263,24 @@ export function HandClick() {
             width: SHOW_W,
             height: SHOW_H,
             transformOrigin: `${ANCHOR_X}px ${ANCHOR_Y}px`,
-            transform: `rotate(${ROTATE[play.edge]}deg)`,
+            transform: `rotate(${ROTATE[play.edge]}deg) scale(${play.scale})`,
             filter: 'drop-shadow(0 8px 12px rgba(0,0,0,0.28))',
           }}
         >
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.12 }}
+            style={{ position: 'absolute', inset: 0 }}
+          >
           <HandVideo
             src={play.src}
             onEnded={done}
-            style={{ display: 'block', width: SHOW_W, height: SHOW_H }}
+            style={{
+              display: 'block',
+              width: SHOW_W,
+              height: SHOW_H,
+            }}
           />
           {play.gap > 0 && (
             <div
@@ -248,6 +306,7 @@ export function HandClick() {
               />
             </div>
           )}
+          </motion.div>
         </div>
       )}
     </div>

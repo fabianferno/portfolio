@@ -1,16 +1,20 @@
-import { ReactNode, Ref, useCallback, useEffect, useRef, useState } from 'react'
+import { ReactNode, useCallback, useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
-import { AnimatePresence, motion } from 'framer-motion'
+import { AnimatePresence, MotionConfig, motion } from 'motion/react'
 import {
   XMarkIcon,
   ArrowUpRightIcon,
   ArrowLeftIcon,
 } from '@heroicons/react/24/outline'
 
-import { GlassSurface } from './GlassSurface'
+import { CloudSurface } from './CloudSurface'
 import { playClick } from './clickSound'
 import { DOCK_SECTIONS, DockItem, DockSection } from './dock-data'
+import { GeniePopover } from './GeniePopover'
 
+// Shared motion: springs everywhere so interruptions retarget smoothly.
+const spring = { type: 'spring', stiffness: 420, damping: 34, mass: 0.8 } as const
+const softSpring = { type: 'spring', stiffness: 260, damping: 26, mass: 0.9 } as const
 const WINDOW_W = 940
 const POPOVER_W = 340
 
@@ -26,15 +30,24 @@ interface DockWindow {
 interface PopoverPos {
   left: number
   bottom: number
+  originX: number
 }
 
 function Mono({ item }: { item: DockItem }) {
+  let Icon = item.icon
   return (
     <span
       className="flex h-12 w-12 shrink-0 items-center justify-center overflow-hidden rounded-xl text-base font-semibold text-white/75 shadow-[inset_0_1px_0_rgba(255,255,255,0.12)]"
       style={{ background: item.color }}
     >
-      {item.logo ? (
+      {Icon ? (
+        <Icon
+          className={
+            item.iconFill ? 'h-[22px] w-[22px] fill-current text-white' : 'h-6 w-6 text-white'
+          }
+          {...(item.iconFill ? {} : { strokeWidth: 1.6 })}
+        />
+      ) : item.logo ? (
         <Image
           src={item.logo}
           alt=""
@@ -46,6 +59,22 @@ function Mono({ item }: { item: DockItem }) {
       ) : (
         item.mono
       )}
+    </span>
+  )
+}
+
+function BigIcon({ item }: { item: DockItem }) {
+  let Icon = item.icon
+  if (!Icon) return null
+  return (
+    <span
+      className="flex h-44 w-44 items-center justify-center rounded-3xl text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.18)]"
+      style={{ background: item.color }}
+    >
+      <Icon
+        className={item.iconFill ? 'h-20 w-20 fill-current' : 'h-20 w-20'}
+        {...(item.iconFill ? {} : { strokeWidth: 1.4 })}
+      />
     </span>
   )
 }
@@ -63,13 +92,21 @@ export function BottomNav() {
   let popoverRef = useRef<HTMLDivElement>(null)
 
   let openSection = DOCK_SECTIONS.find((s) => s.id === openId) ?? null
+  // Keep the last shown menu mounted while the genie closes it.
+  let shown = useRef<{ section: DockSection; pos: PopoverPos } | null>(null)
+  if (openSection && popoverPos) shown.current = { section: openSection, pos: popoverPos }
+  let popover = shown.current
 
   let showSection = (section: DockSection, button: HTMLElement) => {
     let rect = button.getBoundingClientRect()
     let width = Math.min(POPOVER_W, window.innerWidth - 24)
     let left = rect.left + rect.width / 2 - width / 2
     left = Math.max(12, Math.min(left, window.innerWidth - width - 12))
-    setPopoverPos({ left, bottom: window.innerHeight - rect.top + 12 })
+    setPopoverPos({
+      left,
+      bottom: window.innerHeight - rect.top + 12,
+      originX: rect.left + rect.width / 2 - left,
+    })
     setOpenId(section.id)
   }
 
@@ -147,11 +184,11 @@ export function BottomNav() {
   }, [openId])
 
   return (
-    <>
+    <MotionConfig reducedMotion="user">
       <nav
         ref={navRef}
         aria-label="Primary"
-        className="fixed inset-x-0 bottom-[68px] z-50 flex justify-center sm:bottom-[26px]"
+        className="fixed inset-x-0 bottom-[100px] z-50 flex justify-center sm:bottom-[80px]"
       >
         <ul className="flex items-center gap-1">
           {DOCK_SECTIONS.map((section) => {
@@ -159,10 +196,13 @@ export function BottomNav() {
             let isOpen = openId === section.id
             return (
               <li key={section.id}>
-                <button
+                <motion.button
                   type="button"
                   aria-label={section.label}
                   data-dock={section.id}
+                  whileHover={{ y: -2 }}
+                  whileTap={{ y: 4 }}
+                  transition={spring}
                   aria-haspopup="menu"
                   aria-expanded={isOpen}
                   aria-current={isOpen ? 'page' : undefined}
@@ -179,71 +219,60 @@ export function BottomNav() {
                       {section.label}
                     </span>
                   )}
-                </button>
+                </motion.button>
               </li>
             )
           })}
         </ul>
       </nav>
 
-      <AnimatePresence>
-        {openSection && popoverPos && (
-          <motion.div
-            key={openSection.id}
-            ref={popoverRef as Ref<unknown>}
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 6 }}
-            transition={{ duration: 0.18, ease: [0.22, 1, 0.36, 1] }}
-            className="fixed z-[55] font-geist text-white"
-            style={{
-              left: popoverPos.left,
-              bottom: popoverPos.bottom,
-              width: Math.min(
-                POPOVER_W,
-                typeof window === 'undefined'
-                  ? POPOVER_W
-                  : window.innerWidth - 24
-              ),
-              transformOrigin: 'bottom center',
-            }}
+      {popover && (
+        <GeniePopover
+          open={!!openSection && !!popoverPos}
+          sectionKey={openSection?.id ?? null}
+          left={popover.pos.left}
+          bottom={popover.pos.bottom}
+          originX={popover.pos.originX}
+          width={Math.min(
+            POPOVER_W,
+            typeof window === 'undefined' ? POPOVER_W : window.innerWidth - 24
+          )}
+          popoverRef={popoverRef}
+        >
+          <ul
+            role="menu"
+            data-genie-content
+            aria-label={popover.section.label}
+            className="max-h-[60vh] overflow-y-auto p-2"
           >
-            <GlassSurface borderRadius={28} backgroundOpacity={0.22} blur={14}>
-              <ul
-                role="menu"
-                aria-label={openSection.label}
-                className="max-h-[60vh] overflow-y-auto p-2"
-              >
-                {openSection.items.map((item) => (
-                  <li key={item.id}>
-                    <button
-                      type="button"
-                      role="menuitem"
-                      onClick={() => openWindow(item, openSection)}
-                      className="flex w-full items-center gap-4 rounded-2xl px-3 py-2.5 text-left outline-none transition-colors hover:bg-white/10 focus-visible:bg-white/15"
-                    >
-                      <Mono item={item} />
-                      <span className="min-w-0 flex-1">
-                        <span className="block truncate text-[17px] font-medium leading-tight [text-shadow:0_1px_8px_rgba(0,0,0,0.3)]">
-                          {item.title}
-                        </span>
-                        <span className="block truncate text-[13px] text-white/55">
-                          {item.subtitle}
-                        </span>
-                      </span>
-                      {item.meta && (
-                        <span className="shrink-0 text-[13px] text-white/45">
-                          {item.meta}
-                        </span>
-                      )}
-                    </button>
-                  </li>
-                ))}
-              </ul>
-            </GlassSurface>
-          </motion.div>
-        )}
-      </AnimatePresence>
+            {popover.section.items.map((item) => (
+              <li key={item.id}>
+                <button
+                  type="button"
+                  role="menuitem"
+                  onClick={() => openWindow(item, popover.section)}
+                  className="flex w-full items-center gap-4 rounded-2xl px-3 py-2.5 text-left outline-none transition-colors hover:bg-white/10 focus-visible:bg-white/15"
+                >
+                  <Mono item={item} />
+                  <span className="min-w-0 flex-1">
+                    <span className="block truncate text-[17px] font-medium leading-tight [text-shadow:0_1px_8px_rgba(0,0,0,0.3)]">
+                      {item.title}
+                    </span>
+                    <span className="block truncate text-[13px] text-white/80">
+                      {item.subtitle}
+                    </span>
+                  </span>
+                  {item.meta && (
+                    <span className="shrink-0 text-[13px] text-white/70">
+                      {item.meta}
+                    </span>
+                  )}
+                </button>
+              </li>
+            ))}
+          </ul>
+        </GeniePopover>
+      )}
 
       <AnimatePresence>
         {windows.map((w) => (
@@ -257,7 +286,7 @@ export function BottomNav() {
           />
         ))}
       </AnimatePresence>
-    </>
+    </MotionConfig>
   )
 }
 
@@ -304,25 +333,30 @@ function DockWindowView({
   }
 
   let chip =
-    'flex h-10 items-center justify-center rounded-xl border border-white/20 bg-white/10 text-white/85 outline-none transition-colors hover:bg-white/20 hover:text-white focus-visible:ring-2 focus-visible:ring-white/60'
+    'flex h-10 items-center justify-center rounded-xl border border-white/30 bg-[rgba(8,40,95,0.5)] text-white outline-none transition-colors hover:bg-[rgba(8,40,95,0.7)] focus-visible:ring-2 focus-visible:ring-white/60'
 
   return (
     <motion.div
-      ref={rootRef as Ref<unknown>}
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      transition={{ duration: 0.18, ease: [0.22, 1, 0.36, 1] }}
+      ref={rootRef}
+      initial={{ scale: 0.88, y: 32 }}
+      animate={{ scale: 1, y: 0 }}
+      exit={{
+        scale: 0.94,
+        y: 16,
+        transition: { duration: 0.16, ease: [0.4, 0, 1, 1] },
+      }}
+      transition={softSpring}
       onPointerDownCapture={() => onFocus(item.id)}
       className="fixed font-geist text-white"
       style={{
         left: win.x,
         top: win.y,
         zIndex: win.z,
+        transformOrigin: '50% 90%',
         width: `min(${WINDOW_W}px, calc(100vw - 24px))`,
       }}
     >
-      <GlassSurface borderRadius={28} backgroundOpacity={0.28} blur={14}>
+      <CloudSurface borderRadius={28}>
         <div role="dialog" aria-label={item.title}>
           <div
             onPointerDown={onPointerDown}
@@ -331,22 +365,29 @@ function DockWindowView({
             onPointerCancel={endDrag}
             className="flex cursor-grab touch-none select-none items-center justify-between px-5 py-4 active:cursor-grabbing"
           >
-            <button
+            <motion.button
               type="button"
+              whileHover={{ scale: 1.04 }}
+              whileTap={{ scale: 0.94 }}
+              transition={spring}
               onClick={() => onBack(win)}
               className={`${chip} gap-2 px-4 text-[15px]`}
             >
               <ArrowLeftIcon className="h-4 w-4" strokeWidth={1.75} />
               {win.sectionLabel}
-            </button>
-            <button
+            </motion.button>
+            <motion.button
               type="button"
               aria-label={`Close ${item.title}`}
+              data-no-hand
+              whileHover={{ scale: 1.08, rotate: 90 }}
+              whileTap={{ scale: 0.9 }}
+              transition={spring}
               onClick={() => onClose(item.id)}
               className={`${chip} w-10`}
             >
               <XMarkIcon className="h-5 w-5" strokeWidth={1.75} />
-            </button>
+            </motion.button>
           </div>
           <div className="grid max-h-[calc(100svh-15rem)] grid-cols-1 overflow-y-auto border-t border-white/15 md:h-[min(520px,calc(100svh-15rem))] md:grid-cols-[300px_1fr] md:overflow-hidden">
             <div className="space-y-7 px-7 py-7 md:overflow-y-auto md:border-r md:border-white/15">
@@ -370,7 +411,7 @@ function DockWindowView({
               </Field>
               {item.highlights && item.highlights.length > 0 && (
                 <Field label="Highlights">
-                  <ul className="list-disc space-y-2.5 pl-5 marker:text-white/40">
+                  <ul className="list-disc space-y-2.5 pl-5 marker:text-white/70">
                     {item.highlights.map((h, i) => (
                       <li key={i}>{h}</li>
                     ))}
@@ -380,8 +421,10 @@ function DockWindowView({
             </div>
             <div className="space-y-4 p-4 md:overflow-y-auto">
               {!item.images && !item.embeds && !item.list && (
-                <div className="flex aspect-[16/9] items-center justify-center rounded-2xl bg-white px-6 text-center text-zinc-900 shadow-[0_10px_30px_-12px_rgba(0,0,0,0.5)]">
-                  {item.logo ? (
+                <div className="flex aspect-[16/9] items-center justify-center rounded-2xl bg-white px-6 text-center text-zinc-900 [text-shadow:none] shadow-[0_10px_30px_-12px_rgba(0,0,0,0.5)]">
+                  {item.icon ? (
+                    <BigIcon item={item} />
+                  ) : item.logo ? (
                     <Image
                       src={item.logo}
                       alt={`${item.title} logo`}
@@ -400,7 +443,6 @@ function DockWindowView({
                   {item.images.map((src) => (
                     <a
                       key={src}
-                      data-hand
                       href={src}
                       target="_blank"
                       rel="noopener noreferrer"
@@ -429,10 +471,12 @@ function DockWindowView({
                 />
               ))}
               {item.list && (
-                <div className="divide-y divide-zinc-200 overflow-hidden rounded-2xl bg-white text-zinc-900 shadow-[0_10px_30px_-12px_rgba(0,0,0,0.5)]">
+                <div className="divide-y divide-zinc-200 overflow-hidden rounded-2xl bg-white text-zinc-900 [text-shadow:none] shadow-[0_10px_30px_-12px_rgba(0,0,0,0.5)]">
                   {item.list.rows.map((row) => (
-                    <a
+                    <motion.a
                       key={row.href}
+                      whileTap={{ scale: 0.985 }}
+                      transition={spring}
                       data-hand
                       href={row.href}
                       {...(/^https?:/.test(row.href)
@@ -448,15 +492,17 @@ function DockWindowView({
                           {row.meta}
                         </span>
                       )}
-                    </a>
+                    </motion.a>
                   ))}
                 </div>
               )}
               {item.links && (
-                <div className="divide-y divide-zinc-200 overflow-hidden rounded-2xl bg-white text-zinc-900 shadow-[0_10px_30px_-12px_rgba(0,0,0,0.5)]">
+                <div className="divide-y divide-zinc-200 overflow-hidden rounded-2xl bg-white text-zinc-900 [text-shadow:none] shadow-[0_10px_30px_-12px_rgba(0,0,0,0.5)]">
                   {item.links.map((link) => (
-                    <a
+                    <motion.a
                       key={link.href}
+                      whileTap={{ scale: 0.985 }}
+                      transition={spring}
                       data-hand
                       href={link.href}
                       {...(/^https?:/.test(link.href)
@@ -469,14 +515,14 @@ function DockWindowView({
                         className="h-5 w-5 shrink-0"
                         strokeWidth={2}
                       />
-                    </a>
+                    </motion.a>
                   ))}
                 </div>
               )}
             </div>
           </div>
         </div>
-      </GlassSurface>
+      </CloudSurface>
     </motion.div>
   )
 }
@@ -484,7 +530,7 @@ function DockWindowView({
 function Field({ label, children }: { label: string; children: ReactNode }) {
   return (
     <div>
-      <p className="mb-2 text-[13px] font-medium uppercase tracking-[0.16em] text-white/45">
+      <p className="mb-2 text-[13px] font-medium uppercase tracking-[0.16em] text-white/75">
         {label}
       </p>
       <div className="text-[17px] leading-relaxed text-white/90 [text-shadow:0_1px_6px_rgba(0,0,0,0.25)]">

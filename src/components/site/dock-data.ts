@@ -5,7 +5,26 @@ import {
   Squares2X2Icon,
   UserIcon,
   EnvelopeIcon,
+  HandRaisedIcon,
+  DocumentTextIcon,
+  PencilSquareIcon,
+  MicrophoneIcon,
+  ArchiveBoxIcon,
+  UserCircleIcon,
+  PhotoIcon,
+  MusicalNoteIcon,
+  GlobeAltIcon,
 } from '@heroicons/react/24/outline'
+
+import {
+  FarcasterIcon,
+  GitHubIcon,
+  InstagramIcon,
+  LinkedInIcon,
+  TelegramIcon,
+  XIcon,
+  YouTubeIcon,
+} from '@/components/SocialIcons'
 
 import logoJKS from '@/images/logos/jks.jpg'
 import logoDali from '@/images/logos/dali.jpeg'
@@ -42,6 +61,10 @@ export interface DockItem {
   mono: string
   color: string
   logo?: StaticImageData
+  // Shown instead of the mono letters; `iconFill` for solid brand glyphs,
+  // otherwise it's an outline (stroke) icon.
+  icon?: ComponentType<SVGProps<SVGSVGElement>>
+  iconFill?: boolean
   title: string
   subtitle: string
   meta?: string
@@ -386,6 +409,7 @@ export const DOCK_SECTIONS: DockSection[] = [
         id: 'hello',
         mono: 'FF',
         color: '#2a2a2a',
+        icon: HandRaisedIcon,
         title: 'Fabian Ferno',
         subtitle: 'Engineer, founder, traveller & amateur musician',
         meta: 'Chennai',
@@ -407,6 +431,7 @@ export const DOCK_SECTIONS: DockSection[] = [
         id: 'resume',
         mono: 'CV',
         color: '#0b4a5c',
+        icon: DocumentTextIcon,
         title: 'Resume',
         subtitle: 'ATS friendly PDF',
         meta: 'PDF',
@@ -421,6 +446,7 @@ export const DOCK_SECTIONS: DockSection[] = [
         id: 'writing',
         mono: 'WR',
         color: '#2a1e5c',
+        icon: PencilSquareIcon,
         title: 'Writing',
         subtitle: 'Articles on what I build and learn',
         meta: `${articles.length} posts`,
@@ -439,6 +465,7 @@ export const DOCK_SECTIONS: DockSection[] = [
         id: 'talks',
         mono: 'TK',
         color: '#5c1a1a',
+        icon: MicrophoneIcon,
         title: 'Talks',
         subtitle: "X Spaces where I've talked",
         meta: '3 spaces',
@@ -471,6 +498,7 @@ export const DOCK_SECTIONS: DockSection[] = [
         id: 'old-site',
         mono: 'OS',
         color: '#3a2a05',
+        icon: ArchiveBoxIcon,
         title: 'Old site',
         subtitle: 'Projects · Flights · Scripts · Photos',
         meta: 'Archive',
@@ -501,6 +529,7 @@ export const DOCK_SECTIONS: DockSection[] = [
         id: 'bio',
         mono: 'FF',
         color: '#2a2a2a',
+        icon: UserCircleIcon,
         title: 'Bio',
         subtitle: 'I build things that connect people',
         meta: 'Chennai',
@@ -520,6 +549,7 @@ export const DOCK_SECTIONS: DockSection[] = [
         id: 'photos',
         mono: 'PH',
         color: '#0e3d22',
+        icon: PhotoIcon,
         title: 'Photos',
         subtitle: 'Hackathons, meetups and travel',
         meta: `${photos.length} photos`,
@@ -533,6 +563,7 @@ export const DOCK_SECTIONS: DockSection[] = [
         id: 'music',
         mono: 'MU',
         color: '#5c1a3a',
+        icon: MusicalNoteIcon,
         title: 'Music',
         subtitle: "Music I've made and curated",
         meta: 'Listen',
@@ -556,6 +587,7 @@ export const DOCK_SECTIONS: DockSection[] = [
         id: 'outside',
         mono: 'RN',
         color: '#0b4a5c',
+        icon: GlobeAltIcon,
         title: 'Outside work',
         subtitle: 'Running · Travel · Music',
         body: [
@@ -578,7 +610,8 @@ export const DOCK_SECTIONS: DockSection[] = [
       {
         id: 'email',
         mono: '@',
-        color: '#2a2a2a',
+        color: '#3b6fd8',
+        icon: EnvelopeIcon,
         title: 'Email',
         subtitle: 'fabian@planetaria.tech',
         meta: 'Best',
@@ -588,7 +621,9 @@ export const DOCK_SECTIONS: DockSection[] = [
       {
         id: 'x',
         mono: 'X',
-        color: '#1a1a1a',
+        color: '#0f0f10',
+        icon: XIcon,
+        iconFill: true,
         title: 'X',
         subtitle: '@fabianferno',
         body: ['Posts, builds and hackathon updates.'],
@@ -597,7 +632,9 @@ export const DOCK_SECTIONS: DockSection[] = [
       {
         id: 'github',
         mono: 'GH',
-        color: '#2a1e5c',
+        color: '#24292f',
+        icon: GitHubIcon,
+        iconFill: true,
         title: 'GitHub',
         subtitle: 'fabianferno',
         body: ['Code for most of what I have built.'],
@@ -608,7 +645,9 @@ export const DOCK_SECTIONS: DockSection[] = [
       {
         id: 'linkedin',
         mono: 'IN',
-        color: '#0b3d6b',
+        color: '#0a66c2',
+        icon: LinkedInIcon,
+        iconFill: true,
         title: 'LinkedIn',
         subtitle: 'in/fabianferno',
         body: ['Professional background and work history.'],
@@ -622,7 +661,9 @@ export const DOCK_SECTIONS: DockSection[] = [
       {
         id: 'farcaster',
         mono: 'FC',
-        color: '#3a1f6b',
+        color: '#8a63d2',
+        icon: FarcasterIcon,
+        iconFill: true,
         title: 'Farcaster',
         subtitle: '@fabianferno',
         body: ['Find me on Farcaster.'],
@@ -636,7 +677,9 @@ export const DOCK_SECTIONS: DockSection[] = [
       {
         id: 'telegram',
         mono: 'TG',
-        color: '#0b4a5c',
+        color: '#229ed9',
+        icon: TelegramIcon,
+        iconFill: true,
         title: 'Telegram',
         subtitle: '@fabianferno',
         body: ['Quick messages.'],
@@ -645,7 +688,9 @@ export const DOCK_SECTIONS: DockSection[] = [
       {
         id: 'instagram',
         mono: 'IG',
-        color: '#5c1a3a',
+        color: 'linear-gradient(135deg,#feda75 0%,#fa7e1e 28%,#d62976 58%,#962fbf 80%,#4f5bd5 100%)',
+        icon: InstagramIcon,
+        iconFill: true,
         title: 'Instagram',
         subtitle: '@super.skywalker',
         body: ['Photos and travel.'],
@@ -659,7 +704,9 @@ export const DOCK_SECTIONS: DockSection[] = [
       {
         id: 'youtube',
         mono: 'YT',
-        color: '#5c1a1a',
+        color: '#e62117',
+        icon: YouTubeIcon,
+        iconFill: true,
         title: 'YouTube',
         subtitle: '@fabianferno',
         body: ['Videos and demos.'],

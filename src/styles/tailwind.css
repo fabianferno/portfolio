@@ -165,10 +165,10 @@ html::-webkit-scrollbar-thumb {
     0 4px 8px -6px #00000080;
 }
 .key-btn[aria-current='page'] {
-  --key: #e8531f;
-  --key-hi: #f8703b;
-  --key-lo: #8a2006;
-  --key-ink: #fff8f3;
+  --key: #2f7de1;
+  --key-hi: #5ba4f7;
+  --key-lo: #11408a;
+  --key-ink: #f3f8ff;
 }
 @media (prefers-reduced-motion: reduce) {
   .key-btn,
@@ -177,35 +177,64 @@ html::-webkit-scrollbar-thumb {
   }
 }
 
-/* Glass surface (reactbits glass-surface port) */
-.glass-surface {
+/* Cloud surface: deep-sky frosted body with soft drifting mist and a glowing rim */
+.cloud-surface {
   position: relative;
-  overflow: hidden;
   isolation: isolate;
+  color: white;
+  text-shadow: 0 1px 6px rgba(8, 40, 90, 0.45);
 }
-.glass-surface--svg {
-  background: var(--glass-tint, transparent);
-  backdrop-filter: var(--glass-filter) saturate(var(--glass-saturation, 1));
+.cloud-surface__body {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  border-radius: inherit;
+  background: linear-gradient(
+    180deg,
+    rgba(34, 92, 168, 0.62),
+    rgba(14, 62, 130, 0.72)
+  );
+  backdrop-filter: blur(22px) saturate(1.3);
+  -webkit-backdrop-filter: blur(22px) saturate(1.3);
   box-shadow:
-    0 0 2px 1px color-mix(in oklch, white, transparent 65%) inset,
-    0 0 10px 4px color-mix(in oklch, white, transparent 85%) inset,
-    0 4px 16px rgba(17, 17, 26, 0.05),
-    0 8px 24px rgba(17, 17, 26, 0.05),
-    0 16px 56px rgba(17, 17, 26, 0.05),
-    0 4px 16px rgba(17, 17, 26, 0.05) inset,
-    0 8px 24px rgba(17, 17, 26, 0.05) inset,
-    0 16px 56px rgba(17, 17, 26, 0.05) inset;
+    inset 0 0 0 1px rgba(255, 255, 255, 0.28),
+    inset 0 0 34px rgba(255, 255, 255, 0.22),
+    0 0 36px rgba(255, 255, 255, 0.22),
+    0 22px 56px rgba(6, 36, 90, 0.35);
 }
-.glass-surface--fallback {
-  background: linear-gradient(var(--glass-tint, transparent), var(--glass-tint, transparent)), rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(14px) saturate(1.8) brightness(1.1);
-  -webkit-backdrop-filter: blur(14px) saturate(1.8) brightness(1.1);
-  border: 1px solid rgba(255, 255, 255, 0.28);
-  box-shadow:
-    0 8px 32px rgba(0, 0, 0, 0.18),
-    0 2px 16px rgba(0, 0, 0, 0.1),
-    inset 0 1px 0 rgba(255, 255, 255, 0.35),
-    inset 0 -1px 0 rgba(255, 255, 255, 0.12);
+.cloud-surface__puffs {
+  position: absolute;
+  inset: -20%;
+  pointer-events: none;
+  filter: blur(26px);
+  background:
+    radial-gradient(ellipse 38% 22% at 18% 8%, rgba(255, 255, 255, 0.34), transparent),
+    radial-gradient(ellipse 34% 20% at 82% 22%, rgba(255, 255, 255, 0.24), transparent),
+    radial-gradient(ellipse 40% 24% at 70% 95%, rgba(255, 255, 255, 0.3), transparent),
+    radial-gradient(ellipse 30% 18% at 6% 80%, rgba(255, 255, 255, 0.22), transparent);
+  animation: cloud-surface-drift 18s ease-in-out infinite alternate;
+}
+.cloud-surface__puffs--alt {
+  opacity: 0.7;
+  animation-duration: 25s;
+  animation-direction: alternate-reverse;
+  transform: scaleX(-1);
+}
+@keyframes cloud-surface-drift {
+  from { translate: -3% 1%; }
+  to { translate: 3% -2%; }
+}
+.cloud-surface__content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: inherit;
+}
+@media (prefers-reduced-motion: reduce) {
+  .cloud-surface__puffs { animation: none; }
 }
 
 /* Cloud background (adapted from "Cloud Generator" by Bálint Ferenczy) */
