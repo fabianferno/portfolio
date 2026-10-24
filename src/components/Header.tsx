@@ -131,12 +131,12 @@ function MobileNavigation(props: MobileNavigationProps) {
             </div>
             <nav className="mt-6">
               <ul className="-my-2 divide-y divide-zinc-100 text-base text-zinc-800 dark:divide-zinc-100/5 dark:text-zinc-300">
-                <MobileNavItem href="/about">About</MobileNavItem>
-                <MobileNavItem href="/articles">Articles</MobileNavItem>
-                <MobileNavItem href="/projects">Projects</MobileNavItem>
-                <MobileNavItem href="/flights">Flights</MobileNavItem>
-                <MobileNavItem href="/career">Career</MobileNavItem>
-                <MobileNavItem href="/photos">Gallery</MobileNavItem>
+                <MobileNavItem href="/old/about">About</MobileNavItem>
+                <MobileNavItem href="/old/articles">Articles</MobileNavItem>
+                <MobileNavItem href="/old/projects">Projects</MobileNavItem>
+                <MobileNavItem href="/old/flights">Flights</MobileNavItem>
+                <MobileNavItem href="/old/career">Career</MobileNavItem>
+                <MobileNavItem href="/old/photos">Gallery</MobileNavItem>
               </ul>
             </nav>
           </Popover.Panel>
@@ -180,12 +180,12 @@ function DesktopNavigation(props: DesktopNavigationProps) {
   return (
     <nav className="pointer-events-auto hidden md:block" {...props}>
       <ul className="flex rounded-full bg-white/90 px-3 text-sm font-medium text-zinc-800 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur dark:bg-zinc-800/90 dark:text-zinc-200 dark:ring-white/10">
-        <NavItem href="/about">About</NavItem>
-        <NavItem href="/articles">Articles</NavItem>
-        <NavItem href="/projects">Projects</NavItem>
-        <NavItem href="/flights">Flights</NavItem>
-        <NavItem href="/career">Career</NavItem>
-        <NavItem href="/photos">Gallery</NavItem>
+        <NavItem href="/old/about">About</NavItem>
+        <NavItem href="/old/articles">Articles</NavItem>
+        <NavItem href="/old/projects">Projects</NavItem>
+        <NavItem href="/old/flights">Flights</NavItem>
+        <NavItem href="/old/career">Career</NavItem>
+        <NavItem href="/old/photos">Gallery</NavItem>
       </ul>
     </nav>
   )
@@ -253,7 +253,7 @@ interface AvatarProps extends HTMLAttributes<HTMLAnchorElement> {
 function Avatar({ large = false, className, ...props }: AvatarProps) {
   return (
     <Link
-      href="/"
+      href="/old"
       aria-label="Home"
       className={clsx(className, 'pointer-events-auto')}
       {...props}
@@ -273,7 +273,7 @@ function Avatar({ large = false, className, ...props }: AvatarProps) {
 }
 
 export function Header() {
-  let isHomePage = useRouter().pathname === '/'
+  let isHomePage = useRouter().pathname === '/old'
   const [isSearchOpen, setIsSearchOpen] = useState(false)
 
   let headerRef = useRef<HTMLDivElement>(null)

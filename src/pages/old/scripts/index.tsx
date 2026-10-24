@@ -3,26 +3,25 @@ import { GetStaticProps } from 'next'
 
 import { Card } from '@/components/Card'
 import { SimpleLayout } from '@/components/SimpleLayout'
-import { getAllArticles } from '@/lib/getAllArticles'
+import { getAllScripts } from '@/lib/getAllArticles'
 import { formatDate } from '@/lib/formatDate'
-import Link from 'next/link'
 
-interface ArticleMeta {
+interface Article {
   slug: string
   title: string
-  description: string
   date: string
+  description: string
 }
 
 interface ArticleProps {
-  article: ArticleMeta
+  article: Article
 }
 
 function Article({ article }: ArticleProps) {
   return (
-    <article className="dark:bg-zinc-700/20 bg-zinc-50 p-3 rounded-2xl md:grid md:grid-cols-4 md:items-baseline">
-      <Card className="md:col-span-3 py-2">
-        <Card.Title href={`/articles/${article.slug}`}>
+    <article className="md:grid md:grid-cols-4 md:items-baseline">
+      <Card className="md:col-span-3">
+        <Card.Title href={`/old/scripts/${article.slug}`}>
           {article.title}
         </Card.Title>
         <Card.Eyebrow
@@ -34,7 +33,7 @@ function Article({ article }: ArticleProps) {
           {formatDate(article.date)}
         </Card.Eyebrow>
         <Card.Description>{article.description}</Card.Description>
-        <Card.Cta><Link href={`/articles/${article.slug}`}>Read article</Link></Card.Cta>
+        <Card.Cta>Read article</Card.Cta>
       </Card>
       <Card.Eyebrow
         as="time"
@@ -48,7 +47,7 @@ function Article({ article }: ArticleProps) {
 }
 
 interface ArticlesIndexProps {
-  articles: ArticleMeta[]
+  articles: Article[]
 }
 
 export default function ArticlesIndex({ articles }: ArticlesIndexProps) {
@@ -58,15 +57,15 @@ export default function ArticlesIndex({ articles }: ArticlesIndexProps) {
         <title>Articles - Fabian Ferno</title>
         <meta
           name="description"
-          content="All of my long-form thoughts on programming, leadership, product design, and more, collected in chronological order."
+          content="This is a collection of my long-form thoughts on life and the way I have seen it along the way."
         />
       </Head>
       <SimpleLayout
-        title="Writing on tech, hobby projects, life, & the illuminati."
-        intro="All of my long-form thoughts on programming, leadership, product design, and more, collected in chronological order."
+        title="Well, you reached Skywalker's Scripts. Be discrete. He doesn't like visitors."
+        intro="This is a collection of my long-form thoughts on life and the way I have seen it along the way."
       >
         <div className="md:border-l md:border-zinc-100 md:pl-6 md:dark:border-zinc-700/40">
-          <div className="flex max-w-3xl flex-col space-y-8">
+          <div className="flex max-w-3xl flex-col space-y-16">
             {articles.map((article) => (
               <Article key={article.slug} article={article} />
             ))}
@@ -77,10 +76,10 @@ export default function ArticlesIndex({ articles }: ArticlesIndexProps) {
   )
 }
 
-export const getStaticProps: GetStaticProps<ArticlesIndexProps> = async () => {
+export const getStaticProps: GetStaticProps = async () => {
   return {
     props: {
-      articles: (await getAllArticles()).map(({ component, ...meta }) => meta),
+      articles: (await getAllScripts()).map(({ component, ...meta }) => meta),
     },
   }
 }

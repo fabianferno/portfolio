@@ -15,7 +15,7 @@ interface Article extends ArticleMeta {
 
 async function importArticle(articleFilename: string): Promise<Article> {
     let { meta, default: component } = await import(
-        `../pages/articles/${articleFilename}`
+        `../pages/old/articles/${articleFilename}`
     )
     return {
         slug: articleFilename.replace(/(\/index)?\.mdx$/, ''),
@@ -26,7 +26,7 @@ async function importArticle(articleFilename: string): Promise<Article> {
 
 export async function getAllArticles(): Promise<Article[]> {
     let articleFilenames = await glob(['*.mdx', '*/index.mdx'], {
-        cwd: path.join(process.cwd(), 'src/pages/articles'),
+        cwd: path.join(process.cwd(), 'src/pages/old/articles'),
     })
 
     let articles = await Promise.all(articleFilenames.map(importArticle))
@@ -38,7 +38,7 @@ export async function getAllArticles(): Promise<Article[]> {
 
 async function importScripts(articleFilename: string): Promise<Article> {
     let { meta, default: component } = await import(
-        `../pages/scripts/${articleFilename}`
+        `../pages/old/scripts/${articleFilename}`
     )
     return {
         slug: articleFilename.replace(/(\/index)?\.mdx$/, ''),
@@ -49,7 +49,7 @@ async function importScripts(articleFilename: string): Promise<Article> {
 
 export async function getAllScripts(): Promise<Article[]> {
     let articleFilenames = await glob(['*.mdx', '*/index.mdx'], {
-        cwd: path.join(process.cwd(), 'src/pages/scripts'),
+        cwd: path.join(process.cwd(), 'src/pages/old/scripts'),
     })
 
     let articles = await Promise.all(articleFilenames.map(importScripts))

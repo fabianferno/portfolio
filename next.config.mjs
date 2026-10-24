@@ -6,6 +6,15 @@ import rehypePrism from '@mapbox/rehype-prism'
 const nextConfig = {
   pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'mdx'],
   reactStrictMode: true,
+  // Old content now lives under /old; keep previously shared links working.
+  async redirects() {
+    return [
+      { source: '/articles/:path*', destination: '/old/articles/:path*', permanent: false },
+      { source: '/scripts/:path*', destination: '/old/scripts/:path*', permanent: false },
+      { source: '/articles', destination: '/old/articles', permanent: false },
+      { source: '/scripts', destination: '/old/scripts', permanent: false },
+    ]
+  },
   experimental: {
     scrollRestoration: true,
   },

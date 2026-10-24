@@ -299,5 +299,19 @@ module.exports = {
         },
       },
     }),
+    extend: {
+      keyframes: {
+        'hero-in': {
+          from: { opacity: '0', transform: 'scale(1.015)' },
+          to: { opacity: '1', transform: 'scale(1)' },
+        },
+      },
+      animation: {
+        'hero-in': 'hero-in 0.9s cubic-bezier(0.22, 1, 0.36, 1) both',
+      },
+      fontFamily: {
+        geist: ['"Geist Mono"', 'ui-monospace', 'SFMono-Regular', 'Menlo', 'monospace'],
+      },
+    },
   },
 }

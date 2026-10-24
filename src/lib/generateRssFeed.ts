@@ -37,7 +37,7 @@ export async function generateRssFeed(): Promise<void> {
   })
 
   for (let article of articles) {
-    let url = `${siteUrl}/articles/${article.slug}`
+    let url = `${siteUrl}/old/articles/${article.slug}`
     let Component = article.component
     let html = ReactDOMServer.renderToStaticMarkup(
       React.createElement(Component, { isRssFeed: true })

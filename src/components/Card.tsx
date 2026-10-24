@@ -24,6 +24,7 @@ interface CardProps {
 export function Card({ as: Component = 'div', className, children }: CardProps) {
   return (
     <Component
+      data-hand
       className={clsx(className, 'group relative flex flex-col items-start')}
     >
       {children}

@@ -44,3 +44,63 @@ export function project(lng: number, lat: number): [number, number] {
   const z = -(lat / 90) * (MAP_H / 2)
   return [x, z]
 }
+
+// ISO country code for every airport above — drives the hover morph.
+export const airportCountry: Record<string, string> = {
+  AEP: 'AR',
+  AMS: 'NL',
+  AUH: 'AE',
+  AXT: 'JP',
+  BKK: 'TH',
+  BLR: 'IN',
+  CCU: 'IN',
+  CDG: 'FR',
+  CMB: 'LK',
+  CNX: 'TH',
+  DEL: 'IN',
+  DXB: 'AE',
+  GOI: 'IN',
+  HKT: 'TH',
+  HND: 'JP',
+  HYD: 'IN',
+  IXL: 'IN',
+  JAI: 'IN',
+  KUL: 'MY',
+  LHR: 'GB',
+  LIM: 'PE',
+  LIS: 'PT',
+  MAA: 'IN',
+  MAD: 'ES',
+  NCE: 'FR',
+  NRT: 'JP',
+  SIN: 'SG',
+  SYD: 'AU',
+  TPE: 'TW',
+  UKB: 'JP',
+  VIE: 'AT',
+}
+
+// What the dot matrix turns into when you hover a country's airport. Picked
+// for a recognisable solid silhouette, since the dots are plain white.
+export const countryIcons: Record<
+  string,
+  { name: string; emoji: string; thing: string }
+> = {
+  AE: { name: 'United Arab Emirates', emoji: '🐪', thing: 'camel' },
+  AR: { name: 'Argentina', emoji: '🐎', thing: 'gaucho horse' },
+  AT: { name: 'Austria', emoji: '🎻', thing: 'violin' },
+  AU: { name: 'Australia', emoji: '🦘', thing: 'kangaroo' },
+  ES: { name: 'Spain', emoji: '🐂', thing: 'toro' },
+  FR: { name: 'France', emoji: '🗼', thing: 'eiffel tower' },
+  GB: { name: 'United Kingdom', emoji: '👑', thing: 'the crown' },
+  IN: { name: 'India', emoji: '🏏', thing: 'cricket' },
+  JP: { name: 'Japan', emoji: '⛩️', thing: 'torii gate' },
+  LK: { name: 'Sri Lanka', emoji: '🫖', thing: 'ceylon tea' },
+  MY: { name: 'Malaysia', emoji: '🐅', thing: 'malayan tiger' },
+  NL: { name: 'Netherlands', emoji: '🌷', thing: 'tulip' },
+  PE: { name: 'Peru', emoji: '🦙', thing: 'llama' },
+  PT: { name: 'Portugal', emoji: '🐓', thing: 'barcelos rooster' },
+  SG: { name: 'Singapore', emoji: '🦀', thing: 'chilli crab' },
+  TH: { name: 'Thailand', emoji: '🐘', thing: 'elephant' },
+  TW: { name: 'Taiwan', emoji: '🛵', thing: 'scooter city' },
+}
