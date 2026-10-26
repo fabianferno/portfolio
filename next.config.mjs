@@ -6,6 +6,9 @@ import rehypePrism from '@mapbox/rehype-prism'
 const nextConfig = {
   pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'mdx'],
   reactStrictMode: true,
+  // Next 13's SWC minifier breaks motion 14's mount animations in production
+  // (elements stay at their `initial` opacity:0), so minify with terser instead.
+  swcMinify: false,
   // Old content now lives under /old; keep previously shared links working.
   async redirects() {
     return [
