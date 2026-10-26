@@ -279,7 +279,10 @@ html::-webkit-scrollbar-thumb {
   left: 50%;
   width: min(680px, 90vw);
   height: 280px;
-  transform: translate(-50%, -50%);
+  transform: translate(
+    calc(-50% + var(--cloud-x, 0px)),
+    calc(-50% + var(--cloud-y, 0px))
+  );
   background: #fff;
   border: none;
   border-radius: 50%;
@@ -287,6 +290,12 @@ html::-webkit-scrollbar-thumb {
   resize: none;
   will-change: transform;
   pointer-events: none;
+}
+/* Scattered clouds are positioned from JS (wind drift + slight cursor pull) */
+.cloud--drift {
+  top: 0;
+  left: 0;
+  transform: translate(-200vw, 0);
 }
 .cloud-lightning {
   position: fixed;

@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 // Cloud background: sky, cloud and weather.
 // Adapted from "Cloud Generator" by Bálint Ferenczy (CodePen qENdpoL).
@@ -30,6 +30,49 @@ async function locateByIp(signal: AbortSignal) {
 }
 const REFRESH_MS = 10 * 60 * 1000
 
+// Extra clouds scattered around the page. They ride a steady wind to the
+// right, wrapping around once off-screen, and lean slightly toward the cursor.
+// Starting positions are jittered cells of a grid that overhangs the
+// viewport, with some cells left empty, so the field reads as irregular sky
+// rather than a ring around the main cloud.
+const GRID_COLS = 4
+const GRID_ROWS = 3
+const FILL_CHANCE = 0.65
+const rand = (min: number, max: number) => min + Math.random() * (max - min)
+
+type DriftCloud = {
+  x: number // px, centre
+  y: number // px, centre
+  width: number
+  height: number
+  speed: number // px per second
+  pull: number // share of the cursor offset this cloud follows
+}
+
+function scatterClouds(vw: number, vh: number): DriftCloud[] {
+  let clouds: DriftCloud[] = []
+  let cellW = (vw * 1.2) / GRID_COLS
+  let cellH = (vh * 1.2) / GRID_ROWS
+  for (let row = 0; row < GRID_ROWS; row++) {
+    for (let col = 0; col < GRID_COLS; col++) {
+      if (Math.random() > FILL_CHANCE) continue
+      // Sizes span from a small wisp to slightly larger than the main cloud.
+      let width = Math.min(rand(380, 820), vw * 0.9)
+      // Bigger clouds read as nearer: a little faster and more cursor pull.
+      let near = (width - 380) / 440
+      clouds.push({
+        x: -vw * 0.1 + (col + rand(0.15, 0.85)) * cellW,
+        y: -vh * 0.1 + (row + rand(0.15, 0.85)) * cellH,
+        width,
+        height: width * rand(0.32, 0.48),
+        speed: 8 + near * 10 + rand(-2, 2),
+        pull: 0.04 + near * 0.06,
+      })
+    }
+  }
+  return clouds
+}
+
 // Maps a WMO weather code plus cloud cover to a 0-100 "storminess".
 function stormLevel(code: number, cover: number, precipitation: number) {
   if (code >= 95) return 100
@@ -44,6 +87,17 @@ function stormLevel(code: number, cover: number, precipitation: number) {
 export function CloudBackground() {
   let skyRef = useRef<HTMLDivElement>(null)
   let cloudRef = useRef<HTMLTextAreaElement>(null)
+  let containerRef = useRef<HTMLDivElement>(null)
+  // Scattered on the client only, so server and client markup match.
+  let [scattered, setScattered] = useState<DriftCloud[]>([])
+  let scatteredRefs = useRef<(HTMLTextAreaElement | null)[]>([])
+  let driftRef = useRef<DriftCloud[]>([])
+
+  useEffect(() => {
+    let clouds = scatterClouds(window.innerWidth, window.innerHeight)
+    driftRef.current = clouds
+    setScattered(clouds)
+  }, [])
   let glowRef = useRef<HTMLDivElement>(null)
   let shadowRefs = useRef<(SVGFEFloodElement | null)[]>([])
 
@@ -51,15 +105,34 @@ export function CloudBackground() {
     let cloud = cloudRef.current!
     let sky = skyRef.current!
     let glow = glowRef.current!
+    let container = containerRef.current!
 
-    // Cloud eases toward the cursor.
+    // Main cloud eases toward the cursor; scattered clouds drift with the
+    // wind and follow a small share of the same offset.
     let target = { x: 0, y: 0 }
     let pos = { x: 0, y: 0 }
     let frame = 0
-    let tick = () => {
+    let last = performance.now()
+    let still = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    let tick = (now: number) => {
+      let dt = Math.min((now - last) / 1000, 0.1)
+      last = now
       pos.x += (target.x - pos.x) * 0.06
       pos.y += (target.y - pos.y) * 0.06
-      cloud.style.transform = `translate(calc(-50% + ${pos.x}px), calc(-50% + ${pos.y}px))`
+      container.style.setProperty('--cloud-x', `${pos.x}px`)
+      container.style.setProperty('--cloud-y', `${pos.y}px`)
+      let vw = window.innerWidth
+      driftRef.current.forEach((c, i) => {
+        if (!still) c.x += c.speed * dt
+        // Wrap once fully past the right edge, re-entering from the left.
+        if (c.x - c.width / 2 > vw + 100) c.x = -c.width / 2 - 100
+        let el = scatteredRefs.current[i]
+        if (el) {
+          el.style.transform = `translate(${
+            c.x - c.width / 2 + pos.x * c.pull
+          }px, ${c.y - c.height / 2 + pos.y * c.pull}px)`
+        }
+      })
       frame = requestAnimationFrame(tick)
     }
     frame = requestAnimationFrame(tick)
@@ -253,7 +326,20 @@ export function CloudBackground() {
           </feMerge>
         </filter>
       </svg>
-      <div className="cloud-container">
+      <div ref={containerRef} className="cloud-container">
+        {scattered.map((c, i) => (
+          <textarea
+            key={i}
+            ref={(el) => {
+              scatteredRefs.current[i] = el
+            }}
+            className="cloud cloud--drift"
+            style={{ width: c.width, height: c.height }}
+            readOnly
+            aria-hidden="true"
+            tabIndex={-1}
+          />
+        ))}
         <textarea
           ref={cloudRef}
           className="cloud"

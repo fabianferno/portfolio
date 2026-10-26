@@ -26,7 +26,7 @@ import {
 } from '@/components/SocialIcons'
 import { CloudSurface } from './CloudSurface'
 import { playClick } from './clickSound'
-import { DOCK_SECTIONS, DockItem, DockSection } from './dock-data'
+import { DOCK_SECTIONS, DockItem, DockListRow, DockSection } from './dock-data'
 import { GeniePopover, runGenie } from './GeniePopover'
 
 // Shared motion: springs everywhere so interruptions retarget smoothly.
@@ -190,6 +190,43 @@ export function BottomNav() {
     })
   }
 
+  let openImage = (src: string, win: DockWindow) => {
+    let section = DOCK_SECTIONS.find((s) => s.id === win.sectionId)
+    if (!section) return
+    let name = src.split('/').pop()?.replace(/\.[^.]+$/, '') ?? 'Photo'
+    openWindow(
+      {
+        id: `photo:${src}`,
+        mono: 'PH',
+        color: win.item.color,
+        title: name,
+        subtitle: win.item.title,
+        subtitleLabel: 'From',
+        body: [],
+        fullImage: src,
+      },
+      section
+    )
+  }
+
+  let openArticle = (row: DockListRow, win: DockWindow) => {
+    let section = DOCK_SECTIONS.find((s) => s.id === win.sectionId)
+    if (!section || !row.read) return
+    openWindow(
+      {
+        id: `read:${row.href}`,
+        mono: 'SC',
+        color: win.item.color,
+        title: row.title,
+        subtitle: row.meta ?? '',
+        subtitleLabel: 'Written',
+        body: [],
+        article: row.read,
+      },
+      section
+    )
+  }
+
   let moveWindow = useCallback((id: string, x: number, y: number) => {
     setWindows((current) =>
       current.map((w) => (w.item.id === id ? { ...w, x, y } : w))
@@ -340,6 +377,8 @@ export function BottomNav() {
             onFocus={focusWindow}
             onClose={closeWindow}
             onBack={backToSection}
+            onOpenImage={openImage}
+            onOpenArticle={openArticle}
           />
         ))}
       </AnimatePresence>
@@ -353,12 +392,16 @@ function DockWindowView({
   onFocus,
   onClose,
   onBack,
+  onOpenImage,
+  onOpenArticle,
 }: {
   win: DockWindow
   onMove: (id: string, x: number, y: number) => void
   onFocus: (id: string) => void
   onClose: (id: string) => void
   onBack: (win: DockWindow) => void
+  onOpenImage: (src: string, win: DockWindow) => void
+  onOpenArticle: (row: DockListRow, win: DockWindow) => void
 }) {
   let { item } = win
   let rootRef = useRef<HTMLDivElement>(null)
@@ -493,23 +536,22 @@ function DockWindowView({
                 <h2 className="text-[32px] font-semibold leading-[1.05] tracking-tight [text-shadow:0_1px_10px_rgba(0,0,0,0.3)]">
                   {item.title}
                 </h2>
-                <Field label="Role">{item.subtitle}</Field>
+                <Field label={item.subtitleLabel}>{item.subtitle}</Field>
                 {item.period && <Field label="Period">{item.period}</Field>}
                 {item.location && (
                   <Field label="Location">{item.location}</Field>
                 )}
-                {!item.period && item.meta && (
-                  <Field label="Status">{item.meta}</Field>
+                {item.body.length > 0 && (
+                  <Field label="About">
+                    <span className="block space-y-3">
+                      {item.body.map((p, i) => (
+                        <span key={i} className="block">
+                          {p}
+                        </span>
+                      ))}
+                    </span>
+                  </Field>
                 )}
-                <Field label="About">
-                  <span className="block space-y-3">
-                    {item.body.map((p, i) => (
-                      <span key={i} className="block">
-                        {p}
-                      </span>
-                    ))}
-                  </span>
-                </Field>
                 {item.highlights && item.highlights.length > 0 && (
                   <Field label="Highlights">
                     <ul className="list-disc space-y-2.5 pl-5 marker:text-white/70">
@@ -520,8 +562,8 @@ function DockWindowView({
                   </Field>
                 )}
               </div>
-              <div className="space-y-4 p-4 md:overflow-y-auto">
-                {!item.images && !item.embeds && !item.list && (
+              <div className="space-y-4 p-4 md:overflow-y-auto md:[&>img]:h-full">
+                {!item.images && !item.fullImage && !item.article && !item.embeds && !item.Panel && !item.list && (
                   <div className="flex aspect-[16/9] items-center justify-center rounded-2xl bg-white px-6 text-center text-zinc-900 shadow-[0_10px_30px_-12px_rgba(0,0,0,0.5)] [text-shadow:none]">
                     {item.icon ? (
                       <BigIcon item={item} />
@@ -542,11 +584,11 @@ function DockWindowView({
                 {item.images && (
                   <div className="grid grid-cols-2 gap-3">
                     {item.images.map((src) => (
-                      <a
+                      <button
                         key={src}
-                        href={src}
-                        target="_blank"
-                        rel="noopener noreferrer"
+                        type="button"
+                        data-hand
+                        onClick={() => onOpenImage(src, win)}
                         className="block overflow-hidden rounded-2xl bg-white/10 shadow-[0_10px_30px_-12px_rgba(0,0,0,0.5)]"
                       >
                         {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -556,9 +598,32 @@ function DockWindowView({
                           loading="lazy"
                           className="aspect-[4/3] w-full object-cover transition-transform duration-300 hover:scale-105"
                         />
-                      </a>
+                      </button>
                     ))}
                   </div>
+                )}
+                {item.article && (
+                  <div className="space-y-4">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={item.article.cover}
+                      alt=""
+                      className="aspect-[16/9] w-full rounded-2xl object-cover shadow-[0_10px_30px_-12px_rgba(0,0,0,0.5)]"
+                    />
+                    <div className="space-y-4 rounded-2xl bg-white px-7 py-6 text-[16px] leading-relaxed text-zinc-800 shadow-[0_10px_30px_-12px_rgba(0,0,0,0.5)] [text-shadow:none]">
+                      {item.article.paragraphs.map((p, i) => (
+                        <p key={i}>{p}</p>
+                      ))}
+                    </div>
+                  </div>
+                )}
+                {item.fullImage && (
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img
+                    src={item.fullImage}
+                    alt={item.title}
+                    className="h-full max-h-[calc(100svh-17rem)] w-full rounded-2xl object-contain md:max-h-none"
+                  />
                 )}
                 {item.embeds?.map((embed) => (
                   <iframe
@@ -573,21 +638,30 @@ function DockWindowView({
                     }`}
                   />
                 ))}
+                {item.Panel && <item.Panel />}
                 {item.list && (
                   <div className="divide-y divide-zinc-200 overflow-hidden rounded-2xl bg-white text-zinc-900 shadow-[0_10px_30px_-12px_rgba(0,0,0,0.5)] [text-shadow:none]">
                     {item.list.rows.map((row) => {
                       let PlatformIcon = platformIcon(row.href)
+                      let Row: any = row.read ? motion.button : motion.a
                       return (
-                        <motion.a
+                        <Row
                           key={row.href}
                           whileTap={{ scale: 0.985 }}
                           transition={spring}
                           data-hand
-                          href={row.href}
-                          {...(/^https?:/.test(row.href)
-                            ? { target: '_blank', rel: 'noopener noreferrer' }
-                            : {})}
-                          className="flex items-center justify-between gap-4 px-6 py-4 outline-none transition-colors hover:bg-zinc-100 focus-visible:bg-zinc-100"
+                          {...(row.read
+                            ? {
+                                type: 'button',
+                                onClick: () => onOpenArticle(row, win),
+                              }
+                            : {
+                                href: row.href,
+                                ...(/^https?:/.test(row.href)
+                                  ? { target: '_blank', rel: 'noopener noreferrer' }
+                                  : {}),
+                              })}
+                          className="flex w-full items-center justify-between gap-4 px-6 py-4 text-left outline-none transition-colors hover:bg-zinc-100 focus-visible:bg-zinc-100"
                         >
                           {PlatformIcon && (
                             <PlatformIcon
@@ -603,7 +677,7 @@ function DockWindowView({
                               {row.meta}
                             </span>
                           )}
-                        </motion.a>
+                        </Row>
                       )
                     })}
                   </div>
@@ -649,12 +723,14 @@ function DockWindowView({
   )
 }
 
-function Field({ label, children }: { label: string; children: ReactNode }) {
+function Field({ label, children }: { label?: string; children: ReactNode }) {
   return (
     <div>
-      <p className="mb-2 text-[13px] font-medium uppercase tracking-[0.16em] text-white/75">
-        {label}
-      </p>
+      {label && (
+        <p className="mb-2 text-[13px] font-medium uppercase tracking-[0.16em] text-white/75">
+          {label}
+        </p>
+      )}
       <div className="text-[17px] leading-relaxed text-white/90 [text-shadow:0_1px_6px_rgba(0,0,0,0.25)]">
         {children}
       </div>

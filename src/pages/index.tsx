@@ -5,6 +5,7 @@ import { SpeakerWaveIcon, SpeakerXMarkIcon } from '@heroicons/react/24/solid'
 
 import { CloudBackground } from '@/components/site/CloudBackground'
 import { LocalClock } from '@/components/site/LocalClock'
+import { MusicPlayer } from '@/components/site/MusicPlayer'
 
 // The montage is long, so start each visit at a random scene (leaving a few
 // seconds of runway before the end).
@@ -112,9 +113,7 @@ export default function Home() {
                 Chennai, India
               </span>
               <LocalClock />
-              <span className="hidden sm:inline">
-                {new Date().getFullYear()}
-              </span>
+              <MusicPlayer />
             </div>
           </div>
         </motion.footer>

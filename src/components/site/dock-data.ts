@@ -14,10 +14,10 @@ import {
   PhotoIcon,
   MusicalNoteIcon,
   GlobeAltIcon,
+  GlobeEuropeAfricaIcon,
 } from '@heroicons/react/24/outline'
 
 import {
-  FarcasterIcon,
   GitHubIcon,
   InstagramIcon,
   LinkedInIcon,
@@ -25,6 +25,10 @@ import {
   XIcon,
   YouTubeIcon,
 } from '@/components/SocialIcons'
+
+import { airportCountry, visitedPlaces } from '@/data/airports'
+import { TravelPanel } from './TravelPanel'
+import scriptTexts from '@/data/scripts.json'
 
 import logoJKS from '@/images/logos/jks.jpg'
 import logoDali from '@/images/logos/dali.jpeg'
@@ -48,6 +52,13 @@ export interface DockListRow {
   sub?: string
   meta?: string
   href: string
+  // Opens a reader window instead of navigating to `href`.
+  read?: DockArticle
+}
+
+export interface DockArticle {
+  cover: string
+  paragraphs: string[]
 }
 
 export interface DockEmbed {
@@ -69,6 +80,8 @@ export interface DockItem {
   iconFill?: boolean
   title: string
   subtitle: string
+  // Label above the subtitle in the window; omitted when it isn't a role.
+  subtitleLabel?: string
   meta?: string
   period?: string
   location?: string
@@ -79,7 +92,12 @@ export interface DockItem {
   links?: DockLink[]
   list?: { label: string; rows: DockListRow[] }
   images?: string[]
+  // Single-photo viewer window (opened by clicking a thumbnail).
+  fullImage?: string
+  article?: DockArticle
   embeds?: DockEmbed[]
+  // Custom React content rendered in the window body.
+  Panel?: ComponentType
 }
 
 export interface DockSection {
@@ -309,6 +327,11 @@ const monoOf = (name: string) =>
 
 const slug = (s: string) => s.toLowerCase().replace(/[^a-z0-9]+/g, '-')
 
+const countryCount = new Set([
+  ...Object.values(airportCountry),
+  ...Object.keys(visitedPlaces),
+]).size
+
 const roleItems: DockItem[] = experiences.map((e, i) => ({
   id: slug(e.company),
   mono: monoOf(e.company),
@@ -316,6 +339,7 @@ const roleItems: DockItem[] = experiences.map((e, i) => ({
   logo: e.logo ?? undefined,
   title: e.company,
   subtitle: e.title,
+  subtitleLabel: 'Role',
   meta: e.end === 'Present' ? 'Now' : e.end.slice(-4),
   period: `${e.start} – ${e.end}`,
   location: e.location,
@@ -387,21 +411,58 @@ const articles: DockListRow[] = [
   },
 ].map(({ slug, ...row }) => ({ ...row, href: `/old/articles/${slug}` }))
 
+const scripts: DockListRow[] = [
+  { title: 'The Crimson Cry', meta: 'Jun 2020', slug: 'the-crimson-cry' },
+  { title: 'The Sound of Silence', meta: 'Feb 2020', slug: 'sound-of-silence' },
+  { title: 'The Butterfly Effect', meta: 'Dec 2019', slug: 'the-butterfly-effect' },
+  { title: 'Under and Deep', meta: 'Nov 2019', slug: 'under-and-deep' },
+  { title: 'Deception', meta: 'Jun 2019', slug: 'deception' },
+  { title: 'Efflorescence', meta: 'May 2019', slug: 'efflorescence' },
+  { title: 'Fire within flame', meta: 'Apr 2019', slug: 'fire-within-flame' },
+  { title: 'Oceans of Oasis', meta: 'Mar 2019', slug: 'oceans-of-oasis' },
+  { title: 'Datum Zwei', meta: 'Mar 2019', slug: 'datum-zwei' },
+  { title: 'Numero Uno', meta: 'Mar 2019', slug: 'numero-uno' },
+].map(({ slug, ...row }) => ({
+  ...row,
+  href: `/old/scripts/${slug}`,
+  read: {
+    cover: `/script-covers/${slug}.jpg`,
+    paragraphs: scriptTexts[slug as keyof typeof scriptTexts].paragraphs,
+  },
+}))
+
 const photos = [
+  'vitalik.jpg',
+  'ethglobal-newdelhi.jpg',
   'band.jpg',
-  'eth-india-2022.jpg',
+  'cannes.JPG',
+  'edge-city.JPG',
   'eth-sg.JPG',
-  'ethglobal-paris.jpg',
   'gm-vietnam.jpg',
   'home.jpg',
   'neocast-hk.jpg',
+  'paris-pbw.JPG',
   'pattarai-2.jpg',
   'pattarai.jpg',
   'riot.JPG',
-  'vitalik.jpg',
+  'subzero.jpg',
   'web3-chennai-2.jpg',
   'web3-chennai.jpg',
 ].map((f) => `/photos/${f}`)
+
+const photography = [
+  'IMG_3218',
+  'IMG_3219',
+  'IMG_3221',
+  'IMG_3220',
+  'IMG_3236',
+  'IMG_3238',
+  'IMG_3224',
+  'IMG_3226',
+  'IMG_3227',
+  'IMG_3225',
+  'IMG_3222',
+].map((f) => `/gallery/${f}.JPG`)
 
 export const DOCK_SECTIONS: DockSection[] = [
   {
@@ -437,11 +498,12 @@ export const DOCK_SECTIONS: DockSection[] = [
         color: '#0b4a5c',
         icon: DocumentTextIcon,
         title: 'Resume',
-        subtitle: 'ATS friendly PDF',
+        subtitle: 'For people looking to hire me',
         meta: 'PDF',
         body: [
           'If you are looking to hire me or want to know more about my work, my resume has the short version.',
         ],
+        openUrl: '/FabianFernoResumeJan2026.pdf',
         links: [
           { label: 'Open resume', href: '/FabianFernoResumeJan2026.pdf' },
         ],
@@ -535,10 +597,9 @@ export const DOCK_SECTIONS: DockSection[] = [
         color: '#2a2a2a',
         icon: UserCircleIcon,
         title: 'Bio',
-        subtitle: 'I build things that connect people',
+        subtitle: 'I build things that connect people, on the web, on-chain, and in the real world',
         meta: 'Chennai',
         body: [
-          'I build things that connect people, on the web, on-chain, and in the real world.',
           'I used to work in the governance, grants and public good space as lead engineer at Karma, contributing to protocols like Gitcoin and Octant. My most notable work was leading the Grantee Accountability Protocol (GAP), now used by ecosystems like Gitcoin, Celo and Polygon as their grants tooling.',
           'I exited a b2b NFT analytics startup as a cofounder (BlitzCraft, previously nftconomy.com), and currently build an AI call centre stack for customer experience at TenoriLabs for businesses in APAC.',
           "I also cofounded one of India's largest fitness and wellness community apps, Cloka, and launched one of my hackathon projects, Whim.bet, an agentic prediction market platform for Twitch livestreams, with the Virtuals Protocol Genesis Cohort, with over 9m in total volume last year.",
@@ -548,20 +609,20 @@ export const DOCK_SECTIONS: DockSection[] = [
           { label: 'Full career', href: '/old/career' },
           { label: 'Resume', href: '/FabianFernoResumeJan2026.pdf' },
         ],
+        images: photos,
       },
       {
-        id: 'photos',
-        mono: 'PH',
-        color: '#0e3d22',
+        id: 'photography',
+        mono: 'PG',
+        color: '#1f2a44',
         icon: PhotoIcon,
-        title: 'Photos',
-        subtitle: 'Hackathons, meetups and travel',
-        meta: `${photos.length} photos`,
+        title: 'Photography',
+        subtitle: 'People, places and things from my travels',
+        meta: `${photography.length} photos`,
         body: [
-          'A few moments from hackathons, conferences and communities along the way.',
+          'I like taking pictures of pretty people, places, and things. Here are some of my favorite photos from my travels.',
         ],
-        images: photos,
-        links: [{ label: 'Full gallery', href: '/gallery' }],
+        images: photography,
       },
       {
         id: 'music',
@@ -587,6 +648,37 @@ export const DOCK_SECTIONS: DockSection[] = [
             height: 152,
           },
         ],
+        links: [
+          {
+            label: 'Skywalker Symphony',
+            href: 'https://open.spotify.com/playlist/42H9VguLdX1afctGklv6nf?si=745625aacb0c4d26',
+          },
+          {
+            label: 'Phantom Tones',
+            href: 'https://open.spotify.com/playlist/42H9VguLdX1afctGklv6nf?si=745625aacb0c4d26',
+          },
+          {
+            label: 'Hannibal Productivity',
+            href: 'https://open.spotify.com/playlist/4vJjTe2YrQvBEKUmF8AQD3?si=d662cb03b0554195',
+          },
+          {
+            label: 'More on Spotify',
+            href: 'https://open.spotify.com/user/pqfnzbkmew1e4y9o5r0uy83p6?si=bcedd5bb81cb4dad',
+          },
+        ],
+      },
+      {
+        id: 'travel',
+        mono: 'TR',
+        color: '#0b3a5c',
+        icon: GlobeEuropeAfricaIcon,
+        title: 'Travel',
+        subtitle: `${countryCount} countries I’ve been to`,
+        meta: 'Map',
+        body: [
+          'Every country I’ve been to, lit up on the map. Hover a dot to see the country.',
+        ],
+        Panel: TravelPanel,
       },
       {
         id: 'outside',
@@ -604,6 +696,19 @@ export const DOCK_SECTIONS: DockSection[] = [
             href: 'https://www.strava.com/athletes/168385610',
           },
         ],
+      },
+      {
+        id: 'scripts',
+        mono: 'SC',
+        color: '#4a2a14',
+        icon: DocumentTextIcon,
+        title: 'Scripts',
+        subtitle: "Skywalker's long-form thoughts on life",
+        meta: `${scripts.length} scripts`,
+        body: [
+          'A collection of my long-form thoughts on life and the way I have seen it along the way.',
+        ],
+        list: { label: 'Scripts', rows: scripts },
       },
     ],
   },
@@ -663,23 +768,6 @@ export const DOCK_SECTIONS: DockSection[] = [
           {
             label: 'Open LinkedIn',
             href: 'https://www.linkedin.com/in/fabianferno/',
-          },
-        ],
-      },
-      {
-        id: 'farcaster',
-        mono: 'FC',
-        color: '#8a63d2',
-        icon: FarcasterIcon,
-        iconFill: true,
-        title: 'Farcaster',
-        subtitle: '@fabianferno',
-        body: ['Find me on Farcaster.'],
-        openUrl: 'https://farcaster.xyz/fabianferno',
-        links: [
-          {
-            label: 'Open Farcaster',
-            href: 'https://farcaster.xyz/fabianferno',
           },
         ],
       },

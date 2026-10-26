@@ -1,0 +1,15 @@
+@font-face {
+  font-family: "Timeless Sans";
+  src: url("./TimelessSans-W430.woff2") format("woff2"),
+    url("../Desktop/TimelessSans-W430.ttf") format("truetype");
+  font-weight: 430;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Timeless Sans";
+  src: url("./TimelessSans-W430Italic.woff2") format("woff2"),
+    url("../Desktop/TimelessSans-W430Italic.ttf") format("truetype");
+  font-weight: 430;
+  font-style: italic;
+}

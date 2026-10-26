@@ -80,27 +80,50 @@ export const airportCountry: Record<string, string> = {
   VIE: 'AT',
 }
 
-// What the dot matrix turns into when you hover a country's airport. Picked
-// for a recognisable solid silhouette, since the dots are plain white.
-export const countryIcons: Record<
-  string,
-  { name: string; emoji: string; thing: string }
-> = {
-  AE: { name: 'United Arab Emirates', emoji: '🐪', thing: 'camel' },
-  AR: { name: 'Argentina', emoji: '🐎', thing: 'gaucho horse' },
-  AT: { name: 'Austria', emoji: '🎻', thing: 'violin' },
-  AU: { name: 'Australia', emoji: '🦘', thing: 'kangaroo' },
-  ES: { name: 'Spain', emoji: '🐂', thing: 'toro' },
-  FR: { name: 'France', emoji: '🗼', thing: 'eiffel tower' },
-  GB: { name: 'United Kingdom', emoji: '👑', thing: 'the crown' },
-  IN: { name: 'India', emoji: '🏏', thing: 'cricket' },
-  JP: { name: 'Japan', emoji: '⛩️', thing: 'torii gate' },
-  LK: { name: 'Sri Lanka', emoji: '🫖', thing: 'ceylon tea' },
-  MY: { name: 'Malaysia', emoji: '🐅', thing: 'malayan tiger' },
-  NL: { name: 'Netherlands', emoji: '🌷', thing: 'tulip' },
-  PE: { name: 'Peru', emoji: '🦙', thing: 'llama' },
-  PT: { name: 'Portugal', emoji: '🐓', thing: 'barcelos rooster' },
-  SG: { name: 'Singapore', emoji: '🦀', thing: 'chilli crab' },
-  TH: { name: 'Thailand', emoji: '🐘', thing: 'elephant' },
-  TW: { name: 'Taiwan', emoji: '🛵', thing: 'scooter city' },
+// Display name for each visited country code.
+export const countryIcons: Record<string, { name: string }> = {
+  AE: { name: 'United Arab Emirates' },
+  AR: { name: 'Argentina' },
+  AT: { name: 'Austria' },
+  AU: { name: 'Australia' },
+  ES: { name: 'Spain' },
+  FR: { name: 'France' },
+  GB: { name: 'United Kingdom' },
+  IN: { name: 'India' },
+  JP: { name: 'Japan' },
+  LK: { name: 'Sri Lanka' },
+  MY: { name: 'Malaysia' },
+  NL: { name: 'Netherlands' },
+  PE: { name: 'Peru' },
+  PT: { name: 'Portugal' },
+  SG: { name: 'Singapore' },
+  TH: { name: 'Thailand' },
+  TW: { name: 'Taiwan' },
+  BR: { name: 'Brazil' },
+  DE: { name: 'Germany' },
+  CZ: { name: 'Czechia' },
+  HU: { name: 'Hungary' },
+  SK: { name: 'Slovakia' },
+  CH: { name: 'Switzerland' },
+  VA: { name: 'Vatican City' },
+  BE: { name: 'Belgium' },
+  HK: { name: 'Hong Kong' },
+  IT: { name: 'Italy' },
+  VN: { name: 'Vietnam' },
+}
+
+// Countries visited without a flight in the log. Each gets a hoverable marker
+// at [lng, lat], picked so no two share a dot on the coarse map grid.
+export const visitedPlaces: Record<string, [number, number]> = {
+  BR: [-47.9, -15.8],
+  DE: [10.5, 51.2],
+  CZ: [15.5, 49.8],
+  HU: [19, 47.2],
+  SK: [19.5, 48.7],
+  CH: [8.2, 46.8],
+  VA: [12.45, 41.9],
+  BE: [4.5, 50.8],
+  HK: [114.17, 22.3],
+  IT: [11, 43.5],
+  VN: [105.8, 21.03],
 }
