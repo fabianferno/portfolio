@@ -3,6 +3,22 @@
 @import './prism.css';
 @import 'tailwindcss/utilities';
 
+/* Timeless Sans ships a single 430 weight; the range stops browsers from faking bold. */
+@font-face {
+  font-family: 'Timeless Sans';
+  src: url('/fonts/TimelessSans-W430.woff2') format('woff2');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Timeless Sans';
+  src: url('/fonts/TimelessSans-W430Italic.woff2') format('woff2');
+  font-weight: 100 900;
+  font-style: italic;
+  font-display: swap;
+}
+
 .my-masonry-grid {
   display: -webkit-box; /* Not needed if autoprefixing */
   display: -ms-flexbox; /* Not needed if autoprefixing */

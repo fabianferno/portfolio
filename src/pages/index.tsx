@@ -49,7 +49,7 @@ export default function Home() {
               damping: 22,
               mass: 1,
             }}
-            className="relative h-full w-full overflow-hidden rounded-2xl bg-black/30 shadow-[0_24px_80px_rgba(0,0,0,0.45)] ring-1 ring-white/25 md:h-[calc(100svh-18rem)] md:w-[min(100vw-4rem,1600px,calc((100svh-7rem)*16/9))]"
+            className="relative h-full w-full overflow-hidden rounded-2xl bg-black/30 shadow-[0_24px_80px_rgba(0,0,0,0.45)] ring-1 ring-white/25 md:h-[calc(100svh-18rem)] md:w-[min(100vw-4rem,2200px,calc((100svh-7rem)*16/9))]"
           >
           <video
             ref={videoRef}

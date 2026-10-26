@@ -1,4 +1,12 @@
 /** @type {import('tailwindcss').Config} */
+const timeless = [
+  '"Timeless Sans"',
+  'ui-sans-serif',
+  'system-ui',
+  '-apple-system',
+  'sans-serif',
+]
+
 module.exports = {
   content: ['./src/**/*.{js,jsx,ts,tsx}'],
   darkMode: 'class',
@@ -310,7 +318,8 @@ module.exports = {
         'hero-in': 'hero-in 0.9s cubic-bezier(0.22, 1, 0.36, 1) both',
       },
       fontFamily: {
-        geist: ['"Geist Mono"', 'ui-monospace', 'SFMono-Regular', 'Menlo', 'monospace'],
+        geist: timeless,
+        sans: timeless,
       },
     },
   },

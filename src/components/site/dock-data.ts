@@ -54,6 +54,8 @@ export interface DockEmbed {
   title: string
   src: string
   height: number
+  // Inverts light-only widgets (SoundCloud has no dark theme param).
+  dark?: boolean
 }
 
 export interface DockItem {
@@ -72,6 +74,8 @@ export interface DockItem {
   location?: string
   body: string[]
   highlights?: string[]
+  // Menu click opens this in a new tab instead of showing a window.
+  openUrl?: string
   links?: DockLink[]
   list?: { label: string; rows: DockListRow[] }
   images?: string[]
@@ -557,7 +561,7 @@ export const DOCK_SECTIONS: DockSection[] = [
           'A few moments from hackathons, conferences and communities along the way.',
         ],
         images: photos,
-        links: [{ label: 'Full gallery', href: '/old/photos' }],
+        links: [{ label: 'Full gallery', href: '/gallery' }],
       },
       {
         id: 'music',
@@ -575,6 +579,7 @@ export const DOCK_SECTIONS: DockSection[] = [
             title: 'Music I made',
             src: 'https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A2228791307&color=%23000000&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true',
             height: 166,
+            dark: true,
           },
           {
             title: "Music I've curated",
@@ -613,10 +618,10 @@ export const DOCK_SECTIONS: DockSection[] = [
         color: '#3b6fd8',
         icon: EnvelopeIcon,
         title: 'Email',
-        subtitle: 'fabian@planetaria.tech',
+        subtitle: 'fabianferno@gmail.com',
         meta: 'Best',
         body: ['Email is the best way to reach me.'],
-        links: [{ label: 'Send email', href: 'mailto:fabian@planetaria.tech' }],
+        links: [{ label: 'Send email', href: 'mailto:fabianferno@gmail.com' }],
       },
       {
         id: 'x',
@@ -627,6 +632,7 @@ export const DOCK_SECTIONS: DockSection[] = [
         title: 'X',
         subtitle: '@fabianferno',
         body: ['Posts, builds and hackathon updates.'],
+        openUrl: 'https://x.com/fabianferno',
         links: [{ label: 'Open X', href: 'https://x.com/fabianferno' }],
       },
       {
@@ -638,6 +644,7 @@ export const DOCK_SECTIONS: DockSection[] = [
         title: 'GitHub',
         subtitle: 'fabianferno',
         body: ['Code for most of what I have built.'],
+        openUrl: 'https://www.github.com/fabianferno',
         links: [
           { label: 'Open GitHub', href: 'https://www.github.com/fabianferno' },
         ],
@@ -651,6 +658,7 @@ export const DOCK_SECTIONS: DockSection[] = [
         title: 'LinkedIn',
         subtitle: 'in/fabianferno',
         body: ['Professional background and work history.'],
+        openUrl: 'https://www.linkedin.com/in/fabianferno/',
         links: [
           {
             label: 'Open LinkedIn',
@@ -667,6 +675,7 @@ export const DOCK_SECTIONS: DockSection[] = [
         title: 'Farcaster',
         subtitle: '@fabianferno',
         body: ['Find me on Farcaster.'],
+        openUrl: 'https://farcaster.xyz/fabianferno',
         links: [
           {
             label: 'Open Farcaster',
@@ -683,17 +692,20 @@ export const DOCK_SECTIONS: DockSection[] = [
         title: 'Telegram',
         subtitle: '@fabianferno',
         body: ['Quick messages.'],
+        openUrl: 'https://t.me/fabianferno',
         links: [{ label: 'Open Telegram', href: 'https://t.me/fabianferno' }],
       },
       {
         id: 'instagram',
         mono: 'IG',
-        color: 'linear-gradient(135deg,#feda75 0%,#fa7e1e 28%,#d62976 58%,#962fbf 80%,#4f5bd5 100%)',
+        color:
+          'linear-gradient(135deg,#feda75 0%,#fa7e1e 28%,#d62976 58%,#962fbf 80%,#4f5bd5 100%)',
         icon: InstagramIcon,
         iconFill: true,
         title: 'Instagram',
         subtitle: '@super.skywalker',
         body: ['Photos and travel.'],
+        openUrl: 'https://www.instagram.com/super.skywalker/',
         links: [
           {
             label: 'Open Instagram',
@@ -710,6 +722,7 @@ export const DOCK_SECTIONS: DockSection[] = [
         title: 'YouTube',
         subtitle: '@fabianferno',
         body: ['Videos and demos.'],
+        openUrl: 'https://youtube.com/@fabianferno',
         links: [
           { label: 'Open YouTube', href: 'https://youtube.com/@fabianferno' },
         ],

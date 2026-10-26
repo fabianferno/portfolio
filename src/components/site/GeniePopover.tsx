@@ -40,6 +40,177 @@ interface GeniePopoverProps {
   children: ReactNode
 }
 
+interface RunGenieOptions {
+  root: HTMLElement
+  overlay: HTMLElement
+  content: HTMLElement
+  opening: boolean
+  from: number
+  // Neck x relative to the root's left edge.
+  originX: number
+  // Absolute viewport y the neck pulls toward; defaults to just below the root.
+  originY?: number
+  maxStrips?: number
+  onProgress: (p: number) => void
+  onDone: () => void
+}
+
+export function runGenie({
+  root,
+  overlay,
+  content,
+  opening,
+  from,
+  originX,
+  originY,
+  maxStrips = 48,
+  onProgress,
+  onDone,
+}: RunGenieOptions) {
+  let rect = root.getBoundingClientRect()
+  let contentRect = content.getBoundingClientRect()
+  let W = rect.width
+  let H = rect.height
+  let count = Math.max(14, Math.min(maxStrips, Math.round(H / 13)))
+  let h = H / count
+  // Whole-pixel strip bounds that tile exactly: an overlap would draw
+  // translucent content twice and show as lines across buttons.
+  let edge = (i: number) => (i >= count ? H : Math.round(i * h))
+  let sMin = NECK_WIDTH / W
+  let by = originY === undefined ? H + TARGET_DROP : originY - rect.top
+
+  overlay.replaceChildren()
+
+  // Frosted body, clipped to the genie silhouette. It spans the viewport so the
+  // neck can leave the menu's box; it only blurs. The tint and rim live in
+  // children laid out over the menu's real box so they match the settled
+  // surface exactly (same gradient, mist and edge glow) and nothing shifts
+  // when the real menu takes over.
+  let glass = document.createElement('div')
+  glass.className = 'cloud-surface'
+  glass.style.cssText = 'position:fixed;inset:0;border-radius:0;'
+  let body = document.createElement('div')
+  body.className = 'cloud-surface__body'
+  body.style.cssText = 'border-radius:0;box-shadow:none;background:none;'
+  let tint = document.createElement('div')
+  tint.style.cssText = `position:absolute;left:${rect.left}px;top:${
+    rect.top
+  }px;width:${W}px;height:${Math.max(
+    H,
+    by + 24
+  )}px;background:linear-gradient(180deg,rgba(34,92,168,0.62) 0,rgba(14,62,130,0.72) ${H}px);`
+  let rim = document.createElement('div')
+  rim.style.cssText = `position:absolute;left:${rect.left}px;top:${rect.top}px;width:${W}px;height:${H}px;border-radius:${RADIUS}px;overflow:hidden;box-shadow:inset 0 0 0 1px rgba(255,255,255,0.28),inset 0 0 34px rgba(255,255,255,0.22);`
+  rim.innerHTML =
+    '<div class="cloud-surface__puffs"></div><div class="cloud-surface__puffs cloud-surface__puffs--alt"></div>'
+  body.append(tint, rim)
+  // Outer glow and drop shadow of the real surface; grows in with the genie so
+  // it is already at full strength when the real menu takes over.
+  let shadow = document.createElement('div')
+  shadow.style.cssText = `position:absolute;left:${rect.left}px;top:${rect.top}px;width:${W}px;height:${H}px;border-radius:${RADIUS}px;box-shadow:0 0 36px rgba(255,255,255,0.22),0 22px 56px rgba(6,36,90,0.35);`
+  glass.append(shadow, body)
+  overlay.appendChild(glass)
+
+  let strips: HTMLElement[] = []
+  for (let i = 0; i < count; i++) {
+    let y0 = edge(i)
+    let sh = edge(i + 1) - y0
+    let strip = document.createElement('div')
+    strip.style.cssText = `position:fixed;left:${rect.left}px;top:${
+      rect.top + y0
+    }px;width:${W}px;height:${sh}px;overflow:hidden;will-change:transform;`
+    let inner = document.createElement('div')
+    inner.className = 'cloud-surface font-geist'
+    inner.style.cssText = `position:absolute;left:0;top:${-y0}px;width:${W}px;height:${H}px;overflow:visible;`
+    let clone = content.cloneNode(true) as HTMLElement
+    clone.removeAttribute('data-genie-content')
+    // Cloned iframes would reload once per strip; swap in blank stand-ins.
+    clone.querySelectorAll('iframe').forEach((frame) => {
+      let stand = document.createElement('div')
+      stand.style.cssText = `width:100%;height:${
+        frame.getAttribute('height') ?? frame.clientHeight
+      }px;border-radius:16px;background:#fff;`
+      frame.replaceWith(stand)
+    })
+    clone.style.cssText += `;position:absolute;left:${
+      contentRect.left - rect.left
+    }px;top:${contentRect.top - rect.top}px;width:${
+      contentRect.width
+    }px;pointer-events:none;`
+    inner.appendChild(clone)
+    strip.appendChild(inner)
+    overlay.appendChild(strip)
+    strips.push(strip)
+  }
+
+  // Silhouette sample rows: the strips are ~13px tall, far too coarse for the
+  // 28px corner arcs, so rows are dense inside the corner bands.
+  let rows: number[] = []
+  for (let y = 0; y < H; ) {
+    rows.push(y)
+    y += y < RADIUS || y >= H - RADIUS ? RADIUS / 10 : h
+  }
+  rows.push(H)
+
+  // How far the point at row y has travelled toward the dock button.
+  let travel = (q: number, y: number) =>
+    smooth(clamp01(q * (1 + LAG) - (1 - y / H) * LAG))
+
+  let apply = (p: number) => {
+    onProgress(p)
+    shadow.style.opacity = String(p)
+    let q = 1 - p
+
+    for (let i = 0; i < count; i++) {
+      let yc = edge(i) + (edge(i + 1) - edge(i)) / 2
+      let A = travel(q, yc)
+      let s = lerp(1, sMin, Math.pow(A, 0.7))
+      let sy = lerp(1, 0.15, A)
+      let cx = lerp(W / 2, originX, A)
+      let cy = lerp(yc, by, A)
+      strips[i].style.transform = `translate(${(cx - W / 2).toFixed(2)}px, ${(
+        cy - yc
+      ).toFixed(2)}px) scale(${s.toFixed(4)}, ${sy.toFixed(4)})`
+    }
+
+    let left: string[] = []
+    let right: string[] = []
+    for (let y of rows) {
+      let A = travel(q, y)
+      let s = lerp(1, sMin, Math.pow(A, 0.7))
+      let cx = lerp(W / 2, originX, A)
+      let Y = lerp(y, by, A)
+      let d = Math.min(y, H - y)
+      let inset =
+        d < RADIUS ? RADIUS - Math.sqrt(RADIUS * RADIUS - (RADIUS - d) ** 2) : 0
+      let half = (s * W) / 2 - inset * s
+      left.push(
+        `${(rect.left + cx - half).toFixed(1)}px ${(rect.top + Y).toFixed(1)}px`
+      )
+      right.push(
+        `${(rect.left + cx + half).toFixed(1)}px ${(rect.top + Y).toFixed(1)}px`
+      )
+    }
+    body.style.clipPath = `polygon(${left.join(', ')}, ${right
+      .reverse()
+      .join(', ')})`
+  }
+
+  let to = opening ? 1 : 0
+  apply(from)
+  let controls = animate(from, to, {
+    duration: opening ? 0.62 : 0.5,
+    ease: opening ? [0.22, 0.75, 0.25, 1] : [0.5, 0, 0.8, 0.45],
+    onUpdate: apply,
+    onComplete: onDone,
+  })
+
+  return () => {
+    controls.stop()
+    overlay.replaceChildren()
+  }
+}
+
 export function GeniePopover({
   open,
   sectionKey,
@@ -88,126 +259,16 @@ export function GeniePopover({
       return
     }
 
-    let rect = root.getBoundingClientRect()
-    let ulRect = ul.getBoundingClientRect()
-    let W = rect.width
-    let H = rect.height
-    let count = Math.max(14, Math.min(48, Math.round(H / 13)))
-    let h = H / count
-    let sMin = NECK_WIDTH / W
-    let by = H + TARGET_DROP
-
-    overlay.replaceChildren()
-
-    // Frosted body: same classes as the real surface so the blur is identical.
-    let glass = document.createElement('div')
-    glass.className = 'cloud-surface'
-    glass.style.cssText = 'position:fixed;inset:0;border-radius:0;'
-    let body = document.createElement('div')
-    body.className = 'cloud-surface__body'
-    body.style.borderRadius = '0'
-    body.style.boxShadow = 'none'
-    body.innerHTML =
-      '<div class="cloud-surface__puffs"></div><div class="cloud-surface__puffs cloud-surface__puffs--alt"></div>'
-    glass.appendChild(body)
-    overlay.appendChild(glass)
-
-    let strips: HTMLElement[] = []
-    for (let i = 0; i < count; i++) {
-      let y0 = i * h
-      let strip = document.createElement('div')
-      strip.style.cssText = `position:fixed;left:${rect.left}px;top:${rect.top + y0}px;width:${W}px;height:${h + 1}px;overflow:hidden;will-change:transform;box-shadow:inset 1px 0 0 rgba(255,255,255,0.3),inset -1px 0 0 rgba(255,255,255,0.3)${
-        i === 0 ? ',inset 0 1px 0 rgba(255,255,255,0.3)' : ''
-      }${i === count - 1 ? ',inset 0 -1px 0 rgba(255,255,255,0.3)' : ''};`
-      let inner = document.createElement('div')
-      inner.className = 'cloud-surface font-geist'
-      inner.style.cssText = `position:absolute;left:0;top:${-y0}px;width:${W}px;height:${H}px;overflow:visible;`
-      let clone = ul!.cloneNode(true) as HTMLElement
-      clone.removeAttribute('data-genie-content')
-      clone.style.cssText += `;position:absolute;left:${ulRect.left - rect.left}px;top:${ulRect.top - rect.top}px;width:${ulRect.width}px;pointer-events:none;`
-      inner.appendChild(clone)
-      strip.appendChild(inner)
-      overlay.appendChild(strip)
-      strips.push(strip)
-    }
-
-    let apply = (p: number) => {
-      progress.current = p
-      let q = 1 - p
-      let left: string[] = []
-      let right: string[] = []
-      let pt = (i: number, edge: 'top' | 'mid' | 'bottom') => {
-        let yc = i * h + h / 2
-        let z = yc / H
-        let A = smooth(clamp01(q * (1 + LAG) - (1 - z) * LAG))
-        let s = lerp(1, sMin, Math.pow(A, 0.7))
-        let sy = lerp(1, 0.15, A)
-        let cx = lerp(W / 2, originX, A)
-        let cy = lerp(yc, by, A)
-        let y =
-          edge === 'top'
-            ? cy - (h / 2) * sy - (yc - i * h) * 0 // top boundary of strip
-            : edge === 'bottom'
-              ? cy + (h / 2) * sy
-              : cy
-        let d = edge === 'top' ? 0 : edge === 'bottom' ? 0 : Math.min(yc, H - yc)
-        let inset = d < RADIUS ? RADIUS - Math.sqrt(RADIUS * RADIUS - (RADIUS - d) ** 2) : 0
-        let half = (s * W) / 2 - inset * s
-        return {
-          l: `${(rect.left + cx - half).toFixed(1)}px ${(rect.top + y).toFixed(1)}px`,
-          r: `${(rect.left + cx + half).toFixed(1)}px ${(rect.top + y).toFixed(1)}px`,
-          A,
-          s,
-          sy,
-          cx,
-          cy,
-          yc,
-        }
-      }
-      for (let i = 0; i < count; i++) {
-        let a = pt(i, i === 0 ? 'top' : 'mid')
-        strips[i].style.transform = `translate(${(a.cx - W / 2).toFixed(2)}px, ${(a.cy - a.yc).toFixed(2)}px) scale(${a.s.toFixed(4)}, ${a.sy.toFixed(4)})`
-        if (i === 0) {
-          // top edge, rounded in by the full corner radius
-          let top = pt(0, 'top')
-          let inset = RADIUS * top.s
-          left.push(
-            `${(rect.left + top.cx - (top.s * W) / 2 + inset).toFixed(1)}px ${(rect.top + top.cy - (h / 2) * top.sy).toFixed(1)}px`
-          )
-          right.push(
-            `${(rect.left + top.cx + (top.s * W) / 2 - inset).toFixed(1)}px ${(rect.top + top.cy - (h / 2) * top.sy).toFixed(1)}px`
-          )
-        }
-        left.push(a.l)
-        right.push(a.r)
-        if (i === count - 1) {
-          let bot = pt(i, 'bottom')
-          let inset = RADIUS * bot.s
-          left.push(
-            `${(rect.left + bot.cx - (bot.s * W) / 2 + inset).toFixed(1)}px ${(rect.top + bot.cy + (h / 2) * bot.sy).toFixed(1)}px`
-          )
-          right.push(
-            `${(rect.left + bot.cx + (bot.s * W) / 2 - inset).toFixed(1)}px ${(rect.top + bot.cy + (h / 2) * bot.sy).toFixed(1)}px`
-          )
-        }
-      }
-      body.style.clipPath = `polygon(${left.join(', ')}, ${right.reverse().join(', ')})`
-    }
-
-    let from = progress.current
-    let to = phase === 'opening' ? 1 : 0
-    apply(from)
-    let controls = animate(from, to, {
-      duration: phase === 'opening' ? 0.62 : 0.5,
-      ease: phase === 'opening' ? [0.22, 0.75, 0.25, 1] : [0.5, 0, 0.8, 0.45],
-      onUpdate: apply,
-      onComplete: finish,
+    return runGenie({
+      root,
+      overlay,
+      content: ul,
+      opening: phase === 'opening',
+      from: progress.current,
+      originX,
+      onProgress: (p) => (progress.current = p),
+      onDone: finish,
     })
-
-    return () => {
-      controls.stop()
-      overlay!.replaceChildren()
-    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [phase, run])
 
@@ -219,7 +280,7 @@ export function GeniePopover({
     <>
       <div
         ref={popoverRef}
-        className="fixed z-[55] font-geist text-white"
+        className="fixed z-[990] font-geist text-white"
         style={{
           left,
           bottom,
@@ -232,7 +293,7 @@ export function GeniePopover({
       <div
         ref={overlayRef}
         aria-hidden="true"
-        className="pointer-events-none fixed inset-0 z-[56]"
+        className="pointer-events-none fixed inset-0 z-[991]"
       />
     </>
   )

@@ -155,7 +155,7 @@ export default function About() {
                 DM on Telegram
               </SocialLink>
               <SocialLink
-                href="mailto:fabian@planetaria.tech"
+                href="mailto:fabianferno@gmail.com"
                 icon={MailIcon}
                 className="mt-8 border-t border-zinc-100 pt-8 dark:border-zinc-700/40"
               >
