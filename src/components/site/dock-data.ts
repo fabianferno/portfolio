@@ -9,12 +9,12 @@ import {
   DocumentTextIcon,
   PencilSquareIcon,
   MicrophoneIcon,
-  ArchiveBoxIcon,
   UserCircleIcon,
   PhotoIcon,
   MusicalNoteIcon,
   GlobeAltIcon,
   GlobeEuropeAfricaIcon,
+  CodeBracketIcon,
 } from '@heroicons/react/24/outline'
 
 import {
@@ -28,6 +28,7 @@ import {
 
 import { airportCountry, visitedPlaces } from '@/data/airports'
 import { TravelPanel } from './TravelPanel'
+import { ProjectsPanel } from './ProjectsPanel'
 import scriptTexts from '@/data/scripts.json'
 
 import logoJKS from '@/images/logos/jks.jpg'
@@ -40,7 +41,7 @@ import logoCloka from '@/images/logos/cloka.jpg'
 import logoWhimbet from '@/images/logos/whimbet.webp'
 import logoSimera from '@/images/logos/simera.jpeg'
 import logoBlitzwork from '@/images/logos/blitzwork.jpeg'
-import logoHacks from '@/images/logos/hacks.png'
+import logoEthglobal from '@/images/logos/ethglobal.png'
 
 export interface DockLink {
   label: string
@@ -117,6 +118,7 @@ interface Experience {
   description: string[]
   highlights?: string[]
   logo?: StaticImageData | null
+  screenshot?: string
 }
 
 const experiences: Experience[] = [
@@ -137,10 +139,27 @@ const experiences: Experience[] = [
     logo: logoStateless,
   },
   {
+    company: 'Hackathons',
+    title: 'Comp',
+    start: '2016',
+    end: 'Present',
+    website: 'https://ethglobal.com',
+    description: [
+    'Built and shipped over 100+ projects ranging from DeFi protocols to AI agents and consumer social apps.',
+    ],
+    highlights: [
+      'EthGlobal Records: Ranking global #1 as per medalist.build for most winning projects (as of 2026).',
+      'Secured 6 finalist titles and holds the record for most IRL finalist titles. (as of 2025)',
+      'Winner of the Trifecta Cup - Ethglobal’s first competition exclusive for Ethglobal Finalists.',
+    ],
+    logo: logoEthglobal,
+    screenshot: '/photos/medalist-builders.jpeg',
+  },
+  {
     company: 'Cloka',
     title: 'Co-Founder',
     start: 'Jul 2023',
-    end: 'Present',
+    end: 'Jan 2026',
     website: 'https://cloka.in',
     description: [
       'Cloka (cloka.in) is Chennai’s first and one of India’s largest fitness app / community, bringing together runners, lifters, fighters, and athletes across disciplines like running, strength training, MMA, and pickleball — united by a shared culture of movement, consistency, and community.',
@@ -154,7 +173,7 @@ const experiences: Experience[] = [
   },
   {
     company: 'Whim.Bet',
-    title: 'Cofounder & CTO',
+    title: 'Cofounder',
     start: 'May 2025',
     end: 'Oct 2025',
     location: 'Internet',
@@ -165,7 +184,7 @@ const experiences: Experience[] = [
     ],
     highlights: [
       'Launched the product on Base and integrated with the Virtuals AI Agent ecosystem, enabling autonomous trading and gameplay features for thousands of users.',
-      'Drove the product from hackathon prototype to a live ecosystem token with $2M+ peak market capitalization, validating market demand and early PMF.',
+      'Drove the product from prototype to a live ecosystem token with $2M+ peak market capitalization, validating market demand and early PMF.',
       'Engineered tokenomics that maintained a 34% liquidity-to-market-cap ratio, ensuring pool health and sustainable market operations.',
       'Built marketing pipelines and built tools similar to Kaito to create a community led product growth on X, working with notable Twitch Streamers like AndySlaps.',
     ],
@@ -173,7 +192,7 @@ const experiences: Experience[] = [
   },
   {
     company: 'Ungate',
-    title: 'Interim CTO',
+    title: 'Consulting Engineer',
     start: 'May 2025',
     end: 'Jul 2025',
     location: 'Dubai, United Arab Emirates',
@@ -226,39 +245,8 @@ const experiences: Experience[] = [
     logo: logoBlitzcrafthq,
   },
   {
-    company: 'Hackathons',
-    title: 'Comp',
-    start: '2016',
-    end: 'Present',
-    website: 'https://ethglobal.com',
-    description: [
-      'Competed in over 85+ hackathons globally, specializing in rapid product development, blockchain infrastructure, and creative problem solving. Known for consistently shipping functional MVPs within 24-48 hour timeframes.',
-    ],
-    highlights: [
-      'EthGlobal Records: Secured 6 finalist titles and holds the record for most IRL finalist titles. (as of 2025)',
-      'Winner of the Trifecta Cup - Ethglobal’s first competition exclusive for Ethglobal Finalists.',
-      'Consistently topped leaderboards across various ecosystems including Ethereum, Polygon, and Solana.',
-      'Built and shipped over 100+ projects ranging from DeFi protocols to AI agents and consumer social apps.',
-    ],
-    logo: logoHacks,
-  },
-  {
-    company: 'College Moonlighting',
-    title: 'Freelance & Open Source',
-    start: '2019',
-    end: '2023',
-    website: 'https://pattarai.in',
-    description: [],
-    highlights: [
-      'Co-founded an active open-source engineering community, during college, which had grown to over 850 members across India, fostering collaboration and innovation in software projects (pattarai.in)',
-      'Designed and set up a state-of-the-art Fabrication laboratory (FabLab) across 3600 sq ft at LICET, Chennai, equipped with advanced technology including 3D printers, laser cutters and CNC machines. Conducted 40+ workshops in the FabLab, mentoring more than 1K+ students in various technological disciplines and practical applications.',
-      'Offered a wide range of services including software development, application development, web automation & digital marketing to a diverse client base.',
-    ],
-    logo: null,
-  },
-  {
     company: 'Dali',
-    title: 'Principal Engineer',
+    title: 'Software Engineer',
     start: 'Dec 2021',
     end: 'Sep 2022',
     location: 'Chennai, Tamil Nadu, India',
@@ -272,7 +260,7 @@ const experiences: Experience[] = [
   },
   {
     company: 'Blitzwork',
-    title: 'Engineering Intern',
+    title: 'SWE Intern',
     start: '2020',
     end: '2021',
     location: 'Germany',
@@ -285,7 +273,7 @@ const experiences: Experience[] = [
   },
   {
     company: 'JKS Info Tech Pvt Ltd',
-    title: 'Software Engineer',
+    title: 'SWE Intern',
     start: '2020',
     end: '2021',
     location: 'Chennai',
@@ -296,8 +284,22 @@ const experiences: Experience[] = [
     logo: logoJKS,
   },
   {
+    company: 'Freelance & OSS',
+    title: 'Uni moonlighting',
+    start: '2019',
+    end: '2023',
+    website: 'https://pattarai.in',
+    description: [],
+    highlights: [
+      'Co-founded an active open-source engineering community, during college, which had grown to over 850 members across India, fostering collaboration and innovation in software projects (pattarai.in)',
+      'Designed and set up a state-of-the-art Fabrication laboratory (FabLab) across 3600 sq ft at LICET, Chennai, equipped with advanced technology including 3D printers, laser cutters and CNC machines. Conducted 40+ workshops in the FabLab, mentoring more than 1K+ students in various technological disciplines and practical applications.',
+      'Offered a wide range of services including software development, application development, web automation & digital marketing to a diverse client base.',
+    ],
+    logo: null,
+  },
+  {
     company: 'Símera',
-    title: 'Founder',
+    title: 'Digital Marketing Agency',
     start: '2017',
     end: '2020',
     location: 'India',
@@ -337,6 +339,7 @@ const roleItems: DockItem[] = experiences.map((e, i) => ({
   mono: monoOf(e.company),
   color: ROLE_COLORS[i % ROLE_COLORS.length],
   logo: e.logo ?? undefined,
+  fullImage: e.screenshot,
   title: e.company,
   subtitle: e.title,
   subtitleLabel: 'Role',
@@ -464,6 +467,20 @@ const photography = [
   'IMG_3222',
 ].map((f) => `/gallery/${f}.JPG`)
 
+export const SCRIPTS_ITEM: DockItem = {
+    id: 'scripts',
+    mono: 'SC',
+    color: '#4a2a14',
+    icon: DocumentTextIcon,
+    title: 'Scripts',
+    subtitle: "Skywalker's long-form thoughts on life",
+    meta: `${scripts.length} scripts`,
+    body: [
+      'A collection of my long-form thoughts on life and the way I have seen it along the way.',
+    ],
+    list: { label: 'Scripts', rows: scripts },
+  }
+
 export const DOCK_SECTIONS: DockSection[] = [
   {
     id: 'home',
@@ -506,6 +523,26 @@ export const DOCK_SECTIONS: DockSection[] = [
         openUrl: '/FabianFernoResumeJan2026.pdf',
         links: [
           { label: 'Open resume', href: '/FabianFernoResumeJan2026.pdf' },
+        ],
+      },
+      {
+        id: 'projects',
+        mono: 'PR',
+        color: '#24292f',
+        icon: CodeBracketIcon,
+        title: 'Projects',
+        subtitle: 'Things I’ve made trying to put my dent in the universe',
+        meta: 'GitHub',
+        body: [
+          'I’ve worked on tons of little projects over the years, all of which live in my personal code museum, GitHub. They’re listed here live from the GitHub API.',
+          'In case you’re still wondering, I specialize in rapidly building scalable software, architecting distributed systems, and web3 protocols.',
+        ],
+        Panel: ProjectsPanel,
+        links: [
+          {
+            label: 'All repos on GitHub',
+            href: 'https://github.com/fabianferno?tab=repositories',
+          },
         ],
       },
       {
@@ -559,24 +596,6 @@ export const DOCK_SECTIONS: DockSection[] = [
             },
           ],
         },
-      },
-      {
-        id: 'old-site',
-        mono: 'OS',
-        color: '#3a2a05',
-        icon: ArchiveBoxIcon,
-        title: 'Old site',
-        subtitle: 'Projects · Flights · Scripts · Photos',
-        meta: 'Archive',
-        body: [
-          'The previous version of this site, with GitHub projects, a flight map, film scripts, articles and photos.',
-        ],
-        links: [
-          { label: 'Old home', href: '/old' },
-          { label: 'Projects', href: '/old/projects' },
-          { label: 'Flights', href: '/old/flights' },
-          { label: 'Scripts', href: '/old/scripts' },
-        ],
       },
     ],
   },
@@ -647,23 +666,20 @@ export const DOCK_SECTIONS: DockSection[] = [
             src: 'https://open.spotify.com/embed/playlist/2oHiDnFXDc2cgIajgUhAK2?utm_source=generator&theme=0',
             height: 152,
           },
-        ],
-        links: [
           {
-            label: 'Skywalker Symphony',
-            href: 'https://open.spotify.com/playlist/42H9VguLdX1afctGklv6nf?si=745625aacb0c4d26',
+            title: 'Skywalker Symphony',
+            src: 'https://open.spotify.com/embed/playlist/42H9VguLdX1afctGklv6nf?utm_source=generator&theme=0',
+            height: 152,
           },
           {
-            label: 'Phantom Tones',
-            href: 'https://open.spotify.com/playlist/42H9VguLdX1afctGklv6nf?si=745625aacb0c4d26',
+            title: 'Phantom Tones',
+            src: 'https://open.spotify.com/embed/playlist/59gr1isdUsfT3G6eybkEID?utm_source=generator&theme=0',
+            height: 152,
           },
           {
-            label: 'Hannibal Productivity',
-            href: 'https://open.spotify.com/playlist/4vJjTe2YrQvBEKUmF8AQD3?si=d662cb03b0554195',
-          },
-          {
-            label: 'More on Spotify',
-            href: 'https://open.spotify.com/user/pqfnzbkmew1e4y9o5r0uy83p6?si=bcedd5bb81cb4dad',
+            title: 'Hannibal Productivity',
+            src: 'https://open.spotify.com/embed/playlist/4vJjTe2YrQvBEKUmF8AQD3?utm_source=generator&theme=0',
+            height: 152,
           },
         ],
       },
@@ -696,19 +712,6 @@ export const DOCK_SECTIONS: DockSection[] = [
             href: 'https://www.strava.com/athletes/168385610',
           },
         ],
-      },
-      {
-        id: 'scripts',
-        mono: 'SC',
-        color: '#4a2a14',
-        icon: DocumentTextIcon,
-        title: 'Scripts',
-        subtitle: "Skywalker's long-form thoughts on life",
-        meta: `${scripts.length} scripts`,
-        body: [
-          'A collection of my long-form thoughts on life and the way I have seen it along the way.',
-        ],
-        list: { label: 'Scripts', rows: scripts },
       },
     ],
   },

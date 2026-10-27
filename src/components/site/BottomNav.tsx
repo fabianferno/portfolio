@@ -26,7 +26,13 @@ import {
 } from '@/components/SocialIcons'
 import { CloudSurface } from './CloudSurface'
 import { playClick } from './clickSound'
-import { DOCK_SECTIONS, DockItem, DockListRow, DockSection } from './dock-data'
+import {
+  DOCK_SECTIONS,
+  DockItem,
+  DockListRow,
+  DockSection,
+  SCRIPTS_ITEM,
+} from './dock-data'
 import { GeniePopover, runGenie } from './GeniePopover'
 
 // Shared motion: springs everywhere so interruptions retarget smoothly.
@@ -242,6 +248,17 @@ export function BottomNav() {
 
   let closeWindow = useCallback((id: string) => {
     setWindows((current) => current.filter((w) => w.item.id !== id))
+  }, [])
+
+  // The footer pen icon opens Scripts, which no longer lives in the dock menu.
+  useEffect(() => {
+    let onOpen = () => {
+      let about = DOCK_SECTIONS.find((s) => s.id === 'about')
+      if (about) openWindow(SCRIPTS_ITEM, about)
+    }
+    window.addEventListener('open-scripts', onOpen)
+    return () => window.removeEventListener('open-scripts', onOpen)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   useEffect(() => {

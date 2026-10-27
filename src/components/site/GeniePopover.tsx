@@ -73,9 +73,13 @@ export function runGenie({
   let H = rect.height
   let count = Math.max(14, Math.min(maxStrips, Math.round(H / 13)))
   let h = H / count
-  // Whole-pixel strip bounds that tile exactly: an overlap would draw
-  // translucent content twice and show as lines across buttons.
-  let edge = (i: number) => (i >= count ? H : Math.round(i * h))
+  // Strip bounds snapped to device pixels so they tile exactly: an overlap
+  // would draw translucent content twice, a gap or anti-aliased seam shows
+  // the glass through, and both read as lines across icons.
+  let dpr = window.devicePixelRatio || 1
+  let snap = (v: number) => Math.round(v * dpr) / dpr
+  let edge = (i: number) =>
+    snap(rect.top + (i >= count ? H : i * h)) - rect.top
   let sMin = NECK_WIDTH / W
   let by = originY === undefined ? H + TARGET_DROP : originY - rect.top
 
@@ -118,7 +122,7 @@ export function runGenie({
     let strip = document.createElement('div')
     strip.style.cssText = `position:fixed;left:${rect.left}px;top:${
       rect.top + y0
-    }px;width:${W}px;height:${sh}px;overflow:hidden;will-change:transform;`
+    }px;width:${W}px;height:${sh}px;overflow:hidden;transform-origin:50% 0;will-change:transform;`
     let inner = document.createElement('div')
     inner.className = 'cloud-surface font-geist'
     inner.style.cssText = `position:absolute;left:0;top:${-y0}px;width:${W}px;height:${H}px;overflow:visible;`
@@ -161,16 +165,27 @@ export function runGenie({
     shadow.style.opacity = String(p)
     let q = 1 - p
 
+    // Each strip edge moves once and is shared by the strips above and below
+    // it, snapped to device pixels, so neighbours always meet with no seam.
+    let pos: number[] = []
+    for (let i = 0; i <= count; i++) {
+      let y = edge(i)
+      let p = snap(rect.top + lerp(y, by, travel(q, y))) - rect.top
+      // Never let an edge pass the one above it, which would flip a strip
+      // when the target sits inside the box (a tall window near the dock).
+      pos.push(i > 0 ? Math.max(p, pos[i - 1]) : p)
+    }
     for (let i = 0; i < count; i++) {
-      let yc = edge(i) + (edge(i + 1) - edge(i)) / 2
+      let y0 = edge(i)
+      let sh = edge(i + 1) - y0
+      let yc = y0 + sh / 2
       let A = travel(q, yc)
       let s = lerp(1, sMin, Math.pow(A, 0.7))
-      let sy = lerp(1, 0.15, A)
+      let sy = sh > 0 ? (pos[i + 1] - pos[i]) / sh : 0
       let cx = lerp(W / 2, originX, A)
-      let cy = lerp(yc, by, A)
       strips[i].style.transform = `translate(${(cx - W / 2).toFixed(2)}px, ${(
-        cy - yc
-      ).toFixed(2)}px) scale(${s.toFixed(4)}, ${sy.toFixed(4)})`
+        pos[i] - y0
+      ).toFixed(3)}px) scale(${s.toFixed(4)}, ${sy.toFixed(4)})`
     }
 
     let left: string[] = []
