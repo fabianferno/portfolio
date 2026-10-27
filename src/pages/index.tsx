@@ -7,23 +7,43 @@ import { CloudBackground } from '@/components/site/CloudBackground'
 import { LocalClock } from '@/components/site/LocalClock'
 import { MusicPlayer } from '@/components/site/MusicPlayer'
 
+// Adaptive HLS stream (480p/720p/1080p) served from CloudFront.
+const MONTAGE_HLS =
+  'https://d4cav6svopnda.cloudfront.net/montage/v1/master.m3u8'
+
 // The montage is long, so start each visit at a random scene (leaving a few
 // seconds of runway before the end).
 function seekToRandomScene(video: HTMLVideoElement) {
   if (!Number.isFinite(video.duration)) return
   video.currentTime = Math.random() * Math.max(0, video.duration - 15)
+  // Seeking can interrupt autoplay's pending play(), so nudge it again.
+  video.play().catch(() => {})
 }
 
 export default function Home() {
   let videoRef = useRef<HTMLVideoElement>(null)
   let [muted, setMuted] = useState(true)
 
-  // Metadata may already be in before hydration attaches handlers.
+  // Safari plays HLS natively; everywhere else hls.js feeds the same <video>.
   useEffect(() => {
     let video = videoRef.current
-    if (video && video.readyState >= 1 && !video.dataset.seeked) {
-      video.dataset.seeked = '1'
-      seekToRandomScene(video)
+    if (!video) return
+    if (video.canPlayType('application/vnd.apple.mpegurl')) {
+      video.src = MONTAGE_HLS
+      return
+    }
+
+    let hls: import('hls.js').default | undefined
+    let cancelled = false
+    import('hls.js').then(({ default: Hls }) => {
+      if (cancelled || !Hls.isSupported()) return
+      hls = new Hls({ capLevelToPlayerSize: true })
+      hls.loadSource(MONTAGE_HLS)
+      hls.attachMedia(video)
+    })
+    return () => {
+      cancelled = true
+      hls?.destroy()
     }
   }, [])
 
@@ -55,7 +75,6 @@ export default function Home() {
           <video
             ref={videoRef}
             className="h-full w-full object-cover"
-            src="/video/montage.mp4"
             poster="/video/montage-poster.jpg"
             autoPlay
             muted

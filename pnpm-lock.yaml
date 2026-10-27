@@ -74,6 +74,9 @@ importers:
       gsap:
         specifier: ^3.13.0
         version: 3.14.2
+      hls.js:
+        specifier: 1.5.20
+        version: 1.5.20
       mathjs:
         specifier: ^14.9.1
         version: 14.9.1
@@ -2061,6 +2064,9 @@ packages:
 
   hey-listen@1.0.8:
     resolution: {integrity: sha512-COpmrF2NOg4TBWUJ5UVyaCU2A88wEMkUPK4hNqyCkqHbxT92BbvfjoSozkAIIm6XhicGlJHhFdullInrdhwU8Q==}
+
+  hls.js@1.5.20:
+    resolution: {integrity: sha512-uu0VXUK52JhihhnN/MVVo1lvqNNuhoxkonqgO3IpjvQiGpJBdIXMGkofjQb/j9zvV7a1SW8U9g1FslWx/1HOiQ==}
 
   hls.js@1.6.15:
     resolution: {integrity: sha512-E3a5VwgXimGHwpRGV+WxRTKeSp2DW5DI5MWv34ulL3t5UNmyJWCQ1KmLEHbYzcfThfXG8amBL+fCYPneGHC4VA==}
@@ -6394,6 +6400,8 @@ snapshots:
       space-separated-tokens: 1.1.5
 
   hey-listen@1.0.8: {}
+
+  hls.js@1.5.20: {}
 
   hls.js@1.6.15: {}
 
