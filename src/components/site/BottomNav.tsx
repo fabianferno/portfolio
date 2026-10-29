@@ -6,9 +6,8 @@ import {
   useRef,
   useState,
 } from 'react'
-import { createPortal } from 'react-dom'
 import Image from 'next/image'
-import { AnimatePresence, MotionConfig, motion } from 'motion/react'
+import { MotionConfig, motion } from 'motion/react'
 import {
   XMarkIcon,
   ArrowUpRightIcon,
@@ -33,7 +32,14 @@ import {
   DockSection,
   SCRIPTS_ITEM,
 } from './dock-data'
-import { GeniePopover, runGenie } from './GeniePopover'
+import {
+  GeniePopover,
+  keepShotFresh,
+  prefersReducedMotion,
+  runGenie,
+  snapshotSurface,
+  warmGenie,
+} from './GeniePopover'
 
 // Shared motion: springs everywhere so interruptions retarget smoothly.
 const spring = {
@@ -164,8 +170,8 @@ export function BottomNav() {
     else showSection(section, button)
   }
 
+  // The window genies itself back into the dock; this only reopens the menu.
   let backToSection = (win: DockWindow) => {
-    closeWindow(win.item.id)
     let section = DOCK_SECTIONS.find((s) => s.id === win.sectionId)
     let button = document.querySelector<HTMLElement>(
       `[data-dock="${win.sectionId}"]`
@@ -199,7 +205,11 @@ export function BottomNav() {
   let openImage = (src: string, win: DockWindow) => {
     let section = DOCK_SECTIONS.find((s) => s.id === win.sectionId)
     if (!section) return
-    let name = src.split('/').pop()?.replace(/\.[^.]+$/, '') ?? 'Photo'
+    let name =
+      src
+        .split('/')
+        .pop()
+        ?.replace(/\.[^.]+$/, '') ?? 'Photo'
     openWindow(
       {
         id: `photo:${src}`,
@@ -250,6 +260,10 @@ export function BottomNav() {
     setWindows((current) => current.filter((w) => w.item.id !== id))
   }, [])
 
+  useEffect(() => {
+    warmGenie()
+  }, [])
+
   // The footer pen icon opens Scripts, which no longer lives in the dock menu.
   useEffect(() => {
     let onOpen = () => {
@@ -279,6 +293,53 @@ export function BottomNav() {
       document.removeEventListener('keydown', onKey)
     }
   }, [openId])
+
+  let menu = (section: DockSection) => (
+    <ul
+      role="menu"
+      aria-label={section.label}
+      className="max-h-[60vh] overflow-y-auto p-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+    >
+      {section.items.map((item) => (
+        <li key={item.id}>
+          <button
+            type="button"
+            role="menuitem"
+            onClick={() => {
+              if (item.openUrl) {
+                playClick()
+                setOpenId(null)
+                window.open(item.openUrl, '_blank', 'noopener,noreferrer')
+              } else openWindow(item, section)
+            }}
+            className="flex w-full items-center gap-4 rounded-2xl px-3 py-2.5 text-left outline-none transition-colors hover:bg-white/10 focus-visible:bg-white/15"
+          >
+            <Mono item={item} />
+            <span className="min-w-0 flex-1">
+              <span className="block truncate text-[17px] font-medium leading-tight [text-shadow:0_1px_8px_rgba(0,0,0,0.3)]">
+                {item.title}
+              </span>
+              <span className="block truncate text-[13px] text-white/80">
+                {item.subtitle}
+              </span>
+            </span>
+            {item.meta && (
+              <span className="shrink-0 text-[13px] text-white/70">
+                {item.meta}
+              </span>
+            )}
+            {item.openUrl && (
+              <ArrowUpRightIcon
+                aria-hidden="true"
+                className="h-5 w-5 shrink-0 text-white/70"
+                strokeWidth={2}
+              />
+            )}
+          </button>
+        </li>
+      ))}
+    </ul>
+  )
 
   return (
     <MotionConfig reducedMotion="user">
@@ -324,81 +385,34 @@ export function BottomNav() {
         </ul>
       </nav>
 
-      {popover && (
-        <GeniePopover
-          open={!!openSection && !!popoverPos}
-          sectionKey={openSection?.id ?? null}
-          left={popover.pos.left}
-          bottom={popover.pos.bottom}
-          originX={popover.pos.originX}
-          width={Math.min(
-            POPOVER_W,
-            typeof window === 'undefined' ? POPOVER_W : window.innerWidth - 24
-          )}
-          popoverRef={popoverRef}
-        >
-          <ul
-            role="menu"
-            data-genie-content
-            aria-label={popover.section.label}
-            className="max-h-[60vh] overflow-y-auto p-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
-          >
-            {popover.section.items.map((item) => (
-              <li key={item.id}>
-                <button
-                  type="button"
-                  role="menuitem"
-                  onClick={() => {
-                    if (item.openUrl) {
-                      playClick()
-                      setOpenId(null)
-                      window.open(item.openUrl, '_blank', 'noopener,noreferrer')
-                    } else openWindow(item, popover.section)
-                  }}
-                  className="flex w-full items-center gap-4 rounded-2xl px-3 py-2.5 text-left outline-none transition-colors hover:bg-white/10 focus-visible:bg-white/15"
-                >
-                  <Mono item={item} />
-                  <span className="min-w-0 flex-1">
-                    <span className="block truncate text-[17px] font-medium leading-tight [text-shadow:0_1px_8px_rgba(0,0,0,0.3)]">
-                      {item.title}
-                    </span>
-                    <span className="block truncate text-[13px] text-white/80">
-                      {item.subtitle}
-                    </span>
-                  </span>
-                  {item.meta && (
-                    <span className="shrink-0 text-[13px] text-white/70">
-                      {item.meta}
-                    </span>
-                  )}
-                  {item.openUrl && (
-                    <ArrowUpRightIcon
-                      aria-hidden="true"
-                      className="h-5 w-5 shrink-0 text-white/70"
-                      strokeWidth={2}
-                    />
-                  )}
-                </button>
-              </li>
-            ))}
-          </ul>
-        </GeniePopover>
-      )}
+      <GeniePopover
+        open={!!openSection && !!popoverPos}
+        sectionKey={openSection?.id ?? null}
+        left={popover?.pos.left ?? 0}
+        bottom={popover?.pos.bottom ?? 0}
+        originX={popover?.pos.originX ?? 0}
+        width={Math.min(
+          POPOVER_W,
+          typeof window === 'undefined' ? POPOVER_W : window.innerWidth - 24
+        )}
+        popoverRef={popoverRef}
+        prerender={DOCK_SECTIONS.map((s) => ({ key: s.id, content: menu(s) }))}
+      >
+        {popover && menu(popover.section)}
+      </GeniePopover>
 
-      <AnimatePresence>
-        {windows.map((w) => (
-          <DockWindowView
-            key={w.item.id}
-            win={w}
-            onMove={moveWindow}
-            onFocus={focusWindow}
-            onClose={closeWindow}
-            onBack={backToSection}
-            onOpenImage={openImage}
-            onOpenArticle={openArticle}
-          />
-        ))}
-      </AnimatePresence>
+      {windows.map((w) => (
+        <DockWindowView
+          key={w.item.id}
+          win={w}
+          onMove={moveWindow}
+          onFocus={focusWindow}
+          onClose={closeWindow}
+          onBack={backToSection}
+          onOpenImage={openImage}
+          onOpenArticle={openArticle}
+        />
+      ))}
     </MotionConfig>
   )
 }
@@ -422,47 +436,86 @@ function DockWindowView({
 }) {
   let { item } = win
   let rootRef = useRef<HTMLDivElement>(null)
-  let overlayRef = useRef<HTMLDivElement>(null)
   let drag = useRef<{ dx: number; dy: number } | null>(null)
   let [opening, setOpening] = useState(true)
+  let genie = useRef({
+    progress: 0,
+    shot: null as HTMLCanvasElement | null,
+    stop: undefined as (() => void) | undefined,
+    closing: false,
+  })
 
-  // Genie the window out of its dock button when it first appears.
-  useLayoutEffect(() => {
+  // Genie the window between its dock button and its open position.
+  let play = (image: HTMLCanvasElement, to: number, onDone: () => void) => {
     let root = rootRef.current
-    let overlay = overlayRef.current
-    let content = root?.querySelector<HTMLElement>('[data-genie-content]')
+    let surface = root?.firstElementChild as HTMLElement | null
     let button = document.querySelector<HTMLElement>(
       `[data-dock="${win.sectionId}"]`
     )
-    let reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches
-    if (!root || !overlay || !content || !button || reduce) {
-      setOpening(false)
-      return
-    }
-    let rect = root.getBoundingClientRect()
+    if (!root || !surface || !button) return onDone()
+    let g = genie.current
     let btn = button.getBoundingClientRect()
-    return runGenie({
-      root,
-      overlay,
-      content,
-      opening: true,
-      from: 0,
-      originX: btn.left + btn.width / 2 - rect.left,
-      originY: btn.top + 2,
-      maxStrips: 30,
-      onProgress: () => {},
-      onDone: () => {
-        // Reveal the real window first and keep the strips over it for a couple
-        // of frames, so there is never a frame with neither on screen.
-        root.style.visibility = 'visible'
-        setOpening(false)
-        requestAnimationFrame(() =>
-          requestAnimationFrame(() => overlay.replaceChildren())
-        )
-      },
+    g.shot = image
+    g.stop?.()
+    root.style.opacity = '0'
+    g.stop = runGenie({
+      image,
+      rect: surface.getBoundingClientRect(),
+      dock: { x: btn.left + btn.width / 2, y: btn.top + 2 },
+      from: g.progress,
+      to,
+      zIndex: win.z,
+      onProgress: (p) => (g.progress = p),
+      onDone,
     })
+  }
+
+  let reveal = () => {
+    let g = genie.current
+    g.progress = 1
+    g.stop = undefined
+    if (rootRef.current) rootRef.current.style.opacity = '1'
+    setOpening(false)
+  }
+
+  useLayoutEffect(() => {
+    let surface = rootRef.current?.firstElementChild as HTMLElement | null
+    if (!surface || prefersReducedMotion()) return reveal()
+    let g = genie.current
+    let cancelled = false
+    snapshotSurface(surface).then((image) => {
+      if (cancelled || g.closing) return
+      if (image) play(image, 1, reveal)
+      else reveal()
+    })
+    return () => {
+      cancelled = true
+      g.stop?.()
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
+
+  useEffect(() => {
+    let surface = rootRef.current?.firstElementChild as HTMLElement | null
+    if (opening || !surface) return
+    let g = genie.current
+    return keepShotFresh(surface, (image) => {
+      if (!g.closing) g.shot = image
+    })
+  }, [opening])
+
+  // Mid-open this reverses the frame already in motion; an open window leaves
+  // from the snapshot kept fresh above.
+  let close = async () => {
+    let g = genie.current
+    if (g.closing) return
+    g.closing = true
+    let surface = rootRef.current?.firstElementChild as HTMLElement | null
+    if (!surface || prefersReducedMotion()) return onClose(item.id)
+    let image = g.shot ?? (await snapshotSurface(surface))
+    if (image) play(image, 0, () => onClose(item.id))
+    else onClose(item.id)
+  }
 
   let onPointerDown = (e: React.PointerEvent<HTMLDivElement>) => {
     if ((e.target as HTMLElement).closest('button')) return
@@ -493,94 +546,94 @@ function DockWindowView({
     'flex h-10 items-center justify-center rounded-xl border border-white/30 bg-[rgba(8,40,95,0.5)] text-white outline-none transition-colors hover:bg-[rgba(8,40,95,0.7)] focus-visible:ring-2 focus-visible:ring-white/60'
 
   return (
-    <>
-      <motion.div
-        ref={rootRef}
-        exit={{
-          scale: 0.94,
-          y: 16,
-          transition: { duration: 0.16, ease: [0.4, 0, 1, 1] },
-        }}
-        onPointerDownCapture={() => onFocus(item.id)}
-        onClickCapture={(e) => {
-          if ((e.target as HTMLElement).closest('button')) playClick()
-        }}
-        className="fixed font-geist text-white"
-        style={{
-          left: win.x,
-          top: win.y,
-          zIndex: win.z,
-          transformOrigin: '50% 90%',
-          visibility: opening ? 'hidden' : 'visible',
-          width: `min(${WINDOW_W}px, calc(100vw - 24px))`,
-        }}
-      >
-        <CloudSurface borderRadius={28}>
-          <div role="dialog" aria-label={item.title} data-genie-content>
-            <div
-              onPointerDown={onPointerDown}
-              onPointerMove={onPointerMove}
-              onPointerUp={endDrag}
-              onPointerCancel={endDrag}
-              className="flex cursor-grab touch-none select-none items-center justify-between px-5 py-4 active:cursor-grabbing"
+    <div
+      ref={rootRef}
+      onPointerDownCapture={() => onFocus(item.id)}
+      onClickCapture={(e) => {
+        if ((e.target as HTMLElement).closest('button')) playClick()
+      }}
+      className="fixed font-geist text-white"
+      style={{
+        left: win.x,
+        top: win.y,
+        zIndex: win.z,
+        opacity: opening ? 0 : undefined,
+        pointerEvents: opening ? 'none' : undefined,
+        width: `min(${WINDOW_W}px, calc(100vw - 24px))`,
+      }}
+    >
+      <CloudSurface borderRadius={28}>
+        <div role="dialog" aria-label={item.title}>
+          <div
+            onPointerDown={onPointerDown}
+            onPointerMove={onPointerMove}
+            onPointerUp={endDrag}
+            onPointerCancel={endDrag}
+            className="flex cursor-grab touch-none select-none items-center justify-between px-5 py-4 active:cursor-grabbing"
+          >
+            <motion.button
+              type="button"
+              whileHover={{ scale: 1.04 }}
+              whileTap={{ scale: 0.94 }}
+              transition={spring}
+              onClick={() => {
+                close()
+                onBack(win)
+              }}
+              className={`${chip} gap-2 px-4 text-[15px]`}
             >
-              <motion.button
-                type="button"
-                whileHover={{ scale: 1.04 }}
-                whileTap={{ scale: 0.94 }}
-                transition={spring}
-                onClick={() => onBack(win)}
-                className={`${chip} gap-2 px-4 text-[15px]`}
-              >
-                <ArrowLeftIcon className="h-4 w-4" strokeWidth={1.75} />
-                {win.sectionLabel}
-              </motion.button>
-              <motion.button
-                type="button"
-                aria-label={`Close ${item.title}`}
-                data-hand
-                whileHover={{ scale: 1.08, rotate: 90 }}
-                whileTap={{ scale: 0.9 }}
-                transition={spring}
-                onClick={() => onClose(item.id)}
-                className={`${chip} w-10`}
-              >
-                <XMarkIcon className="h-5 w-5" strokeWidth={1.75} />
-              </motion.button>
+              <ArrowLeftIcon className="h-4 w-4" strokeWidth={1.75} />
+              {win.sectionLabel}
+            </motion.button>
+            <motion.button
+              type="button"
+              aria-label={`Close ${item.title}`}
+              data-hand
+              whileHover={{ scale: 1.08, rotate: 90 }}
+              whileTap={{ scale: 0.9 }}
+              transition={spring}
+              onClick={close}
+              className={`${chip} w-10`}
+            >
+              <XMarkIcon className="h-5 w-5" strokeWidth={1.75} />
+            </motion.button>
+          </div>
+          <div className="grid max-h-[calc(100svh-15rem)] grid-cols-1 overflow-y-auto border-t border-white/15 md:h-[min(520px,calc(100svh-15rem))] md:grid-cols-[300px_1fr] md:overflow-hidden">
+            <div className="space-y-7 px-7 py-7 md:overflow-y-auto md:border-r md:border-white/15">
+              <h2 className="text-[32px] font-semibold leading-[1.05] tracking-tight [text-shadow:0_1px_10px_rgba(0,0,0,0.3)]">
+                {item.title}
+              </h2>
+              <Field label={item.subtitleLabel}>{item.subtitle}</Field>
+              {item.period && <Field label="Period">{item.period}</Field>}
+              {item.location && <Field label="Location">{item.location}</Field>}
+              {item.body.length > 0 && (
+                <Field label="About">
+                  <span className="block space-y-3">
+                    {item.body.map((p, i) => (
+                      <span key={i} className="block">
+                        {p}
+                      </span>
+                    ))}
+                  </span>
+                </Field>
+              )}
+              {item.highlights && item.highlights.length > 0 && (
+                <Field label="Highlights">
+                  <ul className="list-disc space-y-2.5 pl-5 marker:text-white/70">
+                    {item.highlights.map((h, i) => (
+                      <li key={i}>{h}</li>
+                    ))}
+                  </ul>
+                </Field>
+              )}
             </div>
-            <div className="grid max-h-[calc(100svh-15rem)] grid-cols-1 overflow-y-auto border-t border-white/15 md:h-[min(520px,calc(100svh-15rem))] md:grid-cols-[300px_1fr] md:overflow-hidden">
-              <div className="space-y-7 px-7 py-7 md:overflow-y-auto md:border-r md:border-white/15">
-                <h2 className="text-[32px] font-semibold leading-[1.05] tracking-tight [text-shadow:0_1px_10px_rgba(0,0,0,0.3)]">
-                  {item.title}
-                </h2>
-                <Field label={item.subtitleLabel}>{item.subtitle}</Field>
-                {item.period && <Field label="Period">{item.period}</Field>}
-                {item.location && (
-                  <Field label="Location">{item.location}</Field>
-                )}
-                {item.body.length > 0 && (
-                  <Field label="About">
-                    <span className="block space-y-3">
-                      {item.body.map((p, i) => (
-                        <span key={i} className="block">
-                          {p}
-                        </span>
-                      ))}
-                    </span>
-                  </Field>
-                )}
-                {item.highlights && item.highlights.length > 0 && (
-                  <Field label="Highlights">
-                    <ul className="list-disc space-y-2.5 pl-5 marker:text-white/70">
-                      {item.highlights.map((h, i) => (
-                        <li key={i}>{h}</li>
-                      ))}
-                    </ul>
-                  </Field>
-                )}
-              </div>
-              <div className="space-y-4 p-4 md:overflow-y-auto md:[&>img]:h-full">
-                {!item.images && !item.fullImage && !item.article && !item.embeds && !item.Panel && !item.list && (
+            <div className="space-y-4 p-4 md:overflow-y-auto md:[&>img]:h-full">
+              {!item.images &&
+                !item.fullImage &&
+                !item.article &&
+                !item.embeds &&
+                !item.Panel &&
+                !item.list && (
                   <div className="flex aspect-[16/9] items-center justify-center rounded-2xl bg-white px-6 text-center text-zinc-900 shadow-[0_10px_30px_-12px_rgba(0,0,0,0.5)] [text-shadow:none]">
                     {item.icon ? (
                       <BigIcon item={item} />
@@ -598,145 +651,138 @@ function DockWindowView({
                     )}
                   </div>
                 )}
-                {item.images && (
-                  <div className="grid grid-cols-2 gap-3">
-                    {item.images.map((src) => (
-                      <button
-                        key={src}
-                        type="button"
-                        data-hand
-                        onClick={() => onOpenImage(src, win)}
-                        className="block overflow-hidden rounded-2xl bg-white/10 shadow-[0_10px_30px_-12px_rgba(0,0,0,0.5)]"
-                      >
-                        {/* eslint-disable-next-line @next/next/no-img-element */}
-                        <img
-                          src={src}
-                          alt=""
-                          loading="lazy"
-                          className="aspect-[4/3] w-full object-cover transition-transform duration-300 hover:scale-105"
-                        />
-                      </button>
+              {item.images && (
+                <div className="grid grid-cols-2 gap-3">
+                  {item.images.map((src) => (
+                    <button
+                      key={src}
+                      type="button"
+                      data-hand
+                      onClick={() => onOpenImage(src, win)}
+                      className="block overflow-hidden rounded-2xl bg-white/10 shadow-[0_10px_30px_-12px_rgba(0,0,0,0.5)]"
+                    >
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img
+                        src={src}
+                        alt=""
+                        loading="lazy"
+                        className="aspect-[4/3] w-full object-cover transition-transform duration-300 hover:scale-105"
+                      />
+                    </button>
+                  ))}
+                </div>
+              )}
+              {item.article && (
+                <div className="space-y-4">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={item.article.cover}
+                    alt=""
+                    className="aspect-[16/9] w-full rounded-2xl object-cover shadow-[0_10px_30px_-12px_rgba(0,0,0,0.5)]"
+                  />
+                  <div className="space-y-4 rounded-2xl bg-white px-7 py-6 text-[16px] leading-relaxed text-zinc-800 shadow-[0_10px_30px_-12px_rgba(0,0,0,0.5)] [text-shadow:none]">
+                    {item.article.paragraphs.map((p, i) => (
+                      <p key={i}>{p}</p>
                     ))}
                   </div>
-                )}
-                {item.article && (
-                  <div className="space-y-4">
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
-                      src={item.article.cover}
-                      alt=""
-                      className="aspect-[16/9] w-full rounded-2xl object-cover shadow-[0_10px_30px_-12px_rgba(0,0,0,0.5)]"
-                    />
-                    <div className="space-y-4 rounded-2xl bg-white px-7 py-6 text-[16px] leading-relaxed text-zinc-800 shadow-[0_10px_30px_-12px_rgba(0,0,0,0.5)] [text-shadow:none]">
-                      {item.article.paragraphs.map((p, i) => (
-                        <p key={i}>{p}</p>
-                      ))}
-                    </div>
-                  </div>
-                )}
-                {item.fullImage && (
-                  // eslint-disable-next-line @next/next/no-img-element
-                  <img
-                    src={item.fullImage}
-                    alt={item.title}
-                    className="h-full max-h-[calc(100svh-17rem)] w-full rounded-2xl object-contain md:max-h-none"
-                  />
-                )}
-                {item.embeds?.map((embed) => (
-                  <iframe
-                    key={embed.src}
-                    title={embed.title}
-                    src={embed.src}
-                    height={embed.height}
-                    loading="lazy"
-                    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-                    className={`w-full rounded-2xl border-0 bg-white shadow-[0_10px_30px_-12px_rgba(0,0,0,0.5)] ${
-                      embed.dark ? '[filter:invert(1)_hue-rotate(180deg)]' : ''
-                    }`}
-                  />
-                ))}
-                {item.Panel && <item.Panel />}
-                {item.list && (
-                  <div className="divide-y divide-zinc-200 overflow-hidden rounded-2xl bg-white text-zinc-900 shadow-[0_10px_30px_-12px_rgba(0,0,0,0.5)] [text-shadow:none]">
-                    {item.list.rows.map((row) => {
-                      let PlatformIcon = platformIcon(row.href)
-                      let Row: any = row.read ? motion.button : motion.a
-                      return (
-                        <Row
-                          key={row.href}
-                          whileTap={{ scale: 0.985 }}
-                          transition={spring}
-                          data-hand
-                          {...(row.read
-                            ? {
-                                type: 'button',
-                                onClick: () => onOpenArticle(row, win),
-                              }
-                            : {
-                                href: row.href,
-                                ...(/^https?:/.test(row.href)
-                                  ? { target: '_blank', rel: 'noopener noreferrer' }
-                                  : {}),
-                              })}
-                          className="flex w-full items-center justify-between gap-4 px-6 py-4 text-left outline-none transition-colors hover:bg-zinc-100 focus-visible:bg-zinc-100"
-                        >
-                          {PlatformIcon && (
-                            <PlatformIcon
-                              aria-hidden
-                              className="h-5 w-5 shrink-0 fill-zinc-900"
-                            />
-                          )}
-                          <span className="min-w-0 flex-1 text-[16px] font-medium leading-snug">
-                            {row.title}
-                          </span>
-                          {row.meta && (
-                            <span className="shrink-0 text-sm text-zinc-500">
-                              {row.meta}
-                            </span>
-                          )}
-                        </Row>
-                      )
-                    })}
-                  </div>
-                )}
-                {item.links && (
-                  <div className="divide-y divide-zinc-200 overflow-hidden rounded-2xl bg-white text-zinc-900 shadow-[0_10px_30px_-12px_rgba(0,0,0,0.5)] [text-shadow:none]">
-                    {item.links.map((link) => (
-                      <motion.a
-                        key={link.href}
+                </div>
+              )}
+              {item.fullImage && (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img
+                  src={item.fullImage}
+                  alt={item.title}
+                  className="h-full max-h-[calc(100svh-17rem)] w-full rounded-2xl object-contain md:max-h-none"
+                />
+              )}
+              {item.embeds?.map((embed) => (
+                <iframe
+                  key={embed.src}
+                  title={embed.title}
+                  src={embed.src}
+                  height={embed.height}
+                  loading="lazy"
+                  allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                  className={`w-full rounded-2xl border-0 bg-white shadow-[0_10px_30px_-12px_rgba(0,0,0,0.5)] ${
+                    embed.dark ? '[filter:invert(1)_hue-rotate(180deg)]' : ''
+                  }`}
+                />
+              ))}
+              {item.Panel && <item.Panel />}
+              {item.list && (
+                <div className="divide-y divide-zinc-200 overflow-hidden rounded-2xl bg-white text-zinc-900 shadow-[0_10px_30px_-12px_rgba(0,0,0,0.5)] [text-shadow:none]">
+                  {item.list.rows.map((row) => {
+                    let PlatformIcon = platformIcon(row.href)
+                    let Row: any = row.read ? motion.button : motion.a
+                    return (
+                      <Row
+                        key={row.href}
                         whileTap={{ scale: 0.985 }}
                         transition={spring}
                         data-hand
-                        href={link.href}
-                        {...(/^https?:/.test(link.href)
-                          ? { target: '_blank', rel: 'noopener noreferrer' }
-                          : {})}
-                        className="flex items-center justify-between gap-4 px-6 py-5 text-lg font-medium outline-none transition-colors hover:bg-zinc-100 focus-visible:bg-zinc-100"
+                        {...(row.read
+                          ? {
+                              type: 'button',
+                              onClick: () => onOpenArticle(row, win),
+                            }
+                          : {
+                              href: row.href,
+                              ...(/^https?:/.test(row.href)
+                                ? {
+                                    target: '_blank',
+                                    rel: 'noopener noreferrer',
+                                  }
+                                : {}),
+                            })}
+                        className="flex w-full items-center justify-between gap-4 px-6 py-4 text-left outline-none transition-colors hover:bg-zinc-100 focus-visible:bg-zinc-100"
                       >
-                        <span className="truncate">{link.label}</span>
-                        <ArrowUpRightIcon
-                          className="h-5 w-5 shrink-0"
-                          strokeWidth={2}
-                        />
-                      </motion.a>
-                    ))}
-                  </div>
-                )}
-              </div>
+                        {PlatformIcon && (
+                          <PlatformIcon
+                            aria-hidden
+                            className="h-5 w-5 shrink-0 fill-zinc-900"
+                          />
+                        )}
+                        <span className="min-w-0 flex-1 text-[16px] font-medium leading-snug">
+                          {row.title}
+                        </span>
+                        {row.meta && (
+                          <span className="shrink-0 text-sm text-zinc-500">
+                            {row.meta}
+                          </span>
+                        )}
+                      </Row>
+                    )
+                  })}
+                </div>
+              )}
+              {item.links && (
+                <div className="divide-y divide-zinc-200 overflow-hidden rounded-2xl bg-white text-zinc-900 shadow-[0_10px_30px_-12px_rgba(0,0,0,0.5)] [text-shadow:none]">
+                  {item.links.map((link) => (
+                    <motion.a
+                      key={link.href}
+                      whileTap={{ scale: 0.985 }}
+                      transition={spring}
+                      data-hand
+                      href={link.href}
+                      {...(/^https?:/.test(link.href)
+                        ? { target: '_blank', rel: 'noopener noreferrer' }
+                        : {})}
+                      className="flex items-center justify-between gap-4 px-6 py-5 text-lg font-medium outline-none transition-colors hover:bg-zinc-100 focus-visible:bg-zinc-100"
+                    >
+                      <span className="truncate">{link.label}</span>
+                      <ArrowUpRightIcon
+                        className="h-5 w-5 shrink-0"
+                        strokeWidth={2}
+                      />
+                    </motion.a>
+                  ))}
+                </div>
+              )}
             </div>
           </div>
-        </CloudSurface>
-      </motion.div>
-      {createPortal(
-        <div
-          ref={overlayRef}
-          aria-hidden="true"
-          className="pointer-events-none fixed inset-0"
-          style={{ zIndex: win.z }}
-        />,
-        document.body
-      )}
-    </>
+        </div>
+      </CloudSurface>
+    </div>
   )
 }
 
