@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from 'react'
-import { motion } from 'motion/react'
 
 // Keyed clips live in /public/hands (webm VP9-alpha, mov HEVC-alpha for Safari).
 // Only tap-like gestures; grab/slide/zoom don't fit a click.
@@ -33,14 +32,13 @@ const ROTATE: Record<Edge, number> = { bottom: 0, left: 90, top: 180, right: -90
 const BUTTON_SELECTOR = 'button, [role="button"]'
 const CARD_SELECTOR = '[data-hand]'
 
-interface Play {
-  id: number
-  src: string
-  x: number
-  y: number
-  edge: Edge
-  scale: number
-  gap: number
+interface Clip {
+  box: HTMLDivElement
+  video: HTMLVideoElement
+  slice: HTMLDivElement
+  // Canvas fed from the main video (webm); Safari's HEVC alpha doesn't
+  // survive drawImage, so there it's a second video of the same clip.
+  sliceMedia: HTMLCanvasElement | HTMLVideoElement
 }
 
 function pickClip(previous?: string) {
@@ -53,67 +51,108 @@ function usesHevcAlpha() {
   return /AppleWebKit/.test(ua) && !/Chrome\/|Chromium|Android|Edg\/|OPR\//.test(ua)
 }
 
-// React doesn't reliably apply `muted` before autoplay is evaluated, so set it
-// and start playback ourselves.
-function HandVideo({
-  src,
-  onEnded,
-  style,
-}: {
-  src: string
-  onEnded?: () => void
-  style: React.CSSProperties
-}) {
-  return (
-    <video
-      ref={(el) => {
-        if (!el) return
-        el.muted = true
-        el.play().catch(() => {})
-      }}
-      src={src}
-      muted
-      playsInline
-      onEnded={onEnded}
-      style={style}
-    />
-  )
+// Copy the bottom rows of each video frame into the slice canvas, which is
+// stretched to carry the arm out to the screen edge.
+function drawSlice(video: HTMLVideoElement, canvas: HTMLCanvasElement) {
+  let ctx = canvas.getContext('2d')
+  if (!ctx) return () => {}
+  let w = video.videoWidth
+  let h = video.videoHeight
+  let rows = Math.round((h * SLICE) / SHOW_H)
+  canvas.width = w
+  canvas.height = rows
+  let id = 0
+  let useVfc = 'requestVideoFrameCallback' in video
+  let tick = () => {
+    ctx!.clearRect(0, 0, w, rows)
+    ctx!.drawImage(video, 0, h - rows, w, rows, 0, 0, w, rows)
+    id = useVfc ? video.requestVideoFrameCallback(tick) : requestAnimationFrame(tick)
+  }
+  tick()
+  return () => (useVfc ? video.cancelVideoFrameCallback(id) : cancelAnimationFrame(id))
 }
 
 export function HandClick() {
-  let [play, setPlay] = useState<Play | null>(null)
+  let [ext, setExt] = useState<'webm' | 'mov' | null>(null)
+  let [srcs, setSrcs] = useState<Record<string, string>>({})
+  let wrap = useRef<HTMLDivElement>(null)
+  let clips = useRef<Record<string, Partial<Clip>>>({})
   let nextClip = useRef<string>('')
-  let blobs = useRef<Record<string, string>>({})
-  let counter = useRef(0)
   let pending = useRef<ReturnType<typeof setTimeout> | null>(null)
   let replaying = useRef(false)
-  let ext = useRef<'webm' | 'mov'>('webm')
 
   useEffect(() => {
-    ext.current = usesHevcAlpha() ? 'mov' : 'webm'
+    let format: 'webm' | 'mov' = usesHevcAlpha() ? 'mov' : 'webm'
+    setExt(format)
     let reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)')
+    let urls: string[] = []
+    let active: { clip: Partial<Clip>; stopDraw: () => void; timer: ReturnType<typeof setTimeout> } | null =
+      null
 
-    let urlFor = (clip: string) => `/hands/${clip}.${ext.current}`
-
-    // Fetch the upcoming clip into memory so playback starts with no network wait.
-    let prefetch = () => {
-      let clip = pickClip(nextClip.current)
-      nextClip.current = clip
-      if (blobs.current[clip]) return
-      fetch(urlFor(clip))
+    // Pull every clip into memory once; each gets a persistent, preloaded
+    // <video> so a tap only has to rewind and play.
+    Object.keys(TAP_MS).forEach((clip) => {
+      fetch(`/hands/${clip}.${format}`)
         .then((res) => (res.ok ? res.blob() : Promise.reject()))
         .then((blob) => {
-          blobs.current[clip] = URL.createObjectURL(blob)
+          let url = URL.createObjectURL(blob)
+          urls.push(url)
+          setSrcs((s) => ({ ...s, [clip]: url }))
         })
         .catch(() => {})
+    })
+    nextClip.current = pickClip()
+
+    // Rewind while hidden so the next tap starts on a decoded first frame.
+    let hide = () => {
+      if (!active) return
+      let { clip, stopDraw, timer } = active
+      active = null
+      stopDraw()
+      clearTimeout(timer)
+      if (wrap.current) wrap.current.style.visibility = 'hidden'
+      for (let v of [clip.video, clip.sliceMedia]) {
+        if (v instanceof HTMLVideoElement) {
+          v.pause()
+          v.currentTime = 0
+        }
+      }
     }
-    prefetch()
+
+    let show = (name: string, x: number, y: number, edge: Edge, scale: number, gap: number) => {
+      let el = wrap.current
+      let clip = clips.current[name]
+      if (!el || !clip.box || !clip.video || !clip.slice || !clip.sliceMedia) return
+      hide()
+      Object.assign(el.style, {
+        left: `${x - ANCHOR_X}px`,
+        top: `${y - ANCHOR_Y}px`,
+        transform: `rotate(${ROTATE[edge]}deg) scale(${scale})`,
+        visibility: 'visible',
+      })
+      for (let c of Object.values(clips.current)) {
+        if (c.box) c.box.style.visibility = c === clip ? 'inherit' : 'hidden'
+      }
+      clip.slice.style.display = gap > 0 ? 'block' : 'none'
+      clip.slice.style.transform = `scaleY(${gap / SLICE})`
+
+      let { video, sliceMedia } = clip
+      let stopDraw = () => {}
+      if (gap > 0) {
+        if (sliceMedia instanceof HTMLCanvasElement) stopDraw = drawSlice(video, sliceMedia)
+        else sliceMedia.play().catch(() => {})
+      }
+      video.onended = hide
+      video.play().catch(hide)
+      el.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 120 })
+      // Never leave a hand stuck if `ended` doesn't fire.
+      active = { clip, stopDraw, timer: setTimeout(hide, 3000) }
+    }
 
     let onClick = (e: MouseEvent) => {
       if (replaying.current || reduceMotion.matches) return
       let target = e.target
       if (!(target instanceof Element)) return
-
       let vw = window.innerWidth
       let vh = window.innerHeight
       let x: number
@@ -173,16 +212,16 @@ export function HandClick() {
       let reach = distances[edge] / scale - ARM + 2
       if (reach > MAX_STRETCH) return
 
+      // Clip still loading: let the click through without a hand.
+      let clip = nextClip.current
+      if (!clips.current[clip]?.video?.src) return
+
       // Hold the real click until the finger lands; swallow extra clicks
       // while a hand is still on its way.
       e.preventDefault()
       e.stopImmediatePropagation()
       if (pending.current) return
-
-      let clip = nextClip.current
-      let src = blobs.current[clip] ?? urlFor(clip)
-      delete blobs.current[clip]
-      prefetch()
+      nextClip.current = pickClip(clip)
 
       let click = new MouseEvent('click', {
         bubbles: true,
@@ -211,104 +250,86 @@ export function HandClick() {
         }
       }, TAP_MS[clip])
 
-      setPlay({
-        id: ++counter.current,
-        src,
-        x,
-        y,
-        edge,
-        scale,
-        // Arm length below the fingertip; stretch the last rows to reach the edge.
-        gap: Math.max(0, reach),
-      })
+      // Arm length below the fingertip; stretch the last rows to reach the edge.
+      show(clip, x, y, edge, scale, Math.max(0, reach))
     }
 
     document.addEventListener('click', onClick, true)
     return () => {
       document.removeEventListener('click', onClick, true)
       if (pending.current) clearTimeout(pending.current)
-      Object.values(blobs.current).forEach(URL.revokeObjectURL)
-      blobs.current = {}
+      hide()
+      urls.forEach(URL.revokeObjectURL)
     }
   }, [])
 
-  // Release the in-memory clip once it's done, and never leave a hand stuck.
-  useEffect(() => {
-    if (!play) return
-    let id = setTimeout(() => setPlay(null), 3000)
-    return () => clearTimeout(id)
-  }, [play])
-
-  let done = () => {
-    setPlay((current) => {
-      if (current?.src.startsWith('blob:')) {
-        URL.revokeObjectURL(current.src)
-      }
-      return null
-    })
+  let ref = (clip: string, key: keyof Clip) => (el: HTMLElement | null) => {
+    if (!el) return
+    if (el instanceof HTMLVideoElement) el.muted = true
+    ;(clips.current[clip] ??= {})[key] = el as never
   }
+
+  // React doesn't reliably apply `muted` before playback, so the ref sets it.
+  let video = (clip: string, key: 'video' | 'sliceMedia', style: React.CSSProperties) => (
+    <video
+      ref={ref(clip, key)}
+      src={srcs[clip]}
+      muted
+      playsInline
+      preload="auto"
+      style={{ display: 'block', width: SHOW_W, height: SHOW_H, ...style }}
+    />
+  )
 
   return (
     <div
       aria-hidden="true"
       className="pointer-events-none fixed inset-0 z-[99999] overflow-hidden"
     >
-      {play && (
-        <div
-          key={play.id}
-          style={{
-            position: 'absolute',
-            left: play.x - ANCHOR_X,
-            top: play.y - ANCHOR_Y,
-            width: SHOW_W,
-            height: SHOW_H,
-            transformOrigin: `${ANCHOR_X}px ${ANCHOR_Y}px`,
-            transform: `rotate(${ROTATE[play.edge]}deg) scale(${play.scale})`,
-            filter: 'drop-shadow(0 8px 12px rgba(0,0,0,0.28))',
-          }}
-        >
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.12 }}
-            style={{ position: 'absolute', inset: 0 }}
-          >
-          <HandVideo
-            src={play.src}
-            onEnded={done}
-            style={{
-              display: 'block',
-              width: SHOW_W,
-              height: SHOW_H,
-            }}
-          />
-          {play.gap > 0 && (
+      <div
+        ref={wrap}
+        style={{
+          position: 'absolute',
+          width: SHOW_W,
+          height: SHOW_H,
+          transformOrigin: `${ANCHOR_X}px ${ANCHOR_Y}px`,
+          visibility: 'hidden',
+          filter: 'drop-shadow(0 8px 12px rgba(0,0,0,0.28))',
+        }}
+      >
+        {ext &&
+          Object.keys(srcs).map((clip) => (
             <div
-              style={{
-                position: 'absolute',
-                top: SHOW_H - 1,
-                left: 0,
-                width: SHOW_W,
-                height: SLICE,
-                overflow: 'hidden',
-                transform: `scaleY(${play.gap / SLICE})`,
-                transformOrigin: 'top',
-              }}
+              key={clip}
+              ref={ref(clip, 'box')}
+              style={{ position: 'absolute', inset: 0, visibility: 'hidden' }}
             >
-              <HandVideo
-                src={play.src}
+              {video(clip, 'video', {})}
+              <div
+                ref={ref(clip, 'slice')}
                 style={{
-                  display: 'block',
+                  position: 'absolute',
+                  top: SHOW_H - 1,
+                  left: 0,
                   width: SHOW_W,
-                  height: SHOW_H,
-                  marginTop: -(SHOW_H - SLICE),
+                  height: SLICE,
+                  overflow: 'hidden',
+                  transformOrigin: 'top',
+                  display: 'none',
                 }}
-              />
+              >
+                {ext === 'mov' ? (
+                  video(clip, 'sliceMedia', { marginTop: -(SHOW_H - SLICE) })
+                ) : (
+                  <canvas
+                    ref={ref(clip, 'sliceMedia')}
+                    style={{ display: 'block', width: SHOW_W, height: SLICE }}
+                  />
+                )}
+              </div>
             </div>
-          )}
-          </motion.div>
-        </div>
-      )}
+          ))}
+      </div>
     </div>
   )
 }
